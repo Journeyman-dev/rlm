@@ -21,7 +21,7 @@
 # Ensure that the repository is REUSE complaint
 # About the REUSE Specification: https://reuse.software/
 
-name: Unit Tests
+name: Tests
 on: [push, workflow_dispatch]
 jobs:
   build:
