@@ -102,7 +102,7 @@ jobs:
         run: cmake --build $GITHUB_WORKSPACE/build --config ${{ matrix.build_type }}
       - name: Run auto tests
         shell: bash
-        working-directory: ${{github.workspace}}/build/modules/test/
+        working-directory: ${{github.workspace}}/build/test/
         run: ctest -C ${{ matrix.build_type }}
         continue-on-error: true
       - name: Process JUnit report
