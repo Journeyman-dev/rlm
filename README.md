@@ -28,3 +28,5 @@ SPDX-License-Identifier: MIT
 [![Tests](https://github.com/Journeyman-dev/rlm/actions/workflows/Unit Tests.yaml/badge.svg)](https://github.com/Journeyman-dev/rlm/actions/workflows/Unit Tests.yaml) [![REUSE status](https://api.reuse.software/badge/git.fsfe.org/reuse/api)](https://api.reuse.software/info/git.fsfe.org/reuse/api)
 
 RLM is an easy to use modern C++ library that contains math functions useful for the development of roguelike games. The library is intended to be used along side the yet to be released Roguelike Framework (RLFW), which will be a complete toolkit for the development of roguelike games.
+
+If you want to contribute, take a look at the [Contributing Guidelines](CONTRIBUTING.md).

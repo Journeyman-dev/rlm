@@ -19,7 +19,7 @@
 # CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 name: "Report a Build Problem"
-description: "Report a problem with building RLM"
+description: "Report a problem with building RLM."
 labels: ["tooling", "bug"]
 assignees: []
 body:
