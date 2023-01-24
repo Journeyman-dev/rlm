@@ -1,0 +1,104 @@
+# SPDX-FileCopyrightText: 2023 Daniel Aimé Valcour <fosssweeper@gmail.com>
+#
+# SPDX-License-Identifier: MIT
+
+# Copyright (c) 2023 Daniel Aimé Valcour
+# Permission is hereby granted, free of charge, to any person obtaining a copy of
+# this software and associated documentation files (the "Software"), to deal in
+# the Software without restriction, including without limitation the rights to
+# use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of
+# the Software, and to permit persons to whom the Software is furnished to do so,
+# subject to the following conditions:
+# The above copyright notice and this permission notice shall be included in all
+# copies or substantial portions of the Software.
+# THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+# IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS
+# FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR
+# COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER
+# IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN
+# CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+
+name: "Report a Build Problem"
+description: "Report a problem with building RLM"
+labels: ["tooling", "bug"]
+assignees: []
+body:
+  - type: markdown
+    attributes:
+      value: |
+        You can read more information about creating reporting build problems in the [Contributing Guidelines](https://github.com/Journeyman-dev/rlm/blob/main/CONTRIBUTING.md). While writing this issue, remember to follow our [Code of Conduct](https://github.com/Journeyman-dev/rlm/blob/main/CODE_OF_CONDUCT.md). Many of the following fields accept Markdown formated text. You can read about Markdown syntax in the [GitHub Documentation](https://docs.github.com/en/get-started/writing-on-github/getting-started-with-writing-and-formatting-on-github/basic-writing-and-formatting-syntax).
+
+        Thank you for taking the time to fill out this build problem report!
+  - type: textarea
+    id: description
+    attributes:
+      label: Build Problem Description
+      description: Describe the build problem. What steps did you take when trying to build the library? You can attach console log text files by clicking this text area to highlight it and then dragging the files in.
+    validations:
+      required: true
+  - type: input
+    id: rlm-version
+    attributes:
+      label: RLM Version
+      description: What version of RLM were you trying to build? You can find the version pass into the `VERSION` argument of the `project()` function in the CMakeLists.txt file in the top level folder of the repository.
+      placeholder: ex. 1.0.0.0
+    validations:
+      required: true
+  - type: input
+    id: operating-system
+    attributes:
+      label: Operating System
+      description: What operating system were you building RLM on when the build problem occured?
+      placeholder: ex. Windows 10, macOS Mojave, Linux Mint 21, etc
+    validations:
+      required: true
+  - type: dropdown
+    id: build-configuration
+    attributes:
+      label: Build Configuration
+      description: What build configuration were you trying to build RLM with?
+      options:
+        - Debug
+        - Release
+        - MinSizedRelease
+        - Other
+    validations:
+      required: true
+  - type: input
+    id: cmake-version
+    attributes:
+      label: CMake Version
+      description: What version of CMake did you use to generate the project? You can retrieve the version of CMake installed on your computer with the bash command 'cmake --version'.
+      placeholder: ex. 3.22.2
+    validations:
+      required: true
+  - type: input
+    id: build-tool
+    attributes:
+      label: C++ Build Tool
+      description: What is the C++ build tool you used along with its version?
+      placeholder: ex. Ninja 1.10.2, GNU Make 4.3, Visual Studio 2019, etc
+    validations:
+      required: true
+  - type: input
+    id: compiler
+    attributes:
+      label: C++ Compiler
+      description: What is the C++ compiler you used along with its version?
+      placeholder: ex. MSVC 2022, gcc 12.1, etc
+    validations:
+      required: true
+  - type: input
+    id: credits-name
+    attributes:
+      label: Credits Name
+      description: If you get added to the credits, what name do you want us to use? Leave this field blank if you don't want credit. Your name will be added along with your GitHub username.
+      placeholder: ex. John Doe
+  - type: checkboxes
+    id: terms
+    attributes:
+      label: Code of Conduct
+      description: By submitting this issue, you agree to follow the [Code of Conduct](https://github.com/Journeyman-dev/rlm/blob/main/CODE_OF_CONDUCT.md).
+      options:
+        - label: I agree to follow this project's Code of Conduct.
+          required: true

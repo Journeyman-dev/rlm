@@ -1,0 +1,112 @@
+# SPDX-FileCopyrightText: 2023 Daniel Aimé Valcour <fosssweeper@gmail.com>
+#
+# SPDX-License-Identifier: MIT
+
+# Copyright (c) 2023 Daniel Aimé Valcour
+# Permission is hereby granted, free of charge, to any person obtaining a copy of
+# this software and associated documentation files (the "Software"), to deal in
+# the Software without restriction, including without limitation the rights to
+# use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of
+# the Software, and to permit persons to whom the Software is furnished to do so,
+# subject to the following conditions:
+# The above copyright notice and this permission notice shall be included in all
+# copies or substantial portions of the Software.
+# THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+# IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS
+# FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR
+# COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER
+# IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN
+# CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+
+# Ensure that the repository is REUSE complaint
+# About the REUSE Specification: https://reuse.software/
+
+name: Unit Tests
+on: [push, workflow_dispatch]
+jobs:
+  build:
+    runs-on: ${{ matrix.platform.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        platform:
+          - {
+              Name: Windows VS2022,
+              os: windows-2022,
+              cc: gcc,
+              cxx: g++,
+              arch: "x64-windows",
+            }
+          - {
+              Name: Linux GCC,
+              os: ubuntu-22.04,
+              cc: gcc-10,
+              cxx: g++-10,
+              arch: "x64-linux",
+            }
+          - {
+              Name: Linux Clang,
+              os: ubuntu-22.04,
+              cc: clang-12,
+              cxx: clang++-12,
+              arch: "x64-linux",
+            }
+          - {
+              Name: MacOS Clang,
+              os: macos-12,
+              cc: clang,
+              cxx: clang++,
+              arch: "x64-osx",
+            }
+        build_type: [Release]
+    env:
+      buildDir: '${{ github.workspace }}\build'
+      CC: ${{ matrix.platform.cc }}
+      CXX: ${{ matrix.platform.cxx }}
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+        with:
+          submodules: "recursive"
+      - name: Update and install MacOS packages
+        if: ${{ runner.os == 'macOS'}}
+        run: |
+          softwareupdate --install -a
+          brew install ninja
+      - name: Update and install Ubuntu packages
+        if: ${{ runner.os == 'Linux' }}
+        shell: bash
+        run: |
+          sudo apt-get update
+      - name: Log Ninja version on non-Windows platforms
+        if: ${{ runner.os != 'Windows' }}
+        shell: bash
+        run: ninja --version
+      - name: Log CMake version
+        shell: bash
+        run: cmake --version
+      - name: Generate CMake project on non-Windows platforms
+        if: ${{ runner.os != 'Windows' }}
+        shell: bash
+        working-directory: ${{ github.workspace }}
+        run: cmake -S . -B ./build/ -G Ninja
+      - name: Generate CMake project on Windows
+        if: ${{ runner.os == 'Windows' }}
+        shell: bash
+        working-directory: ${{ github.workspace }}
+        run: cmake -S . -B ./build/
+      - name: Build CMake project
+        shell: bash
+        working-directory: ${{github.workspace}}
+        run: cmake --build $GITHUB_WORKSPACE/build --config ${{ matrix.build_type }}
+      - name: Run auto tests
+        shell: bash
+        working-directory: ${{github.workspace}}/build/modules/test/
+        run: ctest -C ${{ matrix.build_type }}
+        continue-on-error: true
+      - name: Process JUnit report
+        uses: mikepenz/action-junit-report@v2.4.3
+        with:
+          report_paths: "**/unittests.*.xml"
+          require_tests: true
+          fail_on_failure: true

@@ -1,0 +1,10 @@
+Format: https://www.debian.org/doc/packaging-manuals/copyright-format/1.0/
+Upstream-Name: rlm
+Upstream-Contact: Daniel Aimé Valcour <fosssweeper@gmail.com>
+Source: https://github.com/Journeyman-dev/rlm/
+
+# Sample paragraph, commented out:
+#
+# Files: src/*
+# Copyright: $YEAR $NAME <$CONTACT>
+# License: ...

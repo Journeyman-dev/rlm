@@ -1,0 +1,69 @@
+# SPDX-FileCopyrightText: 2023 Daniel Aimé Valcour <fosssweeper@gmail.com>
+#
+# SPDX-License-Identifier: MIT
+
+# Copyright (c) 2023 Daniel Aimé Valcour
+# Permission is hereby granted, free of charge, to any person obtaining a copy of
+# this software and associated documentation files (the "Software"), to deal in
+# the Software without restriction, including without limitation the rights to
+# use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of
+# the Software, and to permit persons to whom the Software is furnished to do so,
+# subject to the following conditions:
+# The above copyright notice and this permission notice shall be included in all
+# copies or substantial portions of the Software.
+# THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+# IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS
+# FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR
+# COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER
+# IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN
+# CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+
+name: "Report a Bug"
+description: "Report a bug with the RLM library."
+labels: ["bug"]
+assignees: []
+body:
+  - type: markdown
+    attributes:
+      value: |
+        You can read more information about creating bug reports in our [Contributing Guidelines](https://github.com/Journeyman-dev/rlm/blob/main/CONTRIBUTING.md). While writing this report, remember to follow our [Code of Conduct](https://github.com/Journeyman-dev/rlm/blob/main/CODE_OF_CONDUCT.md). Many of the following fields accept Markdown formated text. You can read about Markdown syntax in the [GitHub Documentation](https://docs.github.com/en/get-started/writing-on-github/getting-started-with-writing-and-formatting-on-github/basic-writing-and-formatting-syntax).
+
+        Thank you for taking the time to fill out this bug report!
+  - type: textarea
+    id: expected-behaviour
+    attributes:
+      label: Expected Behaviour
+      description: What was the behaviour that you expected? Be sure to explain the steps you took.
+      placeholder: I expected that...
+    validations:
+      required: true
+  - type: textarea
+    id: observed-behaviour
+    attributes:
+      label: Observed Behaviour
+      description: What was the behaviour that you observed?
+      placeholder: I observed that...
+    validations:
+      required: true
+  - type: input
+    id: rlm-version
+    attributes:
+      label: RLM Version
+      description: What version of RLM were you using when the bug occured? You can find the version pass into the `VERSION` argument of the `project()` function in the CMakeLists.txt file in the top level folder of the repository.
+      placeholder: ex. 1.0.0.0
+    validations:
+      required: true
+  - type: input
+    id: credits-name
+    attributes:
+      label: Credits Name
+      description: If you get added to the credits, what name do you want us to use? Leave this field blank if you don't want credit. Your name will be added along with your GitHub username.
+      placeholder: ex. John Doe
+  - type: checkboxes
+    id: terms
+    attributes:
+      label: Code of Conduct
+      description: By submitting this issue, you agree to follow our [Code of Conduct](https://github.com/Journeyman-dev/rlm/blob/main/CODE_OF_CONDUCT.md).
+      options:
+        - label: I agree to follow this project's Code of Conduct.
+          required: true
