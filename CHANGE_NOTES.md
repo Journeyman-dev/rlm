@@ -39,14 +39,14 @@ TODO write description.
 This version is the minimum viable product, and is supposed to be a starting point to build off from.
 
 ### Features:
-- Added several cell shape structs:
+- Add several cell shape structs:
     - point2 - A single cell.
     - segment2 - A line segment of cells between two cells.
     - box2 - An axis aligned box of cells.
     - circle2 - A circle of cells.
-- Added several linear algebra structs:
+- Add several linear algebra structs:
     - rectangle2 - A floating point axis aligned box.
     - vector2 - A 2d vector.
     - vector3 - A 3d vector.
     - vector4 - A 4d vector.
-- Added is_degenerate function for bot cellular and linear structs to determine if they have invalid property values.
+- Add is_degenerate function for bot cellular and linear structs to determine if they have invalid property values.
