@@ -29,7 +29,11 @@ All changes made in each version of RLM are tracked here.
 
 ## Version 0.1.0
 
-TODO write description.
+This version is mostly a polish release, though it includes the addition of two new math functions.
+
+### Features:
+ - Add min and max functions, to get the higest and lowest values from all arguments. 
+    - Added recursive overloads that work for two or more arguments.
 
 ### Tooling:
 - Fixed unit test continuous integration so that it works.
