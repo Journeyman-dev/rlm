@@ -1,12 +1,9 @@
-<!--
-SPDX-FileCopyrightText: 2023 Daniel Aimé Valcour <fosssweeper@gmail.com>
+// SPDX-FileCopyrightText: 2023 Daniel Aimé Valcour <fosssweeper@gmail.com>
+//
+// SPDX-License-Identifier: MIT
 
-SPDX-License-Identifier: MIT
--->
-
-<!--
+/*
     Copyright (c) 2023 Daniel Aimé Valcour
-
     Permission is hereby granted, free of charge, to any person obtaining a copy of
     this software and associated documentation files (the "Software"), to deal in
     the Software without restriction, including without limitation the rights to
@@ -21,12 +18,24 @@ SPDX-License-Identifier: MIT
     COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER
     IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN
     CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
--->
+*/
 
-# The Roguelike Math Library (RLM)
+#ifndef RLM_MIN_HPP
+#define RLM_MIN_HPP
 
-[![Tests](https://github.com/Journeyman-dev/rlm/actions/workflows/Unit%20Tests.yml/badge.svg)](https://github.com/Journeyman-dev/rlm/actions/workflows/Unit%20Tests.yml) [![REUSE status](https://api.reuse.software/badge/git.fsfe.org/reuse/api)](https://api.reuse.software/info/git.fsfe.org/reuse/api)
+#include <rlm/concepts.hpp>
+#include <concepts>
+#include <type_traits>
 
-RLM is an easy to use modern C++ library that contains math functions useful for the development of roguelike games. The library is intended to be used along side the yet to be released Roguelike Framework (RLFW), which will be a complete toolkit for the development of roguelike games.
+namespace rl
+{
+  template <rl::totally_ordered T = int> constexpr auto min(const T a, const T b);
 
-If you want to contribute, take a look at the [Contributing Guidelines](CONTRIBUTING.md).
+  template <rl::totally_ordered T = int, rl::totally_ordered... Ts>
+  requires std::conjunction_v<std::is_same<T, Ts>...>
+  constexpr auto min(const T a, const T b, const Ts... n);
+}
+
+#include <rlm/detail/min.inl>
+
+#endif

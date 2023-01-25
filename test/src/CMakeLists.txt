@@ -31,4 +31,6 @@ target_sources(RlmTest
         "linear_vector2_tests.cpp"
         "linear_vector3_tests.cpp"
         "linear_vector4_tests.cpp"
+        "max_tests.cpp"
+        "min_tests.cpp"
 )

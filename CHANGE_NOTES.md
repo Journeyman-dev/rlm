@@ -23,10 +23,34 @@ SPDX-License-Identifier: MIT
     CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 -->
 
-# The Roguelike Math Library (RLM)
+# Change Notes
 
-[![Tests](https://github.com/Journeyman-dev/rlm/actions/workflows/Unit%20Tests.yml/badge.svg)](https://github.com/Journeyman-dev/rlm/actions/workflows/Unit%20Tests.yml) [![REUSE status](https://api.reuse.software/badge/git.fsfe.org/reuse/api)](https://api.reuse.software/info/git.fsfe.org/reuse/api)
+All changes made in each version of RLM are tracked here.
 
-RLM is an easy to use modern C++ library that contains math functions useful for the development of roguelike games. The library is intended to be used along side the yet to be released Roguelike Framework (RLFW), which will be a complete toolkit for the development of roguelike games.
+## Version 0.1.0
 
-If you want to contribute, take a look at the [Contributing Guidelines](CONTRIBUTING.md).
+This version is mostly a polish release, though it includes the addition of two new math functions.
+
+### Features:
+ - Add min and max functions, to get the higest and lowest values from all arguments.
+    - Added recursive overloads that work for two or more arguments.
+
+### Tooling:
+- Fixed unit test continuous integration so that it works.
+
+## Version 0.0.0
+
+This version is the minimum viable product, and is supposed to be a starting point to build off from.
+
+### Features:
+- Add several cell shape structs:
+    - point2 - A single cell.
+    - segment2 - A line segment of cells between two cells.
+    - box2 - An axis aligned box of cells.
+    - circle2 - A circle of cells.
+- Add several linear algebra structs:
+    - rectangle2 - A floating point axis aligned box.
+    - vector2 - A 2d vector.
+    - vector3 - A 3d vector.
+    - vector4 - A 4d vector.
+- Add is_degenerate function for bot cellular and linear structs to determine if they have invalid property values.

@@ -40,3 +40,13 @@ set_target_properties(RlmTest
     CXX_STANDARD ${RLM_CXX_STANDARD}
     CXX_STANDARD_REQUIRED TRUE
 )
+include(CTest)
+include(Catch)
+catch_discover_tests(
+    RlmTest
+  TEST_PREFIX "unittests."
+  REPORTER junit
+  OUTPUT_DIR ${CMAKE_BINARY_DIR}
+  OUTPUT_PREFIX "unittests."
+  OUTPUT_SUFFIX .xml
+)

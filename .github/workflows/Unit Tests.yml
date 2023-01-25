@@ -21,7 +21,7 @@
 # Ensure that the repository is REUSE complaint
 # About the REUSE Specification: https://reuse.software/
 
-name: Unit Tests
+name: Tests
 on: [push, workflow_dispatch]
 jobs:
   build:
@@ -65,7 +65,7 @@ jobs:
       CXX: ${{ matrix.platform.cxx }}
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
         with:
           submodules: "recursive"
       - name: Update and install MacOS packages
@@ -78,6 +78,7 @@ jobs:
         shell: bash
         run: |
           sudo apt-get update
+          sudo apt install ninja-build
       - name: Log Ninja version on non-Windows platforms
         if: ${{ runner.os != 'Windows' }}
         shell: bash
@@ -101,7 +102,7 @@ jobs:
         run: cmake --build $GITHUB_WORKSPACE/build --config ${{ matrix.build_type }}
       - name: Run auto tests
         shell: bash
-        working-directory: ${{github.workspace}}/build/modules/test/
+        working-directory: ${{github.workspace}}/build/test/
         run: ctest -C ${{ matrix.build_type }}
         continue-on-error: true
       - name: Process JUnit report
