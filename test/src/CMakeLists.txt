@@ -23,7 +23,6 @@ target_sources(RlmTest
     PRIVATE
         "cellular_box2_tests.cpp"
         "cellular_circle2_tests.cpp"
-        "cellular_coordinates_tests.cpp"
         "cellular_direction_tests.cpp"
         "cellular_is_degenerate_tests.cpp"
         "cellular_point2_tests.cpp"
