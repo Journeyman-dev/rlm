@@ -21,6 +21,7 @@
 
 target_sources(RlmTest
     PRIVATE
+        "cellular_borders_tests.cpp"
         "cellular_box2_tests.cpp"
         "cellular_circle2_tests.cpp"
         "cellular_edges_tests.cpp"
