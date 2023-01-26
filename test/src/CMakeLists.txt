@@ -29,7 +29,7 @@ target_sources(RlmTest
         "cellular_point2_tests.cpp"
         "cellular_reverse_tests.cpp"
         "cellular_segment2_tests.cpp"
-        "cellular_sub_shapes.cpp"
+        "cellular_sub_shapes_tests.cpp"
         "linear_is_degenerate_tests.cpp"
         "linear_rectangle2_tests.cpp"
         "linear_vector2_tests.cpp"
