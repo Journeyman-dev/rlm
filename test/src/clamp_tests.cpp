@@ -30,7 +30,7 @@ SCENARIO("Clamp a value between two values")
         const float value = 5.0f;
         WHEN("The float is clamped between two values")
         {
-            const auto clamped = rl::mirror(value, 0.0f, 4.0f);
+            const auto clamped = rl::clamp(value, 0.0f, 4.0f);
             THEN("The result is correct")
             {
                 CHECK(clamped == 4.0f);
@@ -42,7 +42,7 @@ SCENARIO("Clamp a value between two values")
         const int value = 5;
         WHEN("The float is clamped between two values")
         {
-            const auto clamped = rl::mirror(value, 0, 4);
+            const auto clamped = rl::clamp(value, 0, 4);
             THEN("The result is correct")
             {
                 CHECK(clamped == 4);
