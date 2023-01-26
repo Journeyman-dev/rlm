@@ -21,7 +21,7 @@
 */
 
 #include <catch2/catch_all.hpp>
-#include <rlm/cellular/sub_shapes.hpp>
+#include <rlm/cellular/shape_points.hpp>
 #include <rlm/cellular/ostream.hpp>
 
 SCENARIO("Get the start and end point2 of a segment2")
