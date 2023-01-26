@@ -28,7 +28,7 @@
 #include <rlm/cellular/segment2.hpp>
 
 template<rl::signed_integral I>
-constexpr rl::point2<I> rl::start(const rl::segment2<I>& segment) const noexcept
+constexpr rl::point2<I> rl::start(const rl::segment2<I>& segment) noexcept
 {
     return
         rl::point2<I>(
@@ -37,8 +37,8 @@ constexpr rl::point2<I> rl::start(const rl::segment2<I>& segment) const noexcept
         );
 }
 
-template<rl::signed_integral I = int>
-constexpr rl::point2<I> rl::end(const rl::segment2<I>& segment) const noexcept
+template<rl::signed_integral I>
+constexpr rl::point2<I> rl::end(const rl::segment2<I>& segment) noexcept
 {
     return
         rl::point2<I>(
