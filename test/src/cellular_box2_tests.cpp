@@ -50,3 +50,29 @@ SCENARIO("A box2 is constructed")
         }
     }
 }
+
+SCENARIO("Two box2 are compared")
+{
+    GIVEN("A box2")
+    {
+        const rl::box2 box_a(1, 2, 3, 4);
+        GIVEN("A box2 that is the same")
+        {
+            const rl::box2 box_b(1, 2, 3, 4);
+            THEN("The box2 are equal")
+            {
+                CHECK(box_a == box_b);
+                CHECK_FALSE(box_a != box_b);
+            }
+        }
+        GIVEN("A box2 that is different")
+        {
+            const rl::box2 box_b(5, 6, 7, 8);
+            THEN("The segmbox2ent2 are not equal")
+            {
+                CHECK_FALSE(box_a == box_b);
+                CHECK(box_a != box_b);
+            }
+        }
+    }
+}
