@@ -141,17 +141,17 @@ constexpr rl::segment2<I> rl::bottom_border(
 {
     assert(!rl::is_degenerate(box) && "degenerate box2");
     const I right_depth =
-    (
-        (corners & rl::BorderCorners::Right) == rl::BorderCorners::Right ||
-        (corners & rl::BorderCorners::CounterClockwise) == rl::BorderCorners::CounterClockwise ||
-        (corners & rl::BorderCorners::Bottom) == rl::BorderCorners::Bottom
-    ) ? 1 : 0;
+        (
+            (border_corners & rl::BorderCorners::Right) == rl::BorderCorners::Right ||
+            (border_corners & rl::BorderCorners::CounterClockwise) == rl::BorderCorners::CounterClockwise ||
+            (border_corners & rl::BorderCorners::Bottom) == rl::BorderCorners::Bottom
+        ) ? 1 : 0;
     const I left_depth =
-    (
-        (corners & rl::BorderCorners::Left) == rl::BorderCorners::Left ||
-        (corners & rl::BorderCorners::Clockwise) == rl::BorderCorners::Clockwise ||
-        (corners & rl::BorderCorners::Bottom) == rl::BorderCorners::Bottom
-    ) ? 1 : 0;
+        (
+            (border_corners & rl::BorderCorners::Left) == rl::BorderCorners::Left ||
+            (border_corners & rl::BorderCorners::Clockwise) == rl::BorderCorners::Clockwise ||
+            (border_corners & rl::BorderCorners::Bottom) == rl::BorderCorners::Bottom
+        ) ? 1 : 0;
     const rl::segment2<I> border(
         rl::right_x(box) - right_depth,
         rl::bottom_y(box),
