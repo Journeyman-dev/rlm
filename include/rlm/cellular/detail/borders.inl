@@ -118,7 +118,7 @@ constexpr rl::segment2<I> rl::top_border(
             (border_corners & rl::BorderCorners::Right) == rl::BorderCorners::Right ||
             (border_corners & rl::BorderCorners::Clockwise) == rl::BorderCorners::Clockwise ||
             (border_corners & rl::BorderCorners::Top) == rl::BorderCorners::Top
-        ) ? 1 : 0;
+        ) ? 0 : 1;
     const rl::segment2<I> border(
         rl::left_x(box) + left_depth,
         rl::top_y(box),
