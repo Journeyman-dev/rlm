@@ -31,12 +31,26 @@ namespace rl
     struct point2;
     template<rl::signed_integral I>
     struct segment2;
+    template<rl::signed_integral I>
+    struct box2;
 
     template<rl::signed_integral I = int>
     constexpr rl::point2<I> start(const rl::segment2<I>& segment) noexcept;
 
     template<rl::signed_integral I = int>
     constexpr rl::point2<I> end(const rl::segment2<I>& segment) noexcept;
+
+    template<rl::signed_integral I = int>
+    constexpr rl::point2<I> top_left(const rl::box2<I>& box) noexcept;
+
+    template<rl::signed_integral I = int>
+    constexpr rl::point2<I> top_right(const rl::box2<I>& box) noexcept;
+
+    template<rl::signed_integral I = int>
+    constexpr rl::point2<I> bottom_left(const rl::box2<I>& box) noexcept;
+
+    template<rl::signed_integral I = int>
+    constexpr rl::point2<I> bottom_right(const rl::box2<I>& box) noexcept;
 }
 
 #include <rlm/cellular/detail/sub_shapes.inl>
