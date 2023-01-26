@@ -23,6 +23,7 @@
 #ifndef RLM_CELLULAR_BORDERS_HPP
 #define RLM_CELLULAR_BORDERS_HPP
 
+#include <rlm/concepts.hpp>
 #include <rlm/cellular/border_corners.hpp>
 #include <rlm/rotation_motion.hpp>
 
