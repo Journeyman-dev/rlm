@@ -30,9 +30,9 @@
 template<rl::primitive P>
 constexpr P rl::clamp(P value, P a, P b) noexcept
 {
-    const auto min = rl::min(a, b);
-    const auto max = rl::max(a, b);
-    return rl::min(max, rl::max(value, min));
+    const auto min = rl::min<P>(a, b);
+    const auto max = rl::max<P>(a, b);
+    return rl::min<P>(max, rl::max<P>(value, min));
 }
 
 #endif
