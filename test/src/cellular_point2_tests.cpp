@@ -45,3 +45,79 @@ SCENARIO("A point2 is constructed")
         }
     }
 }
+
+SCENARIO("Two point2 are compared")
+{
+    GIVEN("A point2")
+    {
+        const rl::point2 point_a(1, 2);
+        GIVEN("A point2 that is the same")
+        {
+            const rl::point2 point_b(1, 2);
+            THEN("The point2 are equal")
+            {
+                CHECK(point_a == point_b);
+                CHECK_FALSE(point_a != point_b);
+            }
+        }
+        GIVEN("A point2 that is different")
+        {
+            const rl::point2 point_b(3, 4);
+            THEN("The point2 are not equal")
+            {
+                CHECK_FALSE(point_a == point_b);
+                CHECK(point_a != point_b);
+            }
+        }
+    }
+}
+
+SCENARIO("Two point2 are combined with math operators")
+{
+    GIVEN("Two point2")
+    {
+        const rl::point2 point_a(1, 2);
+        const rl::point2 point_b(3, 4);
+        THEN("The sum of the points is correct")
+        {
+            CHECK(point_a + point_b == rl::point2(4, 6));
+        }
+        THEN("The difference of ths points is correct")
+        {
+            CHECK(point_a - point_b == rl::point2(-2, -2));
+        }
+        THEN("The product of the points is correct")
+        {
+            CHECK(point_a * point_b == rl::point2(3, 8));
+        }
+        THEN("The quotient of the points is correct")
+        {
+            CHECK(point_a / point_b == rl::point2(0, 0));
+        }
+    }
+}
+
+SCENARIO("A point2 is combined with a scalar using math operators")
+{
+    GIVEN("A point2 and a scalar")
+    {
+        const rl::point2 point(1, 6);
+        const int scalar = 2;
+        THEN("The sum of the point and the scalar is correct")
+        {
+            CHECK(point + scalar == rl::point2(3, 8));
+        }
+        THEN("The difference of the point and the scalar is correct")
+        {
+            CHECK(point - scalar == rl::point2(-1, 4));
+        }
+        THEN("The product of the point and the scalar is correct")
+        {
+            CHECK(point * scalar == rl::point2(2, 12));
+        }
+        THEN("The quotient of the point and the scalar is correct")
+        {
+            CHECK(point / scalar == rl::point2(0, 3));
+        }
+    }
+}
