@@ -67,7 +67,7 @@ constexpr rl::segment2<I> rl::left_border(
 }
 
 template<rl::signed_integral I>
-constexpr rl::segment2<I> right_border(
+constexpr rl::segment2<I> rl::right_border(
     const rl::box2<I>& box,
     rl::BorderCorners border_corners,
     rl::RotationMotion rotation_motion
@@ -100,7 +100,7 @@ constexpr rl::segment2<I> right_border(
 }
 
 template<rl::signed_integral I>
-constexpr rl::segment2<I> top_border(
+constexpr rl::segment2<I> rl::top_border(
     const rl::box2<I>& box,
     rl::BorderCorners border_corners,
     rl::RotationMotion rotation_motion
@@ -133,7 +133,7 @@ constexpr rl::segment2<I> top_border(
 }
 
 template<rl::signed_integral I>
-constexpr rl::segment2<I> bottom_border(
+constexpr rl::segment2<I> rl::bottom_border(
     const rl::box2<I>& box,
     rl::BorderCorners border_corners,
     rl::RotationMotion rotation_motion
