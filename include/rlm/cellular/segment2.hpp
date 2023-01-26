@@ -37,6 +37,10 @@ namespace rl
 
         constexpr segment2() noexcept = default;
         constexpr segment2(I start_x, I start_y, I end_x, I end_y) noexcept;
+
+        constexpr bool operator==(const rl::segment2<I>& that) const noexcept;
+
+        constexpr bool operator!=(const rl::segment2<I>& that) const noexcept;
     };
 }    // namespace rl
 

@@ -32,4 +32,24 @@ constexpr rl::segment2<I>::segment2(I start_x, I start_y, I end_x, I end_y) noex
 {
 }
 
+template<rl::signed_integral I>
+constexpr bool rl::segment2<I>::operator==(const rl::segment2<I>& that) const noexcept
+{
+    return
+        this->start_x == that.start_x &&
+        this->start_y == that.start_y &&
+        this->end_x == that.end_x &&
+        this->end_y == that.end_y;
+}
+
+template<rl::signed_integral I>
+constexpr bool rl::segment2<I>::operator!=(const rl::segment2<I>& that) const noexcept
+{
+    return
+        this->start_x != that.start_x ||
+        this->start_y != that.start_y ||
+        this->end_x != that.end_x ||
+        this->end_y != that.end_y;
+}
+
 #endif
