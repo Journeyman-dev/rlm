@@ -68,7 +68,7 @@ SCENARIO("Two box2 are compared")
         GIVEN("A box2 that is different")
         {
             const rl::box2 box_b(5, 6, 7, 8);
-            THEN("The segmbox2ent2 are not equal")
+            THEN("The box2 are not equal")
             {
                 CHECK_FALSE(box_a == box_b);
                 CHECK(box_a != box_b);
