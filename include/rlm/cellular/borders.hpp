@@ -26,6 +26,7 @@
 #include <rlm/concepts.hpp>
 #include <rlm/cellular/border_corners.hpp>
 #include <rlm/rotation_motion.hpp>
+#include <optional>
 
 namespace rl
 {
@@ -35,28 +36,28 @@ namespace rl
     struct box2;
 
     template<rl::signed_integral I = int>
-    constexpr rl::segment2<I> left_border(
+    constexpr std::optional<rl::segment2<I>> left_border(
         const rl::box2<I>& box,
         rl::BorderCorners border_corners = rl::BorderCorners::All,
         rl::RotationMotion rotation_motion = rl::RotationMotion::Clockwise
     ) noexcept;
 
     template<rl::signed_integral I = int>
-    constexpr rl::segment2<I> right_border(
+    constexpr std::optional<rl::segment2<I>> right_border(
         const rl::box2<I>& box,
         rl::BorderCorners border_corners = rl::BorderCorners::All,
         rl::RotationMotion rotation_motion = rl::RotationMotion::Clockwise
     ) noexcept;
 
     template<rl::signed_integral I = int>
-    constexpr rl::segment2<I> top_border(
+    constexpr std::optional<rl::segment2<I>> top_border(
         const rl::box2<I>& box,
         rl::BorderCorners border_corners = rl::BorderCorners::All,
         rl::RotationMotion rotation_motion = rl::RotationMotion::Clockwise
     ) noexcept;
 
     template<rl::signed_integral I = int>
-    constexpr rl::segment2<I> bottom_border(
+    constexpr std::optional<rl::segment2<I>> bottom_border(
         const rl::box2<I>& box,
         rl::BorderCorners border_corners = rl::BorderCorners::All,
         rl::RotationMotion rotation_motion = rl::RotationMotion::Clockwise

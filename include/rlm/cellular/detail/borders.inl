@@ -32,9 +32,10 @@
 #include <rlm/cellular/edges.hpp>
 #include <rlm/rotation_motion.hpp>
 #include <cassert>
+#include <optional>
 
 template<rl::signed_integral I>
-constexpr rl::segment2<I> rl::left_border(
+constexpr std::optional<rl::segment2<I>> rl::left_border(
     const rl::box2<I>& box,
     rl::BorderCorners border_corners,
     rl::RotationMotion rotation_motion
@@ -53,6 +54,10 @@ constexpr rl::segment2<I> rl::left_border(
             (border_corners & rl::BorderCorners::Clockwise) == rl::BorderCorners::Clockwise ||
             (border_corners & rl::BorderCorners::Left) == rl::BorderCorners::Left
         ) ? 0 : 1;
+    if (box.height - bottom_depth - top_depth <= 0)
+    {
+        return std::nullopt;
+    }
     const rl::segment2<I> border(
         rl::left_x(box),
         rl::bottom_y(box) - bottom_depth,
@@ -67,7 +72,7 @@ constexpr rl::segment2<I> rl::left_border(
 }
 
 template<rl::signed_integral I>
-constexpr rl::segment2<I> rl::right_border(
+constexpr std::optional<rl::segment2<I>> rl::right_border(
     const rl::box2<I>& box,
     rl::BorderCorners border_corners,
     rl::RotationMotion rotation_motion
@@ -86,6 +91,10 @@ constexpr rl::segment2<I> rl::right_border(
             (border_corners & rl::BorderCorners::Clockwise) == rl::BorderCorners::Clockwise ||
             (border_corners & rl::BorderCorners::Right) == rl::BorderCorners::Right
         ) ? 0 : 1;
+    if (box.height - top_depth - bottom_depth <= 0)
+    {
+        return std::nullopt;
+    }
     const rl::segment2<I> border(
         rl::right_x(box),
         rl::top_y(box) + top_depth,
@@ -100,7 +109,7 @@ constexpr rl::segment2<I> rl::right_border(
 }
 
 template<rl::signed_integral I>
-constexpr rl::segment2<I> rl::top_border(
+constexpr std::optional<rl::segment2<I>> rl::top_border(
     const rl::box2<I>& box,
     rl::BorderCorners border_corners,
     rl::RotationMotion rotation_motion
@@ -119,6 +128,10 @@ constexpr rl::segment2<I> rl::top_border(
             (border_corners & rl::BorderCorners::Clockwise) == rl::BorderCorners::Clockwise ||
             (border_corners & rl::BorderCorners::Top) == rl::BorderCorners::Top
         ) ? 0 : 1;
+    if (box.width - left_depth - right_depth <= 0)
+    {
+        return std::nullopt;
+    }
     const rl::segment2<I> border(
         rl::left_x(box) + left_depth,
         rl::top_y(box),
@@ -133,7 +146,7 @@ constexpr rl::segment2<I> rl::top_border(
 }
 
 template<rl::signed_integral I>
-constexpr rl::segment2<I> rl::bottom_border(
+constexpr std::optional<rl::segment2<I>> rl::bottom_border(
     const rl::box2<I>& box,
     rl::BorderCorners border_corners,
     rl::RotationMotion rotation_motion
@@ -152,6 +165,10 @@ constexpr rl::segment2<I> rl::bottom_border(
             (border_corners & rl::BorderCorners::Clockwise) == rl::BorderCorners::Clockwise ||
             (border_corners & rl::BorderCorners::Bottom) == rl::BorderCorners::Bottom
         ) ? 0 : 1;
+    if (box.width - right_depth - left_depth <= 0)
+    {
+        return std::nullopt;
+    }
     const rl::segment2<I> border(
         rl::right_x(box) - right_depth,
         rl::bottom_y(box),
