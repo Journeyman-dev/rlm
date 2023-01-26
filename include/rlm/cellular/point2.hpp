@@ -35,6 +35,30 @@ namespace rl
 
         constexpr point2() noexcept = default;
         constexpr point2(I x, I y) noexcept;
+
+        constexpr bool operator==(const rl::point2<I>& that) const noexcept;
+
+        constexpr bool operator!=(const rl::point2<I>& that) const noexcept;
+
+        constexpr rl::point2<I> operator+(const rl::point2<I>& that) const noexcept;
+
+        constexpr rl::point2<I> operator-(const rl::point2<I>& that) const noexcept;
+
+        constexpr rl::point2<I> operator*(const rl::point2<I>& that) const noexcept;
+
+        constexpr rl::point2<I> operator/(const rl::point2<I>& that) const noexcept;
+
+        template<rl::primitive P>
+        constexpr rl::point2<I> operator+(P scalar) const noexcept;
+
+        template<rl::primitive P>
+        constexpr rl::point2<I> operator-(P scalar) const noexcept;
+
+        template<rl::primitive P>
+        constexpr rl::point2<I> operator*(P scalar) const noexcept;
+
+        template<rl::primitive P>
+        constexpr rl::point2<I> operator/(P scalar) const noexcept;
     };
 }    // namespace rl
 

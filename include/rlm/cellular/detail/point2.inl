@@ -32,4 +32,96 @@ constexpr rl::point2<I>::point2(I x, I y) noexcept
 {
 }
 
+template<rl::signed_integral I>
+constexpr bool rl::point2<I>::operator==(const rl::point2<I>& that) const noexcept
+{
+    return
+        this->x == that.x &&
+        this->y == that.y;
+}
+
+template<rl::signed_integral I>
+constexpr bool rl::point2<I>::operator!=(const rl::point2<I>& that) const noexcept
+{
+    return
+        this->x != that.x ||
+        this->y != that.y;
+}
+
+template<rl::signed_integral I>
+constexpr rl::point2<I> rl::point2<I>::operator+(const rl::point2<I>& that) const noexcept
+{
+    return rl::point2<I>(
+        this->x + that.x,
+        this->y + that.y
+    );
+}
+
+template<rl::signed_integral I>
+constexpr rl::point2<I> rl::point2<I>::operator-(const rl::point2<I>& that) const noexcept
+{
+    return rl::point2<I>(
+        this->x - that.x,
+        this->y - that.y
+    );
+}
+
+template<rl::signed_integral I>
+constexpr rl::point2<I> rl::point2<I>::operator*(const rl::point2<I>& that) const noexcept
+{
+    return rl::point2<I>(
+        this->x * that.x,
+        this->y * that.y
+    );
+}
+
+template<rl::signed_integral I>
+constexpr rl::point2<I> rl::point2<I>::operator/(const rl::point2<I>& that) const noexcept
+{
+    return rl::point2<I>(
+        this->x / that.x,
+        this->y / that.y
+    );
+}
+
+template<rl::signed_integral I>
+template<rl::primitive P>
+constexpr rl::point2<I> rl::point2<I>::operator+(P scalar) const noexcept
+{
+    return rl::point2<I>(
+        this->x + scalar,
+        this->y + scalar
+    );
+}
+
+template<rl::signed_integral I>
+template<rl::primitive P>
+constexpr rl::point2<I> rl::point2<I>::operator-(P scalar) const noexcept
+{
+    return rl::point2<I>(
+        this->x - scalar,
+        this->y - scalar
+    );
+}
+
+template<rl::signed_integral I>
+template<rl::primitive P>
+constexpr rl::point2<I> rl::point2<I>::operator*(P scalar) const noexcept
+{
+    return rl::point2<I>(
+        this->x * scalar,
+        this->y * scalar
+    );
+}
+
+template<rl::signed_integral I>
+template<rl::primitive P>
+constexpr rl::point2<I> rl::point2<I>::operator/(P scalar) const noexcept
+{
+    return rl::point2<I>(
+        this->x / scalar,
+        this->y / scalar
+    );
+}
+
 #endif
