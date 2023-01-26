@@ -26,25 +26,25 @@
 #include <rlm/concepts.hpp>
 #include <rlm/cellular/segment2.hpp>
 
-template<rl::signed_integral I = int>
+template<rl::signed_integral I>
 bool rl::goes_left(const rl::segment2<I>& segment)
 {
     return segment.start_x > segmnent.end_x;
 }
 
-template<rl::signed_integral I = int>
+template<rl::signed_integral I>
 bool rl::goes_right(const rl::segment2<I>& segment)
 {
     return segment.start_x < segment.end_x;
 }
 
-template<rl::signed_integral I = int>
+template<rl::signed_integral I>
 bool rl::goes_up(const rl::segment2<I>& segment)
 {
     return segment.start_y > segment.end_y;
 }
 
-template<rl::signed_integral I = int>
+template<rl::signed_integral I>
 bool rl::goes_down(const rl::segment2<I>& segment)
 {
     return segment.start_y < segment.end_y;
