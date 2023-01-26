@@ -50,3 +50,29 @@ SCENARIO("A box2 is constructed")
         }
     }
 }
+
+SCENARIO("Two circle2 are compared")
+{
+    GIVEN("A circle2")
+    {
+        const rl::circle2 circle_a(1, 2, 3.0f);
+        GIVEN("A circle2 that is the same")
+        {
+            const rl::circle2 circle_b(1, 2, 3.0f);
+            THEN("The circle2 are equal")
+            {
+                CHECK(circle_a == circle_b);
+                CHECK_FALSE(circle_a != circle_b);
+            }
+        }
+        GIVEN("A circle2 that is different")
+        {
+            const rl::circle2 circle_b(5, 6, 7.0f);
+            THEN("The circle2 are not equal")
+            {
+                CHECK_FALSE(circle_a == circle_b);
+                CHECK(circle_a != circle_b);
+            }
+        }
+    }
+}
