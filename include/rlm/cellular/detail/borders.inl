@@ -36,8 +36,8 @@
 template<rl::signed_integral I>
 constexpr rl::segment2<I> rl::left_border(
     const rl::box2<I>& box,
-    rl::BorderCorners border_corners = rl::BorderCorners::All,
-    rl::RotationMotion rotation_motion = rl::RotationMotion::Clockwise
+    rl::BorderCorners border_corners,
+    rl::RotationMotion rotation_motion
 ) noexcept
 {
     assert(!rl::is_degenerate(box) && "degenerate box2");
@@ -69,8 +69,8 @@ constexpr rl::segment2<I> rl::left_border(
 template<rl::signed_integral I>
 constexpr rl::segment2<I> right_border(
     const rl::box2<I>& box,
-    rl::BorderCorners border_corners = rl::BorderCorners::All,
-    rl::RotationMotion rotation_motion = rl::RotationMotion::Clockwise
+    rl::BorderCorners border_corners,
+    rl::RotationMotion rotation_motion
 ) noexcept
 {
     assert(!rl::is_degenerate(box) && "degenerate box2");
@@ -102,8 +102,8 @@ constexpr rl::segment2<I> right_border(
 template<rl::signed_integral I>
 constexpr rl::segment2<I> top_border(
     const rl::box2<I>& box,
-    rl::BorderCorners border_corners = rl::BorderCorners::All,
-    rl::RotationMotion rotation_motion = rl::RotationMotion::Clockwise
+    rl::BorderCorners border_corners,
+    rl::RotationMotion rotation_motion
 ) noexcept
 {
     assert(!rl::is_degenerate(box) && "degenerate box2");
@@ -135,8 +135,8 @@ constexpr rl::segment2<I> top_border(
 template<rl::signed_integral I>
 constexpr rl::segment2<I> bottom_border(
     const rl::box2<I>& box,
-    rl::BorderCorners border_corners = rl::BorderCorners::All,
-    rl::RotationMotion rotation_motion = rl::RotationMotion::Clockwise
+    rl::BorderCorners border_corners,
+    rl::RotationMotion rotation_motion
 ) noexcept
 {
     assert(!rl::is_degenerate(box) && "degenerate box2");
