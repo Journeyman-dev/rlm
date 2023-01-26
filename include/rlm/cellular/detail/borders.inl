@@ -26,10 +26,12 @@
 #include <rlm/concepts.hpp>
 #include <rlm/cellular/box2.hpp>
 #include <rlm/cellular/segment2.hpp>
+#include <rlm/cellular/is_degenerate.hpp>
 #include <rlm/cellular/reverse.hpp>
 #include <rlm/cellular/border_corners.hpp>
 #include <rlm/cellular/edges.hpp>
 #include <rlm/rotation_motion.hpp>
+#include <cassert>
 
 template<rl::signed_integral I>
 constexpr rl::segment2<I> rl::left_border(
@@ -38,6 +40,7 @@ constexpr rl::segment2<I> rl::left_border(
     rl::RotationMotion rotation_motion = rl::RotationMotion::Clockwise
 ) noexcept
 {
+    assert(!rl::is_degenerate(box) && "degenerate box2");
     const I bottom_depth =
         (
             (border_corners & rl::BorderCorners::Bottom) == rl::BorderCorners::Bottom ||
@@ -70,6 +73,7 @@ constexpr rl::segment2<I> right_border(
     rl::RotationMotion rotation_motion = rl::RotationMotion::Clockwise
 ) noexcept
 {
+    assert(!rl::is_degenerate(box) && "degenerate box2");
     const I top_depth =
         (
             (border_corners & rl::BorderCorners::Top) == rl::BorderCorners::Top ||
@@ -102,6 +106,7 @@ constexpr rl::segment2<I> top_border(
     rl::RotationMotion rotation_motion = rl::RotationMotion::Clockwise
 ) noexcept
 {
+    assert(!rl::is_degenerate(box) && "degenerate box2");
     const I left_depth =
         (
             (border_corners & rl::BorderCorners::Left) == rl::BorderCorners::Left ||
@@ -134,6 +139,7 @@ constexpr rl::segment2<I> bottom_border(
     rl::RotationMotion rotation_motion = rl::RotationMotion::Clockwise
 ) noexcept
 {
+    assert(!rl::is_degenerate(box) && "degenerate box2");
     const I right_depth =
     (
         (corners & rl::BorderCorners::Right) == rl::BorderCorners::Right ||
