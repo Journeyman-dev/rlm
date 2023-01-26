@@ -164,3 +164,5 @@ constexpr rl::segment2<I> rl::bottom_border(
     }
     return border;
 }
+
+#endif
