@@ -37,7 +37,7 @@ SCENARIO("The direction is gotten from a segment2")
             const auto down = rl::goes_down(segment);
             THEN("The segment only goes left")
             {
-                CHECK(left == true;
+                CHECK(left == true);
                 CHECK(right == false);
                 CHECK(up == false);
                 CHECK(down == false);
@@ -55,7 +55,7 @@ SCENARIO("The direction is gotten from a segment2")
             const auto down = rl::goes_down(segment);
             THEN("The segment only goes right")
             {
-                CHECK(left == false;
+                CHECK(left == false);
                 CHECK(right == true);
                 CHECK(up == false);
                 CHECK(down == false);
@@ -73,7 +73,7 @@ SCENARIO("The direction is gotten from a segment2")
             const auto down = rl::goes_down(segment);
             THEN("The segment only goes left")
             {
-                CHECK(left == false;
+                CHECK(left == false);
                 CHECK(right == false);
                 CHECK(up == true);
                 CHECK(down == false);
@@ -91,7 +91,7 @@ SCENARIO("The direction is gotten from a segment2")
             const auto down = rl::goes_down(segment);
             THEN("The segment only goes down")
             {
-                CHECK(left == false;
+                CHECK(left == false);
                 CHECK(right == false);
                 CHECK(up == false);
                 CHECK(down == true);
