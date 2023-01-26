@@ -28,7 +28,7 @@
 namespace rl
 {
     template<rl::signed_integral I>
-    struct rl::segment2;
+    struct segment2;
 
     template<rl::signed_integral I = int>
     bool goes_left(const rl::segment2<I>& segment);
