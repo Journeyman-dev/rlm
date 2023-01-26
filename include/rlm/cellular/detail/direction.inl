@@ -29,13 +29,13 @@
 template<rl::signed_integral I>
 bool rl::goes_left(const rl::segment2<I>& segment)
 {
-    return segment.start_x > segmnent.end_x;
+    return segment.start_x < segment.end_x;
 }
 
 template<rl::signed_integral I>
 bool rl::goes_right(const rl::segment2<I>& segment)
 {
-    return segment.start_x < segment.end_x;
+    return segment.start_x > segment.end_x;
 }
 
 template<rl::signed_integral I>
