@@ -43,3 +43,25 @@ SCENARIO("Get the start and end point2 of a segment2")
         }
     }
 }
+
+SCENARIO("Get the corners of a box2")
+{
+    GIVEN("A box2")
+    {
+        const rl::box2 box(1, 2, 3, 4);
+        WHEN("The corners are gotten from the box2")
+        {
+            const auto top_left = rl::top_left(box);
+            const auto top_right = rl::top_right(box);
+            const auto bottom_left = rl::bottom_left(box);
+            const auto bottom_right = rl::bottom_right(box);
+            THEN("The values are correct")
+            {
+                CHECK(top_left == rl::point2(1, 2));
+                CHECK(top_right == rl::point2(3, 2));
+                CHECK(bottom_left == rl::point2(1, 5));
+                CHECK(bottom_right == rl::point2(3, 5));
+            }
+        }
+    }
+}

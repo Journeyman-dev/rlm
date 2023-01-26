@@ -26,6 +26,10 @@
 #include <rlm/concepts.hpp>
 #include <rlm/cellular/point2.hpp>
 #include <rlm/cellular/segment2.hpp>
+#include <rlm/cellular/box2.hpp>
+#include <rlm/cellular/coordinates.hpp>
+#include <rlm/cellular/is_degenerate.hpp>
+#include <cassert>
 
 template<rl::signed_integral I>
 constexpr rl::point2<I> rl::start(const rl::segment2<I>& segment) noexcept
@@ -44,6 +48,50 @@ constexpr rl::point2<I> rl::end(const rl::segment2<I>& segment) noexcept
         rl::point2<I>(
             segment.end_x,
             segment.end_y
+        );
+}
+
+template<rl::signed_integral I>
+constexpr rl::point2<I> rl::top_left(const rl::box2<I>& box) noexcept
+{
+    assert(!rl::is_degenerate(box) && "getting top_left of degenerate box2");
+    return
+        rl::point2<I>(
+            box.x,
+            box.y
+        );
+}
+
+template<rl::signed_integral I>
+constexpr rl::point2<I> rl::top_right(const rl::box2<I>& box) noexcept
+{
+    assert(!rl::is_degenerate(box) && "getting top_right of degenerate box2");
+    return
+        rl::point2<I>(
+            rl::far_x(box),
+            box.y
+        );
+}
+
+template<rl::signed_integral I>
+constexpr rl::point2<I> rl::bottom_left(const rl::box2<I>& box) noexcept
+{
+    assert(!rl::is_degenerate(box) && "getting bottom_left of degenerate box2");
+    return
+        rl::point2<I>(
+            box.x,
+            rl::far_y(box)
+        );
+}
+
+template<rl::signed_integral I>
+constexpr rl::point2<I> rl::bottom_right(const rl::box2<I>& box) noexcept
+{
+    assert(!rl::is_degenerate(box) && "getting bottom_right of degenerate box2");
+    return
+        rl::point2<I>(
+            rl::far_x(box),
+            rl::far_y(box)
         );
 }
 
