@@ -61,7 +61,7 @@ constexpr F rl::mirror(F value, F a, F b) noexcept
     const auto quotient = value / denominator;
     const auto odd = fmod(quotient, 2.0);
     const auto mod = fmod(value, denominator);
-    if (odd == 1)
+    if (odd >= 1)
     {
         return max - mod;
     }
