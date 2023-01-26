@@ -54,7 +54,7 @@ constexpr rl::segment2<I> rl::left_border(
             (border_corners & rl::BorderCorners::Left) == rl::BorderCorners::Left
         ) ? 0 : 1;
     const rl::segment2<I> border(
-        rl::left_x(box)
+        rl::left_x(box),
         rl::bottom_y(box) - bottom_depth,
         rl::left_x(box),
         rl::top_y(box) + top_depth
