@@ -27,13 +27,12 @@
 #include <rlm/min.hpp>
 #include <rlm/max.hpp>
 #include <cmath>
-#include <type_traits>
 
-template<rl::primitive P>
-constexpr P rl::mirror(P value, P a, P b) noexcept
+template<rl::integral I>
+constexpr I rl::mirror(I value, I a, I b) noexcept
 {
-    const auto min = rl::min(a, b);
-    const auto max = rl::max(a, b);
+    const auto min = rl::min<I>(a, b);
+    const auto max = rl::max<I>(a, b);
     const auto denominator = max - min;
     if (denominator == 0)
     {
@@ -41,15 +40,27 @@ constexpr P rl::mirror(P value, P a, P b) noexcept
     }
     const auto quotient = value / denominator;
     const auto odd = quotient % 2;
-    P mod;
-    if (std::is_floating_point_v<P>)
+    const auto mod = value % denominator;
+    if (odd == 1)
     {
-        mod = fmod(value, denominator);
+        return max - mod;
     }
-    else // if (!std::is_floating_point_v<P>)
+    return min + mod;
+}
+
+template<rl::floating_point F>
+constexpr F rl::mirror(F value, F a, F b) noexcept
+{
+    const auto min = rl::min<F>(a, b);
+    const auto max = rl::max<F>(a, b);
+    const auto denominator = max - min;
+    if (denominator == 0)
     {
-        mod = value % denominator;
+        return min;
     }
+    const auto quotient = value / denominator;
+    const auto odd = fmod(quotient, 2.0);
+    const auto mod = fmod(value, denominator);
     if (odd == 1)
     {
         return max - mod;

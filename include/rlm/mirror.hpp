@@ -27,8 +27,11 @@
 
 namespace rl
 {
-    template<rl::primitive P = float>
-    constexpr P mirror(P value, P a, P b) noexcept;
+    template<rl::integral I = int>
+    constexpr I mirror(I value, I a, I b) noexcept;
+
+    template<rl::floating_point F = float>
+    constexpr F mirror(F value, F a, F b) noexcept;
 }
 
 #include <rlm/detail/mirror.inl>

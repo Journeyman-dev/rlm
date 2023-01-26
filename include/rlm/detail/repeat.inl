@@ -27,27 +27,32 @@
 #include <rlm/min.hpp>
 #include <rlm/max.hpp>
 #include <cmath>
-#include <type_traits>
 
-template<rl::primitive P>
-constexpr P rl::repeat(P value, P a, P b) noexcept
+template<rl::integral I>
+constexpr I rl::repeat(I value, I a, I b) noexcept
 {
-    const auto min = rl::min(a, b);
-    const auto max = rl::max(a, b);
+    const auto min = rl::min<I>(a, b);
+    const auto max = rl::max<I>(a, b);
     const auto denominator = max - min;
     if (denominator == 0)
     {
         return min;
     }
-    P mod;
-    if (std::is_floating_point_v<P>)
+    const auto mod = value % denominator;
+    return min + mod;
+}
+
+template<rl::floating_point F>
+constexpr F rl::repeat(F value, F a, F b) noexcept
+{
+    const auto min = rl::min<F>(a, b);
+    const auto max = rl::max<F>(a, b);
+    const auto denominator = max - min;
+    if (denominator == 0)
     {
-        mod = fmod(value, denominator);
+        return min;
     }
-    else // if (!std::is_floating_point_v<P>)
-    {
-        mod = value % denominator;
-    }
+    const auto mod = fmod(value, denominator);
     return min + mod;
 }
 

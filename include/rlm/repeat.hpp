@@ -27,8 +27,11 @@
 
 namespace rl
 {
-    template<rl::primitive P = float>
-    constexpr P repeat(P value, P a, P b) noexcept;
+    template<rl::integral I = int>
+    constexpr I repeat(I value, I a, I b) noexcept;
+
+    template<rl::floating_point F = float>
+    constexpr F repeat(F value, F a, F b) noexcept;
 }
 
 #include <rlm/detail/repeat.inl>
