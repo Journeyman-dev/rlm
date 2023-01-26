@@ -27,7 +27,7 @@
 #include <rlm/cellular/point2.hpp>
 #include <rlm/cellular/segment2.hpp>
 #include <rlm/cellular/box2.hpp>
-#include <rlm/cellular/coordinates.hpp>
+#include <rlm/cellular/edges.hpp>
 #include <rlm/cellular/is_degenerate.hpp>
 #include <cassert>
 
@@ -57,8 +57,8 @@ constexpr rl::point2<I> rl::top_left(const rl::box2<I>& box) noexcept
     assert(!rl::is_degenerate(box) && "getting top_left of degenerate box2");
     return
         rl::point2<I>(
-            box.x,
-            box.y
+            rl::left_x(box),
+            rl::top_y(box)
         );
 }
 
@@ -68,8 +68,8 @@ constexpr rl::point2<I> rl::top_right(const rl::box2<I>& box) noexcept
     assert(!rl::is_degenerate(box) && "getting top_right of degenerate box2");
     return
         rl::point2<I>(
-            rl::far_x(box),
-            box.y
+            rl::right_x(box),
+            rl::top_y(box)
         );
 }
 
@@ -79,8 +79,8 @@ constexpr rl::point2<I> rl::bottom_left(const rl::box2<I>& box) noexcept
     assert(!rl::is_degenerate(box) && "getting bottom_left of degenerate box2");
     return
         rl::point2<I>(
-            box.x,
-            rl::far_y(box)
+            rl::left_x(box),
+            rl::bottom_y(box)
         );
 }
 
@@ -90,8 +90,8 @@ constexpr rl::point2<I> rl::bottom_right(const rl::box2<I>& box) noexcept
     assert(!rl::is_degenerate(box) && "getting bottom_right of degenerate box2");
     return
         rl::point2<I>(
-            rl::far_x(box),
-            rl::far_y(box)
+            rl::right_x(box),
+            rl::bottom_y(box)
         );
 }
 

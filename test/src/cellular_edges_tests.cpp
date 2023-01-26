@@ -21,18 +21,50 @@
 */
 
 #include <catch2/catch_all.hpp>
-#include <rlm/cellular/box2.hpp>
-#include <rlm/cellular/coordinates.hpp>
+#include <rlm/cellular/segment2.hpp>
+#include <rlm/cellular/edges.hpp>
 
-SCENARIO("The far coordinates are gotten from a box2")
+SCENARIO("The edge coordinates are gotten from a segment2")
+{
+    GIVEN("A segment2")
+    {
+        const rl::segment2 segment(1, 2, 3, 4);
+        THEN("The edge coodinates are correct")
+        {
+            CHECK(rl::left_x(segment) == 1);
+            CHECK(rl::right_x(segment) == 3);
+            CHECK(rl::top_y(segment) == 2);
+            CHECK(rl::bottom_y(segment) == 4);
+        }
+    }
+}
+
+SCENARIO("The edge coordinates are gotten from a box2")
 {
     GIVEN("A box2")
     {
         const rl::box2 box(1, 2, 3, 4);
-        THEN("The far coordinates are correct")
+        THEN("The edge coordinates are correct")
         {
-            CHECK(rl::far_x(box) == 3);
-            CHECK(rl::far_y(box) == 5);
+            CHECK(rl::left_x(box) == 1);
+            CHECK(rl::right_x(box) == 3);
+            CHECK(rl::top_y(box) == 2);
+            CHECK(rl::bottom_y(box) == 5);
+        }
+    }
+}
+
+SCENARIO("The edge coordinates are gotten from a cirlce2")
+{
+    GIVEN("A cirlce2")
+    {
+        const rl::circle2 circle(1, 2, 3.0f);
+        THEN("The edge coordinates are correct")
+        {
+            CHECK(rl::left_x(circle) == -2);
+            CHECK(rl::right_x(circle) == 4);
+            CHECK(rl::top_y(circle) == -1);
+            CHECK(rl::bottom_y(circle) == 5);
         }
     }
 }
