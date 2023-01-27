@@ -35,6 +35,7 @@ namespace rl
     template<typename T, typename I, typename F>
     concept cellular_shape =
         rl::is_any_of<
+            T,
             rl::point2<I>,
             rl::segment2<I>,
             rl::box2<I>,
