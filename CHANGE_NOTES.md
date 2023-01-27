@@ -36,11 +36,11 @@ This version includes a lot of new math functions. Most of these are in the cell
  - Add segment2 direction functions to determine if a segment2 goes up, down, left, or right.
  - Add operators to point2, segment2, box2, and circle2.
     - Add equality comparison operators to all of the above shapes.
-    - Add arithmatic operators to point2, including overloads with scalar values.
+    - Add arithmetic operators to point2, including overloads with scalar values.
  - Add functions to get the start and end points of a segment2.
  - Add functions to get the edge x and y coordinates of all cell shapes.
  - Add functions to get the corner points of a box2.
- - Add functions to wrap primatives between two other values.
+ - Add functions to wrap primitives between two other values.
     - Add clamp to clamp the value between the two other values.
     - Add mirror to mirror the value between the two other values when it goes out of range.
     - Add repeat to repeat the value between the two other values when it goes out of range.
