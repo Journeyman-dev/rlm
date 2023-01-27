@@ -21,11 +21,18 @@
 
 target_sources(RlmTest
     PRIVATE
+        "cellular_borders_tests.cpp"
+        "cellular_bounds_tests.cpp"
         "cellular_box2_tests.cpp"
         "cellular_circle2_tests.cpp"
+        "cellular_edges_tests.cpp"
+        "cellular_direction_tests.cpp"
         "cellular_is_degenerate_tests.cpp"
         "cellular_point2_tests.cpp"
+        "cellular_reverse_tests.cpp"
         "cellular_segment2_tests.cpp"
+        "cellular_shape_points_tests.cpp"
+        "clamp_tests.cpp"
         "linear_is_degenerate_tests.cpp"
         "linear_rectangle2_tests.cpp"
         "linear_vector2_tests.cpp"
@@ -33,4 +40,6 @@ target_sources(RlmTest
         "linear_vector4_tests.cpp"
         "max_tests.cpp"
         "min_tests.cpp"
+        "mirror_tests.cpp"
+        "repeat_tests.cpp"
 )

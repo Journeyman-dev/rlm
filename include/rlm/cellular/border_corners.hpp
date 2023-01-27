@@ -20,43 +20,35 @@
     CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 */
 
-#ifndef RLM_CONCEPTS_HPP
-#define RLM_CONCEPTS_HPP
-
-#include <concepts>
-#include <type_traits>
+#ifndef RLM_CELLULAR_BORDER_CORNERS_HPP
+#define RLM_CELLULAR_BORDER_CORNERS_HPP
 
 namespace rl
 {
-    template<typename T>
-    concept primitive = std::floating_point<T> || std::integral<T>;
+    struct BorderCornersStruct
+    {
+        enum BorderCornersEnum : unsigned char
+        {
+            None = 0,
+            Clockwise = (1 << 0),
+            CounterClockwise = (1 << 1),
+            Left = (1 << 2),
+            Right = (1 << 3),
+            Top = (1 << 4),
+            Bottom = (1 << 5),
+            All =
+            (
+                BorderCornersEnum::Clockwise |
+                BorderCornersEnum::CounterClockwise |
+                BorderCornersEnum::Left |
+                BorderCornersEnum::Right |
+                BorderCornersEnum::Top |
+                BorderCornersEnum::Bottom
+            )
+        };
+    };
 
-    template<typename T>
-    concept signed_primitive = std::floating_point<T> || std::signed_integral<T>;
-
-    template<typename T>
-    concept unsigned_primitive = std::unsigned_integral<T>;
-
-    template<typename T>
-    concept floating_point = std::floating_point<T>;
-
-    template<typename T>
-    concept integral = std::integral<T>;
-
-    template<typename T>
-    concept signed_integral = std::signed_integral<T>;
-
-    template<typename T>
-    concept unsigned_integral = std::unsigned_integral<T>;
-
-    template<typename T>
-    concept totally_ordered = std::totally_ordered<T>;
-
-    template<typename T>
-    concept equality_comparable = std::equality_comparable<T>;
-
-    template<typename T, typename ... Ts>
-    concept is_any_of = (std::same_as<T, Ts> || ...);
-}    // namespace rl
+    using BorderCorners = BorderCornersStruct::BorderCornersEnum;
+}
 
 #endif

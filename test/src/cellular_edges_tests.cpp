@@ -21,55 +21,50 @@
 */
 
 #include <catch2/catch_all.hpp>
-#include <rlm/cellular/circle2.hpp>
-#include <rlm/cellular/ostream.hpp>
+#include <rlm/cellular/segment2.hpp>
+#include <rlm/cellular/edges.hpp>
 
-SCENARIO("A circle2 is constructed")
+SCENARIO("The edge coordinates are gotten from a segment2")
 {
-    GIVEN("A circle2 constructed with its default constructor")
+    GIVEN("A segment2")
     {
-        const rl::circle2 circle;
-        THEN("The property values are default")
+        const rl::segment2 segment(1, 2, 3, 4);
+        THEN("The edge coodinates are correct")
         {
-            CHECK(circle.x == 0);
-            CHECK(circle.y == 0);
-            CHECK(circle.radius == 0.0f);
-        }
-    }
-    GIVEN("A circle2 constructed with its overloaded constructor")
-    {
-        const rl::circle2 circle(1, 2, 3.0f);
-        THEN("The property values are correct")
-        {
-            CHECK(circle.x == 1);
-            CHECK(circle.y == 2);
-            CHECK(circle.radius == 3.0f);
+            CHECK(rl::left_x(segment) == 1);
+            CHECK(rl::right_x(segment) == 3);
+            CHECK(rl::top_y(segment) == 2);
+            CHECK(rl::bottom_y(segment) == 4);
         }
     }
 }
 
-SCENARIO("Two circle2 are compared")
+SCENARIO("The edge coordinates are gotten from a box2")
 {
-    GIVEN("A circle2")
+    GIVEN("A box2")
     {
-        const rl::circle2 circle_a(1, 2, 3.0f);
-        GIVEN("A circle2 that is the same")
+        const rl::box2 box(1, 2, 3, 4);
+        THEN("The edge coordinates are correct")
         {
-            const rl::circle2 circle_b(1, 2, 3.0f);
-            THEN("The circle2 are equal")
-            {
-                CHECK(circle_a == circle_b);
-                CHECK_FALSE(circle_a != circle_b);
-            }
+            CHECK(rl::left_x(box) == 1);
+            CHECK(rl::right_x(box) == 3);
+            CHECK(rl::top_y(box) == 2);
+            CHECK(rl::bottom_y(box) == 5);
         }
-        GIVEN("A circle2 that is different")
+    }
+}
+
+SCENARIO("The edge coordinates are gotten from a cirlce2")
+{
+    GIVEN("A cirlce2")
+    {
+        const rl::circle2 circle(1, 2, 3.0f);
+        THEN("The edge coordinates are correct")
         {
-            const rl::circle2 circle_b(5, 6, 7.0f);
-            THEN("The circle2 are not equal")
-            {
-                CHECK_FALSE(circle_a == circle_b);
-                CHECK(circle_a != circle_b);
-            }
+            CHECK(rl::left_x(circle) == -2);
+            CHECK(rl::right_x(circle) == 4);
+            CHECK(rl::top_y(circle) == -1);
+            CHECK(rl::bottom_y(circle) == 5);
         }
     }
 }

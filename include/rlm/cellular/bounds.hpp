@@ -20,43 +20,44 @@
     CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 */
 
-#ifndef RLM_CONCEPTS_HPP
-#define RLM_CONCEPTS_HPP
+#ifndef RLM_CELLULAR_BOUNDS_HPP
+#define RLM_CELLULAR_BOUNDS_HPP
 
-#include <concepts>
-#include <type_traits>
+#include <rlm/concepts.hpp>
+#include <rlm/cellular/concepts.hpp>
 
 namespace rl
 {
-    template<typename T>
-    concept primitive = std::floating_point<T> || std::integral<T>;
+    template<rl::signed_integral I>
+    struct point2;
+    template<rl::signed_integral I>
+    struct segment2;
+    template<rl::signed_integral I>
+    struct box2;
+    template<rl::signed_integral I, rl::floating_point F>
+    struct circle2;
 
-    template<typename T>
-    concept signed_primitive = std::floating_point<T> || std::signed_integral<T>;
+    template<rl::signed_integral I = int>
+    constexpr rl::box2<I> bounding_box2(const rl::point2<I>& point) noexcept;
 
-    template<typename T>
-    concept unsigned_primitive = std::unsigned_integral<T>;
+    template<rl::signed_integral I = int>
+    constexpr rl::box2<I> bounding_box2(const rl::segment2<I>& segment) noexcept;
 
-    template<typename T>
-    concept floating_point = std::floating_point<T>;
+    template<rl::signed_integral I = int>
+    constexpr rl::box2<I> bounding_box2(const rl::box2<I>& box) noexcept;
 
-    template<typename T>
-    concept integral = std::integral<T>;
+    template<rl::signed_integral I = int, rl::floating_point F = float>
+    constexpr rl::box2<I> bounding_box2(const rl::circle2<I, F>& circle) noexcept;
 
-    template<typename T>
-    concept signed_integral = std::signed_integral<T>;
+    template<
+        typename I = int,
+        typename F = float,
+        rl::cellular_shape<I, F> S,
+        rl::cellular_shape<I, F>... Ss
+    >
+    constexpr rl::box2<I> bounding_box2(const S& a, const Ss&... n) noexcept;
+}
 
-    template<typename T>
-    concept unsigned_integral = std::unsigned_integral<T>;
-
-    template<typename T>
-    concept totally_ordered = std::totally_ordered<T>;
-
-    template<typename T>
-    concept equality_comparable = std::equality_comparable<T>;
-
-    template<typename T, typename ... Ts>
-    concept is_any_of = (std::same_as<T, Ts> || ...);
-}    // namespace rl
+#include <rlm/cellular/detail/bounds.inl>
 
 #endif

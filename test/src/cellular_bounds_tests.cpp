@@ -21,55 +21,52 @@
 */
 
 #include <catch2/catch_all.hpp>
-#include <rlm/cellular/circle2.hpp>
+#include <rlm/cellular/bounds.hpp>
 #include <rlm/cellular/ostream.hpp>
 
-SCENARIO("A circle2 is constructed")
+SCENARIO("Get the bounding box2 of cell shapes")
 {
-    GIVEN("A circle2 constructed with its default constructor")
+    GIVEN("A point2")
     {
-        const rl::circle2 circle;
-        THEN("The property values are default")
+        const rl::point2 point(1, 1);
+        THEN("The bounding box2 is correct")
         {
-            CHECK(circle.x == 0);
-            CHECK(circle.y == 0);
-            CHECK(circle.radius == 0.0f);
+            CHECK(rl::bounding_box2(point) == rl::box2(1, 1, 1, 1));
         }
     }
-    GIVEN("A circle2 constructed with its overloaded constructor")
+    GIVEN("A segment2")
     {
-        const rl::circle2 circle(1, 2, 3.0f);
-        THEN("The property values are correct")
+        const rl::segment2 segment(1, 2, 3, 4);
+        THEN("The bounding box2 is correct")
         {
-            CHECK(circle.x == 1);
-            CHECK(circle.y == 2);
-            CHECK(circle.radius == 3.0f);
+            CHECK(rl::bounding_box2(segment) == rl::box2(1, 2, 3, 3));
         }
     }
-}
-
-SCENARIO("Two circle2 are compared")
-{
+    GIVEN("A box2")
+    {
+        const rl::box2 box(1, 2, 3, 4);
+        THEN("The bounding box2 is correct")
+        {
+            CHECK(rl::bounding_box2(box) == rl::box2(1, 2, 3, 4));
+        }
+    }
     GIVEN("A circle2")
     {
-        const rl::circle2 circle_a(1, 2, 3.0f);
-        GIVEN("A circle2 that is the same")
+        const rl::circle2 circle(1, 2, 3.0f);
+        THEN("The bounding box2 is correct")
         {
-            const rl::circle2 circle_b(1, 2, 3.0f);
-            THEN("The circle2 are equal")
-            {
-                CHECK(circle_a == circle_b);
-                CHECK_FALSE(circle_a != circle_b);
-            }
+            CHECK(rl::bounding_box2(circle) == rl::box2(-2, -1, 6, 6));
         }
-        GIVEN("A circle2 that is different")
+    }
+    GIVEN("A point2, segment2, box2, and circle2")
+    {
+        const rl::point2 point(0, 50);
+        const rl::segment2 segment(0, -50, 0, -43);
+        const rl::box2 box(50, 0, 5, 5);
+        const rl::circle2 circle(-50, 0, 3.0f);
+        THEN("The bounding box2 is correct")
         {
-            const rl::circle2 circle_b(5, 6, 7.0f);
-            THEN("The circle2 are not equal")
-            {
-                CHECK_FALSE(circle_a == circle_b);
-                CHECK(circle_a != circle_b);
-            }
+            CHECK(rl::bounding_box2(point, segment, box, circle) == rl::box2(-53, 54, 108, 116));
         }
     }
 }

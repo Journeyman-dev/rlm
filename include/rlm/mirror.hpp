@@ -20,43 +20,20 @@
     CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 */
 
-#ifndef RLM_CONCEPTS_HPP
-#define RLM_CONCEPTS_HPP
+#ifndef RLM_MIRROR_HPP
+#define RLM_MIRROR_HPP
 
-#include <concepts>
-#include <type_traits>
+#include <rlm/concepts.hpp>
 
 namespace rl
 {
-    template<typename T>
-    concept primitive = std::floating_point<T> || std::integral<T>;
+    template<rl::integral I = int>
+    constexpr I mirror(I value, I a, I b) noexcept;
 
-    template<typename T>
-    concept signed_primitive = std::floating_point<T> || std::signed_integral<T>;
+    template<rl::floating_point F = float>
+    constexpr F mirror(F value, F a, F b) noexcept;
+}
 
-    template<typename T>
-    concept unsigned_primitive = std::unsigned_integral<T>;
-
-    template<typename T>
-    concept floating_point = std::floating_point<T>;
-
-    template<typename T>
-    concept integral = std::integral<T>;
-
-    template<typename T>
-    concept signed_integral = std::signed_integral<T>;
-
-    template<typename T>
-    concept unsigned_integral = std::unsigned_integral<T>;
-
-    template<typename T>
-    concept totally_ordered = std::totally_ordered<T>;
-
-    template<typename T>
-    concept equality_comparable = std::equality_comparable<T>;
-
-    template<typename T, typename ... Ts>
-    concept is_any_of = (std::same_as<T, Ts> || ...);
-}    // namespace rl
+#include <rlm/detail/mirror.inl>
 
 #endif

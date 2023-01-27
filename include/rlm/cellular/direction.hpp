@@ -20,43 +20,29 @@
     CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 */
 
-#ifndef RLM_CONCEPTS_HPP
-#define RLM_CONCEPTS_HPP
+#ifndef RLM_CELLULAR_DIRECTION_HPP
+#define RLM_CELLULAR_DIRECTION_HPP
 
-#include <concepts>
-#include <type_traits>
+#include <rlm/concepts.hpp>
 
 namespace rl
 {
-    template<typename T>
-    concept primitive = std::floating_point<T> || std::integral<T>;
+    template<rl::signed_integral I>
+    struct segment2;
 
-    template<typename T>
-    concept signed_primitive = std::floating_point<T> || std::signed_integral<T>;
+    template<rl::signed_integral I = int>
+    bool goes_left(const rl::segment2<I>& segment);
 
-    template<typename T>
-    concept unsigned_primitive = std::unsigned_integral<T>;
+    template<rl::signed_integral I = int>
+    bool goes_right(const rl::segment2<I>& segment);
 
-    template<typename T>
-    concept floating_point = std::floating_point<T>;
+    template<rl::signed_integral I = int>
+    bool goes_up(const rl::segment2<I>& segment);
 
-    template<typename T>
-    concept integral = std::integral<T>;
+    template<rl::signed_integral I = int>
+    bool goes_down(const rl::segment2<I>& segment);
+}
 
-    template<typename T>
-    concept signed_integral = std::signed_integral<T>;
-
-    template<typename T>
-    concept unsigned_integral = std::unsigned_integral<T>;
-
-    template<typename T>
-    concept totally_ordered = std::totally_ordered<T>;
-
-    template<typename T>
-    concept equality_comparable = std::equality_comparable<T>;
-
-    template<typename T, typename ... Ts>
-    concept is_any_of = (std::same_as<T, Ts> || ...);
-}    // namespace rl
+#include <rlm/cellular/detail/direction.inl>
 
 #endif

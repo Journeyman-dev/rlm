@@ -21,54 +21,46 @@
 */
 
 #include <catch2/catch_all.hpp>
-#include <rlm/cellular/circle2.hpp>
+#include <rlm/cellular/shape_points.hpp>
 #include <rlm/cellular/ostream.hpp>
 
-SCENARIO("A circle2 is constructed")
+SCENARIO("Get the start and end point2 of a segment2")
 {
-    GIVEN("A circle2 constructed with its default constructor")
+    GIVEN("A segment2")
     {
-        const rl::circle2 circle;
-        THEN("The property values are default")
+        const rl::segment2 segment(-49, 55, 32, -2);
+        WHEN("The start and end point2 are gotten from the segment2")
         {
-            CHECK(circle.x == 0);
-            CHECK(circle.y == 0);
-            CHECK(circle.radius == 0.0f);
-        }
-    }
-    GIVEN("A circle2 constructed with its overloaded constructor")
-    {
-        const rl::circle2 circle(1, 2, 3.0f);
-        THEN("The property values are correct")
-        {
-            CHECK(circle.x == 1);
-            CHECK(circle.y == 2);
-            CHECK(circle.radius == 3.0f);
+            const auto start = rl::start(segment);
+            const auto end = rl::end(segment);
+            THEN("The values are correct")
+            {
+                CHECK(start.x == -49);
+                CHECK(start.y == 55);
+                CHECK(end.x == 32);
+                CHECK(end.y == -2);
+            }
         }
     }
 }
 
-SCENARIO("Two circle2 are compared")
+SCENARIO("Get the corners of a box2")
 {
-    GIVEN("A circle2")
+    GIVEN("A box2")
     {
-        const rl::circle2 circle_a(1, 2, 3.0f);
-        GIVEN("A circle2 that is the same")
+        const rl::box2 box(1, 2, 3, 4);
+        WHEN("The corners are gotten from the box2")
         {
-            const rl::circle2 circle_b(1, 2, 3.0f);
-            THEN("The circle2 are equal")
+            const auto top_left = rl::top_left(box);
+            const auto top_right = rl::top_right(box);
+            const auto bottom_left = rl::bottom_left(box);
+            const auto bottom_right = rl::bottom_right(box);
+            THEN("The values are correct")
             {
-                CHECK(circle_a == circle_b);
-                CHECK_FALSE(circle_a != circle_b);
-            }
-        }
-        GIVEN("A circle2 that is different")
-        {
-            const rl::circle2 circle_b(5, 6, 7.0f);
-            THEN("The circle2 are not equal")
-            {
-                CHECK_FALSE(circle_a == circle_b);
-                CHECK(circle_a != circle_b);
+                CHECK(top_left == rl::point2(1, 2));
+                CHECK(top_right == rl::point2(3, 2));
+                CHECK(bottom_left == rl::point2(1, 5));
+                CHECK(bottom_right == rl::point2(3, 5));
             }
         }
     }

@@ -20,43 +20,40 @@
     CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 */
 
-#ifndef RLM_CONCEPTS_HPP
-#define RLM_CONCEPTS_HPP
+#ifndef RLM_REPEAT_INL
+#define RLM_REPEAT_INL
 
-#include <concepts>
-#include <type_traits>
+#include <rlm/concepts.hpp>
+#include <rlm/min.hpp>
+#include <rlm/max.hpp>
+#include <cmath>
 
-namespace rl
+template<rl::integral I>
+constexpr I rl::repeat(I value, I a, I b) noexcept
 {
-    template<typename T>
-    concept primitive = std::floating_point<T> || std::integral<T>;
+    const auto min = rl::min<I>(a, b);
+    const auto max = rl::max<I>(a, b);
+    const auto denominator = max - min;
+    if (denominator == 0)
+    {
+        return min;
+    }
+    const auto mod = value % denominator;
+    return min + mod;
+}
 
-    template<typename T>
-    concept signed_primitive = std::floating_point<T> || std::signed_integral<T>;
-
-    template<typename T>
-    concept unsigned_primitive = std::unsigned_integral<T>;
-
-    template<typename T>
-    concept floating_point = std::floating_point<T>;
-
-    template<typename T>
-    concept integral = std::integral<T>;
-
-    template<typename T>
-    concept signed_integral = std::signed_integral<T>;
-
-    template<typename T>
-    concept unsigned_integral = std::unsigned_integral<T>;
-
-    template<typename T>
-    concept totally_ordered = std::totally_ordered<T>;
-
-    template<typename T>
-    concept equality_comparable = std::equality_comparable<T>;
-
-    template<typename T, typename ... Ts>
-    concept is_any_of = (std::same_as<T, Ts> || ...);
-}    // namespace rl
+template<rl::floating_point F>
+constexpr F rl::repeat(F value, F a, F b) noexcept
+{
+    const auto min = rl::min<F>(a, b);
+    const auto max = rl::max<F>(a, b);
+    const auto denominator = max - min;
+    if (denominator == 0)
+    {
+        return min;
+    }
+    const auto mod = fmod(value, denominator);
+    return min + mod;
+}
 
 #endif

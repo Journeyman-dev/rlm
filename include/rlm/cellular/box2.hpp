@@ -37,6 +37,10 @@ namespace rl
 
         constexpr box2() noexcept = default;
         constexpr box2(I x, I y, I width, I height) noexcept;
+
+        constexpr bool operator==(const rl::box2<I>& that) const noexcept;
+
+        constexpr bool operator!=(const rl::box2<I>& that) const noexcept;
     };
 }    // namespace rl
 

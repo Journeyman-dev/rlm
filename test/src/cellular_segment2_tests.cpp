@@ -49,3 +49,29 @@ SCENARIO("A segment2 is constructed")
         }
     }
 }
+
+SCENARIO("Two segment2 are compared")
+{
+    GIVEN("A segment2")
+    {
+        const rl::segment2 segment_a(1, 2, 3, 4);
+        GIVEN("A segment2 that is the same")
+        {
+            const rl::segment2 segment_b(1, 2, 3, 4);
+            THEN("The segment2 are equal")
+            {
+                CHECK(segment_a == segment_b);
+                CHECK_FALSE(segment_a != segment_b);
+            }
+        }
+        GIVEN("A segment2 that is different")
+        {
+            const rl::segment2 segment_b(5, 6, 7, 8);
+            THEN("The segment2 are not equal")
+            {
+                CHECK_FALSE(segment_a == segment_b);
+                CHECK(segment_a != segment_b);
+            }
+        }
+    }
+}

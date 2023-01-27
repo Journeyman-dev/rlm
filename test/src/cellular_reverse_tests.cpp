@@ -21,54 +21,24 @@
 */
 
 #include <catch2/catch_all.hpp>
-#include <rlm/cellular/circle2.hpp>
 #include <rlm/cellular/ostream.hpp>
+#include <rlm/cellular/reverse.hpp>
+#include <rlm/cellular/segment2.hpp>
 
-SCENARIO("A circle2 is constructed")
+SCENARIO("A segment2 is reversed")
 {
-    GIVEN("A circle2 constructed with its default constructor")
+    GIVEN("A segment2")
     {
-        const rl::circle2 circle;
-        THEN("The property values are default")
+        const rl::segment2 segment(1, 2, 3, 4);
+        WHEN("The segment2 is reversed")
         {
-            CHECK(circle.x == 0);
-            CHECK(circle.y == 0);
-            CHECK(circle.radius == 0.0f);
-        }
-    }
-    GIVEN("A circle2 constructed with its overloaded constructor")
-    {
-        const rl::circle2 circle(1, 2, 3.0f);
-        THEN("The property values are correct")
-        {
-            CHECK(circle.x == 1);
-            CHECK(circle.y == 2);
-            CHECK(circle.radius == 3.0f);
-        }
-    }
-}
-
-SCENARIO("Two circle2 are compared")
-{
-    GIVEN("A circle2")
-    {
-        const rl::circle2 circle_a(1, 2, 3.0f);
-        GIVEN("A circle2 that is the same")
-        {
-            const rl::circle2 circle_b(1, 2, 3.0f);
-            THEN("The circle2 are equal")
+            const auto reversed = rl::reverse(segment);
+            THEN("The reversed segment2 properties are correct")
             {
-                CHECK(circle_a == circle_b);
-                CHECK_FALSE(circle_a != circle_b);
-            }
-        }
-        GIVEN("A circle2 that is different")
-        {
-            const rl::circle2 circle_b(5, 6, 7.0f);
-            THEN("The circle2 are not equal")
-            {
-                CHECK_FALSE(circle_a == circle_b);
-                CHECK(circle_a != circle_b);
+                CHECK(reversed.start_x == 3);
+                CHECK(reversed.start_y == 4);
+                CHECK(reversed.end_x == 1);
+                CHECK(reversed.end_y == 2);
             }
         }
     }

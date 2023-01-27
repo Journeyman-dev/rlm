@@ -36,6 +36,10 @@ namespace rl
 
         constexpr circle2() noexcept = default;
         constexpr circle2(I x, I y, F radius) noexcept;
+
+        constexpr bool operator==(const rl::circle2<I, F>& that) const noexcept;
+
+        constexpr bool operator!=(const rl::circle2<I, F>& that) const noexcept;
     };
 }    // namespace rl
 

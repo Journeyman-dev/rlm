@@ -21,54 +21,31 @@
 */
 
 #include <catch2/catch_all.hpp>
-#include <rlm/cellular/circle2.hpp>
-#include <rlm/cellular/ostream.hpp>
+#include <rlm/clamp.hpp>
 
-SCENARIO("A circle2 is constructed")
+SCENARIO("Clamp a value between two values")
 {
-    GIVEN("A circle2 constructed with its default constructor")
+    GIVEN("A float")
     {
-        const rl::circle2 circle;
-        THEN("The property values are default")
+        const float value = 5.0f;
+        WHEN("The float is clamped between two values")
         {
-            CHECK(circle.x == 0);
-            CHECK(circle.y == 0);
-            CHECK(circle.radius == 0.0f);
-        }
-    }
-    GIVEN("A circle2 constructed with its overloaded constructor")
-    {
-        const rl::circle2 circle(1, 2, 3.0f);
-        THEN("The property values are correct")
-        {
-            CHECK(circle.x == 1);
-            CHECK(circle.y == 2);
-            CHECK(circle.radius == 3.0f);
-        }
-    }
-}
-
-SCENARIO("Two circle2 are compared")
-{
-    GIVEN("A circle2")
-    {
-        const rl::circle2 circle_a(1, 2, 3.0f);
-        GIVEN("A circle2 that is the same")
-        {
-            const rl::circle2 circle_b(1, 2, 3.0f);
-            THEN("The circle2 are equal")
+            const auto clamped = rl::clamp(value, 0.0f, 4.0f);
+            THEN("The result is correct")
             {
-                CHECK(circle_a == circle_b);
-                CHECK_FALSE(circle_a != circle_b);
+                CHECK(clamped == 4.0f);
             }
         }
-        GIVEN("A circle2 that is different")
+    }
+    GIVEN("An int")
+    {
+        const int value = 5;
+        WHEN("The float is clamped between two values")
         {
-            const rl::circle2 circle_b(5, 6, 7.0f);
-            THEN("The circle2 are not equal")
+            const auto clamped = rl::clamp(value, 0, 4);
+            THEN("The result is correct")
             {
-                CHECK_FALSE(circle_a == circle_b);
-                CHECK(circle_a != circle_b);
+                CHECK(clamped == 4);
             }
         }
     }

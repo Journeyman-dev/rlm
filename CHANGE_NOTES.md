@@ -27,12 +27,33 @@ SPDX-License-Identifier: MIT
 
 All changes made in each version of RLM are tracked here.
 
+## Version 0.2.0
+
+This version includes a lot of new math functions. Most of these are in the cellular algebra portion of the library.
+
+### Features:
+ - Add segment2 reverse function, which takes a segment2 as an argument and returns one with swapped start and end points.
+ - Add segment2 direction functions to determine if a segment2 goes up, down, left, or right.
+ - Add operators to point2, segment2, box2, and circle2.
+    - Add equality comparison operators to all of the above shapes.
+    - Add arithmetic operators to point2, including overloads with scalar values.
+ - Add functions to get the start and end points of a segment2.
+ - Add functions to get the edge x and y coordinates of all cell shapes.
+ - Add functions to get the corner points of a box2.
+ - Add functions to wrap primitives between two other values.
+    - Add clamp to clamp the value between the two other values.
+    - Add mirror to mirror the value between the two other values when it goes out of range.
+    - Add repeat to repeat the value between the two other values when it goes out of range.
+- Add functions to get the border segments of box2 shapes. These functions have arguments allowing to specify the direction that the border segments should go (clockwise or counter clockwise), and to specify which corners of the box2 to trim from the segment.
+- Add functions to get the bounding box2 of all cell shapes.
+    - Add an overloaded version of this function which uses recursive templates to accept an arbitrary number of shapes to get the box2 that surrounds all of them.
+
 ## Version 0.1.0
 
 This version is mostly a polish release, though it includes the addition of two new math functions.
 
 ### Features:
- - Add min and max functions, to get the higest and lowest values from all arguments.
+ - Add min and max functions, to get the highest and lowest values from all arguments.
     - Added recursive overloads that work for two or more arguments.
 
 ### Tooling:

@@ -31,4 +31,22 @@ constexpr rl::circle2<I, F>::circle2(I x, I y, F radius) noexcept
 {
 }
 
+template<rl::signed_integral I, rl::floating_point F>
+constexpr bool rl::circle2<I, F>::operator==(const rl::circle2<I, F>& that) const noexcept
+{
+    return
+        this->x == that.x &&
+        this->y == that.y &&
+        this->radius == that.radius;
+}
+
+template<rl::signed_integral I, rl::floating_point F>
+constexpr bool rl::circle2<I, F>::operator!=(const rl::circle2<I, F>& that) const noexcept
+{
+    return
+        this->x != that.x ||
+        this->y != that.y ||
+        this->radius != that.radius;
+}
+
 #endif

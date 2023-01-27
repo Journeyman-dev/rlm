@@ -20,43 +20,25 @@
     CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 */
 
-#ifndef RLM_CONCEPTS_HPP
-#define RLM_CONCEPTS_HPP
+#ifndef RLM_CELLULAR_REVERSE_INL
+#define RLM_CELLULAR_REVERSE_INL
 
-#include <concepts>
-#include <type_traits>
+#include <rlm/concepts.hpp>
+#include <rlm/cellular/segment2.hpp>
 
 namespace rl
 {
-    template<typename T>
-    concept primitive = std::floating_point<T> || std::integral<T>;
-
-    template<typename T>
-    concept signed_primitive = std::floating_point<T> || std::signed_integral<T>;
-
-    template<typename T>
-    concept unsigned_primitive = std::unsigned_integral<T>;
-
-    template<typename T>
-    concept floating_point = std::floating_point<T>;
-
-    template<typename T>
-    concept integral = std::integral<T>;
-
-    template<typename T>
-    concept signed_integral = std::signed_integral<T>;
-
-    template<typename T>
-    concept unsigned_integral = std::unsigned_integral<T>;
-
-    template<typename T>
-    concept totally_ordered = std::totally_ordered<T>;
-
-    template<typename T>
-    concept equality_comparable = std::equality_comparable<T>;
-
-    template<typename T, typename ... Ts>
-    concept is_any_of = (std::same_as<T, Ts> || ...);
-}    // namespace rl
+    template<rl::signed_integral I>
+    rl::segment2<I> reverse(const rl::segment2<I>& segment) noexcept
+    {
+        return
+            rl::segment2<I>(
+                segment.end_x,
+                segment.end_y,
+                segment.start_x,
+                segment.start_y
+            );
+    }
+}
 
 #endif
