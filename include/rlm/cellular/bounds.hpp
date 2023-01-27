@@ -50,32 +50,12 @@ namespace rl
     constexpr rl::box2<I> bounding_box2(const rl::circle2<I, F>& circle) noexcept;
 
     template<
-        rl::signed_integral I,
-        rl::floating_point F,
+        typename I = int,
+        typename F = float,
+        rl::cellular_shape<I, F> S,
         rl::cellular_shape<I, F>... Ss
     >
-    constexpr rl::box2<I> bounding_box2(const rl::point2<I>& a, const Ss&... n) noexcept;
-
-    template<
-        rl::signed_integral I,
-        rl::floating_point F,
-        rl::cellular_shape<I, F>... Ss
-    >
-    constexpr rl::box2<I> bounding_box2(const rl::segment2<I>& a, const Ss&... n) noexcept;
-
-    template<
-        rl::signed_integral I,
-        rl::floating_point F,
-        rl::cellular_shape<I, F>... Ss
-    >
-    constexpr rl::box2<I> bounding_box2(const rl::box2<I>& a, const Ss&... n) noexcept;
-
-    template<
-        rl::signed_integral I,
-        rl::floating_point F,
-        rl::cellular_shape<I, F>... Ss
-    >
-    constexpr rl::box2<I> bounding_box2(const rl::circle2<I, F>& a, const Ss&... n) noexcept;
+    constexpr rl::box2<I> bounding_box2(const S& a, const Ss&... n) noexcept;
 }
 
 #include <rlm/cellular/detail/bounds.inl>

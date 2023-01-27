@@ -106,41 +106,12 @@ namespace rl::inl
 }
 
 template<
-    rl::signed_integral I,
-    rl::floating_point F,
+    typename I,
+    typename F,
+    rl::cellular_shape<I, F> S,
     rl::cellular_shape<I, F>... Ss
 >
-constexpr rl::box2<I> bounding_box2(const rl::point2<I>& a, const Ss&... n) noexcept
-{
-    return rl::inl::bounding_pair_box2(rl::bounding_box2(a), rl::bounding_box2(n...));
-}
-
-template<
-    rl::signed_integral I,
-    rl::floating_point F,
-    rl::cellular_shape<I, F>... Ss
->
-constexpr rl::box2<I> bounding_box2(const rl::segment2<I>& a, const Ss&... n) noexcept
-{
-    return rl::inl::bounding_pair_box2(rl::bounding_box2(a), rl::bounding_box2(n...));
-}
-
-template<
-    rl::signed_integral I,
-    rl::floating_point F,
-    rl::cellular_shape<I, F>... Ss
->
-constexpr rl::box2<I> bounding_box2(const rl::box2<I>& a, const Ss&... n) noexcept
-{
-    return rl::inl::bounding_pair_box2(rl::bounding_box2(a), rl::bounding_box2(n...));
-}
-
-template<
-    rl::signed_integral I,
-    rl::floating_point F,
-    rl::cellular_shape<I, F>... Ss
->
-constexpr rl::box2<I> bounding_box2(const rl::circle2<I, F>& a, const Ss&... n) noexcept
+constexpr rl::box2<I> rl::bounding_box2(const S& a, const Ss&... n) noexcept
 {
     return rl::inl::bounding_pair_box2(rl::bounding_box2(a), rl::bounding_box2(n...));
 }
