@@ -20,8 +20,8 @@
     CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 */
 
-#ifndef RLM_CELLULAR_BOUNDS_HPP
-#define RLM_CELLULAR_BOUNDS_HPP
+#ifndef RLM_CELLULAR_BOUNDS_INL
+#define RLM_CELLULAR_BOUNDS_INL
 
 #include <rlm/concepts.hpp>
 #include <rlm/cellular/concepts.hpp>
