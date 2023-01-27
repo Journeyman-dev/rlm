@@ -70,8 +70,8 @@ constexpr rl::box2<I> rl::bounding_box2(const rl::box2<I>& box) noexcept
     return box;
 }
 
-template<rl::signed_integral I>
-constexpr rl::box2<I> rl::bounding_box2(const rl::circle2<I>& circle) noexcept
+template<rl::signed_integral I, rl::floating_point F>
+constexpr rl::box2<I> rl::bounding_box2(const rl::circle2<I, F>& circle) noexcept
 {
     assert(!rl::is_degenerate(circle) && "degenerate box2");
     const auto tile_diameter = static_cast<I>(std::round(circle.radius)) * 2;
