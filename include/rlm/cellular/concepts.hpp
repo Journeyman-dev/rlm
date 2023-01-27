@@ -24,25 +24,22 @@
 #define RLM_CELLULAR_CONCEPTS_HPP
 
 #include <rlm/concepts.hpp>
-#include <type_traits>
+#include <rlm/cellular/point2.hpp>
+#include <rlm/cellular/segment2.hpp>
+#include <rlm/cellular/box2.hpp>
+#include <rlm/cellular/circle2.hpp>
+#include <concepts>
 
 namespace rl
 {
-    template<rl::signed_integral I>
-    struct point2;
-    template<rl::signed_integral I>
-    struct segment2;
-    template<rl::signed_integral I>
-    struct box2;
-    template<rl::signed_integral I, rl::floating_point F>
-    struct circle2;
-
-    template<typename T, rl::signed_intigral I = int, rl::floating_point F = float>
+    template<typename T, typename I, typename F>
     concept cellular_shape =
-        std::is_same_v<T, rl::point2<I>>> ||
-        std::is_same_v<T, rl::segment2<I>> ||
-        std::is_same_v<T, rl::box2<I>> ||
-        std::is_same_v<T, rl::circle2<I, F>;
+        rl::is_any_of<
+            rl::point2<I>,
+            rl::segment2<I>,
+            rl::box2<I>,
+            rl::circle2<I, F>
+        >;
 }
 
 #endif
