@@ -29,7 +29,7 @@ All changes made in each version of RLM are tracked here.
 
 ## Version 0.2.0
 
-This version brings a lot of fundemental math functions, mainly to the cellular algebra portion of the library.
+This version includes a lot of new math functions. Most of these are in the cellular algebra portion of the library.
 
 ### Features:
  - Add segment2 reverse function, which takes a segment2 as an argument and returns one with swapped start and end points.
