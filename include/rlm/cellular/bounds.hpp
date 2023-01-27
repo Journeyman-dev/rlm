@@ -78,4 +78,6 @@ namespace rl
     constexpr rl::box2<I> bounding_box2(const rl::circle2<I, F>& a, const Ss&... n) noexcept;
 }
 
+#include <rlm/cellular/detail/bounds.inl>
+
 #endif
