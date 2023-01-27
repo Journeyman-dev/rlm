@@ -33,6 +33,7 @@
 #include <rlm/min.hpp>
 #include <rlm/max.hpp>
 #include <cmath>
+#include <cassert>
 
 template<rl::signed_integral I = int>
 constexpr rl::box2<I> rl::bounding_box2(const rl::point2<I>& point) noexcept
@@ -65,12 +66,14 @@ constexpr rl::box2<I> rl::bounding_box2(const rl::segment2<I>& segment) noexcept
 template<rl::signed_integral I = int>
 constexpr rl::box2<I> rl::bounding_box2(const rl::box2<I>& box) noexcept
 {
+    assert(!rl::is_degenerate(box) && "degenerate box2");
     return box;
 }
 
 template<rl::signed_integral I = int>
 constexpr rl::box2<I> rl::bounding_box2(const rl::circle2<I>& circle) noexcept
 {
+    assert(!rl::is_degenerate(circle) && "degenerate box2");
     const auto tile_diameter = static_cast<I>(std::round(circle.radius)) * 2;
     return rl::box2<I>(
         rl::left_x(circle),
@@ -85,6 +88,7 @@ namespace rl::inl
     template<rl::signed_integral I = int>
     constexpr rl::box2<I> rl::bounding_pair_box2(const rl::box2<I>& a, const rl::box2<I>& b) noexcept
     {
+        assert(!rl::is_degenerate(a) || !rl::is_degenerate(b) && "degenerate box2");
         const auto left_x = rl::min(rl::left_x(a), rl::left_x(b));
         const auto right_x = rl::max(rl::right_x(a), rl::right_x(b));
         const auto top_y = rl::min(rl::top_y(a), rl::top_y(b));
