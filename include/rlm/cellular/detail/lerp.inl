@@ -37,7 +37,7 @@ constexpr rl::point2<I> rl::lerp(const rl::point2<I>& a, const rl::point2<I>& b,
             rl::lerp<I, F>(
                 a.x,
                 b.x,
-                f
+                t
             ),
             rl::lerp<I, F>(
                 a.y,
@@ -48,7 +48,7 @@ constexpr rl::point2<I> rl::lerp(const rl::point2<I>& a, const rl::point2<I>& b,
 }
 
 template<rl::signed_integral I, rl::floating_point F>
-constexpr rl::point2<I> lerp(const rl::segment2<I>& segment, F t) noexcept
+constexpr rl::point2<I> rl::lerp(const rl::segment2<I>& segment, F t) noexcept
 {
   return
     rl::lerp<I, F>(
