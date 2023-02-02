@@ -29,6 +29,7 @@ target_sources(RlmTest
         "cellular_direction_tests.cpp"
         "cellular_is_degenerate_tests.cpp"
         "cellular_lerp_tests.cpp"
+        "cellular_magnitude_tests.cpp"
         "cellular_point2_tests.cpp"
         "cellular_reverse_tests.cpp"
         "cellular_segment2_tests.cpp"
