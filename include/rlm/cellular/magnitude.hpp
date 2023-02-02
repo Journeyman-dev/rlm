@@ -36,6 +36,6 @@ namespace rl
     constexpr F magnitude(const rl::point2<I>& point) noexcept;
     }
 
-#include <rlm/cellular/detail/magnitude.inl.hpp>
+#include <rlm/cellular/detail/magnitude.inl>
 
 #endif

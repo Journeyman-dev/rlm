@@ -30,7 +30,7 @@
 template<rl::signed_integral I, rl::floating_point F>
 constexpr F rl::magnitude(const rl::point2<I>& point) noexcept
 {
-    return std::sqrt<F>(std::abs<I>((point.x * point.x) + (point.y * point.y)));
+    return std::sqrt(static_cast<F>(std::abs((point.x * point.x) + (point.y * point.y))));
 }
 
 #endif
