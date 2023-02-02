@@ -33,7 +33,7 @@ SCENARIO("The magnitude of grid shapes is determined")
             const auto magnitude = rl::magnitude(point);
             THEN("It is correct")
             {
-                CHECK(magnitude == 0.0f);
+                CHECK(magnitude == 1.0f);
             }
         }
     }
