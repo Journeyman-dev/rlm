@@ -25,26 +25,12 @@
 
 #include <rlm/concepts.hpp>
 #include <rlm/cellular/point2.hpp>
-#include <rlm/cellular/segment2.hpp>
-#include <rlm/cellular/shape_points.hpp>
 #include <cmath>
 
 template<rl::signed_integral I, rl::floating_point F>
 constexpr F rl::magnitude(const rl::point2<I>& point) noexcept
 {
     return std::sqrt<F>(std::abs<I>((point.x * point.x) + (point.y * point.y)));
-}
-
-template<rl::signed_integral I, rl::floating_point F>
-constexpr F rl::magnitude(const rl::point2<I>& start_point, const rl::point2<I>& end_point) noexcept
-{
-    return rl::magnitude(end_point - start_point);
-}
-
-template<rl::signed_integral I, rl::floating_point F>
-constexpr F rl::magnitude(const rl::segment2<I>& segment) noexcept
-{
-    return rl::magnitude(rl::end(segment) - rl::start(segment));
 }
 
 #endif

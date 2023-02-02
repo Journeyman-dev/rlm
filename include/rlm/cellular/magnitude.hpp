@@ -34,12 +34,6 @@ namespace rl
 
     template<rl::signed_integral I, rl::floating_point F = float>
     constexpr F magnitude(const rl::point2<I>& point) noexcept;
-
-    template<rl::signed_integral I, rl::floating_point F = float>
-    constexpr F magnitude(const rl::point2<I>& start_point, const rl::point2<I>& end_point) noexcept;
-
-    template<rl::signed_integral I, rl::floating_point F = float>
-    constexpr F magnitude(const rl::segment2<I>& segment) noexcept;
     }
 
 #include <rlm/cellular/detail/magnitude.inl.hpp>
