@@ -29,11 +29,11 @@
 
 namespace rl
 {
-  template <rl::totally_ordered T = int> constexpr auto max(const T a, const T b);
+  template <rl::totally_ordered T = int> constexpr T max(const T a, const T b);
 
   template <rl::totally_ordered T = int, rl::totally_ordered... Ts>
   requires std::conjunction_v<std::is_same<T, Ts>...>
-  constexpr auto max(const T a, const T b, const Ts... n);
+  constexpr T max(const T a, const T b, const Ts... n);
 }
 
 #include <rlm/detail/max.inl>
