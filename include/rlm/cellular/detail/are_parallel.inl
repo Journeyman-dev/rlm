@@ -20,8 +20,7 @@
     CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 */
 
-#ifndef RLM_CELLULAR_ARE_PARALLEL_INL
-#define RLM_CELLULAR_ARE_PARALLEL_INL
+#pragma once
 
 #include <rlm/concepts.hpp>
 #include <rlm/cellular/cross.hpp>
@@ -39,4 +38,3 @@ constexpr auto rl::are_parallel(const rl::segment2<I>& segment_a, const rl::segm
     return rl::are_parallel(segment_a, rl::are_parallel(segment_b, segment_n));
 }
 
-#endif

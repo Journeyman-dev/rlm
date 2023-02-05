@@ -20,8 +20,7 @@
     CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 */
 
-#ifndef RLM_CELLULAR_BORDERS_HPP
-#define RLM_CELLULAR_BORDERS_HPP
+#pragma once
 
 #include <rlm/concepts.hpp>
 #include <rlm/cellular/border_corners.hpp>
@@ -90,4 +89,3 @@ namespace rl
 
 #include <rlm/cellular/detail/borders.inl>
 
-#endif

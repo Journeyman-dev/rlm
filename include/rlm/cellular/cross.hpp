@@ -20,8 +20,7 @@
     CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 */
 
-#ifndef RLM_CELLULAR_CROSS_HPP
-#define RLM_CELLULAR_CROSS_HPP
+#pragma once
 
 #include <rlm/concepts.hpp>
 
@@ -39,4 +38,3 @@ namespace rl
 
 #include <rlm/cellular/detail/cross.inl>
 
-#endif

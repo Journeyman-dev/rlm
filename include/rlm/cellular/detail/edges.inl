@@ -20,8 +20,7 @@
     CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 */
 
-#ifndef RLM_CELLULAR_EDGES_INL
-#define RLM_CELLULAR_EDGES_INL
+#pragma once
 
 #include <rlm/concepts.hpp>
 #include <rlm/cellular/box2.hpp>
@@ -111,4 +110,3 @@ constexpr I rl::bottom_y(const rl::circle2<I, F>& circle) noexcept
     return circle.y + static_cast<I>(std::round(circle.radius));
 }
 
-#endif

@@ -20,8 +20,7 @@
     CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 */
 
-#ifndef RLM_CELLULAR_ARE_INTERSECTING_INL
-#define RLM_CELLULAR_ARE_INTERSECTING_INL
+#pragma once
 
 #include <rlm/concepts.hpp>
 
@@ -247,4 +246,3 @@ constexpr bool rl::are_intersecting(const rl::circle2<I, F>& circle_a, const rl:
         circle_a.radius + circle_b.radius;
 }
 
-#endif

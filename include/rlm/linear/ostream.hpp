@@ -20,8 +20,7 @@
     CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 */
 
-#ifndef RLM_LINEAR_OSTREAM_HPP
-#define RLM_LINEAR_OSTREAM_HPP
+#pragma once
 
 #include <ostream>
 #include <rlm/concepts.hpp>
@@ -43,7 +42,7 @@ namespace rl
     template<rl::floating_point F = float>
     constexpr std::ostream& operator<<(std::ostream& os, const rl::vector3<F>& vector);
 
-    template<rl::floating_point F = float = float>
+    template<rl::floating_point F = float>
     constexpr std::ostream& operator<<(std::ostream& os, const rl::vector4<F>& vector);
 
     template<rl::floating_point F = float>
@@ -52,4 +51,3 @@ namespace rl
 
 #include <rlm/linear/detail/ostream.inl>
 
-#endif

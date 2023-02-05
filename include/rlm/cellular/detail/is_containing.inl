@@ -20,8 +20,7 @@
     CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 */
 
-#ifndef RLM_CELLULAR_IS_CONTAINING_INL
-#define RLM_CELLULAR_IS_CONTAINING_INL
+#pragma once
 
 #include <rlm/concepts.hpp>
 #include <rlm/cellular/concepts.hpp>
@@ -247,4 +246,3 @@ constexpr rl::box2<I> rl::is_containing(const Sa& containing_shape, const Sb& co
         );
 }
 
-#endif

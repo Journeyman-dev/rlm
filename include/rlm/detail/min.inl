@@ -20,8 +20,7 @@
     CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 */
 
-#ifndef RLM_MIN_INL
-#define RLM_MIN_INL
+#pragma once
 
 #include <algorithm>
 #include <rlm/concepts.hpp>
@@ -36,4 +35,3 @@ template <rl::totally_ordered T, rl::totally_ordered... Ts>
 requires std::conjunction_v<std::is_same<T, Ts>...>
 constexpr T rl::min(const T a, const T b, const Ts... n) { return rl::min(rl::min(a, b), n...); }
 
-#endif

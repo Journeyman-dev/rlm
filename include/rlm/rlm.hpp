@@ -20,8 +20,7 @@
     CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 */
 
-#ifndef RLM_HPP
-#define RLM_HPP
+#pragma once
 
 // This file only includes the most important headers (for roguelike games).
 // Include too much and it will break intellisense.
@@ -34,4 +33,3 @@
 #include <rlm/cellular/segment2.hpp>
 #include <rlm/concepts.hpp>
 
-#endif

@@ -20,8 +20,7 @@
     CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 */
 
-#ifndef RLM_CELLULAR_BORDERS_INL
-#define RLM_CELLULAR_BORDERS_INL
+#pragma once
 
 #include <rlm/concepts.hpp>
 #include <rlm/cellular/box2.hpp>
@@ -206,4 +205,3 @@ constexpr std::optional<rl::segment2<I>> rl::bottom_border_trimmed(
     return border;
 }
 
-#endif

@@ -20,8 +20,7 @@
     CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 */
 
-#ifndef RLM_MIRROR_HPP
-#define RLM_MIRROR_HPP
+#pragma once
 
 #include <rlm/concepts.hpp>
 
@@ -36,4 +35,3 @@ namespace rl
 
 #include <rlm/detail/mirror.inl>
 
-#endif

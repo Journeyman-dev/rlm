@@ -20,8 +20,7 @@
     CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 */
 
-#ifndef RLM_MIN_HPP
-#define RLM_MIN_HPP
+#pragma once
 
 #include <rlm/concepts.hpp>
 #include <concepts>
@@ -38,4 +37,3 @@ namespace rl
 
 #include <rlm/detail/min.inl>
 
-#endif

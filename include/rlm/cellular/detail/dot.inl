@@ -20,8 +20,7 @@
     CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 */
 
-#ifndef RLM_CELLULAR_DOT_INL
-#define RLM_CELLULAR_DOT_INL
+#pragma once
 
 #include <rlm/concepts.hpp>
 #include <rlm/cellular/point2.hpp>
@@ -86,4 +85,3 @@ constexpr auto rl::unit_dot(const rl::segment2<I>& a, const rl::segment2<I>& b) 
     );
 }
 
-#endif

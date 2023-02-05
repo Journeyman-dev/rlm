@@ -20,8 +20,7 @@
     CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 */
 
-#ifndef RLM_LINEAR_IS_DEGENERATE_INL
-#define RLM_LINEAR_IS_DEGENERATE_INL
+#pragma once
 
 #include <rlm/concepts.hpp>
 #include <rlm/linear/rectangle2.hpp>
@@ -32,4 +31,3 @@ constexpr bool rl::is_degenerate(const rl::rectangle2<F>& rectangle) noexcept
     return rectangle.width <= 0 || rectangle.height <= 0;
 }
 
-#endif

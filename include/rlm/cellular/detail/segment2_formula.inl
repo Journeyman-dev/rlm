@@ -20,8 +20,7 @@
     CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 */
 
-#ifndef RLM_CELLULAR_SEGMENT2_FORMULA_INL
-#define RLM_CELLULAR_SEGMENT2_FORMULA_INL
+#pragma once
 
 #include <rlm/concepts.hpp>
 
@@ -47,4 +46,4 @@ constexpr I rl::x_intercept(const rl::segment2<I>& segment) noexcept
         -rl::y_intercept(segment) / rl::slope(segment);
 }
 
-#endif
+

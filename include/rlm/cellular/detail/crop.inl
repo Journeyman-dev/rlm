@@ -20,8 +20,7 @@
     CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 */
 
-#ifndef RLM_CELLULAR_CROP_INL
-#define RLM_CELLULAR_CROP_INL
+#pragma once
 
 #include <rlm/concepts.hpp>
 #include <rlm/cellular/concepts.hpp>
@@ -89,4 +88,3 @@ constexpr std::optional<rl::box2<I>> rl::crop(const rl::box2<I>& box, const rl::
         );
 }
 
-#endif

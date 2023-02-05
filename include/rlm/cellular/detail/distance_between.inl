@@ -20,8 +20,7 @@
     CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 */
 
-#ifndef RLM_CELLULAR_DISTANCE_BETWEEN_INL
-#define RLM_CELLULAR_DISTANCE_BETWEEN_INL
+#pragma once
 
 #include <rlm/concepts.hpp>
 #include <rlm/cellular/point2.hpp>
@@ -246,4 +245,3 @@ constexpr F distance_between(const rl::circle2<I, F>& circle_a, const rl::circle
     );
 }
 
-#endif

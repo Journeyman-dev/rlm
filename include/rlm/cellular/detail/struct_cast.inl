@@ -20,8 +20,7 @@
     CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 */
 
-#ifndef RLM_CELLULAR_STRUCT_CAST_INL
-#define RLM_CELLULAR_STRUCT_CAST_INL
+#pragma once
 
 #include <rlm/concepts.hpp>
 #include <rlm/cellular/point2.hpp>
@@ -74,4 +73,3 @@ constexpr rl::circle2<Ia, Fa> rl::struct_cast(const rl::circle2<Ib, Fb>& circle)
         );
 }
 
-#endif

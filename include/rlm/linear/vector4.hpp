@@ -20,8 +20,7 @@
     CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 */
 
-#ifndef RLM_LINEAR_VECTOR4_HPP
-#define RLM_LINEAR_VECTOR4_HPP
+#pragma once
 
 #include <rlm/concepts.hpp>
 
@@ -42,4 +41,4 @@ namespace rl
 
 #include <rlm/linear/detail/vector4.inl>
 
-#endif
+

@@ -20,8 +20,7 @@
     CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 */
 
-#ifndef RLM_CELLULAR_BOX2_BETWEEN_HPP
-#define RLM_CELLULAR_BOX2_BETWEEN_HPP
+#pragma once
 
 #include <rlm/concepts.hpp>
 #include <rlm/cellular/box2.hpp>
@@ -46,4 +45,3 @@ constexpr rl::box2<I> rl::box2_between(I x1, I y1, I x2, I y2) noexcept
         );
 }
 
-#endif

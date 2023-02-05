@@ -20,8 +20,7 @@
     CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 */
 
-#ifndef RLM_CELLULAR_POINT2_HPP
-#define RLM_CELLULAR_POINT2_HPP
+#pragma once
 
 #include <rlm/concepts.hpp>
 
@@ -64,4 +63,3 @@ namespace rl
 
 #include <rlm/cellular/detail/point2.inl>
 
-#endif

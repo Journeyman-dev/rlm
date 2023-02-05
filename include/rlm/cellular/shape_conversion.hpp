@@ -20,8 +20,7 @@
     CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 */
 
-#ifndef RLM_CELLULAR_SHAPE_CONVERSION_HPP
-#define RLM_CELLULAR_SHAPE_CONVERSION_HPP
+#pragma once
 
 #include <rlm/concepts.hpp>
 #include <optional>
@@ -88,4 +87,3 @@ namespace rl
 
 #include <rlm/cellular/detail/shape_conversion.inl>
 
-#endif

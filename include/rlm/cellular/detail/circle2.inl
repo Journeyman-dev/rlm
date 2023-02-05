@@ -20,8 +20,7 @@
     CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 */
 
-#ifndef RLM_CELLULAR_CIRCLE2_INL
-#define RLM_CELLULAR_CIRCLE2_INL
+#pragma once
 
 template<rl::signed_integral I, rl::floating_point F>
 constexpr rl::circle2<I, F>::circle2(I x, I y, F radius) noexcept
@@ -49,4 +48,3 @@ constexpr bool rl::circle2<I, F>::operator!=(const rl::circle2<I, F>& that) cons
         this->radius != that.radius;
 }
 
-#endif

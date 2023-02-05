@@ -20,8 +20,7 @@
     CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 */
 
-#ifndef RLM_CELLULAR_BOUNDS_INL
-#define RLM_CELLULAR_BOUNDS_INL
+#pragma once
 
 #include <rlm/concepts.hpp>
 #include <rlm/cellular/concepts.hpp>
@@ -115,5 +114,3 @@ constexpr rl::box2<I> rl::bounding_box2(const S& a, const Ss&... n) noexcept
 {
     return rl::inl::bounding_pair_box2(rl::bounding_box2(a), rl::bounding_box2(n...));
 }
-
-#endif

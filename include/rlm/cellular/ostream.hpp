@@ -20,8 +20,7 @@
     CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 */
 
-#ifndef RLM_CELLULAR_OSTREAM_HPP
-#define RLM_CELLULAR_OSTREAM_HPP
+#pragma once
 
 #include <ostream>
 #include <rlm/concepts.hpp>
@@ -44,7 +43,7 @@ namespace rl
     constexpr std::ostream& operator<<(std::ostream& os, const rl::segment2<I>& segment);
 
     template<rl::signed_integral I = int>
-    constexprstd::ostream& operator<<(std::ostream& os, const rl::box2<I>& box);
+    constexpr std::ostream& operator<<(std::ostream& os, const rl::box2<I>& box);
 
     template<rl::signed_integral I = int, rl::floating_point F = float>
     constexpr std::ostream& operator<<(std::ostream& os, const rl::circle2<I, F>& circle);
@@ -52,4 +51,3 @@ namespace rl
 
 #include <rlm/cellular/detail/ostream.inl>
 
-#endif

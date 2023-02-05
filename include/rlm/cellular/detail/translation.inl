@@ -20,8 +20,7 @@
     CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 */
 
-#ifndef RLM_CELLULAR_TRANSLATION_INL
-#define RLM_CELLULAR_TRANSLATION_INL
+#pragma once
 
 #include <rlm/concepts.hpp>
 #include <rlm/cellular/shape_points.hpp>
@@ -32,4 +31,3 @@ constexpr rl::point2<I> rl::translation(const rl::segment2<I>& segment) noexcept
     return rl::end(segment) - rl::start(segment);
 }
 
-#endif

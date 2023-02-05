@@ -20,8 +20,7 @@
     CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 */
 
-#ifndef RLM_CONCEPTS_HPP
-#define RLM_CONCEPTS_HPP
+#pragma once
 
 #include <concepts>
 #include <type_traits>
@@ -59,4 +58,3 @@ namespace rl
     concept is_any_of = (std::same_as<T, Ts> || ...);
 }    // namespace rl
 
-#endif

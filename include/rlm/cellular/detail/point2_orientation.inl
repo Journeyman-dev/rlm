@@ -20,8 +20,7 @@
     CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 */
 
-#ifndef RLM_CELLULAR_POINT2_ORIENTATION_INL
-#define RLM_CELLULAR_POINT2_ORIENTATION_INL
+#pragma once
 
 #include <rlm/concepts.hpp>
 #include <rlm/position_orientation.hpp>
@@ -61,4 +60,3 @@ constexpr rl::PositionOrientation rl::orientation_between(
     }
 }
 
-#endif

@@ -20,8 +20,7 @@
     CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 */
 
-#ifndef RLM_LINEAR_RECTANGLE2_INL
-#define RLM_LINEAR_RECTANGLE2_INL
+#pragma once
 
 #include <rlm/concepts.hpp>
 
@@ -34,4 +33,3 @@ constexpr rl::rectangle2<F>::rectangle2(F x, F y, F width, F height) noexcept
 {
 }
 
-#endif

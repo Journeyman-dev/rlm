@@ -20,8 +20,7 @@
     CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 */
 
-#ifndef RLM_POSITION_ORIENTATION_HPP
-#define RLM_POSITION_ORIENTATION_HPP
+#pragma once
 
 namespace rl
 {
@@ -33,4 +32,4 @@ namespace rl
     };
 }
 
-#endif
+

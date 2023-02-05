@@ -20,8 +20,7 @@
     CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 */
 
-#ifndef RLM_CELLULAR_REVERSE_INL
-#define RLM_CELLULAR_REVERSE_INL
+#pragma once
 
 #include <rlm/concepts.hpp>
 #include <rlm/cellular/segment2.hpp>
@@ -41,4 +40,3 @@ namespace rl
     }
 }
 
-#endif

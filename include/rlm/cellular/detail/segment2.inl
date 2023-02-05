@@ -20,8 +20,7 @@
     CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 */
 
-#ifndef RLM_CELLULAR_SEGMENT2_INL
-#define RLM_CELLULAR_SEGMENT2_INL
+#pragma once
 
 template<rl::signed_integral I>
 constexpr rl::segment2<I>::segment2(I start_x, I start_y, I end_x, I end_y) noexcept
@@ -52,4 +51,3 @@ constexpr bool rl::segment2<I>::operator!=(const rl::segment2<I>& that) const no
         this->end_y != that.end_y;
 }
 
-#endif

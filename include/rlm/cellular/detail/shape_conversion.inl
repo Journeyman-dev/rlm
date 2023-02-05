@@ -20,8 +20,7 @@
     CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 */
 
-#ifndef RLM_CELLULAR_SHAPE_CONVERSION_INL
-#define RLM_CELLULAR_SHAPE_CONVERSION_INL
+#pragma once
 
 #include <rlm/concepts.hpp>
 #include <rlm/cellular/point2.hpp>
@@ -189,4 +188,3 @@ constexpr std::optional<rl::box2<I>> rl::as_box2(const rl::circle2<I, F>& circle
         );
 }
 
-#endif

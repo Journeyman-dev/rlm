@@ -20,8 +20,7 @@
     CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 */
 
-#ifndef RLM_CELLULAR_MAGNITUDE_INL
-#define RLM_CELLULAR_MAGNITUDE_INL
+#pragma once
 
 #include <rlm/concepts.hpp>
 #include <rlm/cellular/point2.hpp>
@@ -39,4 +38,3 @@ constexpr I cell_magnitude(const rl::point2<I>& point) noexcept
     return static_cast<I>(std::floor(rl::magnitude(point)));
 }
 
-#endif

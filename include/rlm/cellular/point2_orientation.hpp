@@ -20,8 +20,7 @@
     CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 */
 
-#ifndef RLM_CELLULAR_POINT2_ORIENTATION_HPP
-#define RLM_CELLULAR_POINT2_ORIENTATION_HPP
+#pragma once
 
 #include <rlm/concepts.hpp>
 #include <rlm/position_orientation.hpp>
@@ -48,4 +47,3 @@ namespace rl
 
 #include <rlm/cellular/detail/point2_orientation.inl>
 
-#endif

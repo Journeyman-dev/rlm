@@ -20,8 +20,7 @@
     CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 */
 
-#ifndef RLM_CELLULAR_ARE_COLLINEAR_INL
-#define RLM_CELLULAR_ARE_COLLINEAR_INL
+#pragma once
 
 #include <rlm/concepts.hpp>
 
@@ -126,5 +125,3 @@ constexpr bool rl::are_collinear(const rl::segment2<I>& segment, const rl::point
             shape_n
         );
 }
-
-#endif

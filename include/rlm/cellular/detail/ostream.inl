@@ -20,8 +20,7 @@
     CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 */
 
-#ifndef RLM_CELLULAR_OSTREAM_INL
-#define RLM_CELLULAR_OSTREAM_INL
+#pragma once
 
 #include <ostream>
 #include <rlm/cellular/box2.hpp>
@@ -59,4 +58,3 @@ constexpr std::ostream& rl::operator<<(std::ostream& os, const rl::circle2<I, F>
     return os;
 }
 
-#endif

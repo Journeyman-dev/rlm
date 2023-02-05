@@ -20,8 +20,7 @@
     CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 */
 
-#ifndef RLM_CELLULAR_LERP_INL
-#define RLM_CELLULAR_LERP_INL
+#pragma once
 
 #include <rlm/concepts.hpp>
 #include <rlm/lerp.hpp>
@@ -58,4 +57,3 @@ constexpr rl::point2<I> rl::lerp(const rl::segment2<I>& segment, F t) noexcept
     );
 }
 
-#endif

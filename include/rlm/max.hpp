@@ -20,8 +20,7 @@
     CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 */
 
-#ifndef RLM_MAX_HPP
-#define RLM_MAX_HPP
+#pragma once
 
 #include <rlm/concepts.hpp>
 #include <concepts>
@@ -38,4 +37,3 @@ namespace rl
 
 #include <rlm/detail/max.inl>
 
-#endif

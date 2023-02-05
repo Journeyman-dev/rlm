@@ -20,8 +20,7 @@
     CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 */
 
-#ifndef RLM_CELLULAR_BORDER_CORNERS_HPP
-#define RLM_CELLULAR_BORDER_CORNERS_HPP
+#pragma once
 
 namespace rl
 {
@@ -51,4 +50,3 @@ namespace rl
     using BorderCorners = BorderCornersStruct::BorderCornersEnum;
 }
 
-#endif

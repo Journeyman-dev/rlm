@@ -20,8 +20,7 @@
     CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 */
 
-#ifndef RLM_CELLULAR_SEGMENT2_DIRECTION_INL
-#define RLM_CELLULAR_SEGMENT2_DIRECTION_INL
+#pragma once
 
 #include <rlm/concepts.hpp>
 #include <rlm/cellular/segment2.hpp>
@@ -62,4 +61,3 @@ constexpr bool rl::is_vertical(const rl::segment2<I>& segment) noexcept
     return segment.start_y == segment.end_y;
 }
 
-#endif

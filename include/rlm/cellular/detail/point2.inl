@@ -20,8 +20,7 @@
     CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 */
 
-#ifndef RLM_CELLULAR_POINT2_INL
-#define RLM_CELLULAR_POINT2_INL
+#pragma once
 
 #include <rlm/concepts.hpp>
 
@@ -124,4 +123,3 @@ constexpr rl::point2<I> rl::point2<I>::operator/(P scalar) const noexcept
     );
 }
 
-#endif

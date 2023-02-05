@@ -20,8 +20,7 @@
     CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 */
 
-#ifndef RLM_ROTATION_MOTION_HPP
-#define RLM_ROTATION_MOTION_HPP
+#pragma once
 
 namespace rl
 {
@@ -32,4 +31,3 @@ namespace rl
     };
 }
 
-#endif

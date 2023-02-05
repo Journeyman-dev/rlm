@@ -20,8 +20,7 @@
     CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 */
 
-#ifndef RLM_CELLULAR_CENTER_INL
-#define RLM_CELLULAR_CENTER_INL
+#pragma once
 
 #include <rlm/concepts.hpp>
 #include <rlm/cellular/point2.hpp>
@@ -81,4 +80,3 @@ constexpr rl::point2<I> rl::center(const rl::circle2<I, F>& circle) noexcept
     );
 }
 
-#endif
