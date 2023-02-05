@@ -33,4 +33,10 @@ constexpr F rl::magnitude(const rl::point2<I>& point) noexcept
     return std::sqrt(static_cast<F>(std::abs((point.x * point.x) + (point.y * point.y))));
 }
 
+template<rl::signed_integral I>
+constexpr I cell_magnitude(const rl::point2<I>& point) noexcept
+{
+    return static_cast<I>(std::floor(rl::magnitude(point)));
+}
+
 #endif

@@ -29,12 +29,13 @@ namespace rl
 {
     template<rl::signed_integral I>
     struct point2;
-    template<rl::signed_integral I>
-    struct segment2;
 
     template<rl::signed_integral I = int, rl::floating_point F = float>
     constexpr F magnitude(const rl::point2<I>& point) noexcept;
-    }
+
+    template<rl::signed_integral I = int>
+    constexpr I cell_magnitude(const rl::point2<I>& point) noexcept;
+}
 
 #include <rlm/cellular/detail/magnitude.inl>
 
