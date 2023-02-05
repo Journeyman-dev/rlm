@@ -20,34 +20,46 @@
     CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 */
 
-#ifndef RLM_CELLULAR_DIRECTION_INL
-#define RLM_CELLULAR_DIRECTION_INL
+#ifndef RLM_CELLULAR_SEGMENT2_DIRECTION_INL
+#define RLM_CELLULAR_SEGMENT2_DIRECTION_INL
 
 #include <rlm/concepts.hpp>
 #include <rlm/cellular/segment2.hpp>
 
 template<rl::signed_integral I>
-bool rl::goes_left(const rl::segment2<I>& segment)
+constexpr bool rl::goes_left(const rl::segment2<I>& segment) noexcept
 {
     return segment.start_x < segment.end_x;
 }
 
 template<rl::signed_integral I>
-bool rl::goes_right(const rl::segment2<I>& segment)
+constexpr bool rl::goes_right(const rl::segment2<I>& segment) noexcept
 {
     return segment.start_x > segment.end_x;
 }
 
 template<rl::signed_integral I>
-bool rl::goes_up(const rl::segment2<I>& segment)
+constexpr bool rl::goes_up(const rl::segment2<I>& segment) noexcept
 {
     return segment.start_y > segment.end_y;
 }
 
 template<rl::signed_integral I>
-bool rl::goes_down(const rl::segment2<I>& segment)
+constexpr bool rl::goes_down(const rl::segment2<I>& segment) noexcept
 {
     return segment.start_y < segment.end_y;
+}
+
+template<rl::signed_integral I>
+constexpr bool rl::is_horizontal(const rl::segment2<I>& segment) noexcept
+{
+    return segment.start_x == segment.end_x;
+}
+
+template<rl::signed_integral I>
+constexpr bool rl::is_vertical(const rl::segment2<I>& segment) noexcept
+{
+    return segment.start_y == segment.end_y;
 }
 
 #endif

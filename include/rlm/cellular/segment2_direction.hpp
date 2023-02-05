@@ -20,8 +20,8 @@
     CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 */
 
-#ifndef RLM_CELLULAR_DIRECTION_HPP
-#define RLM_CELLULAR_DIRECTION_HPP
+#ifndef RLM_CELLULAR_SEGMENT2_DIRECTION_HPP
+#define RLM_CELLULAR_SEGMENT2_DIRECTION_HPP
 
 #include <rlm/concepts.hpp>
 
@@ -31,18 +31,24 @@ namespace rl
     struct segment2;
 
     template<rl::signed_integral I = int>
-    bool goes_left(const rl::segment2<I>& segment);
+    constexpr bool goes_left(const rl::segment2<I>& segment) noexcept;
 
     template<rl::signed_integral I = int>
-    bool goes_right(const rl::segment2<I>& segment);
+    constexpr bool goes_right(const rl::segment2<I>& segment) noexcept;
 
     template<rl::signed_integral I = int>
-    bool goes_up(const rl::segment2<I>& segment);
+    constexpr bool goes_up(const rl::segment2<I>& segment) noexcept;
 
     template<rl::signed_integral I = int>
-    bool goes_down(const rl::segment2<I>& segment);
+    constexpr bool goes_down(const rl::segment2<I>& segment) noexcept;
+
+    template<rl::signed_integral I = int>
+    constexpr bool is_horizontal(const rl::segment2<I>& segment) noexcept;
+
+    template<rl::signed_integral I = int>
+    constexpr bool is_vertical(const rl::segment2<I>& segment) noexcept;
 }
 
-#include <rlm/cellular/detail/direction.inl>
+#include <rlm/cellular/detail/segment2_direction.inl>
 
 #endif
