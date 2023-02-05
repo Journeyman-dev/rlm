@@ -50,7 +50,7 @@ constexpr I rl::width(cosnt rl::segment2<I>& segment) noexcept
         std::abs(
             segment.end_x -
             segment.start_x
-        );
+        ) + 1;
 }
 
 constexpr I rl::height(const rl::segment2<I>& segment) noexcept
@@ -59,7 +59,7 @@ constexpr I rl::height(const rl::segment2<I>& segment) noexcept
         std::abs(
             segment.end_y -
             segment.start_y
-        );
+        ) + 1;
 }
 
 #endif
