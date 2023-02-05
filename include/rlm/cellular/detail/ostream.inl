@@ -30,35 +30,33 @@
 #include <rlm/cellular/segment2.hpp>
 #include <rlm/concepts.hpp>
 
-namespace rl {
-    template<rl::signed_integral I>
-    std::ostream& operator<<(std::ostream& os, const rl::point2<I>& point)
-    {
-        os << "(" << point.x << ", " << point.y << ")";
-        return os;
-    }
+template<rl::signed_integral I>
+constexpr std::ostream& rl::operator<<(std::ostream& os, const rl::point2<I>& point)
+{
+    os << "(" << point.x << ", " << point.y << ")";
+    return os;
+}
 
-    template<rl::signed_integral I>
-    std::ostream& operator<<(std::ostream& os, const rl::segment2<I>& segment)
-    {
-        os << "(" << segment.start_x << ", " << segment.start_y << ", " << segment.end_x << ", "
-           << segment.end_y << ")";
-        return os;
-    }
+template<rl::signed_integral I>
+constexpr std::ostream& rl::operator<<(std::ostream& os, const rl::segment2<I>& segment)
+{
+    os << "(" << segment.start_x << ", " << segment.start_y << ", " << segment.end_x << ", "
+        << segment.end_y << ")";
+    return os;
+}
 
-    template<rl::signed_integral I>
-    std::ostream& operator<<(std::ostream& os, const rl::box2<I>& box)
-    {
-        os << "(" << box.x << ", " << box.y << ", " << box.width << ", " << box.height << ")";
-        return os;
-    }
+template<rl::signed_integral I>
+constexpr std::ostream& rl::operator<<(std::ostream& os, const rl::box2<I>& box)
+{
+    os << "(" << box.x << ", " << box.y << ", " << box.width << ", " << box.height << ")";
+    return os;
+}
 
-    template<rl::signed_integral I, rl::floating_point F>
-    std::ostream& operator<<(std::ostream& os, const rl::circle2<I, F>& circle)
-    {
-        os << "(" << circle.x << ", " << circle.y << ", " << circle.radius << ")";
-        return os;
-    }
-}    // namespace rl
+template<rl::signed_integral I, rl::floating_point F>
+constexpr std::ostream& rl::operator<<(std::ostream& os, const rl::circle2<I, F>& circle)
+{
+    os << "(" << circle.x << ", " << circle.y << ", " << circle.radius << ")";
+    return os;
+}
 
 #endif

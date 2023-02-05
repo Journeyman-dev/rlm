@@ -37,17 +37,17 @@ namespace rl
     template<rl::floating_point F>
     struct rectangle2;
 
-    template<rl::signed_integral F>
-    std::ostream& operator<<(std::ostream& os, const rl::vector2<F>& vector);
+    template<rl::signed_integral F = float>
+    constexpr std::ostream& operator<<(std::ostream& os, const rl::vector2<F>& vector);
 
-    template<rl::floating_point F>
-    std::ostream& operator<<(std::ostream& os, const rl::vector3<F>& vector);
+    template<rl::floating_point F = float>
+    constexpr std::ostream& operator<<(std::ostream& os, const rl::vector3<F>& vector);
 
-    template<rl::floating_point F>
-    std::ostream& operator<<(std::ostream& os, const rl::vector4<F>& vector);
+    template<rl::floating_point F = float = float>
+    constexpr std::ostream& operator<<(std::ostream& os, const rl::vector4<F>& vector);
 
-    template<rl::floating_point F>
-    std::ostream& operator<<(std::ostream& os, const rl::rectangle2<F>& rectangle);
+    template<rl::floating_point F = float>
+    constexpr std::ostream& operator<<(std::ostream& os, const rl::rectangle2<F>& rectangle);
 }    // namespace rl
 
 #include <rlm/linear/detail/ostream.inl>

@@ -33,12 +33,14 @@ constexpr F rl::slope(const rl::segment2<I>& segment) noexcept
         static_cast<F>(std::abs(segment.end_x - segment.start_x));
 }
 
+template<rl::signed_integral I>
 constexpr I rl::y_intercept(const rl::segment2<I>& segment) noexcept
 {
     return
         segment.start_y - (rl::slope(segment) * segment.start_x);
 }
 
+template<rl::signed_integral I>
 constexpr I rl::x_intercept(const rl::segment2<I>& segment) noexcept
 {
     return

@@ -29,13 +29,13 @@
 #include <rlm/cellular/translation.hpp>
 
 template <rl::signed_integral I>
-constexpr auto rl::cross_z(const rl::point2<I>& point_a, const rl::point2<I>& point_b) noexcept
+constexpr I rl::cross_z(const rl::point2<I>& point_a, const rl::point2<I>& point_b) noexcept
 {
     return (point_a.x * point_b.y) - (point_b.x * point_a.y);
 }
 
 template <rl::signed_integral I>
-constexpr auto rl::cross_z(const rl::segment2<I>& segment_a, const rl::segment2<I>& segment_b) noexcept
+constexpr I rl::cross_z(const rl::segment2<I>& segment_a, const rl::segment2<I>& segment_b) noexcept
 {
     return rl::cross_z(rl::translation(segment_a), rl::translation(segment_b));
 }

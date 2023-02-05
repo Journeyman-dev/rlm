@@ -30,35 +30,33 @@
 #include <rlm/linear/vector3.hpp>
 #include <rlm/linear/vector4.hpp>
 
-namespace rl {
-    template<rl::floating_point F>
-    std::ostream& operator<<(std::ostream& os, const rl::rectangle2<F>& rectangle)
-    {
-        os << "(" << rectangle.x << ", " << rectangle.y << ", " << rectangle.width << ", "
-           << rectangle.height << ")";
-        return os;
-    }
+template<rl::floating_point F>
+constexpr std::ostream& rl::operator<<(std::ostream& os, const rl::rectangle2<F>& rectangle)
+{
+    os << "(" << rectangle.x << ", " << rectangle.y << ", " << rectangle.width << ", "
+        << rectangle.height << ")";
+    return os;
+}
 
-    template<rl::floating_point F>
-    std::ostream& operator<<(std::ostream& os, const rl::vector2<F>& vector)
-    {
-        os << "(" << vector.x << ", " << vector.y << ")";
-        return os;
-    }
+template<rl::floating_point F>
+constexpr std::ostream& rl::operator<<(std::ostream& os, const rl::vector2<F>& vector)
+{
+    os << "(" << vector.x << ", " << vector.y << ")";
+    return os;
+}
 
-    template<rl::floating_point F>
-    std::ostream& operator<<(std::ostream& os, const rl::vector3<F>& vector)
-    {
-        os << "(" << vector.x << ", " << vector.y << ", " << vector.z << ")";
-        return os;
-    }
+template<rl::floating_point F>
+constexpr std::ostream& rl::operator<<(std::ostream& os, const rl::vector3<F>& vector)
+{
+    os << "(" << vector.x << ", " << vector.y << ", " << vector.z << ")";
+    return os;
+}
 
-    template<rl::floating_point F>
-    std::ostream& operator<<(std::ostream& os, const rl::vector4<F>& vector)
-    {
-        os << "(" << vector.x << ", " << vector.y << ", " << vector.z << ", " << vector.w << ")";
-        return os;
-    }
-}    // namespace rl
+template<rl::floating_point F>
+constexpr std::ostream& rl::operator<<(std::ostream& os, const rl::vector4<F>& vector)
+{
+    os << "(" << vector.x << ", " << vector.y << ", " << vector.z << ", " << vector.w << ")";
+    return os;
+}
 
 #endif

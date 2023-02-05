@@ -33,8 +33,10 @@ namespace rl
     template<rl::signed_integral I = int, rl::floating_point F = float>
     constexpr F slope(const rl::segment2<I>& segment) noexcept;
 
+    template<rl::signed_integral I = int>
     constexpr I y_intercept(const rl::segment2<I>& segment) noexcept;
 
+    template<rl::signed_integral I = int>
     constexpr I x_intercept(const rl::segment2<I>& segment) noexcept;
 }
 

@@ -32,10 +32,10 @@ namespace rl
     template<rl::signed_integral I>
     struct segment2;
 
-    template<rl::signed_integral I, rl::floating_point F>
+    template<rl::signed_integral I = int, rl::floating_point F = float>
     constexpr rl::point2<I> lerp(const rl::point2<I>& a, const rl::point2<I>& b, F t) noexcept;
 
-    template<rl::signed_integral I, rl::floating_point F>
+    template<rl::signed_integral I = int, rl::floating_point F = float>
     constexpr rl::point2<I> lerp(const rl::segment2<I>& segment, F t) noexcept;
 }
 

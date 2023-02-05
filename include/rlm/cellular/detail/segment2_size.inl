@@ -29,13 +29,15 @@
 #include <rlm/cellular/magnitude.hpp>
 #include <cmath>
 
+template<rl::signed_integral I>
 constexpr F rl::length(const rl::segment2<I>& segment) noexcept
 {
     const auto translation = rl::translation<I, F>(segment);
     return rl::magnitude<I, F>(translation);
 }
 
-constexpr F rl::cell_length(const rl::segment2<I>& segment) noexcept
+template<rl::signed_integral I>
+constexpr I rl::cell_length(const rl::segment2<I>& segment) noexcept
 {
     return
         rl::max(
@@ -44,6 +46,7 @@ constexpr F rl::cell_length(const rl::segment2<I>& segment) noexcept
         );
 }
 
+template<rl::signed_integral I>
 constexpr I rl::width(cosnt rl::segment2<I>& segment) noexcept
 {
     return
@@ -53,6 +56,7 @@ constexpr I rl::width(cosnt rl::segment2<I>& segment) noexcept
         ) + 1;
 }
 
+template<rl::signed_integral I>
 constexpr I rl::height(const rl::segment2<I>& segment) noexcept
 {
     return

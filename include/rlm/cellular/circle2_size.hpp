@@ -30,13 +30,13 @@ namespace rl
     template<rl::signed_integral I, rl::floating_point F>
     struct circle2;
 
-    template<rl::signed_integral I, rl::floating_point F>
+    template<rl::signed_integral I = int, rl::floating_point F = float>
     constexpr I tile_radius(const rl::circle2<I, F>& circle) noexcept;
 
-    template<rl::signed_integral I, rl::floating_point F>
+    template<rl::signed_integral I = int, rl::floating_point F = float>
     constexpr F diameter(const rl::circle2<I, F>& circle) noexcept;
 
-    template<rl::signed_integral I, rl::floating_point F>
+    template<rl::signed_integral I = int, rl::floating_point F = float>
     constexpr I tile_diameter(const rl::circle2<I, F>& circle) noexcept;
 }
 

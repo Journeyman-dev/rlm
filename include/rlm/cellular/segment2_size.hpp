@@ -30,12 +30,16 @@ namespace rl
     template<rl::signed_integral I>
     struct segment2;
 
+    template<rl::signed_integral I = int, rl::floating_point F = float>
     constexpr F length(const rl::segment2<I>& segment) noexcept;
 
-    constexpr F cell_length(const rl::segment2<I>& segment) noexcept;
+    template<rl::signed_integral I = int>
+    constexpr I cell_length(const rl::segment2<I>& segment) noexcept;
 
+    template<rl::signed_integral I = int>
     constexpr I width(cosnt rl::segment2<I>& segment) noexcept;
 
+    template<rl::signed_integral I = int>
     constexpr I height(const rl::segment2<I>& segment) noexcept;
 }
 
