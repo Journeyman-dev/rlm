@@ -36,30 +36,54 @@ namespace rl
     struct box2;
 
     template<rl::signed_integral I = int>
-    constexpr std::optional<rl::segment2<I>> left_border(
+    constexpr rl::segment2<I> left_border(
         const rl::box2<I>& box,
-        rl::BorderCorners border_corners = rl::BorderCorners::All,
         rl::RotationMotion rotation_motion = rl::RotationMotion::Clockwise
     ) noexcept;
 
     template<rl::signed_integral I = int>
-    constexpr std::optional<rl::segment2<I>> right_border(
+    constexpr rl::segment2<I> right_border(
         const rl::box2<I>& box,
-        rl::BorderCorners border_corners = rl::BorderCorners::All,
         rl::RotationMotion rotation_motion = rl::RotationMotion::Clockwise
     ) noexcept;
 
     template<rl::signed_integral I = int>
-    constexpr std::optional<rl::segment2<I>> top_border(
+    constexpr rl::segment2<I> top_border(
         const rl::box2<I>& box,
-        rl::BorderCorners border_corners = rl::BorderCorners::All,
         rl::RotationMotion rotation_motion = rl::RotationMotion::Clockwise
     ) noexcept;
 
     template<rl::signed_integral I = int>
-    constexpr std::optional<rl::segment2<I>> bottom_border(
+    constexpr rl::segment2<I> bottom_border(
         const rl::box2<I>& box,
-        rl::BorderCorners border_corners = rl::BorderCorners::All,
+        rl::RotationMotion rotation_motion = rl::RotationMotion::Clockwise
+    ) noexcept;
+
+    template<rl::signed_integral I = int>
+    constexpr std::optional<rl::segment2<I>> right_border_trimmed(
+        const rl::box2<I>& box,
+        rl::BorderCorners border_corners = rl::BorderCorners::None,
+        rl::RotationMotion rotation_motion = rl::RotationMotion::Clockwise
+    ) noexcept;
+
+    template<rl::signed_integral I = int>
+    constexpr std::optional<rl::segment2<I>> top_border_trimmed(
+        const rl::box2<I>& box,
+        rl::BorderCorners border_corners = rl::BorderCorners::None,
+        rl::RotationMotion rotation_motion = rl::RotationMotion::Clockwise
+    ) noexcept;
+
+    template<rl::signed_integral I = int>
+    constexpr std::optional<rl::segment2<I>> bottom_border_trimmed(
+        const rl::box2<I>& box,
+        rl::BorderCorners border_corners = rl::BorderCorners::None,
+        rl::RotationMotion rotation_motion = rl::RotationMotion::Clockwise
+    ) noexcept;
+
+    template<rl::signed_integral I = int>
+    constexpr std::optional<rl::segment2<I>> left_border_trimmed(
+        const rl::box2<I>& box,
+        rl::BorderCorners border_corners = rl::BorderCorners::None,
         rl::RotationMotion rotation_motion = rl::RotationMotion::Clockwise
     ) noexcept;
 }
