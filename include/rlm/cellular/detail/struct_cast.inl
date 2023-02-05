@@ -20,8 +20,8 @@
     CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 */
 
-#ifndef RLM_CELLULAR_SHAPE_CAST_INL
-#define RLM_CELLULAR_SHAPE_CAST_INL
+#ifndef RLM_CELLULAR_STRUCT_CAST_INL
+#define RLM_CELLULAR_STRUCT_CAST_INL
 
 #include <rlm/concepts.hpp>
 #include <rlm/cellular/point2.hpp>
@@ -30,7 +30,7 @@
 #include <rlm/cellular/circle2.hpp>
 
 template<rl::signed_integral Ia, rl::signed_integral Ib>
-constexpr rl::point2<Ia> rl::shape_cast(const rl::point2<Ib>& point)
+constexpr rl::point2<Ia> rl::struct_cast(const rl::point2<Ib>& point)
 {
     return
         rl::point2<Ia>(
@@ -40,7 +40,7 @@ constexpr rl::point2<Ia> rl::shape_cast(const rl::point2<Ib>& point)
 }
 
 template<rl::signed_integral Ia, rl::signed_integral Ib>
-constexpr rl::segment2<Ia> rl::shape_cast(const rl::segment2<Ib>& segment)
+constexpr rl::segment2<Ia> rl::struct_cast(const rl::segment2<Ib>& segment)
 {
     return
         rl::segment2<1a>(
@@ -52,7 +52,7 @@ constexpr rl::segment2<Ia> rl::shape_cast(const rl::segment2<Ib>& segment)
 }
 
 template<rl::signed_integral Ia, rl::signed_integral Ib>
-constexpr rl::box2<Ia> rl::shape_cast(const rl::box2<Ib>& box)
+constexpr rl::box2<Ia> rl::struct_cast(const rl::box2<Ib>& box)
 {
     return
         rl::box2<Ia>(
@@ -64,7 +64,7 @@ constexpr rl::box2<Ia> rl::shape_cast(const rl::box2<Ib>& box)
 }
 
 template<rl::signed_integral Ia, rl::floating_point Fa, rl::signed_integral Ib, rl::floating_point Fb>
-constexpr rl::circle2<Ia, Fa> rl::shape_cast(const rl::circle2<Ib, Fb>& circle)
+constexpr rl::circle2<Ia, Fa> rl::struct_cast(const rl::circle2<Ib, Fb>& circle)
 {
     return
         rl::circle2<Ia>(
