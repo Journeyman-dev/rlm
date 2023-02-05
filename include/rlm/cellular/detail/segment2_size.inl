@@ -35,6 +35,15 @@ constexpr F rl::length(const rl::segment2<I>& segment) noexcept
     return rl::magnitude<I, F>(translation);
 }
 
+constexpr F rl::cell_length(const rl::segment2<I>& segment) noexcept
+{
+    return
+        rl::max(
+            rl::width(segment),
+            rl::height(segment)
+        );
+}
+
 constexpr I rl::width(cosnt rl::segment2<I>& segment) noexcept
 {
     return

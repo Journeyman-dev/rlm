@@ -32,6 +32,8 @@ namespace rl
 
     constexpr F length(const rl::segment2<I>& segment) noexcept;
 
+    constexpr F cell_length(const rl::segment2<I>& segment) noexcept;
+
     constexpr I width(cosnt rl::segment2<I>& segment) noexcept;
 
     constexpr I height(const rl::segment2<I>& segment) noexcept;
