@@ -33,7 +33,7 @@ constexpr rl::box2<I> rl::box2_between(I x1, I y1, I x2, I y2) noexcept
     const auto min_x = rl::min<I>(x1, x2);
     const auto min_y = rl::min<I>(y1, y2);
     const auto max_x = rl::max<I>(x1, x2);
-    const auto max_y - rl::max<I>(y1, y2);
+    const auto max_y = rl::max<I>(y1, y2);
     const auto width = max_x - min_x + 1;
     const auto height = max_y - min_y + 1;
     return

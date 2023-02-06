@@ -23,15 +23,16 @@
 #pragma once
 
 #include <rlm/concepts.hpp>
+#include <rlm/cellular/concepts.hpp>
 
-template <rl::signed_integral I = int>
+template <rl::signed_integral I>
 constexpr bool rl::are_collinear(const rl::point2<I>& point_a, const rl::point2<I>& point_b, const rl::point2<I>& c) noexcept
 {
     return
         rl::orientation_determinant(point_a, point_b, point_c) == 0;
 }
 
-template <rl::signed_integral I = int>
+template <rl::signed_integral I>
 constexpr bool rl::are_collinear(const rl::segment2<I>& segment_a, const rl::segment2<I>& segment_b) noexcept
 {
     return
@@ -45,7 +46,7 @@ constexpr bool rl::are_collinear(const rl::segment2<I>& segment_a, const rl::seg
         );
 }
 
-template <rl::signed_integral I = int>
+template <rl::signed_integral I>
 constexpr bool rl::are_collinear(const rl::segment2<I>& segment, const rl::point2<I>& point) noexcept
 {
     return
@@ -55,7 +56,7 @@ constexpr bool rl::are_collinear(const rl::segment2<I>& segment, const rl::point
         );
 }
 
-template <rl::signed_integral I = int>
+template <rl::signed_integral I>
 constexpr bool rl::are_collinear(const rl::point2<I>& point, const rl::segment2<I>& segment) noexcept
 {
     return
@@ -66,8 +67,8 @@ constexpr bool rl::are_collinear(const rl::point2<I>& point, const rl::segment2<
         );
 }
 
-template <rl::signed_integral I,  rl::point2_or_segment2<I> ... Ss>
-constexpr bool rl::are_collinear(const rl::point2<I>& point_a, const rl::point2<I>& point_b, const rl::point2<I>& point_c, const Ss& shape_n ...) noexcept
+template <typename I,  rl::point2_or_segment2<I> ... Ss>
+constexpr bool rl::are_collinear(const rl::point2<I>& point_a, const rl::point2<I>& point_b, const rl::point2<I>& point_c, const Ss&... shape_n) noexcept
 {
     return
         rl::are_collinear(
@@ -84,8 +85,8 @@ constexpr bool rl::are_collinear(const rl::point2<I>& point_a, const rl::point2<
         );
 }
 
-template <rl::signed_integral I,  rl::point2_or_segment2<I> ... Ss>
-constexpr bool rl::are_collinear(const rl::segment2<I>& segment_a, const rl::segment2<I>& segment_b, const Ss& shape_n ...) noexcept
+template <typename I,  rl::point2_or_segment2<I> ... Ss>
+constexpr bool rl::are_collinear(const rl::segment2<I>& segment_a, const rl::segment2<I>& segment_b, const Ss&... shape_n ) noexcept
 {
     return
         rl::are_collinear(
@@ -98,8 +99,8 @@ constexpr bool rl::are_collinear(const rl::segment2<I>& segment_a, const rl::seg
         );
 }
 
-template <rl::signed_integral I,  rl::point2_or_segment2<I> ... Ss>
-constexpr bool rl::are_collinear(const rl::point2<I>& point, const rl::segment2<I>& segment, const Ss& shape_n ...) noexcept
+template <typename I,  rl::point2_or_segment2<I> ... Ss>
+constexpr bool rl::are_collinear(const rl::point2<I>& point, const rl::segment2<I>& segment, const Ss&... shape_n) noexcept
 {
     return
         rl::are_collinear(
@@ -112,8 +113,8 @@ constexpr bool rl::are_collinear(const rl::point2<I>& point, const rl::segment2<
         );
 }
 
-template <rl::signed_integral I,  rl::point2_or_segment2<I> ... Ss>
-constexpr bool rl::are_collinear(const rl::segment2<I>& segment, const rl::point2<I>& point, const Ss& shape_n ...) noexcept
+template <typename I,  rl::point2_or_segment2<I> ... Ss>
+constexpr bool rl::are_collinear(const rl::segment2<I>& segment, const rl::point2<I>& point, const Ss&... shape_n) noexcept
 {
     return
         rl::are_collinear(

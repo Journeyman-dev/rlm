@@ -22,7 +22,7 @@
 
 #include <catch2/catch_all.hpp>
 #include <rlm/cellular/segment2.hpp>
-#include <rlm/cellular/direction.hpp>
+#include <rlm/cellular/segment2_direction.hpp>
 
 SCENARIO("The direction is gotten from a segment2")
 {

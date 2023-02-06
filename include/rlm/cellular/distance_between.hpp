@@ -22,6 +22,8 @@
 
 #pragma once
 
+#include <rlm/concepts.hpp>
+
 namespace rl
 {
     template<rl::signed_integral I>
@@ -61,7 +63,7 @@ namespace rl
 
     // box2
     template <rl::signed_integral I = int, rl::floating_point F = float>
-    constexpr F distance_between(const rl::box2<I>& box, const rl::point2<I>& box) noexcept;
+    constexpr F distance_between(const rl::box2<I>& box, const rl::point2<I>& point) noexcept;
 
     template <rl::signed_integral I = int, rl::floating_point F = float>
     constexpr F distance_between(const rl::box2<I>& box, const rl::segment2<I>& segment) noexcept;

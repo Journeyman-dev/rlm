@@ -25,6 +25,19 @@
 #include <rlm/concepts.hpp>
 #include <rlm/cellular/point2.hpp>
 #include <rlm/cellular/segment2.hpp>
+#include <rlm/cellular/box2.hpp>
+#include <rlm/cellular/circle2.hpp>
+#include <rlm/cellular/center.hpp>
+#include <rlm/cellular/bounding_box2.hpp>
+#include <rlm/cellular/dot.hpp>
+#include <rlm/cellular/shape_conversion.hpp>
+#include <rlm/clamp.hpp>
+#include <rlm/cellular/are_parallel.hpp>
+#include <rlm/cellular/are_intersecting.hpp>
+#include <rlm/cellular/segment2_direction.hpp>
+#include <rlm/cellular/segment2_formula.hpp>
+#include <rlm/cellular/box2_borders.hpp>
+#include <optional>
 
 // point2
 template <rl::signed_integral I, rl::floating_point F>
@@ -36,32 +49,34 @@ constexpr F rl::distance_between(const rl::point2<I>& point_a, const rl::point2<
 template <rl::signed_integral I, rl::floating_point F>
 constexpr F rl::distance_between(const rl::point2<I>& point, const rl::segment2<I>& segment) noexcept
 {
-    const auto segment_as_point_o = rl::as_point2(segment)
+    const auto segment_as_point_o = rl::as_point2<I>(segment);
     if (segment_as_point_o.has_value())
     {
-        return rl::distance<I, F>(point, segment_as_point_o.value());
+        return rl::distance_between<I, F>(point, segment_as_point_o.value());
     }
     if (
-        rl::dot(
-            rl::translation(segment),
-            rl::start(segment) - point
+        rl::dot<I>(
+            rl::translation<I>(segment),
+            rl::start<I>(segment) - point
         ) < 0
     )
     {
-        return rl::distance_between<I, F>(rl::end(segment), point);
+        return rl::distance_between<I, F>(rl::end<I>(segment), point);
     }
     if (
-        rl::dot(
-            rl::translation(segment),
-            rl::end(segment) - point
+        rl::dot<I>(
+            rl::translation<I>(segment),
+            rl::end<I>(segment) - point
         ) > 0
     )
     {
         return rl::distance_between<I, F>(rl::start(segment), point);
     }
-    const I numerator = std::abs(
-        ((segment.end_x - segment.start_x) * (segment.start_y - point.y)) -
-        ((segment.start_x - point.x) * (segment.end_y - segment.start_y));
+    const I numerator =
+        std::abs(
+            ((segment.end_x - segment.start_x) * (segment.start_y - point.y)) -
+            ((segment.start_x - point.x) * (segment.end_y - segment.start_y))
+        );
     return static_cast<F>(numerator) / rl::length(segment);
 }
 
@@ -70,8 +85,16 @@ constexpr F rl::distance_between(const rl::point2<I>& point, const rl::box2<I>& 
 {
     return rl::magnitude<I, F>(
         rl::point2<I>(
-            rl::clamp(point.x, rl::left_x(box), rl::right_x(box)),
-            rl::clamp(point.y, rl::top_y(box), rl::bottom_y(box))
+            rl::clamp<I>(
+                point.x,
+                rl::left_x<I>(box),
+                rl::right_x<I>(box)
+            ),
+            rl::clamp<I>(
+                point.y, 
+                rl::top_y<I>(box), 
+                rl::bottom_y<I>(box)
+            )
         )
     );
 }
@@ -80,10 +103,10 @@ template <rl::signed_integral I, rl::floating_point F>
 constexpr F rl::distance_between(const rl::point2<I>& point, const rl::circle2<I, F>& circle) noexcept
 {
     return
-        rl::max(
-            rl::distance_between(
+        rl::max<F>(
+            rl::distance_between<I, F>(
                 point,
-                rl::center(circle)
+                rl::center<I, F>(circle)
             ) - circle.radius,
             static_cast<F>(0)
         );
@@ -93,42 +116,44 @@ constexpr F rl::distance_between(const rl::point2<I>& point, const rl::circle2<I
 template <rl::signed_integral I, rl::floating_point F>
 constexpr F rl::distance_between(const rl::segment2<I>& segment, const rl::point2<I>& point) noexcept
 {
-    return rl::distance_between(point, segment);
+    return rl::distance_between<I, F>(point, segment);
 }
 
 template <rl::signed_integral I, rl::floating_point F>
 constexpr F rl::distance_between(const rl::segment2<I>& segment_a, const rl::segment2<I>& segment_b) noexcept
 {
-    if (rl::is_parallel(segment_a, segment_b))
+    if (rl::are_parallel<I>(segment_a, segment_b))
     {
-        if (rl::is_vertical(segment))
+        if (rl::is_vertical<I>(segment_a))
         {
             return std::abs(segment_a.start_x - segment_b.start_x);
         }
         else
         {
-            return rl::abs(
-                rl::y_intercept(segment) - rl::y_intercept(segment_b);
-            )
+            return 
+                std::abs(
+                    rl::y_intercept<I>(segment_a) - 
+                    rl::y_intercept<I>(segment_b)
+                );
         }
     }
     else
     {
-        return rl::min(
-            rl::distance_between(
-                rl::start(segment_a),
+        return rl::min<F>(
+            rl::distance_between<I, F>(
+                rl::start<I>(segment_a),
                 segment_b
             ),
-            rl::distance_between(
-                rl::end(segment_a),
+            rl::distance_between<I, F>(
+                rl::end<I>(segment_a),
                 segment_b
             ),
-            rl::distance_between(
-                rl::start(segment_b),
+            rl::distance_between<I, F>(
+                rl::start<I>(segment_b),
                 segment_a
             ),
-            rl::distance_between(
-                rl::end(segment_b),
+            rl::distance_between<I, F>(
+                rl::end<I>(segment_b),
                 segment_a
             )
         );
@@ -138,36 +163,35 @@ constexpr F rl::distance_between(const rl::segment2<I>& segment_a, const rl::seg
 template <rl::signed_integral I, rl::floating_point F>
 constexpr F rl::distance_between(const rl::segment2<I>& segment, const rl::box2<I>& box) noexcept
 {
-    if (rl::is_intersecting<I>(segment, box))
+    if (rl::are_intersecting<I>(segment, box))
     {
         return static_cast<F>(0);
     }
     return
-        rl::min(
-                rl::distance_between<I, F>(
-                    segment,
-                    rl::left_border(box)
-                ),
-                rl::distance_between<I, F>(
-                    segment,
-                    rl::right_border(box)
-                ),
-                rl::distance_between<I, F>(
-                    segment,
-                    rl::top_border(box)
-                ),
-                rl::distance_between<I, F>(
-                    segment,
-                    rl::bottom_border(box)
-                )
+        rl::min<F>(
+            rl::distance_between<I, F>(
+                segment,
+                rl::left_border<I>(box)
+            ),
+            rl::distance_between<I, F>(
+                segment,
+                rl::right_border<I>(box)
+            ),
+            rl::distance_between<I, F>(
+                segment,
+                rl::top_border<I>(box)
+            ),
+            rl::distance_between<I, F>(
+                segment,
+                rl::bottom_border<I>(box)
             )
-        )
+        );
 }
 
 template <rl::signed_integral I, rl::floating_point F>
 constexpr F rl::distance_between(const rl::segment2<I>& segment, const rl::circle2<I, F>& circle) noexcept
 {
-    if (rl::intersects<I, F>(segment, circle))
+    if (rl::are_intersecting<I, F>(segment, circle))
     {
         return static_cast<F>(0);
     }
@@ -176,8 +200,8 @@ constexpr F rl::distance_between(const rl::segment2<I>& segment, const rl::circl
         segment.start_x + (unit_dot * (segment.end_x - segment.start_x)),
         segment.start_y + (unit_dot * (segment.end_y - segment.start_y))
     );
-    if (!rl::is_containing(segment, closest_segment_point)) return static_cast<F>(0);
-    return rl::distance_between(cpsest_segment_p, circle);
+    if (!rl::is_containing<I>(segment, closest_segment_point)) return static_cast<F>(0);
+    return rl::distance_between<I, F>(closest_segment_point, circle);
 }
 
 // box2
@@ -196,19 +220,19 @@ constexpr F rl::distance_between(const rl::box2<I>& box, const rl::segment2<I>& 
 template <rl::signed_integral I, rl::floating_point F>
 constexpr F rl::distance_between(const rl::box2<I>& box_a, const rl::box2<I>& box_b) noexcept
 {
-    const auto bounds = rl::bounding_box2(box_a, box_b);
-    const auto inner_width = rl::max(bounds.width - box_a.width - box_b.width, 0);
-    const auto inner_height = rl::max(bounds.height - box_a.height - box_b.height, 0);
+    const auto bounds = rl::bounding_box2<I, F>(box_a, box_b);
+    const auto inner_width = rl::max<I>(bounds.width - box_a.width - box_b.width, 0);
+    const auto inner_height = rl::max<I>(bounds.height - box_a.height - box_b.height, 0);
     return std::sqrt(static_cast<F>((inner_width * inner_width) + (inner_height * inner_height)));
 }
 
 template <rl::signed_integral I, rl::floating_point F>
 constexpr F rl::distance_between(const rl::box2<I>& box, const rl::circle2<I, F>& circle) noexcept
 {
-    return rl::max(
-        rl::distance_between(
+    return rl::max<F>(
+        rl::distance_between<I, F>(
             box,
-            rl::center(circle)
+            rl::center<I, F>(circle)
         ) - circle.radius,
         static_cast<F>(0)
     );
@@ -216,31 +240,31 @@ constexpr F rl::distance_between(const rl::box2<I>& box, const rl::circle2<I, F>
 
 // circle2
 template <rl::signed_integral I, rl::floating_point F>
-constexpr F distance_between(const rl::circle2<I, F>& circle, const rl::point2<I>& box) noexcept
+constexpr F rl::distance_between(const rl::circle2<I, F>& circle, const rl::point2<I>& box) noexcept
 {
-    return rl::distance_between(box, circle);
+    return rl::distance_between<I, F>(box, circle);
 }
 
 template <rl::signed_integral I, rl::floating_point F>
-constexpr F distance_between(const rl::circle2<I, F>& circle, const rl::segment2<I>& segment) noexcept
+constexpr F rl::distance_between(const rl::circle2<I, F>& circle, const rl::segment2<I>& segment) noexcept
 {
-    return rl::distance_between(segment, circle);
+    return rl::distance_between<I, F>(segment, circle);
 }
 
 template <rl::signed_integral I, rl::floating_point F>
-constexpr F distance_between(const rl::circle2<I, F>& circle, const rl::box2<I>& box) noexcept
+constexpr F rl::distance_between(const rl::circle2<I, F>& circle, const rl::box2<I>& box) noexcept
 {
-    return rl::distance_between(box, circle);
+    return rl::distance_between<I, F>(box, circle);
 }
 
 template <rl::signed_integral I, rl::floating_point F>
-constexpr F distance_between(const rl::circle2<I, F>& circle_a, const rl::circle2<I, F>& circle_b) noexcept
+constexpr F rl::distance_between(const rl::circle2<I, F>& circle_a, const rl::circle2<I, F>& circle_b) noexcept
 {
     return rl::max<F>(
         rl::distance_between<I, F>(
-            rl::center(circle_a),
-            rl::center(circle_b)
-        ) - (circle_a.radius + circle_b.radius),
+            rl::center<I, F>(circle_a),
+            rl::center<I, F>(circle_b)
+        ) - static_cast<F>(circle_a.radius + circle_b.radius),
         static_cast<F>(0)
     );
 }

@@ -20,42 +20,5 @@
     CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 */
 
-#pragma once
-
-#include <rlm/concepts.hpp>
-#include <rlm/cellular/concepts.hpp>
-
-namespace rl
-{
-    template<rl::signed_integral I>
-    struct point2;
-    template<rl::signed_integral I>
-    struct segment2;
-    template<rl::signed_integral I>
-    struct box2;
-    template<rl::signed_integral I, rl::floating_point F>
-    struct circle2;
-
-    template<rl::signed_integral I = int>
-    constexpr rl::box2<I> bounding_box2(const rl::point2<I>& point) noexcept;
-
-    template<rl::signed_integral I = int>
-    constexpr rl::box2<I> bounding_box2(const rl::segment2<I>& segment) noexcept;
-
-    template<rl::signed_integral I = int>
-    constexpr rl::box2<I> bounding_box2(const rl::box2<I>& box) noexcept;
-
-    template<rl::signed_integral I = int, rl::floating_point F = float>
-    constexpr rl::box2<I> bounding_box2(const rl::circle2<I, F>& circle) noexcept;
-
-    template<
-        typename I = int,
-        typename F = float,
-        rl::cellular_shape<I, F> S,
-        rl::cellular_shape<I, F>... Ss
-    >
-    constexpr rl::box2<I> bounding_box2(const S& a, const Ss&... n) noexcept;
-}
-
-#include <rlm/cellular/detail/bounds.inl>
-
+#include <catch2/catch_all.hpp>
+#include <rlm/cellular/are_collinear.hpp>

@@ -33,7 +33,7 @@
 #include <rlm/cellular/shape_points.hpp>
 #include <rlm/cellular/edges.hpp>
 #include <rlm/cellular/box2_between.hpp>
-#include <rlm/cellular/direction.hpp>
+#include <rlm/cellular/segment2_direction.hpp>
 #include <rlm/min.hpp>
 #include <rlm/max.hpp>
 #include <optional>
@@ -41,7 +41,7 @@
 template<rl::signed_integral I>
 constexpr std::optional<rl::box2<I>> rl::crop(const rl::point2<I>& point, const rl::box2<I>& crop_box) noexcept
 {
-    if (!std::is_containing(crop_box, point))
+    if (!rl::is_containing<I>(crop_box, point))
     {
         return std::nullopt;
     }
@@ -51,40 +51,40 @@ constexpr std::optional<rl::box2<I>> rl::crop(const rl::point2<I>& point, const 
 template<rl::signed_integral I>
 constexpr std::optional<rl::segment2<I>> rl::crop(const rl::segment2<I>& segment, const rl::box2<I>& crop_box) noexcept
 {
-    if (!std::is_containing(crop_box, segment))
+    if (!rl::is_containing<I>(crop_box, segment))
     {
         return std::nullopt;
     }
     auto result =
         rl::segment2<I>(
-            rl::max(rl::left_x(segment), rl::left_x(crop_box)),
-            rl::max(rl::top_y(segment), rl::top_y(crop_box)),
-            rl::min(rl::right_x(segment), rl::right_x(crop_box)),
-            rl::min(rl::bottom_y(segment), rl::bottom_y(crop_box))
+            rl::max<I>(rl::left_x<I>(segment), rl::left_x<I>(crop_box)),
+            rl::max<I>(rl::top_y<I>(segment), rl::top_y<I>(crop_box)),
+            rl::min<I>(rl::right_x<I>(segment), rl::right_x<I>(crop_box)),
+            rl::min<I>(rl::bottom_y<I>(segment), rl::bottom_y<I>(crop_box))
         );
     if (
-        rl::goes_left(segment) != rl::goes_left(result) ||
-        rl::goes_up(segment) != rl::goes_up(result)
+        rl::goes_left<I>(segment) != rl::goes_left<I>(result) ||
+        rl::goes_up<I>(segment) != rl::goes_up<I>(result)
     )
     {
-        result = rl::reverse(result);
+        result = rl::reverse<I>(result);
     }
     return result;
 }
 
-template<rl::signed_integral I = int>
+template<rl::signed_integral I>
 constexpr std::optional<rl::box2<I>> rl::crop(const rl::box2<I>& box, const rl::box2<I>& crop_box) noexcept
 {
-    if (!is_containing(crop_box, box))
+    if (!rl::is_containing<I>(crop_box, box))
     {
         return std::nullopt;
     }
     return
         rl::box2_between<I>(
-            rl::max(rl::left_x(box), rl::left_x(crop_box)),
-            rl::max(rl::top_y(box), rl::top_y(crop_box)),
-            rl::min(rl::right_x(box), rl::right_x(crop_box)),
-            rl::min(rl::bottom_y(box), rl::bottom_y(crop_box))
+            rl::max<I>(rl::left_x<I>(box), rl::left_x<I>(crop_box)),
+            rl::max<I>(rl::top_y<I>(box), rl::top_y<I>(crop_box)),
+            rl::min<I>(rl::right_x<I>(box), rl::right_x<I>(crop_box)),
+            rl::min<I>(rl::bottom_y<I>(box), rl::bottom_y<I>(crop_box))
         );
 }
 

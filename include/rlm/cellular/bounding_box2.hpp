@@ -23,6 +23,7 @@
 #pragma once
 
 #include <rlm/concepts.hpp>
+#include <rlm/cellular/concepts.hpp>
 
 namespace rl
 {
@@ -35,19 +36,26 @@ namespace rl
     template<rl::signed_integral I, rl::floating_point F>
     struct circle2;
 
-    template<rl::signed_integral Ia, rl::signed_integral Ib>
-    constexpr rl::point2<Ia> struct_cast(const rl::point2<Ib>& point) noexcept;
+    template<rl::signed_integral I = int>
+    constexpr rl::box2<I> bounding_box2(const rl::point2<I>& point) noexcept;
 
-    template<rl::signed_integral Ia, rl::signed_integral Ib>
-    constexpr rl::segment2<Ia> struct_cast(const rl::segment2<Ib>& segment) noexcept;
+    template<rl::signed_integral I = int>
+    constexpr rl::box2<I> bounding_box2(const rl::segment2<I>& segment) noexcept;
 
-    template<rl::signed_integral Ia, rl::signed_integral Ib>
-    constexpr rl::box2<Ia> struct_cast(const rl::box2<Ib>& box) noexcept;
+    template<rl::signed_integral I = int>
+    constexpr rl::box2<I> bounding_box2(const rl::box2<I>& box) noexcept;
 
-    template<rl::signed_integral Ia, rl::floating_point Fa, rl::signed_integral Ib, rl::floating_point Fb>
-    constexpr rl::circle2<Ia, Fa> struct_cast(const rl::circle2<Ib, Fb>& circle) noexcept;
+    template<rl::signed_integral I = int, rl::floating_point F = float>
+    constexpr rl::box2<I> bounding_box2(const rl::circle2<I, F>& circle) noexcept;
+
+    template<
+        typename I = int,
+        typename F = float,
+        rl::cellular_shape<I, F> S,
+        rl::cellular_shape<I, F>... Ss
+    >
+    constexpr rl::box2<I> bounding_box2(const S& a, const Ss&... n) noexcept;
 }
 
-#include <rlm/cellular/detail/struct_cast.inl>
-
+#include <rlm/cellular/detail/bounding_box2.inl>
 

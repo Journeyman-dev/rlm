@@ -64,7 +64,7 @@ namespace rl
 
     // box2
     template <rl::signed_integral I = int>
-    constexpr bool is_containing(const rl::box2<I>& containing_box, const rl::point2<I>& contained_box) noexcept;
+    constexpr bool is_containing(const rl::box2<I>& containing_box, const rl::point2<I>& contained_point) noexcept;
 
     template <rl::signed_integral I = int>
     constexpr bool is_containing(const rl::box2<I>& containing_box, const rl::segment2<I>& contained_segment) noexcept;
@@ -95,7 +95,7 @@ namespace rl
         rl::cellular_shape<I, F> Sb,
         rl::cellular_shape<I, F>... Ss
     >
-    constexpr rl::box2<I> is_containing(const Sa& containing_shape, const Sb& contained_shape_a const Ss&... contained_shape_n) noexcept;
+    constexpr rl::box2<I> is_containing(const Sa& containing_shape, const Sb& contained_shape_a, const Ss&... contained_shape_n) noexcept;
 }  // namespace rl
 
 #include <rlm/cellular/detail/is_containing.inl>

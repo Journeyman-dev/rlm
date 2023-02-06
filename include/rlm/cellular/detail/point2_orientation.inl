@@ -24,6 +24,7 @@
 
 #include <rlm/concepts.hpp>
 #include <rlm/position_orientation.hpp>
+#include <rlm/cellular/point2.hpp>
 
 template <rl::signed_integral I>
 constexpr I rl::orientation_determinant(
@@ -39,6 +40,7 @@ constexpr I rl::orientation_determinant(
         (point_c.y - point_b.y);
 }
 
+template <rl::signed_integral I>
 constexpr rl::PositionOrientation rl::orientation_between(
     const rl::point2<I>& point_a,
     const rl::point2<I>& point_b,

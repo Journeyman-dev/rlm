@@ -21,10 +21,10 @@
 */
 
 #include <catch2/catch_all.hpp>
-#include <rlm/cellular/borders.hpp>
+#include <rlm/cellular/box2_borders.hpp>
 #include <rlm/cellular/ostream.hpp>
 
-SCENARIO("The borders are gotten from a box2")
+SCENARIO("The borders are gotten from a box2 with trimmed corners")
 {
     GIVEN("A box2 with a width and height greater than one")
     {
@@ -32,37 +32,37 @@ SCENARIO("The borders are gotten from a box2")
         WHEN("The left border is gotten from the box in clockwise direction")
         {
             const auto clockwise_corner_o =
-                rl::left_border(
+                rl::left_border_trimmed(
                     box,
                     rl::BorderCorners::Clockwise,
                     rl::RotationMotion::Clockwise
                 );
             const auto counter_clockwise_corner_o =
-                rl::left_border(
+                rl::left_border_trimmed(
                     box,
                     rl::BorderCorners::CounterClockwise,
                     rl::RotationMotion::Clockwise
                 );
             const auto left_corner_o =
-                rl::left_border(
+                rl::left_border_trimmed(
                     box,
                     rl::BorderCorners::Left,
                     rl::RotationMotion::Clockwise
                 );
             const auto right_corner_o =
-                rl::left_border(
+                rl::left_border_trimmed(
                     box,
                     rl::BorderCorners::Right,
                     rl::RotationMotion::Clockwise
                 );
             const auto top_corner_o =
-                rl::left_border(
+                rl::left_border_trimmed(
                     box,
                     rl::BorderCorners::Top,
                     rl::RotationMotion::Clockwise
                 );
             const auto bottom_corner_o =
-                rl::left_border(
+                rl::left_border_trimmed(
                     box,
                     rl::BorderCorners::Top,
                     rl::RotationMotion::Clockwise
@@ -101,37 +101,37 @@ SCENARIO("The borders are gotten from a box2")
         WHEN("The left border is gotten from the box in counter clockwise direction")
         {
             const auto clockwise_corner_o =
-                rl::left_border(
+                rl::left_border_trimmed(
                     box,
                     rl::BorderCorners::Clockwise,
                     rl::RotationMotion::CounterClockwise
                 );
             const auto counter_clockwise_corner_o =
-                rl::left_border(
+                rl::left_border_trimmed(
                     box,
                     rl::BorderCorners::CounterClockwise,
                     rl::RotationMotion::CounterClockwise
                 );
             const auto left_corner_o =
-                rl::left_border(
+                rl::left_border_trimmed(
                     box,
                     rl::BorderCorners::Left,
                     rl::RotationMotion::CounterClockwise
                 );
             const auto right_corner_o =
-                rl::left_border(
+                rl::left_border_trimmed(
                     box,
                     rl::BorderCorners::Right,
                     rl::RotationMotion::CounterClockwise
                 );
             const auto top_corner_o =
-                rl::left_border(
+                rl::left_border_trimmed(
                     box,
                     rl::BorderCorners::Top,
                     rl::RotationMotion::CounterClockwise
                 );
             const auto bottom_corner_o =
-                rl::left_border(
+                rl::left_border_trimmed(
                     box,
                     rl::BorderCorners::Top,
                     rl::RotationMotion::CounterClockwise
@@ -170,37 +170,37 @@ SCENARIO("The borders are gotten from a box2")
         WHEN("The right border is gotten from the box in clockwise direction")
         {
             const auto clockwise_corner_o =
-                rl::right_border(
+                rl::right_border_trimmed(
                     box,
                     rl::BorderCorners::Clockwise,
                     rl::RotationMotion::Clockwise
                 );
             const auto counter_clockwise_corner_o =
-                rl::right_border(
+                rl::right_border_trimmed(
                     box,
                     rl::BorderCorners::CounterClockwise,
                     rl::RotationMotion::Clockwise
                 );
             const auto left_corner_o =
-                rl::right_border(
+                rl::right_border_trimmed(
                     box,
                     rl::BorderCorners::Left,
                     rl::RotationMotion::Clockwise
                 );
             const auto right_corner_o =
-                rl::right_border(
+                rl::right_border_trimmed(
                     box,
                     rl::BorderCorners::Right,
                     rl::RotationMotion::Clockwise
                 );
             const auto top_corner_o =
-                rl::right_border(
+                rl::right_border_trimmed(
                     box,
                     rl::BorderCorners::Top,
                     rl::RotationMotion::Clockwise
                 );
             const auto bottom_corner_o =
-                rl::right_border(
+                rl::right_border_trimmed(
                     box,
                     rl::BorderCorners::Top,
                     rl::RotationMotion::Clockwise
@@ -239,37 +239,37 @@ SCENARIO("The borders are gotten from a box2")
         WHEN("The right border is gotten from the box in counter clockwise direction")
         {
             const auto clockwise_corner_o =
-                rl::right_border(
+                rl::right_border_trimmed(
                     box,
                     rl::BorderCorners::Clockwise,
                     rl::RotationMotion::CounterClockwise
                 );
             const auto counter_clockwise_corner_o =
-                rl::right_border(
+                rl::right_border_trimmed(
                     box,
                     rl::BorderCorners::CounterClockwise,
                     rl::RotationMotion::CounterClockwise
                 );
             const auto left_corner_o =
-                rl::right_border(
+                rl::right_border_trimmed(
                     box,
                     rl::BorderCorners::Left,
                     rl::RotationMotion::CounterClockwise
                 );
             const auto right_corner_o =
-                rl::right_border(
+                rl::right_border_trimmed(
                     box,
                     rl::BorderCorners::Right,
                     rl::RotationMotion::CounterClockwise
                 );
             const auto top_corner_o =
-                rl::right_border(
+                rl::right_border_trimmed(
                     box,
                     rl::BorderCorners::Top,
                     rl::RotationMotion::CounterClockwise
                 );
             const auto bottom_corner_o =
-                rl::right_border(
+                rl::right_border_trimmed(
                     box,
                     rl::BorderCorners::Top,
                     rl::RotationMotion::CounterClockwise
@@ -308,37 +308,37 @@ SCENARIO("The borders are gotten from a box2")
         WHEN("The top border is gotten from the box in clockwise direction")
         {
             const auto clockwise_corner_o =
-                rl::top_border(
+                rl::top_border_trimmed(
                     box,
                     rl::BorderCorners::Clockwise,
                     rl::RotationMotion::Clockwise
                 );
             const auto counter_clockwise_corner_o =
-                rl::top_border(
+                rl::top_border_trimmed(
                     box,
                     rl::BorderCorners::CounterClockwise,
                     rl::RotationMotion::Clockwise
                 );
             const auto left_corner_o =
-                rl::top_border(
+                rl::top_border_trimmed(
                     box,
                     rl::BorderCorners::Left,
                     rl::RotationMotion::Clockwise
                 );
             const auto right_corner_o =
-                rl::top_border(
+                rl::top_border_trimmed(
                     box,
                     rl::BorderCorners::Right,
                     rl::RotationMotion::Clockwise
                 );
             const auto top_corner_o =
-                rl::top_border(
+                rl::top_border_trimmed(
                     box,
                     rl::BorderCorners::Top,
                     rl::RotationMotion::Clockwise
                 );
             const auto bottom_corner_o =
-                rl::top_border(
+                rl::top_border_trimmed(
                     box,
                     rl::BorderCorners::Top,
                     rl::RotationMotion::Clockwise
@@ -377,37 +377,37 @@ SCENARIO("The borders are gotten from a box2")
         WHEN("The top border is gotten from the box in counter clockwise direction")
         {
             const auto clockwise_corner_o =
-                rl::top_border(
+                rl::top_border_trimmed(
                     box,
                     rl::BorderCorners::Clockwise,
                     rl::RotationMotion::CounterClockwise
                 );
             const auto counter_clockwise_corner_o =
-                rl::top_border(
+                rl::top_border_trimmed(
                     box,
                     rl::BorderCorners::CounterClockwise,
                     rl::RotationMotion::CounterClockwise
                 );
             const auto left_corner_o =
-                rl::top_border(
+                rl::top_border_trimmed(
                     box,
                     rl::BorderCorners::Left,
                     rl::RotationMotion::CounterClockwise
                 );
             const auto right_corner_o =
-                rl::top_border(
+                rl::top_border_trimmed(
                     box,
                     rl::BorderCorners::Right,
                     rl::RotationMotion::CounterClockwise
                 );
             const auto top_corner_o =
-                rl::top_border(
+                rl::top_border_trimmed(
                     box,
                     rl::BorderCorners::Top,
                     rl::RotationMotion::CounterClockwise
                 );
             const auto bottom_corner_o =
-                rl::top_border(
+                rl::top_border_trimmed(
                     box,
                     rl::BorderCorners::Top,
                     rl::RotationMotion::CounterClockwise
@@ -446,37 +446,37 @@ SCENARIO("The borders are gotten from a box2")
         WHEN("The bottom border is gotten from the box in clockwise direction")
         {
             const auto clockwise_corner_o =
-                rl::bottom_border(
+                rl::bottom_border_trimmed(
                     box,
                     rl::BorderCorners::Clockwise,
                     rl::RotationMotion::Clockwise
                 );
             const auto counter_clockwise_corner_o =
-                rl::bottom_border(
+                rl::bottom_border_trimmed(
                     box,
                     rl::BorderCorners::CounterClockwise,
                     rl::RotationMotion::Clockwise
                 );
             const auto left_corner_o =
-                rl::bottom_border(
+                rl::bottom_border_trimmed(
                     box,
                     rl::BorderCorners::Left,
                     rl::RotationMotion::Clockwise
                 );
             const auto right_corner_o =
-                rl::bottom_border(
+                rl::bottom_border_trimmed(
                     box,
                     rl::BorderCorners::Right,
                     rl::RotationMotion::Clockwise
                 );
             const auto top_corner_o =
-                rl::bottom_border(
+                rl::bottom_border_trimmed(
                     box,
                     rl::BorderCorners::Top,
                     rl::RotationMotion::Clockwise
                 );
             const auto bottom_corner_o =
-                rl::bottom_border(
+                rl::bottom_border_trimmed(
                     box,
                     rl::BorderCorners::Top,
                     rl::RotationMotion::Clockwise
@@ -515,37 +515,37 @@ SCENARIO("The borders are gotten from a box2")
         WHEN("The bottom border is gotten from the box in counter clockwise direction")
         {
             const auto clockwise_corner_o =
-                rl::bottom_border(
+                rl::bottom_border_trimmed(
                     box,
                     rl::BorderCorners::Clockwise,
                     rl::RotationMotion::CounterClockwise
                 );
             const auto counter_clockwise_corner_o =
-                rl::bottom_border(
+                rl::bottom_border_trimmed(
                     box,
                     rl::BorderCorners::CounterClockwise,
                     rl::RotationMotion::CounterClockwise
                 );
             const auto left_corner_o =
-                rl::bottom_border(
+                rl::bottom_border_trimmed(
                     box,
                     rl::BorderCorners::Left,
                     rl::RotationMotion::CounterClockwise
                 );
             const auto right_corner_o =
-                rl::bottom_border(
+                rl::bottom_border_trimmed(
                     box,
                     rl::BorderCorners::Right,
                     rl::RotationMotion::CounterClockwise
                 );
             const auto top_corner_o =
-                rl::bottom_border(
+                rl::bottom_border_trimmed(
                     box,
                     rl::BorderCorners::Top,
                     rl::RotationMotion::CounterClockwise
                 );
             const auto bottom_corner_o =
-                rl::bottom_border(
+                rl::bottom_border_trimmed(
                     box,
                     rl::BorderCorners::Top,
                     rl::RotationMotion::CounterClockwise
@@ -587,10 +587,10 @@ SCENARIO("The borders are gotten from a box2")
         const rl::box2 box(0, 0, 1, 4);
         WHEN("The borders are gotten from the box2 with no corners")
         {
-            const auto left = rl::left_border(box, rl::BorderCorners::None);
-            const auto right = rl::right_border(box, rl::BorderCorners::None);
-            const auto top = rl::top_border(box, rl::BorderCorners::None);
-            const auto bottom = rl::bottom_border(box, rl::BorderCorners::None);
+            const auto left = rl::left_border_trimmed(box, rl::BorderCorners::None);
+            const auto right = rl::right_border_trimmed(box, rl::BorderCorners::None);
+            const auto top = rl::top_border_trimmed(box, rl::BorderCorners::None);
+            const auto bottom = rl::bottom_border_trimmed(box, rl::BorderCorners::None);
             THEN("There only horizontal borders")
             {
                 CHECK(left.has_value());
@@ -605,10 +605,10 @@ SCENARIO("The borders are gotten from a box2")
         const rl::box2 box(0, 0, 4, 1);
         WHEN("The borders are gotten from the box2 with no corners")
         {
-            const auto left = rl::left_border(box, rl::BorderCorners::None);
-            const auto right = rl::right_border(box, rl::BorderCorners::None);
-            const auto top = rl::top_border(box, rl::BorderCorners::None);
-            const auto bottom = rl::bottom_border(box, rl::BorderCorners::None);
+            const auto left = rl::left_border_trimmed(box, rl::BorderCorners::None);
+            const auto right = rl::right_border_trimmed(box, rl::BorderCorners::None);
+            const auto top = rl::top_border_trimmed(box, rl::BorderCorners::None);
+            const auto bottom = rl::bottom_border_trimmed(box, rl::BorderCorners::None);
             THEN("There only vertical borders")
             {
                 CHECK_FALSE(left.has_value());

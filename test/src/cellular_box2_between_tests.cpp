@@ -20,34 +20,5 @@
     CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 */
 
-#pragma once
-
-#include <rlm/concepts.hpp>
-
-namespace rl
-{
-    template<rl::signed_integral I>
-    struct point2;
-    template<rl::signed_integral I>
-    struct segment2;
-    template<rl::signed_integral I>
-    struct box2;
-    template<rl::signed_integral I, rl::floating_point F>
-    struct circle2;
-
-    template<rl::signed_integral Ia, rl::signed_integral Ib>
-    constexpr rl::point2<Ia> struct_cast(const rl::point2<Ib>& point) noexcept;
-
-    template<rl::signed_integral Ia, rl::signed_integral Ib>
-    constexpr rl::segment2<Ia> struct_cast(const rl::segment2<Ib>& segment) noexcept;
-
-    template<rl::signed_integral Ia, rl::signed_integral Ib>
-    constexpr rl::box2<Ia> struct_cast(const rl::box2<Ib>& box) noexcept;
-
-    template<rl::signed_integral Ia, rl::floating_point Fa, rl::signed_integral Ib, rl::floating_point Fb>
-    constexpr rl::circle2<Ia, Fa> struct_cast(const rl::circle2<Ib, Fb>& circle) noexcept;
-}
-
-#include <rlm/cellular/detail/struct_cast.inl>
-
-
+#include <catch2/catch_all.hpp>
+#include <rlm/cellular/box2_between.hpp>

@@ -21,7 +21,7 @@
 */
 
 #include <catch2/catch_all.hpp>
-#include <rlm/cellular/bounds.hpp>
+#include <rlm/cellular/bounding_box2.hpp>
 #include <rlm/cellular/ostream.hpp>
 
 SCENARIO("Get the bounding box2 of cell shapes")

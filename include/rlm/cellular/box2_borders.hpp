@@ -87,5 +87,5 @@ namespace rl
     ) noexcept;
 }
 
-#include <rlm/cellular/detail/borders.inl>
+#include <rlm/cellular/detail/box2_borders.inl>
 

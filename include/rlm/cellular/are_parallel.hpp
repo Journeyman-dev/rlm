@@ -23,6 +23,7 @@
 #pragma once
 
 #include <rlm/concepts.hpp>
+#include <rlm/cellular/concepts.hpp>
 
 namespace rl
 {
@@ -32,8 +33,8 @@ namespace rl
     template <rl::signed_integral I = int>
     constexpr bool are_parallel(const rl::segment2<I>& segment_a, const rl::segment2<I>& segment_b) noexcept;
 
-    template <rl::signed_integral<I>, int, rl::segment2<I>... SGs>
-    constexpr auto are_parallel(const rl::segment2<I>& segment_a, const rl::segment2<I>& segment_b, const SGs... segment_n);
+    template <typename I = int, rl::is_any_of<rl::segment2<I>>... SGs>
+    constexpr bool are_parallel(const rl::segment2<I>& segment_a, const rl::segment2<I>& segment_b, const SGs&... segment_n) noexcept;
 }  // namespace rl
 
 #include <rlm/cellular/detail/are_parallel.inl>

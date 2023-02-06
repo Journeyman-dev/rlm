@@ -23,18 +23,27 @@
 #pragma once
 
 #include <rlm/concepts.hpp>
+#include <rlm/cellular/concepts.hpp>
 #include <rlm/cellular/cross.hpp>
 #include <rlm/cellular/segment2.hpp>
 
 template <rl::signed_integral I>
 constexpr bool rl::are_parallel(const rl::segment2<I>& segment_a, const rl::segment2<I>& segment_b) noexcept
 {
-    return rl::cross_z(a, b) == 0;
+    return rl::cross_z<I>(segment_a, segment_b) == 0;
 }
 
-template <rl::signed_integral<I>, int, rl::segment2<I>... SGs>
-constexpr auto rl::are_parallel(const rl::segment2<I>& segment_a, const rl::segment2<I>& segment_b, const SGs... segment_n)
+template <typename I, rl::is_any_of<rl::segment2<I>>... SGs>
+constexpr bool rl::are_parallel(const rl::segment2<I>& segment_a, const rl::segment2<I>& segment_b, const SGs&... segment_n) noexcept
 {
-    return rl::are_parallel(segment_a, rl::are_parallel(segment_b, segment_n));
+    return
+        rl::are_parallel<I>(
+            segment_a,
+            segment_b
+        ) &&
+        rl::are_parallel<I>(
+            segment_b,
+            segment_n...
+        );
 }
 

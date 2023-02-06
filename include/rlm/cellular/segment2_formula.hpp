@@ -39,6 +39,6 @@ namespace rl
     constexpr I x_intercept(const rl::segment2<I>& segment) noexcept;
 }
 
-#include <rlm/cellular/detail/segment2_formula.hpp>
+#include <rlm/cellular/detail/segment2_formula.inl>
 
 

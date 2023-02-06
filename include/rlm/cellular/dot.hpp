@@ -30,28 +30,28 @@ namespace rl
     template <rl::signed_integral I> struct segment2;
 
     template <rl::signed_integral I = int>
-    constexpr auto dot(const rl::point2<I>& a, const point2<I>& b) noexcept;
+    constexpr I dot(const rl::point2<I>& a, const point2<I>& b) noexcept;
 
     template <rl::signed_integral I = int, rl::floating_point F = float>
-    constexpr auto unit_dot(const rl::point2<I>& a, const point2<I>& b) noexcept;
+    constexpr F unit_dot(const rl::point2<I>& a, const point2<I>& b) noexcept;
 
     template <rl::signed_integral I = int>
-    constexpr auto dot(const rl::point2<I>& a, const segment2<I>& b) noexcept;
+    constexpr I dot(const rl::point2<I>& a, const segment2<I>& b) noexcept;
 
     template <rl::signed_integral I = int, rl::floating_point F = float>
-    constexpr auto unit_dot(const rl::point2<I>& a, const segment2<I>& b) noexcept;
+    constexpr F unit_dot(const rl::point2<I>& a, const segment2<I>& b) noexcept;
 
     template <rl::signed_integral I = int>
-    constexpr auto dot(const rl::segment2<I>& a, const point2<I>& b) noexcept;
+    constexpr I dot(const rl::segment2<I>& a, const point2<I>& b) noexcept;
 
     template <rl::signed_integral I = int, rl::floating_point F = float>
-    constexpr auto unit_dot(const rl::segment2<I>& a, const point2<I>& b) noexcept;
+    constexpr F unit_dot(const rl::segment2<I>& a, const point2<I>& b) noexcept;
 
     template <rl::signed_integral I = int>
-    constexpr auto dot(const rl::segment2<I>& a, const segment2<I>& b) noexcept;
+    constexpr I dot(const rl::segment2<I>& a, const segment2<I>& b) noexcept;
 
     template <rl::signed_integral I = int, rl::floating_point F = float>
-    constexpr auto unit_dot(const rl::segment2<I>& a, const rl::segment2<I>& b) noexcept;
+    constexpr F unit_dot(const rl::segment2<I>& a, const rl::segment2<I>& b) noexcept;
 }  // namespace rl
 
 #include <rlm/cellular/detail/dot.inl>

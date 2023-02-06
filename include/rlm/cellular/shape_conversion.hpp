@@ -36,52 +36,52 @@ namespace rl
     template<rl::signed_integral I, rl::floating_point F>
     struct circle2;
 
-    template<rl::signed_integral I>
+    template<rl::signed_integral I = int>
     constexpr bool is_point2(const rl::segment2<I>& segment) noexcept;
 
-    template<rl::signed_integral I>
+    template<rl::signed_integral I = int>
     constexpr bool is_point2(const rl::box2<I>& box) noexcept;
 
-    template<rl::signed_integral I, rl::floating_point>
+    template<rl::signed_integral I = int, rl::floating_point F = float>
     constexpr bool is_point2(const rl::circle2<I, F>& circle) noexcept;
 
-    template<rl::signed_integral I>
+    template<rl::signed_integral I = int>
     constexpr std::optional<rl::point2<I>> as_point2(const rl::segment2<I>& segment) noexcept;
 
-    template<rl::signed_integral I>
+    template<rl::signed_integral I = int>
     constexpr std::optional<rl::point2<I>> as_point2(const rl::box2<I>& box) noexcept;
 
-    template<rl::signed_integral I, rl::floating_point>
+    template<rl::signed_integral I = int, rl::floating_point F = float>
     constexpr std::optional<rl::point2<I>> as_point2(const rl::circle2<I, F>& circle) noexcept;
 
-    template<rl::signed_integral I>
+    template<rl::signed_integral I = int>
     constexpr bool is_segment2(const rl::box2<I>& box) noexcept;
 
-    template<rl::signed_integral I, rl::floating_point>
+    template<rl::signed_integral I = int, rl::floating_point F = float>
     constexpr bool is_segment2(const rl::circle2<I, F>& circle) noexcept;
 
-    template<rl::signed_integral I>
+    template<rl::signed_integral I = int>
     constexpr rl::segment2<I> as_segment2(const rl::point2<I>& point) noexcept;
 
-    template<rl::signed_integral I>
+    template<rl::signed_integral I = int>
     constexpr std::optional<rl::segment2<I>> as_segment2(const rl::box2<I>& box) noexcept;
 
-    template<rl::signed_integral I, rl::floating_point>
+    template<rl::signed_integral I = int, rl::floating_point F = float>
     constexpr std::optional<rl::segment2<I>> as_segment2(const rl::circle2<I, F>& circle) noexcept;
 
-    template<rl::signed_integral I>
+    template<rl::signed_integral I = int>
     constexpr bool is_box2(const rl::segment2<I>& segment) noexcept;
 
-    template<rl::signed_integral I, rl::floating_point>
+    template<rl::signed_integral I = int, rl::floating_point F = float>
     constexpr bool is_box2(const rl::circle2<I, F>& circle) noexcept;
 
-    template<rl::signed_integral I>
+    template<rl::signed_integral I = int>
     constexpr std::optional<rl::box2<I>> as_box2(const rl::point2<I>& point) noexcept;
 
-    template<rl::signed_integral I>
+    template<rl::signed_integral I = int>
     constexpr std::optional<rl::box2<I>> as_box2(const rl::segment2<I>& segment) noexcept;
 
-    template<rl::signed_integral I, rl::floating_point>
+    template<rl::signed_integral I = int, rl::floating_point F = float>
     constexpr std::optional<rl::box2<I>> as_box2(const rl::circle2<I, F>& circle) noexcept;
 }
 

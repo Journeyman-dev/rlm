@@ -28,7 +28,7 @@
 #include <rlm/cellular/magnitude.hpp>
 #include <cmath>
 
-template<rl::signed_integral I>
+template<rl::signed_integral I, rl::floating_point F>
 constexpr F rl::length(const rl::segment2<I>& segment) noexcept
 {
     const auto translation = rl::translation<I, F>(segment);
@@ -46,7 +46,7 @@ constexpr I rl::cell_length(const rl::segment2<I>& segment) noexcept
 }
 
 template<rl::signed_integral I>
-constexpr I rl::width(cosnt rl::segment2<I>& segment) noexcept
+constexpr I rl::width(const rl::segment2<I>& segment) noexcept
 {
     return
         std::abs(

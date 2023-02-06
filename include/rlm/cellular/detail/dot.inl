@@ -26,33 +26,54 @@
 #include <rlm/cellular/point2.hpp>
 #include <rlm/cellular/segment2.hpp>
 #include <rlm/cellular/translation.hpp>
+#include <rlm/cellular/distance_between.hpp>
 
 template <rl::signed_integral I>
-constexpr auto rl::dot(const rl::point2<I>& a, const point2<I>& b) noexcept
+constexpr I rl::dot(const rl::point2<I>& a, const point2<I>& b) noexcept
 {
-    return (a.x * b.x) + (a.y * b.y);
+    return
+        (a.x * b.x) +
+        (a.y * b.y);
 }
 
 template <rl::signed_integral I, rl::floating_point F>
-constexpr auto rl::unit_dot(const rl::point2<I>& a, const point2<I>& b) noexcept
+constexpr F rl::unit_dot(const rl::point2<I>& a, const point2<I>& b) noexcept
 {
-    const auto distance = rl::distance<F>(a, b);
-    if (distance == static_cast<F>(0)) return static_cast<F>(0);
-    return static_cast<F>(rl::dot<I>(a, b)) / (distance * distance);
+    const auto distance = rl::distance_between<I, F>(a, b);
+    if (distance == static_cast<F>(0))
+    {
+        return static_cast<F>(0);
+    }
+    return
+        static_cast<F>(rl::dot<I>(a, b)) /
+        (distance * distance);
 }
 
 template <rl::signed_integral I>
-constexpr auto rl::dot(const rl::point2<I>& a, const segment2<I>& b) noexcept
+constexpr I rl::dot(const rl::point2<I>& a, const segment2<I>& b) noexcept
 {
-    return ((a.x - b.start_x) * (b.end_x - b.start_x)) + ((a.y - b.start_y) * (b.end_y - b.start_y));
+    return
+        (
+            (a.x - b.start_x) *
+            (b.end_x - b.start_x)
+        ) +
+        (
+            (a.y - b.start_y) *
+            (b.end_y - b.start_y)
+        );
 }
 
 template <rl::signed_integral I, rl::floating_point F>
-constexpr auto rl::unit_dot(const rl::point2<I>& a, const segment2<I>& b) noexcept
+constexpr F rl::unit_dot(const rl::point2<I>& a, const segment2<I>& b) noexcept
 {
-    const auto distance = rl::distance<F>(a, b);
-    if (distance == static_cast<F>(0)) return static_cast<F>(0);
-    return static_cast<F>(rl::dot(a, b)) / (distance * distance);
+    const auto distance = rl::distance_between<I, F>(a, b);
+    if (distance == static_cast<F>(0))
+    {
+        return static_cast<F>(0);
+    }
+    return
+        static_cast<F>(rl::dot(a, b)) /
+        (distance * distance);
 }
 
 template <rl::signed_integral I>

@@ -36,11 +36,11 @@ namespace rl
     constexpr I cell_length(const rl::segment2<I>& segment) noexcept;
 
     template<rl::signed_integral I = int>
-    constexpr I width(cosnt rl::segment2<I>& segment) noexcept;
+    constexpr I width(const rl::segment2<I>& segment) noexcept;
 
     template<rl::signed_integral I = int>
     constexpr I height(const rl::segment2<I>& segment) noexcept;
 }
 
-#include <rlm/cellular/detail/segment2_size.hpp>
+#include <rlm/cellular/detail/segment2_size.inl>
 

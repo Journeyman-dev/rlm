@@ -23,6 +23,7 @@
 #pragma once
 
 #include <rlm/concepts.hpp>
+#include <rlm/cellular/concepts.hpp>
 
 namespace rl
 {
@@ -43,17 +44,17 @@ namespace rl
     template <rl::signed_integral I = int>
     constexpr bool are_collinear(const rl::point2<I>& point, const rl::segment2<I>& segment) noexcept;
 
-    template <rl::signed_integral I,  rl::point2_or_segment2<I> ... Ss>
-    constexpr bool are_collinear(const rl::point2<I>& point_a, const rl::point2<I>& point_b, const rl::point2<I>& point_c, const Ss& shape_n ...) noexcept;
+    template <typename I = int,  rl::point2_or_segment2<I> ... Ss>
+    constexpr bool are_collinear(const rl::point2<I>& point_a, const rl::point2<I>& point_b, const rl::point2<I>& point_c, const Ss&... shape_n) noexcept;
 
-    template <rl::signed_integral I,  rl::point2_or_segment2<I> ... Ss>
-    constexpr bool are_collinear(const rl::segment2<I>& segment_a, const rl::segment2<I>& segment_b, const Ss& shape_n ...) noexcept;
+    template <typename I = int,  rl::point2_or_segment2<I> ... Ss>
+    constexpr bool are_collinear(const rl::segment2<I>& segment_a, const rl::segment2<I>& segment_b, const Ss&... shape_n) noexcept;
 
-    template <rl::signed_integral I,  rl::point2_or_segment2<I> ... Ss>
-    constexpr bool are_collinear(const rl::point2<I>& point, const rl::segment2<I>& segment, const Ss& shape_n ...) noexcept;
+    template <typename I = int,  rl::point2_or_segment2<I> ... Ss>
+    constexpr bool are_collinear(const rl::point2<I>& point, const rl::segment2<I>& segment, const Ss&... shape_n) noexcept;
 
-    template <rl::signed_integral I,  rl::point2_or_segment2<I> ... Ss>
-    constexpr bool are_collinear(const rl::segment2<I>& segment, const rl::point2<I>& point, const Ss& shape_n ...) noexcept;
+    template <typename I = int,  rl::point2_or_segment2<I> ... Ss>
+    constexpr bool are_collinear(const rl::segment2<I>& segment, const rl::point2<I>& point, const Ss&... shape_n) noexcept;
 }  // namespace rl
 
 #include <rlm/cellular/detail/are_parallel.inl>
