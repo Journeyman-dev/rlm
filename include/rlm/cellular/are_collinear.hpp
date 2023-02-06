@@ -33,7 +33,7 @@ namespace rl
     struct segment2;
 
     template <rl::signed_integral I = int>
-    constexpr bool are_collinear(const rl::point2<I>& point_a, const rl::point2<I>& point_b, const rl::point2<I>& c) noexcept;
+    constexpr bool are_collinear(const rl::point2<I>& point_a, const rl::point2<I>& point_b, const rl::point2<I>& point_c) noexcept;
 
     template <rl::signed_integral I = int>
     constexpr bool are_collinear(const rl::segment2<I>& segment_a, const rl::segment2<I>& segment_b) noexcept;
@@ -57,5 +57,5 @@ namespace rl
     constexpr bool are_collinear(const rl::segment2<I>& segment, const rl::point2<I>& point, const Ss&... shape_n) noexcept;
 }  // namespace rl
 
-#include <rlm/cellular/detail/are_parallel.inl>
+#include <rlm/cellular/detail/are_collinear.inl>
 
