@@ -33,7 +33,7 @@
 #include <rlm/cellular/shape_conversion.hpp>
 #include <rlm/clamp.hpp>
 #include <rlm/cellular/are_parallel.hpp>
-#include <rlm/cellular/are_intersecting.hpp>
+#include <rlm/cellular/do_intersect.hpp>
 #include <rlm/cellular/segment2_direction.hpp>
 #include <rlm/cellular/segment2_formula.hpp>
 #include <rlm/cellular/box2_borders.hpp>
@@ -163,7 +163,7 @@ constexpr F rl::distance_between(const rl::segment2<I>& segment_a, const rl::seg
 template <rl::signed_integral I, rl::floating_point F>
 constexpr F rl::distance_between(const rl::segment2<I>& segment, const rl::box2<I>& box) noexcept
 {
-    if (rl::are_intersecting<I>(segment, box))
+    if (rl::do_intersect<I>(segment, box))
     {
         return static_cast<F>(0);
     }
@@ -191,7 +191,7 @@ constexpr F rl::distance_between(const rl::segment2<I>& segment, const rl::box2<
 template <rl::signed_integral I, rl::floating_point F>
 constexpr F rl::distance_between(const rl::segment2<I>& segment, const rl::circle2<I, F>& circle) noexcept
 {
-    if (rl::are_intersecting<I, F>(segment, circle))
+    if (rl::do_intersect<I, F>(segment, circle))
     {
         return static_cast<F>(0);
     }
@@ -200,7 +200,7 @@ constexpr F rl::distance_between(const rl::segment2<I>& segment, const rl::circl
         segment.start_x + (unit_dot * (segment.end_x - segment.start_x)),
         segment.start_y + (unit_dot * (segment.end_y - segment.start_y))
     );
-    if (!rl::is_containing<I>(segment, closest_segment_point)) return static_cast<F>(0);
+    if (!rl::does_contain<I>(segment, closest_segment_point)) return static_cast<F>(0);
     return rl::distance_between<I, F>(closest_segment_point, circle);
 }
 

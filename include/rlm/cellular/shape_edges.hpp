@@ -70,5 +70,5 @@ namespace rl
     constexpr I bottom_y(const rl::circle2<I, F>& circle) noexcept;
 }
 
-#include <rlm/cellular/detail/edges.inl>
+#include <rlm/cellular/detail/shape_edges.inl>
 

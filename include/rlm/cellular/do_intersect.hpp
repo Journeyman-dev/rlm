@@ -23,7 +23,6 @@
 #pragma once
 
 #include <rlm/concepts.hpp>
-#include <rlm/cellular/concepts.hpp>
 
 namespace rl
 {
@@ -38,65 +37,56 @@ namespace rl
 
     // point2
     template <rl::signed_integral I = int>
-    constexpr bool is_containing(const rl::point2<I>& containing_point, const rl::point2<I>& contained_point) noexcept;
+    constexpr bool do_intersect(const rl::point2<I>& point_a, const rl::point2<I>& point_b) noexcept;
 
     template <rl::signed_integral I = int>
-    constexpr bool is_containing(const rl::point2<I>& containing_point, const rl::segment2<I>& contained_segment) noexcept;
+    constexpr bool do_intersect(const rl::point2<I>& point, const rl::segment2<I>& segment) noexcept;
 
     template <rl::signed_integral I = int>
-    constexpr bool is_containing(const rl::point2<I>& containing_point, const rl::box2<I>& contained_box) noexcept;
+    constexpr bool do_intersect(const rl::point2<I>& point, const rl::box2<I>& box) noexcept;
 
     template <rl::signed_integral I = int, rl::floating_point F = float>
-    constexpr bool is_containing(const rl::point2<I>& containing_point, const rl::circle2<I, F>& contained_circle) noexcept;
+    constexpr bool do_intersect(const rl::point2<I>& point, const rl::circle2<I, F>& circle) noexcept;
 
     // segment2
     template <rl::signed_integral I = int>
-    constexpr bool is_containing(const rl::segment2<I>& containing_segment, const rl::point2<I>& contained_point) noexcept;
+    constexpr bool do_intersect(const rl::segment2<I>& segment, const rl::point2<I>& point) noexcept;
 
     template <rl::signed_integral I = int>
-    constexpr bool is_containing(const rl::segment2<I>& containing_segment, const rl::segment2<I>& contained_segment) noexcept;
+    constexpr bool do_intersect(const rl::segment2<I>& segment_a, const rl::segment2<I>& segment_b) noexcept;
 
     template <rl::signed_integral I = int>
-    constexpr bool is_containing(const rl::segment2<I>& containing_segment, const rl::box2<I>& contained_box) noexcept;
+    constexpr bool do_intersect(const rl::segment2<I>& segment, const rl::box2<I>& box) noexcept;
 
     template <rl::signed_integral I = int, rl::floating_point F = float>
-    constexpr bool is_containing(const rl::segment2<I>& containing_segment, const rl::circle2<I, F>& contained_circle) noexcept;
+    constexpr bool do_intersect(const rl::segment2<I>& segment, const rl::circle2<I, F>& circle) noexcept;
 
     // box2
     template <rl::signed_integral I = int>
-    constexpr bool is_containing(const rl::box2<I>& containing_box, const rl::point2<I>& contained_point) noexcept;
+    constexpr bool do_intersect(const rl::box2<I>& box, const rl::point2<I>& point) noexcept;
 
     template <rl::signed_integral I = int>
-    constexpr bool is_containing(const rl::box2<I>& containing_box, const rl::segment2<I>& contained_segment) noexcept;
+    constexpr bool do_intersect(const rl::box2<I>& box, const rl::segment2<I>& segment) noexcept;
 
     template <rl::signed_integral I = int>
-    constexpr bool is_containing(const rl::box2<I>& containing_box, const rl::box2<I>& contained_box) noexcept;
+    constexpr bool do_intersect(const rl::box2<I>& box_a, const rl::box2<I>& box_b) noexcept;
 
     template <rl::signed_integral I = int, rl::floating_point F = float>
-    constexpr bool is_containing(const rl::box2<I>& containing_box, const rl::circle2<I, F>& contained_circle) noexcept;
+    constexpr bool do_intersect(const rl::box2<I>& box, const rl::circle2<I, F>& circle) noexcept;
 
     // circle2
     template <rl::signed_integral I = int, rl::floating_point F = float>
-    constexpr bool is_containing(const rl::circle2<I, F>& containing_circle, const rl::point2<I>& contained_point) noexcept;
+    constexpr bool do_intersect(const rl::circle2<I, F>& circle, const rl::point2<I>& point) noexcept;
 
     template <rl::signed_integral I = int, rl::floating_point F = float>
-    constexpr bool is_containing(const rl::circle2<I, F>& containing_circle, const rl::segment2<I>& contained_segment) noexcept;
+    constexpr bool do_intersect(const rl::circle2<I, F>& circle, const rl::segment2<I>& segment) noexcept;
 
     template <rl::signed_integral I = int, rl::floating_point F = float>
-    constexpr bool is_containing(const rl::circle2<I, F>& containing_circle, const rl::box2<I>& contained_box) noexcept;
+    constexpr bool do_intersect(const rl::circle2<I, F>& circle, const rl::box2<I>& box) noexcept;
 
     template <rl::signed_integral I = int, rl::floating_point F = float>
-    constexpr bool is_containing(const rl::circle2<I, F>& containing_circle, const rl::circle2<I, F>& contained_circle) noexcept;
-
-    template<
-        typename I = int,
-        typename F = float,
-        rl::cellular_shape<I, F> Sa,
-        rl::cellular_shape<I, F> Sb,
-        rl::cellular_shape<I, F>... Ss
-    >
-    constexpr rl::box2<I> is_containing(const Sa& containing_shape, const Sb& contained_shape_a, const Ss&... contained_shape_n) noexcept;
+    constexpr bool do_intersect(const rl::circle2<I, F>& circle_a, const rl::circle2<I, F>& circle_b) noexcept;
 }  // namespace rl
 
-#include <rlm/cellular/detail/is_containing.inl>
+#include <rlm/cellular/detail/do_intersect.inl>
 

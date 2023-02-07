@@ -21,4 +21,4 @@
 */
 
 #include <catch2/catch_all.hpp>
-#include <rlm/cellular/is_containing.hpp>
+#include <rlm/cellular/does_fit.hpp>

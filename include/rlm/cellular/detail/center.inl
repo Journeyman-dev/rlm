@@ -29,7 +29,7 @@
 #include <rlm/cellular/circle2.hpp>
 #include <rlm/cellular/segment2_direction.hpp>
 #include <rlm/cellular/segment2_size.hpp>
-#include <rlm/cellular/edges.hpp>
+#include <rlm/cellular/shape_edges.hpp>
 
 template<rl::signed_integral I>
 constexpr rl::segment2<I> rl::center(const rl::segment2<I>& segment) noexcept

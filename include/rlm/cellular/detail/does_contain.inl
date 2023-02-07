@@ -31,13 +31,13 @@
 
 // point2
 template <rl::signed_integral I>
-constexpr bool rl::is_containing(const rl::point2<I>& containing_point, const rl::point2<I>& contained_point) noexcept
+constexpr bool rl::does_contain(const rl::point2<I>& containing_point, const rl::point2<I>& contained_point) noexcept
 {
     return containing_point == contained_point;
 }
 
 template <rl::signed_integral I>
-constexpr bool rl::is_containing(const rl::point2<I>& containing_point, const rl::segment2<I>& contained_segment) noexcept
+constexpr bool rl::does_contain(const rl::point2<I>& containing_point, const rl::segment2<I>& contained_segment) noexcept
 {
     const auto contained_segment_as_point_o = rl::as_point2<I>(contained_segment);
     return
@@ -46,7 +46,7 @@ constexpr bool rl::is_containing(const rl::point2<I>& containing_point, const rl
 }
 
 template <rl::signed_integral I>
-constexpr bool rl::is_containing(const rl::point2<I>& containing_point, const rl::box2<I>& contained_box) noexcept
+constexpr bool rl::does_contain(const rl::point2<I>& containing_point, const rl::box2<I>& contained_box) noexcept
 {
     const auto contained_box_as_point_o = rl::as_point2<I>(contained_box);
     return
@@ -55,7 +55,7 @@ constexpr bool rl::is_containing(const rl::point2<I>& containing_point, const rl
 }
 
 template <rl::signed_integral I, rl::floating_point F>
-constexpr bool rl::is_containing(const rl::point2<I>& containing_point, const rl::circle2<I, F>& contained_circle) noexcept
+constexpr bool rl::does_contain(const rl::point2<I>& containing_point, const rl::circle2<I, F>& contained_circle) noexcept
 {
     const auto contained_circle_as_point_o = rl::as_point2<I, F>(contained_circle);
     return
@@ -65,7 +65,7 @@ constexpr bool rl::is_containing(const rl::point2<I>& containing_point, const rl
 
 // segment2
 template <rl::signed_integral I>
-constexpr bool rl::is_containing(const rl::segment2<I>& containing_segment, const rl::point2<I>& contained_point) noexcept
+constexpr bool rl::does_contain(const rl::segment2<I>& containing_segment, const rl::point2<I>& contained_point) noexcept
 {
     return
         rl::cross_z<I>(
@@ -79,7 +79,7 @@ constexpr bool rl::is_containing(const rl::segment2<I>& containing_segment, cons
 }
 
 template <rl::signed_integral I>
-constexpr bool rl::is_containing(const rl::segment2<I>& containing_segment, const rl::segment2<I>& contained_segment) noexcept
+constexpr bool rl::does_contain(const rl::segment2<I>& containing_segment, const rl::segment2<I>& contained_segment) noexcept
 {
     if (!rl::are_collinear<I>(containing_segment, contained_segment))
     {
@@ -117,36 +117,36 @@ constexpr bool rl::is_containing(const rl::segment2<I>& containing_segment, cons
 }
 
 template <rl::signed_integral I>
-constexpr bool rl::is_containing(const rl::segment2<I>& containing_segment, const rl::box2<I>& contained_box) noexcept
+constexpr bool rl::does_contain(const rl::segment2<I>& containing_segment, const rl::box2<I>& contained_box) noexcept
 {
     return
         rl::is_point2<I>(
             contained_box
         ) &&
-        rl::is_containing<I>(
+        rl::does_contain<I>(
             containing_segment,
             rl::top_left<I>(contained_box)
         ) &&
-        rl::is_containing<I>(
+        rl::does_contain<I>(
             containing_segment,
             rl::top_right<I>(contained_box)
         ) &&
-        rl::is_containing<I>(
+        rl::does_contain<I>(
             containing_segment,
             rl::bottom_left<I>(contained_box)
         ) &&
-        rl::is_containing<I>(
+        rl::does_contain<I>(
             containing_segment,
             rl::bottom_right<I>(contained_box)
         );
 }
 
 template <rl::signed_integral I, rl::floating_point F>
-constexpr bool rl::is_containing(const rl::segment2<I>& containing_segment, const rl::circle2<I, F>& contained_circle) noexcept
+constexpr bool rl::does_contain(const rl::segment2<I>& containing_segment, const rl::circle2<I, F>& contained_circle) noexcept
 {
     return
         rl::tile_diameter<I, F>(contained_circle) == 1 &&
-        rl::is_containing<I, F>(
+        rl::does_contain<I, F>(
             containing_segment,
             rl::center<I, F>(contained_circle)
         );
@@ -154,7 +154,7 @@ constexpr bool rl::is_containing(const rl::segment2<I>& containing_segment, cons
 
 // box2
 template <rl::signed_integral I>
-constexpr bool rl::is_containing(const rl::box2<I>& containing_box, const rl::point2<I>& contained_point) noexcept
+constexpr bool rl::does_contain(const rl::box2<I>& containing_box, const rl::point2<I>& contained_point) noexcept
 {
     return
         rl::left_x<I>(containing_box) <= contained_point.x &&
@@ -164,7 +164,7 @@ constexpr bool rl::is_containing(const rl::box2<I>& containing_box, const rl::po
 }
 
 template <rl::signed_integral I>
-constexpr bool rl::is_containing(const rl::box2<I>& containing_box, const rl::segment2<I>& contained_segment) noexcept
+constexpr bool rl::does_contain(const rl::box2<I>& containing_box, const rl::segment2<I>& contained_segment) noexcept
 {
     return
         rl::left_x<I>(containing_box) <= rl::left_x<I>(contained_segment) &&
@@ -174,7 +174,7 @@ constexpr bool rl::is_containing(const rl::box2<I>& containing_box, const rl::se
 }
 
 template <rl::signed_integral I>
-constexpr bool rl::is_containing(const rl::box2<I>& containing_box, const rl::box2<I>& contained_box) noexcept
+constexpr bool rl::does_contain(const rl::box2<I>& containing_box, const rl::box2<I>& contained_box) noexcept
 {
     return
         rl::left_x<I>(containing_box) <= rl::left_x<I>(contained_box) &&
@@ -184,7 +184,7 @@ constexpr bool rl::is_containing(const rl::box2<I>& containing_box, const rl::bo
 }
 
 template <rl::signed_integral I, rl::floating_point F>
-constexpr bool rl::is_containing(const rl::box2<I>& containing_box, const rl::circle2<I, F>& contained_circle) noexcept
+constexpr bool rl::does_contain(const rl::box2<I>& containing_box, const rl::circle2<I, F>& contained_circle) noexcept
 {
     return
         rl::left_x<I>(containing_box) <= rl::left_x<I, F>(contained_circle) &&
@@ -195,7 +195,7 @@ constexpr bool rl::is_containing(const rl::box2<I>& containing_box, const rl::ci
 
 // circle2
 template <rl::signed_integral I, rl::floating_point F>
-constexpr bool rl::is_containing(const rl::circle2<I, F>& containing_circle, const rl::point2<I>& containing_segment) noexcept
+constexpr bool rl::does_contain(const rl::circle2<I, F>& containing_circle, const rl::point2<I>& containing_segment) noexcept
 {
     return
         rl::distance_between<I, F>(
@@ -206,7 +206,7 @@ constexpr bool rl::is_containing(const rl::circle2<I, F>& containing_circle, con
 }
 
 template <rl::signed_integral I, rl::floating_point F>
-constexpr bool rl::is_containing(const rl::circle2<I, F>& containing_circle, const rl::segment2<I>& contained_segment) noexcept
+constexpr bool rl::does_contain(const rl::circle2<I, F>& containing_circle, const rl::segment2<I>& contained_segment) noexcept
 {
     return
         rl::distance_between<I, F>(
@@ -217,7 +217,7 @@ constexpr bool rl::is_containing(const rl::circle2<I, F>& containing_circle, con
 }
 
 template <rl::signed_integral I, rl::floating_point F>
-constexpr bool rl::is_containing(const rl::circle2<I, F>& containing_circle, const rl::box2<I>& contained_box) noexcept
+constexpr bool rl::does_contain(const rl::circle2<I, F>& containing_circle, const rl::box2<I>& contained_box) noexcept
 {
     return
         rl::distance_between<I, F>(
@@ -228,7 +228,7 @@ constexpr bool rl::is_containing(const rl::circle2<I, F>& containing_circle, con
 }
 
 template <rl::signed_integral I, rl::floating_point F>
-constexpr bool rl::is_containing(const rl::circle2<I, F>& containing_circle, const rl::circle2<I, F>& contained_circle) noexcept
+constexpr bool rl::does_contain(const rl::circle2<I, F>& containing_circle, const rl::circle2<I, F>& contained_circle) noexcept
 {
     return
         rl::distance_between<I, F>(
@@ -245,14 +245,14 @@ template<
     rl::cellular_shape<I, F> Sb,
     rl::cellular_shape<I, F>... Ss
 >
-constexpr rl::box2<I> rl::is_containing(const Sa& containing_shape, const Sb& contained_shape_a, const Ss&... contained_shape_n) noexcept
+constexpr rl::box2<I> rl::does_contain(const Sa& containing_shape, const Sb& contained_shape_a, const Ss&... contained_shape_n) noexcept
 {
     return
-        rl::is_containing<I, F>(
+        rl::does_contain<I, F>(
             containing_shape,
             contained_shape_a
         ) &&
-        rl::is_containing<I, F>(
+        rl::does_contain<I, F>(
             containing_shape,
             contained_shape_n...
         );

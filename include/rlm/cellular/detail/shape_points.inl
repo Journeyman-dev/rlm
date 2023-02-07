@@ -26,7 +26,7 @@
 #include <rlm/cellular/point2.hpp>
 #include <rlm/cellular/segment2.hpp>
 #include <rlm/cellular/box2.hpp>
-#include <rlm/cellular/edges.hpp>
+#include <rlm/cellular/shape_edges.hpp>
 #include <rlm/cellular/is_degenerate.hpp>
 #include <cassert>
 

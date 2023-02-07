@@ -28,7 +28,7 @@
 #include <rlm/cellular/is_degenerate.hpp>
 #include <rlm/cellular/reverse.hpp>
 #include <rlm/cellular/border_corners.hpp>
-#include <rlm/cellular/edges.hpp>
+#include <rlm/cellular/shape_edges.hpp>
 #include <rlm/rotation_motion.hpp>
 #include <cassert>
 #include <optional>

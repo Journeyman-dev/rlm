@@ -28,10 +28,10 @@
 #include <rlm/cellular/segment2.hpp>
 #include <rlm/cellular/box2.hpp>
 #include <rlm/cellular/circle2.hpp>
-#include <rlm/cellular/is_containing.hpp>
+#include <rlm/cellular/does_contain.hpp>
 #include <rlm/cellular/shape_conversion.hpp>
 #include <rlm/cellular/shape_points.hpp>
-#include <rlm/cellular/edges.hpp>
+#include <rlm/cellular/shape_edges.hpp>
 #include <rlm/cellular/box2_between.hpp>
 #include <rlm/cellular/segment2_direction.hpp>
 #include <rlm/min.hpp>
@@ -41,7 +41,7 @@
 template<rl::signed_integral I>
 constexpr std::optional<rl::box2<I>> rl::crop(const rl::point2<I>& point, const rl::box2<I>& crop_box) noexcept
 {
-    if (!rl::is_containing<I>(crop_box, point))
+    if (!rl::does_contain<I>(crop_box, point))
     {
         return std::nullopt;
     }
@@ -51,7 +51,7 @@ constexpr std::optional<rl::box2<I>> rl::crop(const rl::point2<I>& point, const 
 template<rl::signed_integral I>
 constexpr std::optional<rl::segment2<I>> rl::crop(const rl::segment2<I>& segment, const rl::box2<I>& crop_box) noexcept
 {
-    if (!rl::is_containing<I>(crop_box, segment))
+    if (!rl::does_contain<I>(crop_box, segment))
     {
         return std::nullopt;
     }
@@ -75,7 +75,7 @@ constexpr std::optional<rl::segment2<I>> rl::crop(const rl::segment2<I>& segment
 template<rl::signed_integral I>
 constexpr std::optional<rl::box2<I>> rl::crop(const rl::box2<I>& box, const rl::box2<I>& crop_box) noexcept
 {
-    if (!rl::is_containing<I>(crop_box, box))
+    if (!rl::does_contain<I>(crop_box, box))
     {
         return std::nullopt;
     }

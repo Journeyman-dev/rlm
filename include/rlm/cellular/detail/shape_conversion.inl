@@ -30,7 +30,7 @@
 #include <rlm/cellular/shape_points.hpp>
 #include <rlm/cellular/center.hpp>
 #include <rlm/cellular/segment2_size.hpp>
-#include <rlm/cellular/edges.hpp>
+#include <rlm/cellular/shape_edges.hpp>
 #include <rlm/cellular/shape_conversion.hpp>
 #include <optional>
 
