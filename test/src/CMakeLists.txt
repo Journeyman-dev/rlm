@@ -49,7 +49,7 @@ target_sources(RlmTest
         "cellular_segment2_formula_tests.cpp"
         "cellular_segment2_size_tests.cpp"
         "cellular_shape_points_tests.cpp"
-        "cellular_struct_cast_tests.cpp"
+        "cellular_template_cast_tests.cpp"
         "cellular_translation_tests.cpp"
         "clamp_tests.cpp"
         "lerp_tests.cpp"

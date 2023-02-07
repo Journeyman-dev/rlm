@@ -21,4 +21,6 @@
 */
 
 #include <catch2/catch_all.hpp>
-#include <rlm/cellular/struct_cast.hpp>
+#include <rlm/cellular/template_cast.hpp>
+
+SCENARIO("A cell shape is casted into ")
