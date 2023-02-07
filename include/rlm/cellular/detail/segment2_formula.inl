@@ -23,6 +23,7 @@
 #pragma once
 
 #include <rlm/concepts.hpp>
+#include <rlm/gcd.hpp>
 
 template<rl::signed_integral I, rl::floating_point F>
 constexpr F rl::slope(const rl::segment2<I>& segment) noexcept
@@ -30,6 +31,28 @@ constexpr F rl::slope(const rl::segment2<I>& segment) noexcept
     return
         static_cast<F>(std::abs(segment.end_y - segment.start_y)) /
         static_cast<F>(std::abs(segment.end_x - segment.start_x));
+}
+
+template<rl::signed_integral I>
+constexpr I rl::rise(const rl::segment2<I>& segment) noexcept
+{
+    return
+        rl::height(segment) /
+        rl::gcd(
+            rl::width(segment),
+            rl::height(segment)
+        );
+}
+
+template<rl::signed_integral I>
+constexpr I rl::run(const rl::segment2<I>& segment) noexcept
+{
+    return
+        rl::height(segment) /
+        rl::gcd(
+            rl::width(segment),
+            rl::height(segment)
+        );
 }
 
 template<rl::signed_integral I>

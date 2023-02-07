@@ -33,6 +33,12 @@ namespace rl
     constexpr F slope(const rl::segment2<I>& segment) noexcept;
 
     template<rl::signed_integral I = int>
+    constexpr I rise(const rl::segment2<I>& segment) noexcept;
+
+    template<rl::signed_integral I = int>
+    constexpr I run(const rl::segment2<I>& segment) noexcept;
+
+    template<rl::signed_integral I = int>
     constexpr I y_intercept(const rl::segment2<I>& segment) noexcept;
 
     template<rl::signed_integral I = int>
