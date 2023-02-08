@@ -25,82 +25,89 @@
 #include <rlm/concepts.hpp>
 #include <rlm/cellular/point2.hpp>
 #include <rlm/cellular/segment2.hpp>
+#include <rlm/cellular/shape_points.hpp>
 #include <rlm/cellular/translation.hpp>
 #include <rlm/cellular/distance_between.hpp>
 
 template <rl::signed_integral I>
-constexpr I rl::dot(const rl::point2<I>& a, const point2<I>& b) noexcept
+constexpr I rl::dot(const rl::point2<I>& point_a, const point2<I>& point_b) noexcept
 {
     return
-        (a.x * b.x) +
-        (a.y * b.y);
+        (point_a.x * point_b.x) +
+        (point_a.y * point_b.y);
 }
 
 template <rl::signed_integral I, rl::floating_point F>
-constexpr F rl::unit_dot(const rl::point2<I>& a, const point2<I>& b) noexcept
+constexpr F rl::unit_dot(const rl::point2<I>& point_a, const point2<I>& point_b) noexcept
 {
-    if (a == b)
+    if (point_a == point_b)
     {
         return static_cast<F>(0);
     }
     return
-        static_cast<F>(rl::dot<I>(a, b)) /
-        (rl::distance_between(a, b) * rl::distance_between(a, b));
+        static_cast<F>(rl::dot<I>(point_a, point_b)) /
+        (
+            rl::distance_between<I, F>(point_a, point_b) *
+            rl::distance_between<I, F>(point_a, point_b)
+        );
 }
 
 template <rl::signed_integral I>
-constexpr I rl::dot(const rl::point2<I>& a, const segment2<I>& b) noexcept
+constexpr I rl::dot(const rl::point2<I>& point, const segment2<I>& segment) noexcept
 {
     return
         (
-            (a.x - b.start_x) *
-            (b.end_x - b.start_x)
+            (point.x - segment.start_x) *
+            (segment.end_x - segment.start_x)
         ) +
         (
-            (a.y - b.start_y) *
-            (b.end_y - b.start_y)
+            (point.y - segment.start_y) *
+            (segment.end_y - segment.start_y)
         );
 }
 
 template <rl::signed_integral I, rl::floating_point F>
-constexpr F rl::unit_dot(const rl::point2<I>& a, const segment2<I>& b) noexcept
+constexpr F rl::unit_dot(const rl::point2<I>& point, const segment2<I>& segment) noexcept
 {
-    if (a == b)
+    if (point == rl::start<I>(segment) && point == rl::end<I>(segment))
     {
         return static_cast<F>(0);
     }
     return
-        static_cast<F>(rl::dot(a, b)) /
-        (rl::distance_between(a, b) * rl::distance_between(a, b));
+        static_cast<F>(rl::dot<I>(point, segment)) /
+        (
+            rl::distance_between<I, F>(point, segment) *
+            rl::distance_between<I, F>(point, segment)
+        );
 }
 
 template <rl::signed_integral I>
-constexpr auto rl::dot(const rl::segment2<I>& a, const point2<I>& b) noexcept
+constexpr auto rl::dot(const rl::segment2<I>& segment, const point2<I>& point) noexcept
 {
-    return rl::dot<I>(b, a);
+    return rl::dot<I>(point, segment);
 }
 
 template <rl::signed_integral I = int, rl::floating_point F>
-constexpr auto rl::unit_dot(const rl::segment2<I>& a, const point2<I>& b) noexcept
+constexpr auto rl::unit_dot(const rl::segment2<I>& segment, const point2<I>& point) noexcept
 {
-    return rl::unit_dot<I, F>(b, a);
+    return rl::unit_dot<I, F>(point, segment);
 }
 
 template <rl::signed_integral I>
-constexpr auto rl::dot(const rl::segment2<I>& a, const segment2<I>& b) noexcept
+constexpr auto rl::dot(const rl::segment2<I>& segment_a, const segment2<I>& segment_b) noexcept
 {
     return rl::dot<I>(
-        rl::translation(a),
-        rl::translation(b)
+        rl::translation(segment_a),
+        rl::translation(segment_b)
     );
 }
 
 template <rl::signed_integral I, rl::floating_point F>
-constexpr auto rl::unit_dot(const rl::segment2<I>& a, const rl::segment2<I>& b) noexcept
+constexpr auto rl::unit_dot(const rl::segment2<I>& segment_a, const rl::segment2<I>& segment_b) noexcept
 {
     return rl::unit_dot<I, F>(
-        rl::translation(a),
-        rl::translation(b)
+        rl::translation(segment_a),
+        rl::translation(segment_b)
     );
 }
 
