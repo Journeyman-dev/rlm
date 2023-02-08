@@ -24,6 +24,28 @@
 #include <rlm/cellular/box2_borders.hpp>
 #include <rlm/cellular/ostream.hpp>
 
+SCENARIO("The borders are gotten from a box2")
+{
+    GIVEN("A box2")
+    {
+        const rl::box2 box(1, 2, 3, 4);
+        WHEN("The borders are gotten from the box2")
+        {
+            const auto left_border = rl::left_border(box);
+            const auto right_border = rl::right_border(box);
+            const auto top_border = rl::top_border(box);
+            const auto bottom_border = rl::bottom_border(box);
+            THEN("The values are correct")
+            {
+                CHECK(left_border == rl::segment2(1, 4, 1, 3));
+                CHECK(right_border == rl::segment2(3, 3, 3, 4));
+                CHECK(top_border == rl::segment2(2, 2, 2, 2));
+                CHECK(bottom_border == rl::segment2(2, 5, 2, 5));
+            }
+        }
+    }
+}
+
 SCENARIO("The borders are gotten from a box2 with trimmed corners")
 {
     GIVEN("A box2 with a width and height greater than one")
