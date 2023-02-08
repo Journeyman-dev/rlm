@@ -31,4 +31,3 @@ namespace rl
 }
 
 #include <rlm/detail/clamp.inl>
-

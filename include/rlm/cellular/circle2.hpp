@@ -43,4 +43,3 @@ namespace rl
 }    // namespace rl
 
 #include <rlm/cellular/detail/circle2.inl>
-

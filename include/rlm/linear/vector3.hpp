@@ -39,5 +39,3 @@ namespace rl
 }    // namespace rl
 
 #include <rlm/linear/detail/vector3.inl>
-
-

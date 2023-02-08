@@ -54,7 +54,6 @@ namespace rl
     template<typename T>
     concept equality_comparable = std::equality_comparable<T>;
 
-    template<typename T, typename ... Ts>
+    template<typename T, typename... Ts>
     concept is_any_of = (std::same_as<T, Ts> || ...);
 }    // namespace rl
-

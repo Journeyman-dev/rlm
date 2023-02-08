@@ -39,4 +39,3 @@ namespace rl
 }    // namespace rl
 
 #include <rlm/cellular/detail/is_degenerate.inl>
-

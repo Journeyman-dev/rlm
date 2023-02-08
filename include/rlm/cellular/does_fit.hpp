@@ -31,6 +31,6 @@ namespace rl
 
     template<rl::signed_integral I = int>
     constexpr bool does_fit(const rl::box2<I>& fitting_box, const rl::box2<I>& fitted_box) noexcept;
-}
+}    // namespace rl
 
 #include <rlm/cellular/detail/does_fit.inl>

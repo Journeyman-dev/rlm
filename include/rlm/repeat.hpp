@@ -31,7 +31,6 @@ namespace rl
 
     template<rl::floating_point F = float>
     constexpr F repeat(F value, F a, F b) noexcept;
-}
+}    // namespace rl
 
 #include <rlm/detail/repeat.inl>
-

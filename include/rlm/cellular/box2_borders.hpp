@@ -35,57 +35,48 @@ namespace rl
     struct box2;
 
     template<rl::signed_integral I = int>
-    constexpr rl::segment2<I> left_border(
-        const rl::box2<I>& box,
-        rl::RotationMotion rotation_motion = rl::RotationMotion::Clockwise
-    ) noexcept;
+    constexpr rl::segment2<I>
+    left_border(const rl::box2<I>& box,
+                rl::RotationMotion rotation_motion = rl::RotationMotion::Clockwise) noexcept;
 
     template<rl::signed_integral I = int>
-    constexpr rl::segment2<I> right_border(
-        const rl::box2<I>& box,
-        rl::RotationMotion rotation_motion = rl::RotationMotion::Clockwise
-    ) noexcept;
+    constexpr rl::segment2<I>
+    right_border(const rl::box2<I>& box,
+                 rl::RotationMotion rotation_motion = rl::RotationMotion::Clockwise) noexcept;
 
     template<rl::signed_integral I = int>
-    constexpr rl::segment2<I> top_border(
-        const rl::box2<I>& box,
-        rl::RotationMotion rotation_motion = rl::RotationMotion::Clockwise
-    ) noexcept;
+    constexpr rl::segment2<I>
+    top_border(const rl::box2<I>& box,
+               rl::RotationMotion rotation_motion = rl::RotationMotion::Clockwise) noexcept;
 
     template<rl::signed_integral I = int>
-    constexpr rl::segment2<I> bottom_border(
-        const rl::box2<I>& box,
-        rl::RotationMotion rotation_motion = rl::RotationMotion::Clockwise
-    ) noexcept;
+    constexpr rl::segment2<I>
+    bottom_border(const rl::box2<I>& box,
+                  rl::RotationMotion rotation_motion = rl::RotationMotion::Clockwise) noexcept;
 
     template<rl::signed_integral I = int>
     constexpr std::optional<rl::segment2<I>> right_border_trimmed(
         const rl::box2<I>& box,
         rl::BorderCorners border_corners = rl::BorderCorners::None,
-        rl::RotationMotion rotation_motion = rl::RotationMotion::Clockwise
-    ) noexcept;
+        rl::RotationMotion rotation_motion = rl::RotationMotion::Clockwise) noexcept;
 
     template<rl::signed_integral I = int>
-    constexpr std::optional<rl::segment2<I>> top_border_trimmed(
-        const rl::box2<I>& box,
-        rl::BorderCorners border_corners = rl::BorderCorners::None,
-        rl::RotationMotion rotation_motion = rl::RotationMotion::Clockwise
-    ) noexcept;
+    constexpr std::optional<rl::segment2<I>>
+    top_border_trimmed(const rl::box2<I>& box,
+                       rl::BorderCorners border_corners = rl::BorderCorners::None,
+                       rl::RotationMotion rotation_motion = rl::RotationMotion::Clockwise) noexcept;
 
     template<rl::signed_integral I = int>
     constexpr std::optional<rl::segment2<I>> bottom_border_trimmed(
         const rl::box2<I>& box,
         rl::BorderCorners border_corners = rl::BorderCorners::None,
-        rl::RotationMotion rotation_motion = rl::RotationMotion::Clockwise
-    ) noexcept;
+        rl::RotationMotion rotation_motion = rl::RotationMotion::Clockwise) noexcept;
 
     template<rl::signed_integral I = int>
     constexpr std::optional<rl::segment2<I>> left_border_trimmed(
         const rl::box2<I>& box,
         rl::BorderCorners border_corners = rl::BorderCorners::None,
-        rl::RotationMotion rotation_motion = rl::RotationMotion::Clockwise
-    ) noexcept;
-}
+        rl::RotationMotion rotation_motion = rl::RotationMotion::Clockwise) noexcept;
+}    // namespace rl
 
 #include <rlm/cellular/detail/box2_borders.inl>
-

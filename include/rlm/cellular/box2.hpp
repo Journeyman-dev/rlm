@@ -44,4 +44,3 @@ namespace rl
 }    // namespace rl
 
 #include <rlm/cellular/detail/box2.inl>
-

@@ -26,12 +26,12 @@
 
 namespace rl
 {
-    template <rl::signed_integral I>
+    template<rl::signed_integral I>
     struct segment2;
 
-    template <rl::signed_integral I = int>
-    constexpr bool are_perpendicular(const rl::segment2<I>& segment_a, const rl::segment2<I>& segment_b) noexcept;
-}  // namespace rl
+    template<rl::signed_integral I = int>
+    constexpr bool are_perpendicular(const rl::segment2<I>& segment_a,
+                                     const rl::segment2<I>& segment_b) noexcept;
+}    // namespace rl
 
 #include <rlm/cellular/detail/are_perpendicular.inl>
-

@@ -31,7 +31,6 @@ namespace rl
 
     template<rl::signed_integral I = int>
     constexpr rl::box2<I> box2_between(I x1, I y1, I x2, I y2) noexcept;
-}
+}    // namespace rl
 
 #include <rlm/cellular/detail/box2_between.inl>
-

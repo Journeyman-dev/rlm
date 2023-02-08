@@ -35,18 +35,11 @@ namespace rl
             Right = (1 << 3),
             Top = (1 << 4),
             Bottom = (1 << 5),
-            All =
-            (
-                BorderCornersEnum::Clockwise |
-                BorderCornersEnum::CounterClockwise |
-                BorderCornersEnum::Left |
-                BorderCornersEnum::Right |
-                BorderCornersEnum::Top |
-                BorderCornersEnum::Bottom
-            )
+            All = (BorderCornersEnum::Clockwise | BorderCornersEnum::CounterClockwise |
+                   BorderCornersEnum::Left | BorderCornersEnum::Right | BorderCornersEnum::Top |
+                   BorderCornersEnum::Bottom)
         };
     };
 
     using BorderCorners = BorderCornersStruct::BorderCornersEnum;
-}
-
+}    // namespace rl

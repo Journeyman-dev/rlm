@@ -32,7 +32,8 @@ namespace rl
     struct segment2;
 
     template<rl::signed_integral I = int>
-    constexpr rl::segment2<I> segment2_between(const rl::point2<I>& point_a, const rl::point2<I>& point_b);
-}
+    constexpr rl::segment2<I> segment2_between(const rl::point2<I>& point_a,
+                                               const rl::point2<I>& point_b);
+}    // namespace rl
 
 #include <rlm/cellular/detail/segment2_between.inl>

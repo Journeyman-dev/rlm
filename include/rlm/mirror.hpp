@@ -31,7 +31,6 @@ namespace rl
 
     template<rl::floating_point F = float>
     constexpr F mirror(F value, F a, F b) noexcept;
-}
+}    // namespace rl
 
 #include <rlm/detail/mirror.inl>
-

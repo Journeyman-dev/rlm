@@ -44,10 +44,11 @@ namespace rl
     template<rl::signed_integral Ia, rl::signed_integral Ib>
     constexpr rl::box2<Ia> template_cast(const rl::box2<Ib>& box) noexcept;
 
-    template<rl::signed_integral Ia, rl::floating_point Fa, rl::signed_integral Ib, rl::floating_point Fb>
+    template<rl::signed_integral Ia,
+             rl::floating_point Fa,
+             rl::signed_integral Ib,
+             rl::floating_point Fb>
     constexpr rl::circle2<Ia, Fa> template_cast(const rl::circle2<Ib, Fb>& circle) noexcept;
-}
+}    // namespace rl
 
 #include <rlm/cellular/detail/template_cast.inl>
-
-

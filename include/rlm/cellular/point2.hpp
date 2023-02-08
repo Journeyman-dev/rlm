@@ -62,4 +62,3 @@ namespace rl
 }    // namespace rl
 
 #include <rlm/cellular/detail/point2.inl>
-

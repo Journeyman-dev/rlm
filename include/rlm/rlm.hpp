@@ -32,4 +32,3 @@
 #include <rlm/cellular/point2.hpp>
 #include <rlm/cellular/segment2.hpp>
 #include <rlm/concepts.hpp>
-

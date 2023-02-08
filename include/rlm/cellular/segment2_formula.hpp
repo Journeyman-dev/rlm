@@ -26,7 +26,7 @@
 
 namespace rl
 {
-    template <rl::signed_integral I>
+    template<rl::signed_integral I>
     struct segment2;
 
     template<rl::signed_integral I = int, rl::floating_point F = float>
@@ -43,8 +43,6 @@ namespace rl
 
     template<rl::signed_integral I = int>
     constexpr I x_intercept(const rl::segment2<I>& segment) noexcept;
-}
+}    // namespace rl
 
 #include <rlm/cellular/detail/segment2_formula.inl>
-
-

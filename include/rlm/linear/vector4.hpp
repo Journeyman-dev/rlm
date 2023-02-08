@@ -40,5 +40,3 @@ namespace rl
 }    // namespace rl
 
 #include <rlm/linear/detail/vector4.inl>
-
-

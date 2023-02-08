@@ -37,7 +37,6 @@ namespace rl
 
     template<rl::signed_integral I = int, rl::floating_point F = float>
     constexpr I tile_diameter(const rl::circle2<I, F>& circle) noexcept;
-}
+}    // namespace rl
 
 #include <rlm/cellular/detail/circle2_size.inl>
-

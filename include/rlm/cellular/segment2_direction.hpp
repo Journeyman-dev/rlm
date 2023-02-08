@@ -46,7 +46,6 @@ namespace rl
 
     template<rl::signed_integral I = int>
     constexpr bool is_vertical(const rl::segment2<I>& segment) noexcept;
-}
+}    // namespace rl
 
 #include <rlm/cellular/detail/segment2_direction.inl>
-

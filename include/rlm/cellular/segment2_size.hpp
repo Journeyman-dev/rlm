@@ -40,7 +40,6 @@ namespace rl
 
     template<rl::signed_integral I = int>
     constexpr I height(const rl::segment2<I>& segment) noexcept;
-}
+}    // namespace rl
 
 #include <rlm/cellular/detail/segment2_size.inl>
-

@@ -40,5 +40,3 @@ namespace rl
 }    // namespace rl
 
 #include <rlm/linear/detail/rectangle2.inl>
-
-

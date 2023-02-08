@@ -27,23 +27,18 @@
 
 namespace rl
 {
-    template <rl::signed_integral I>
+    template<rl::signed_integral I>
     struct point2;
 
-    template <rl::signed_integral I = int>
-    constexpr I orientation_determinant(
-        const rl::point2<I>& point_a,
-        const rl::point2<I>& point_b,
-        const rl::point2<I>& point_c
-    ) noexcept;
+    template<rl::signed_integral I = int>
+    constexpr I orientation_determinant(const rl::point2<I>& point_a,
+                                        const rl::point2<I>& point_b,
+                                        const rl::point2<I>& point_c) noexcept;
 
-    template <rl::signed_integral I = int>
-    constexpr rl::PositionOrientation position_orientation(
-        const rl::point2<I>& point_a,
-        const rl::point2<I>& point_b,
-        const rl::point2<I>& point_c
-    ) noexcept;
-}
+    template<rl::signed_integral I = int>
+    constexpr rl::PositionOrientation position_orientation(const rl::point2<I>& point_a,
+                                                           const rl::point2<I>& point_b,
+                                                           const rl::point2<I>& point_c) noexcept;
+}    // namespace rl
 
 #include <rlm/cellular/detail/point2_orientation.inl>
-

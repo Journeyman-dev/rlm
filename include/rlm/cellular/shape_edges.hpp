@@ -26,11 +26,11 @@
 
 namespace rl
 {
-    template <rl::signed_integral I>
+    template<rl::signed_integral I>
     struct segment2;
-    template <rl::signed_integral I>
+    template<rl::signed_integral I>
     struct box2;
-    template <rl::signed_integral I, rl::floating_point>
+    template<rl::signed_integral I, rl::floating_point>
     struct circle2;
 
     template<rl::signed_integral I = int>
@@ -68,7 +68,6 @@ namespace rl
 
     template<rl::signed_integral I = int, rl::floating_point F = float>
     constexpr I bottom_y(const rl::circle2<I, F>& circle) noexcept;
-}
+}    // namespace rl
 
 #include <rlm/cellular/detail/shape_edges.inl>
-

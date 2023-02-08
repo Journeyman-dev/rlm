@@ -50,7 +50,6 @@ namespace rl
 
     template<rl::signed_integral I = int>
     constexpr rl::point2<I> bottom_right(const rl::box2<I>& box) noexcept;
-}
+}    // namespace rl
 
 #include <rlm/cellular/detail/shape_points.inl>
-

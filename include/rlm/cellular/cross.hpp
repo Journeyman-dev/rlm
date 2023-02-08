@@ -26,15 +26,16 @@
 
 namespace rl
 {
-  template <rl::signed_integral I> struct point2;
-  template <rl::signed_integral I> struct segment2;
+    template<rl::signed_integral I>
+    struct point2;
+    template<rl::signed_integral I>
+    struct segment2;
 
-  template <rl::signed_integral I = int>
-  constexpr I cross_z(const rl::point2<I>& a, const rl::point2<I>& b) noexcept;
+    template<rl::signed_integral I = int>
+    constexpr I cross_z(const rl::point2<I>& a, const rl::point2<I>& b) noexcept;
 
-  template <rl::signed_integral I = int>
-  constexpr I cross_z(const rl::segment2<I>& a, const rl::segment2<I>& b) noexcept;
-}  // namespace rl
+    template<rl::signed_integral I = int>
+    constexpr I cross_z(const rl::segment2<I>& a, const rl::segment2<I>& b) noexcept;
+}    // namespace rl
 
 #include <rlm/cellular/detail/cross.inl>
-

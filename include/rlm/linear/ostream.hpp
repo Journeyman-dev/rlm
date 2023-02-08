@@ -50,4 +50,3 @@ namespace rl
 }    // namespace rl
 
 #include <rlm/linear/detail/ostream.inl>
-

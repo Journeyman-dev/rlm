@@ -27,15 +27,17 @@
 
 namespace rl
 {
-    template <rl::signed_integral I>
+    template<rl::signed_integral I>
     struct segment2;
 
-    template <rl::signed_integral I = int>
-    constexpr bool are_parallel(const rl::segment2<I>& segment_a, const rl::segment2<I>& segment_b) noexcept;
+    template<rl::signed_integral I = int>
+    constexpr bool are_parallel(const rl::segment2<I>& segment_a,
+                                const rl::segment2<I>& segment_b) noexcept;
 
-    template <typename I = int, rl::is_any_of<rl::segment2<I>>... SGs>
-    constexpr bool are_parallel(const rl::segment2<I>& segment_a, const rl::segment2<I>& segment_b, const SGs&... segment_n) noexcept;
-}  // namespace rl
+    template<typename I = int, rl::is_any_of<rl::segment2<I>>... SGs>
+    constexpr bool are_parallel(const rl::segment2<I>& segment_a,
+                                const rl::segment2<I>& segment_b,
+                                const SGs&... segment_n) noexcept;
+}    // namespace rl
 
 #include <rlm/cellular/detail/are_parallel.inl>
-

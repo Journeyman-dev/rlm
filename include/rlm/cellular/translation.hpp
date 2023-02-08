@@ -26,14 +26,13 @@
 
 namespace rl
 {
-    template <rl::signed_integral I>
+    template<rl::signed_integral I>
     struct point2;
-    template <rl::signed_integral I>
+    template<rl::signed_integral I>
     struct segment2;
 
-    template <rl::signed_integral I = int>
+    template<rl::signed_integral I = int>
     constexpr rl::point2<I> translation(const rl::segment2<I>& segment) noexcept;
-}  // namespace rl
+}    // namespace rl
 
 #include <rlm/cellular/detail/translation.inl>
-

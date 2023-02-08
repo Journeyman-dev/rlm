@@ -36,7 +36,6 @@ namespace rl
 
     template<rl::signed_integral I = int, rl::floating_point F = float>
     constexpr rl::point2<I> lerp(const rl::segment2<I>& segment, F t) noexcept;
-}
+}    // namespace rl
 
 #include <rlm/cellular/detail/lerp.inl>
-

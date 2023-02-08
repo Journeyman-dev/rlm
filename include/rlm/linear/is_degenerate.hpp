@@ -34,4 +34,3 @@ namespace rl
 }    // namespace rl
 
 #include <rlm/linear/detail/is_degenerate.inl>
-

@@ -31,7 +31,6 @@ namespace rl
 
     template<rl::floating_point F = float>
     constexpr F lerp(F a, F b, F t) noexcept;
-}
+}    // namespace rl
 
 #include <rlm/detail/lerp.inl>
-

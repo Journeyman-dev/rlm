@@ -26,35 +26,35 @@
 
 namespace rl
 {
-    template <rl::signed_integral I>
+    template<rl::signed_integral I>
     struct point2;
-    template <rl::signed_integral I>
+    template<rl::signed_integral I>
     struct segment2;
 
-    template <rl::signed_integral I = int>
+    template<rl::signed_integral I = int>
     constexpr I dot(const rl::point2<I>& point_a, const point2<I>& point_b) noexcept;
 
-    template <rl::signed_integral I = int, rl::floating_point F = float>
+    template<rl::signed_integral I = int, rl::floating_point F = float>
     constexpr F unit_dot(const rl::point2<I>& point_a, const point2<I>& point_b) noexcept;
 
-    template <rl::signed_integral I = int>
+    template<rl::signed_integral I = int>
     constexpr I dot(const rl::point2<I>& point, const segment2<I>& segment) noexcept;
 
-    template <rl::signed_integral I = int, rl::floating_point F = float>
+    template<rl::signed_integral I = int, rl::floating_point F = float>
     constexpr F unit_dot(const rl::point2<I>& point, const segment2<I>& segment) noexcept;
 
-    template <rl::signed_integral I = int>
+    template<rl::signed_integral I = int>
     constexpr I dot(const rl::segment2<I>& segment, const point2<I>& point) noexcept;
 
-    template <rl::signed_integral I = int, rl::floating_point F = float>
+    template<rl::signed_integral I = int, rl::floating_point F = float>
     constexpr F unit_dot(const rl::segment2<I>& segment, const point2<I>& point) noexcept;
 
-    template <rl::signed_integral I = int>
+    template<rl::signed_integral I = int>
     constexpr I dot(const rl::segment2<I>& segment_a, const segment2<I>& segment_b) noexcept;
 
-    template <rl::signed_integral I = int, rl::floating_point F = float>
-    constexpr F unit_dot(const rl::segment2<I>& segment_a, const rl::segment2<I>& segment_b) noexcept;
-}  // namespace rl
+    template<rl::signed_integral I = int, rl::floating_point F = float>
+    constexpr F unit_dot(const rl::segment2<I>& segment_a,
+                         const rl::segment2<I>& segment_b) noexcept;
+}    // namespace rl
 
 #include <rlm/cellular/detail/dot.inl>
-

@@ -43,7 +43,6 @@ namespace rl
 
     template<rl::signed_integral I = int, rl::floating_point F = float>
     constexpr rl::point2<I> center(const rl::circle2<I, F>& circle) noexcept;
-}
+}    // namespace rl
 
 #include <rlm/cellular/detail/center.inl>
-
