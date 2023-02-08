@@ -114,8 +114,8 @@ constexpr bool rl::do_intersect(const rl::segment2<I>& segment_a, const rl::segm
         }
         return false;
     }
-    const float intersection_lerp_x =
-        static_cast<float>(
+    const double intersection_lerp_x =
+        static_cast<double>(
             (
                 (segment_b.end_x - segment_b.start_x) *
                 (segment_a.start_y - segment_b.start_y)
@@ -124,9 +124,9 @@ constexpr bool rl::do_intersect(const rl::segment2<I>& segment_a, const rl::segm
                 (segment_b.end_y - segment_b.start_y) *
                 (segment_a.start_x - segment_b.start_x)
             )
-        ) / static_cast<float>(cross_z);
-    const float intersection_lerp_y =
-        static_cast<float>(
+        ) / static_cast<double>(cross_z);
+    const double intersection_lerp_y =
+        static_cast<double>(
             (
                 (segment_a.end_x - segment_a.start_x) *
                 (segment_a.start_y - segment_b.start_y)
@@ -135,7 +135,7 @@ constexpr bool rl::do_intersect(const rl::segment2<I>& segment_a, const rl::segm
                 (segment_a.end_y - segment_a.start_y) *
                 (segment_a.start_x - segment_b.start_x)
             )
-        ) / static_cast<float>(cross_z);
+        ) / static_cast<double>(cross_z);
     return
         intersection_lerp_x >= 0 &&
         intersection_lerp_x <= 1 &&
