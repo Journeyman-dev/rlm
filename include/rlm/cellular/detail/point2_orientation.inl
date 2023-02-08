@@ -41,7 +41,7 @@ constexpr I rl::orientation_determinant(
 }
 
 template <rl::signed_integral I>
-constexpr rl::PositionOrientation rl::orientation_between(
+constexpr rl::PositionOrientation rl::position_orientation(
     const rl::point2<I>& point_a,
     const rl::point2<I>& point_b,
     const rl::point2<I>& point_c
