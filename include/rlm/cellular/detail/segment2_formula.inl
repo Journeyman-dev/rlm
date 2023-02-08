@@ -24,6 +24,7 @@
 
 #include <rlm/concepts.hpp>
 #include <rlm/gcd.hpp>
+#include <rlm/cellular/segment2_size.hpp>
 
 template<rl::signed_integral I, rl::floating_point F>
 constexpr F rl::slope(const rl::segment2<I>& segment) noexcept
