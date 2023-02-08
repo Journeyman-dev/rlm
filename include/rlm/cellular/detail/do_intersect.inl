@@ -87,7 +87,7 @@ constexpr bool rl::do_intersect(const rl::segment2<I>& segment_a, const rl::segm
     if (cross_z == 0)
     {
         // the segments are parallel
-        if (rl::y_intercept(segment_a) != rl::y_intercept(segment_b))
+        if (rl::y_intercept<I>(segment_a) != rl::y_intercept<I>(segment_b))
         {
             return false;
         }
