@@ -170,11 +170,11 @@ constexpr bool rl::do_intersect(const rl::segment2<I>& segment, const rl::circle
 {
     if (
         rl::do_intersect<I, F>(
-            rl::start<I, F>(segment),
+            rl::start<I>(segment),
             circle
         ) ||
         rl::do_intersect<I, F>(
-            rl::end<I, F>(segment),
+            rl::end<I>(segment),
             circle
         )
     )
