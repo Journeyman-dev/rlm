@@ -81,34 +81,32 @@ constexpr bool rl::does_contain(const rl::segment2<I>& containing_segment, const
 template <rl::signed_integral I, rl::floating_point F>
 constexpr bool rl::does_contain(const rl::segment2<I>& containing_segment, const rl::segment2<I>& contained_segment) noexcept
 {
-    if (!rl::are_collinear<I>(containing_segment, contained_segment))
+    if (
+        !rl::are_collinear<I>(containing_segment, contained_segment)
+    )
+    {
+        return false;
+    }
+    if (
+        rl::left_x<I>(containing_segment) > rl::left_x<I>(contained_segment)
+    )
     {
         return false;
     }
     if(
-        rl::right_x<I>(containing_segment) >= contained_segment.start_x &&
-        rl::right_x<I>(containing_segment) >= contained_segment.end_x
+        rl::right_x<I>(containing_segment) < rl::right_x<I>(contained_segment)
     )
     {
         return false;
     }
     if (
-        rl::left_x<I>(containing_segment) >= contained_segment.start_x &&
-        rl::left_x<I>(containing_segment) <= contained_segment.end_x
+        rl::top_y<I>(containing_segment) > rl::top_y<I>(contained_segment)
     )
     {
         return false;
     }
     if (
-        rl::bottom_y<I>(containing_segment) >= contained_segment.start_y &&
-        rl::bottom_y<I>(contained_segment) >= contained_segment.end_y
-    )
-    {
-        return false;
-    }
-    if (
-        rl::top_y<I>(containing_segment) >= contained_segment.start_y &&
-        rl::top_y<I>(containing_segment) <= contained_segment.end_y
+        rl::bottom_y<I>(containing_segment) < rl::bottom_y<I>(contained_segment)
     )
     {
         return false;
