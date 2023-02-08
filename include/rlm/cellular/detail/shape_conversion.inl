@@ -96,7 +96,7 @@ constexpr std::optional<rl::point2<I>> rl::as_point2(const rl::circle2<I, F>& ci
 }
 
 template<rl::signed_integral I, rl::floating_point F>
-constexpr bool is_segment2(const rl::point2<I>& point) noexcept
+constexpr bool rl::is_segment2(const rl::point2<I>& point) noexcept
 {
     return true;
 }
@@ -104,7 +104,7 @@ constexpr bool is_segment2(const rl::point2<I>& point) noexcept
 template<rl::signed_integral I, rl::floating_point F>
 constexpr bool rl::is_segment2(const rl::segment2<I>& segment) noexcept
 {
-    return segment;
+    return true;
 }
 
 template<rl::signed_integral I, rl::floating_point F>
@@ -120,7 +120,7 @@ constexpr bool rl::is_segment2(const rl::circle2<I, F>& circle) noexcept
 }
 
 template<rl::signed_integral I, rl::floating_point F>
-constexpr rl::segment2<I> rl::as_segment2(const rl::point2<I>& point) noexcept
+constexpr std::optional<rl::segment2<I>> rl::as_segment2(const rl::point2<I>& point) noexcept
 {
     return
         rl::segment2<I>(
@@ -132,7 +132,7 @@ constexpr rl::segment2<I> rl::as_segment2(const rl::point2<I>& point) noexcept
 }
 
 template<rl::signed_integral I, rl::floating_point F>
-constexpr rl::segment2<I> rl::as_segment2(const rl::segment2<I>& segment) noexcept
+constexpr std::optional<rl::segment2<I>> rl::as_segment2(const rl::segment2<I>& segment) noexcept
 {
     return segment;
 }
@@ -240,4 +240,95 @@ constexpr std::optional<rl::box2<I>> rl::as_box2(const rl::circle2<I, F>& circle
             1,
             1
         );
+}
+
+template<rl::signed_integral I, rl::floating_point F>
+constexpr bool rl::is_circle2(const rl::point2<I>& point) noexcept
+{
+    return true;
+}
+
+template<rl::signed_integral I, rl::floating_point F>
+constexpr bool rl::is_circle2(const rl::segment2<I>& segment) noexcept
+{
+    return rl::is_point2<I, F>(segment);
+}
+
+template<rl::signed_integral I, rl::floating_point F>
+constexpr bool rl::is_circle2(const rl::box2<I>& box) noexcept
+{
+    return
+        (box.width == 1 && box.height == 1) ||
+        (box.width == 3 && box.height == 3) ||
+        (box.width == 5 && box.height == 5);
+}
+
+template<rl::signed_integral I, rl::floating_point F>
+constexpr bool rl::is_circle2(const rl::circle2<I, F>& circle) noexcept
+{
+    return true;
+}
+
+template<rl::signed_integral I, rl::floating_point F>
+constexpr std::optional<rl::circle2<I, F>> rl::as_circle2(const rl::point2<I>& point) noexcept
+{
+    return
+        rl::circle2<I, F>(
+            point.x,
+            point.y,
+            0.5f
+        );
+}
+
+template<rl::signed_integral I, rl::floating_point F>
+constexpr std::optional<rl::circle2<I, F>> rl::as_circle2(const rl::segment2<I>& segment) noexcept
+{
+    if (rl::is_circle2<I, F>(segment))
+    {
+        return std::nullopt;
+    }
+    return
+        rl::circle2<I, F>(
+            segment.start_x,
+            segment.start_y,
+            0.5f;
+        )
+}
+
+template<rl::signed_integral I, rl::floating_point F>
+constexpr std::optional<rl::circle2<I, F>> rl::as_circle2(const rl::box2<I>& box) noexcept
+{
+    if (box.width == 5 && box.height == 5)
+    {
+        return
+            rl::circle2<I, F(
+                box.x + 1,
+                box.y + 1,
+                2.9f
+            );
+    }
+    else if (box.width == 3 && box.height == 3)
+    {
+        return
+            rl::circle2<I, F(
+                box.x + 1,
+                box.y + 1,
+                1.5f
+            );
+    }
+    else if (box.width == 1 && box.height == 1)
+    {
+        return rl::circle2<I, F>(
+            box.x,
+            box.y,
+            0.5f
+        );
+    }
+    return std::nullopt;
+}
+
+template<rl::signed_integral I, rl::floating_point F>
+constexpr std::optional<rl::circle2<I, F>> rl::as_circle2(const rl::circle2<I, F>& circle) noexcept
+{
+    return circle;
 }

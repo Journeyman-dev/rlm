@@ -107,6 +107,30 @@ namespace rl
 
     template<rl::signed_integral I = int, rl::floating_point F = float>
     constexpr std::optional<rl::box2<I>> as_box2(const rl::circle2<I, F>& circle) noexcept;
+
+    template<rl::signed_integral I = int, rl::floating_point F = float>
+    constexpr bool is_circle2(const rl::point2<I>& point) noexcept;
+
+    template<rl::signed_integral I = int, rl::floating_point F = float>
+    constexpr bool is_circle2(const rl::segment2<I>& segment) noexcept;
+
+    template<rl::signed_integral I = int, rl::floating_point F = float>
+    constexpr bool is_circle2(const rl::box2<I>& box) noexcept;
+
+    template<rl::signed_integral I = int, rl::floating_point F = float>
+    constexpr bool is_circle2(const rl::circle2<I, F>& circle) noexcept;
+
+    template<rl::signed_integral I = int, rl::floating_point F = float>
+    constexpr std::optional<rl::circle2<I, F>> as_circle2(const rl::point2<I>& point) noexcept;
+
+    template<rl::signed_integral I = int, rl::floating_point F = float>
+    constexpr std::optional<rl::circle2<I, F>> as_circle2(const rl::segment2<I>& segment) noexcept;
+
+    template<rl::signed_integral I = int, rl::floating_point F = float>
+    constexpr std::optional<rl::circle2<I, F>> as_circle2(const rl::box2<I>& box) noexcept;
+
+    template<rl::signed_integral I = int, rl::floating_point F = float>
+    constexpr std::optional<rl::circle2<I, F>> as_circle2(const rl::circle2<I, F>& circle) noexcept;
 }
 
 #include <rlm/cellular/detail/shape_conversion.inl>
