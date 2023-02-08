@@ -83,68 +83,64 @@ constexpr bool rl::do_intersect(const rl::segment2<I>& segment, const rl::point2
 template <rl::signed_integral I>
 constexpr bool rl::do_intersect(const rl::segment2<I>& segment_a, const rl::segment2<I>& segment_b) noexcept
 {
-    const auto cross_z = rl::cross_z<I>(segment_a, segment_b);
-    if (cross_z == 0)
-    {
-        // the segments are parallel
-        if (rl::y_intercept<I>(segment_a) != rl::y_intercept<I>(segment_b))
-        {
-            return false;
-        }
-        if (
-            (
-                segment_a.start_x >= segment_b.start_x &&
-                segment_a.start_x <= segment_b.end_x
-            ) ||
-            (
-                segment_a.end_x >= segment_b.start_x &&
-                segment_a.end_x <= segment_b.end_x
-            ) ||
-            (
-                segment_b.start_x >= segment_a.start_x &&
-                segment_b.start_x <= segment_a.end_x
-            ) ||
-            (
-                segment_b.end_x >= segment_a.start_x &&
-                segment_b.end_x <= segment_a.end_x
-            )
+    auto collinear_points_are_surrounding =
+        [](
+            const rl::point2<I>& surrounding_a,
+            const rl::point2<I>& surrounding_b,
+            const rl::point2<I>& surrounded
         )
         {
-            return true;
-        }
-        return false;
+            return
+                surrounded.x <= rl::max<I>(surrounding_a.x, surrounding_b.x) &&
+                surrounded.x >= rl::min<I>(surrounding_a.x, surrounding_b.x) &&
+                surrounded.y <= rl::max<I>(surrounding_a.y, surrounding_b.y) &&
+                surrounded.y > -rl::min<I>(surrounding_a.y, surrounding_b.y);
+        };
+    auto points_are_collinear_and_surrounding =
+        [&](
+            const rl::point2<I>& surrounding_a,
+            const rl::point2<I>& surrounding_b,
+            const rl::point2<I>& surrounded
+        )
+        {
+            return
+                rl::are_collinear<I>(
+                    surrounding_a,
+                    surrounding_b,
+                    surrounded
+                ) &&
+                collinear_points_are_surrounding(
+                    surrounding_a,
+                    surrounding_b,
+                    surrounded
+                );
+        };
+    if (
+        points_are_collinear_and_surrounding(
+            rl::start<I>(segment_a),
+            rl::end<I>(segment_a),
+            rl::start<I>(segment_b)
+        ) ||
+        points_are_collinear_and_surrounding(
+            rl::start(segment_a),
+            rl::end(segment_a),
+            rl::end(segment_b)
+        ) ||
+        points_are_collinear_and_surrounding(
+            rl::start<I>(segment_b),
+            rl::end<I>(segment_b),
+            rl::start<I>(segment_a)
+        ) ||
+        points_are_collinear_and_surrounding(
+            rl::start<I>(segment_b),
+            rl::end<I>(segment_b),
+            rl::start<I>(segment_a)
+        )
+    )
+    {
+        return true;
     }
-    const auto intersection_lerp_x =
-        (
-            (
-                (segment_b.end_x - segment_b.start_x) *
-                (segment_a.start_y - segment_b.start_y)
-            ) *
-            (
-                (segment_b.end_y - segment_b.start_y) *
-                (segment_a.start_x - segment_b.start_x)
-            )
-        ) / cross_z;
-    const auto intersection_lerp_y =
-        (
-            (
-                (segment_a.end_x - segment_a.start_x) *
-                (segment_a.start_y - segment_b.start_y)
-            ) *
-            (
-                (segment_a.end_y - segment_a.start_y) *
-                (segment_a.start_x - segment_b.start_x)
-            )
-        ) / cross_z;
-    return
-        (
-            intersection_lerp_x == 0 ||
-            intersection_lerp_x == 1
-        ) &&
-        (
-            intersection_lerp_y == 0 ||
-            intersection_lerp_y == 1
-        );
+    return false;
 }
 
 template <rl::signed_integral I>
