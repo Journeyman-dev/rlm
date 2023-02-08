@@ -23,14 +23,14 @@
 #include <catch2/catch_all.hpp>
 #include <rlm/cellular/point2_orientation.hpp>
 
-SCENARIO("The orientation is gotten from 3 point2")
+SCENARIO("The orientation is gotten from three point2")
 {
-    GIVEN("3 collinear point2")
+    GIVEN("Three collinear point2")
     {
         const rl::point2 point_a(0, 0);
         const rl::point2 point_b(1, 0);
         const rl::point2 point_c(3, 0);
-        WHEN("The orientation determinant is gotten from the 3 point2")
+        WHEN("The orientation determinant is gotten from the three point2")
         {
             const auto orientation_determinant = rl::orientation_determinant(point_a, point_b, point_c);
             THEN("The value is correct")
@@ -38,7 +38,7 @@ SCENARIO("The orientation is gotten from 3 point2")
                 CHECK(orientation_determinant == 0);
             }
         }
-        WHEN("The position orientation is gotten from the 3 point2")
+        WHEN("The position orientation is gotten from the three point2")
         {
             const auto position_orientation = rl::position_orientation(point_a, point_b, point_c);
             THEN("The value is correct")
@@ -47,12 +47,12 @@ SCENARIO("The orientation is gotten from 3 point2")
             }
         }
     }
-    GIVEN("3 clockwise point2")
+    GIVEN("Three clockwise point2")
     {
         const rl::point2 point_a(0, 0);
         const rl::point2 point_b(1, -1);
         const rl::point2 point_c(-1, -1);
-        WHEN("The orientation determinant is gotten from the 3 point2")
+        WHEN("The orientation determinant is gotten from the three point2")
         {
             const auto orientation_determinant = rl::orientation_determinant(point_a, point_b, point_c);
             THEN("The value is in the correct range")
@@ -60,7 +60,7 @@ SCENARIO("The orientation is gotten from 3 point2")
                 CHECK(orientation_determinant > 0);
             }
         }
-        WHEN("The position orientation is gotten from the 3 point2")
+        WHEN("The position orientation is gotten from the three point2")
         {
             const auto position_orientation = rl::position_orientation(point_a, point_b, point_c);
             THEN("The value is correct")
@@ -69,12 +69,12 @@ SCENARIO("The orientation is gotten from 3 point2")
             }
         }
     }
-    GIVEN("3 counter-clockwise point2")
+    GIVEN("Three counter-clockwise point2")
     {
         const rl::point2 point_a(0, 0);
         const rl::point2 point_b(-1, -1);
         const rl::point2 point_c(1, -1);
-        WHEN("The orientation determinant is gotten from the 3 point2")
+        WHEN("The orientation determinant is gotten from the three point2")
         {
             const auto orientation_determinant = rl::orientation_determinant(point_a, point_b, point_c);
             THEN("The value is in the correct range")
@@ -82,7 +82,7 @@ SCENARIO("The orientation is gotten from 3 point2")
                 CHECK(orientation_determinant < 0);
             }
         }
-        WHEN("The position orientation is gotten from the 3 point2")
+        WHEN("The position orientation is gotten from the three point2")
         {
             const auto position_orientation = rl::position_orientation(point_a, point_b, point_c);
             THEN("The value is correct")
