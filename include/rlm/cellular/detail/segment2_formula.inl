@@ -38,10 +38,10 @@ template<rl::signed_integral I>
 constexpr I rl::rise(const rl::segment2<I>& segment) noexcept
 {
     return
-        rl::height(segment) /
-        rl::gcd(
-            rl::width(segment),
-            rl::height(segment)
+        rl::height<I>(segment) /
+        rl::gcd<I>(
+            rl::width<I>(segment),
+            rl::height<I>(segment)
         );
 }
 
@@ -49,10 +49,10 @@ template<rl::signed_integral I>
 constexpr I rl::run(const rl::segment2<I>& segment) noexcept
 {
     return
-        rl::height(segment) /
-        rl::gcd(
-            rl::width(segment),
-            rl::height(segment)
+        rl::height<I>(segment) /
+        rl::gcd<I>(
+            rl::width<I>(segment),
+            rl::height<I>(segment)
         );
 }
 
