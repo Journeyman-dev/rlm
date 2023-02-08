@@ -233,7 +233,7 @@ constexpr bool rl::does_contain(const rl::circle2<I, F>& containing_circle, cons
             rl::center<I, F>(containing_circle),
             contained_circle
         ) <
-        containing_circle.radius;
+        containing_circle.radius - contained_circle.radius;
 }
 
 template<
