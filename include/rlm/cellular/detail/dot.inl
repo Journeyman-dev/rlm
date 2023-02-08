@@ -82,19 +82,19 @@ constexpr F rl::unit_dot(const rl::point2<I>& point, const segment2<I>& segment)
 }
 
 template <rl::signed_integral I>
-constexpr auto rl::dot(const rl::segment2<I>& segment, const point2<I>& point) noexcept
+constexpr I rl::dot(const rl::segment2<I>& segment, const point2<I>& point) noexcept
 {
     return rl::dot<I>(point, segment);
 }
 
-template <rl::signed_integral I = int, rl::floating_point F>
-constexpr auto rl::unit_dot(const rl::segment2<I>& segment, const point2<I>& point) noexcept
+template <rl::signed_integral I, rl::floating_point F>
+constexpr F rl::unit_dot(const rl::segment2<I>& segment, const point2<I>& point) noexcept
 {
     return rl::unit_dot<I, F>(point, segment);
 }
 
 template <rl::signed_integral I>
-constexpr auto rl::dot(const rl::segment2<I>& segment_a, const segment2<I>& segment_b) noexcept
+constexpr I rl::dot(const rl::segment2<I>& segment_a, const segment2<I>& segment_b) noexcept
 {
     return rl::dot<I>(
         rl::translation(segment_a),
@@ -103,7 +103,7 @@ constexpr auto rl::dot(const rl::segment2<I>& segment_a, const segment2<I>& segm
 }
 
 template <rl::signed_integral I, rl::floating_point F>
-constexpr auto rl::unit_dot(const rl::segment2<I>& segment_a, const rl::segment2<I>& segment_b) noexcept
+constexpr F rl::unit_dot(const rl::segment2<I>& segment_a, const rl::segment2<I>& segment_b) noexcept
 {
     return rl::unit_dot<I, F>(
         rl::translation(segment_a),
