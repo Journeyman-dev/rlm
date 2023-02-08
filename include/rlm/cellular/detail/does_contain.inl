@@ -30,13 +30,13 @@
 #include <rlm/cellular/are_collinear.hpp>
 
 // point2
-template <rl::signed_integral I>
+template <rl::signed_integral I, rl::floating_point F>
 constexpr bool rl::does_contain(const rl::point2<I>& containing_point, const rl::point2<I>& contained_point) noexcept
 {
     return containing_point == contained_point;
 }
 
-template <rl::signed_integral I>
+template <rl::signed_integral I, rl::floating_point F>
 constexpr bool rl::does_contain(const rl::point2<I>& containing_point, const rl::segment2<I>& contained_segment) noexcept
 {
     const auto contained_segment_as_point_o = rl::as_point2<I>(contained_segment);
@@ -45,7 +45,7 @@ constexpr bool rl::does_contain(const rl::point2<I>& containing_point, const rl:
         containing_point == contained_segment_as_point_o.value();
 }
 
-template <rl::signed_integral I>
+template <rl::signed_integral I, rl::floating_point F>
 constexpr bool rl::does_contain(const rl::point2<I>& containing_point, const rl::box2<I>& contained_box) noexcept
 {
     const auto contained_box_as_point_o = rl::as_point2<I>(contained_box);
@@ -64,7 +64,7 @@ constexpr bool rl::does_contain(const rl::point2<I>& containing_point, const rl:
 }
 
 // segment2
-template <rl::signed_integral I>
+template <rl::signed_integral I, rl::floating_point F>
 constexpr bool rl::does_contain(const rl::segment2<I>& containing_segment, const rl::point2<I>& contained_point) noexcept
 {
     return
@@ -78,7 +78,7 @@ constexpr bool rl::does_contain(const rl::segment2<I>& containing_segment, const
         );
 }
 
-template <rl::signed_integral I>
+template <rl::signed_integral I, rl::floating_point F>
 constexpr bool rl::does_contain(const rl::segment2<I>& containing_segment, const rl::segment2<I>& contained_segment) noexcept
 {
     if (!rl::are_collinear<I>(containing_segment, contained_segment))
@@ -116,7 +116,7 @@ constexpr bool rl::does_contain(const rl::segment2<I>& containing_segment, const
     return true;
 }
 
-template <rl::signed_integral I>
+template <rl::signed_integral I, rl::floating_point F>
 constexpr bool rl::does_contain(const rl::segment2<I>& containing_segment, const rl::box2<I>& contained_box) noexcept
 {
     return
@@ -145,7 +145,7 @@ template <rl::signed_integral I, rl::floating_point F>
 constexpr bool rl::does_contain(const rl::segment2<I>& containing_segment, const rl::circle2<I, F>& contained_circle) noexcept
 {
     return
-        rl::tile_diameter<I, F>(contained_circle) == 1 &&
+        (rl::tile_diameter<I, F>(contained_circle) == 1) &&
         rl::does_contain<I, F>(
             containing_segment,
             rl::center<I, F>(contained_circle)
@@ -153,7 +153,7 @@ constexpr bool rl::does_contain(const rl::segment2<I>& containing_segment, const
 }
 
 // box2
-template <rl::signed_integral I>
+template <rl::signed_integral I, rl::floating_point F>
 constexpr bool rl::does_contain(const rl::box2<I>& containing_box, const rl::point2<I>& contained_point) noexcept
 {
     return
@@ -163,7 +163,7 @@ constexpr bool rl::does_contain(const rl::box2<I>& containing_box, const rl::poi
         rl::right_x<I>(containing_box) >= contained_point.y;
 }
 
-template <rl::signed_integral I>
+template <rl::signed_integral I, rl::floating_point F>
 constexpr bool rl::does_contain(const rl::box2<I>& containing_box, const rl::segment2<I>& contained_segment) noexcept
 {
     return
@@ -173,7 +173,7 @@ constexpr bool rl::does_contain(const rl::box2<I>& containing_box, const rl::seg
         rl::bottom_y<I>(containing_box) >= rl::bottom_y<I>(contained_segment);
 }
 
-template <rl::signed_integral I>
+template <rl::signed_integral I, rl::floating_point F>
 constexpr bool rl::does_contain(const rl::box2<I>& containing_box, const rl::box2<I>& contained_box) noexcept
 {
     return

@@ -37,15 +37,15 @@ namespace rl
     struct circle2;
 
     // point2
-    template<rl::signed_integral I = int>
+    template<rl::signed_integral I = int, rl::floating_point F = float>
     constexpr bool does_contain(const rl::point2<I>& containing_point,
                                 const rl::point2<I>& contained_point) noexcept;
 
-    template<rl::signed_integral I = int>
+    template<rl::signed_integral I = int, rl::floating_point F = float>
     constexpr bool does_contain(const rl::point2<I>& containing_point,
                                 const rl::segment2<I>& contained_segment) noexcept;
 
-    template<rl::signed_integral I = int>
+    template<rl::signed_integral I = int, rl::floating_point F = float>
     constexpr bool does_contain(const rl::point2<I>& containing_point,
                                 const rl::box2<I>& contained_box) noexcept;
 
@@ -54,15 +54,15 @@ namespace rl
                                 const rl::circle2<I, F>& contained_circle) noexcept;
 
     // segment2
-    template<rl::signed_integral I = int>
+    template<rl::signed_integral I = int, rl::floating_point F = float>
     constexpr bool does_contain(const rl::segment2<I>& containing_segment,
                                 const rl::point2<I>& contained_point) noexcept;
 
-    template<rl::signed_integral I = int>
+    template<rl::signed_integral I = int, rl::floating_point F = float>
     constexpr bool does_contain(const rl::segment2<I>& containing_segment,
                                 const rl::segment2<I>& contained_segment) noexcept;
 
-    template<rl::signed_integral I = int>
+    template<rl::signed_integral I = int, rl::floating_point F = float>
     constexpr bool does_contain(const rl::segment2<I>& containing_segment,
                                 const rl::box2<I>& contained_box) noexcept;
 
@@ -71,15 +71,15 @@ namespace rl
                                 const rl::circle2<I, F>& contained_circle) noexcept;
 
     // box2
-    template<rl::signed_integral I = int>
+    template<rl::signed_integral I = int, rl::floating_point F = float>
     constexpr bool does_contain(const rl::box2<I>& containing_box,
                                 const rl::point2<I>& contained_point) noexcept;
 
-    template<rl::signed_integral I = int>
+    template<rl::signed_integral I = int, rl::floating_point F = float>
     constexpr bool does_contain(const rl::box2<I>& containing_box,
                                 const rl::segment2<I>& contained_segment) noexcept;
 
-    template<rl::signed_integral I = int>
+    template<rl::signed_integral I = int, rl::floating_point F = float>
     constexpr bool does_contain(const rl::box2<I>& containing_box,
                                 const rl::box2<I>& contained_box) noexcept;
 
