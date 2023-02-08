@@ -22,3 +22,20 @@
 
 #include <catch2/catch_all.hpp>
 #include <rlm/cellular/translation.hpp>
+#include <rlm/cellular/ostream.hpp>
+
+SCENARIO("The translation is gotten from a segment2")
+{
+    GIVEN("A segment2")
+    {
+        const rl::segment2 segment(1, 2, 3, 4);
+        WHEN("The translation is gotten from the segment2")
+        {
+            const auto translation = rl::translation(segment);
+            THEN("The value is correct")
+            {
+                CHECK(translation == rl::point2(2, 2));
+            }
+        }
+    }
+}
