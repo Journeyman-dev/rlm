@@ -51,6 +51,7 @@ target_sources(RlmTest
         "cellular_shape_points_tests.cpp"
         "cellular_translation_tests.cpp"
         "clamp_tests.cpp"
+        "gcd_tests.cpp"
         "lerp_tests.cpp"
         "linear_is_degenerate_tests.cpp"
         "linear_rectangle2_tests.cpp"
