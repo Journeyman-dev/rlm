@@ -36,7 +36,7 @@
 template<rl::signed_integral I>
 constexpr rl::segment2<I> rl::left_border(const rl::box2<I>& box, rl::RotationMotion rotation_motion) noexcept
 {
-    return rl::left_border_trimmed(box, rl::BorderCorners::All, rotation_motion);
+    return rl::left_border_trimmed(box, rl::BorderCorners::All, rotation_motion).value();
 }
 
 template<rl::signed_integral I>
