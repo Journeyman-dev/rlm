@@ -31,7 +31,7 @@
 template<rl::signed_integral I, rl::floating_point F>
 constexpr F rl::length(const rl::segment2<I>& segment) noexcept
 {
-    const auto translation = rl::translation<I, F>(segment);
+    const auto translation = rl::translation<I>(segment);
     return rl::magnitude<I, F>(translation);
 }
 
