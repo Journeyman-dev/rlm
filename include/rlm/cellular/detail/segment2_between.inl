@@ -27,7 +27,7 @@
 #include <rlm/cellular/segment2.hpp>
 
 template<rl::signed_integral I>
-constexpr rl::segment2<I> segment2_between(const rl::point2<I>& point_a, const rl::point2<I>& point_b)
+constexpr rl::segment2<I> rl::segment2_between(const rl::point2<I>& point_a, const rl::point2<I>& point_b)
 {
     return
         rl::segment2<I>(
