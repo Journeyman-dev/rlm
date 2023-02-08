@@ -45,7 +45,7 @@ constexpr F rl::unit_dot(const rl::point2<I>& a, const point2<I>& b) noexcept
     }
     return
         static_cast<F>(rl::dot<I>(a, b)) /
-        (distance * distance);
+        (rl::distance_between(a, b) * rl::distance_between(a, b));
 }
 
 template <rl::signed_integral I>
@@ -71,7 +71,7 @@ constexpr F rl::unit_dot(const rl::point2<I>& a, const segment2<I>& b) noexcept
     }
     return
         static_cast<F>(rl::dot(a, b)) /
-        (distance * distance);
+        (rl::distance_between(a, b) * rl::distance_between(a, b));
 }
 
 template <rl::signed_integral I>
