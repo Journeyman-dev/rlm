@@ -22,3 +22,68 @@
 
 #include <catch2/catch_all.hpp>
 #include <rlm/cellular/segment2_size.hpp>
+#include <rlm/cellular/ostream.hpp>
+
+SCENARIO("The length is gotten from a segment2")
+{
+    GIVEN("A segment2")
+    {
+        const rl::segment2 segment(1, 2, 1, 4);
+        WHEN("The length is gotten from the segment2")
+        {
+            const auto length = rl::length(segment);
+            THEN("The value is correct")
+            {
+                CHECK(length == 2.0f);
+            }
+        }
+    }
+}
+
+SCENARIO("The cell length is gotten from a segment2")
+{
+    GIVEN("A segment2")
+    {
+        const rl::segment2 segment(1, 2, 1, 4);
+        WHEN("The cell length is gotten from the segment2")
+        {
+            const auto cell_length = rl::cell_length(segment);
+            THEN("The value is correct")
+            {
+                CHECK(cell_length == 3);
+            }
+        }
+    }
+}
+
+SCENARIO("The width is gotten from a segment2")
+{
+    GIVEN("A segment2")
+    {
+        const rl::segment2 segment(1, 2, 1, 4);
+        WHEN("The width is gotten from the segment2")
+        {
+            const auto width = rl::width(segment);
+            THEN("The value is correct")
+            {
+                CHECK(width == 1);
+            }
+        }
+    }
+}
+
+SCENARIO("The height is gotten from a segment2")
+{
+    GIVEN("A segment2")
+    {
+        const rl::segment2 segment(1, 2, 1, 4);
+        WHEN("The height is gotten from the segment2")
+        {
+            const auto height = rl::height(segment);
+            THEN("The value is correct")
+            {
+                CHECK(height == 3);
+            }
+        }
+    }
+}
