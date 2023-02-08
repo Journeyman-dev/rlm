@@ -36,7 +36,7 @@ namespace rl
         const rl::point2<I>& point_b,
         const rl::point2<I>& point_c
     ) noexcept;
-    
+
     template <rl::signed_integral I = int>
     constexpr rl::PositionOrientation orientation_between(
         const rl::point2<I>& point_a,
