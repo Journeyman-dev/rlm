@@ -291,8 +291,8 @@ constexpr std::optional<rl::circle2<I, F>> rl::as_circle2(const rl::segment2<I>&
         rl::circle2<I, F>(
             segment.start_x,
             segment.start_y,
-            0.5f;
-        )
+            0.5f
+        );
 }
 
 template<rl::signed_integral I, rl::floating_point F>
@@ -301,7 +301,7 @@ constexpr std::optional<rl::circle2<I, F>> rl::as_circle2(const rl::box2<I>& box
     if (box.width == 5 && box.height == 5)
     {
         return
-            rl::circle2<I, F(
+            rl::circle2<I, F>(
                 box.x + 1,
                 box.y + 1,
                 2.9f
@@ -310,7 +310,7 @@ constexpr std::optional<rl::circle2<I, F>> rl::as_circle2(const rl::box2<I>& box
     else if (box.width == 3 && box.height == 3)
     {
         return
-            rl::circle2<I, F(
+            rl::circle2<I, F>(
                 box.x + 1,
                 box.y + 1,
                 1.5f
