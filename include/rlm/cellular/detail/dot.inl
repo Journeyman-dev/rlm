@@ -39,8 +39,7 @@ constexpr I rl::dot(const rl::point2<I>& a, const point2<I>& b) noexcept
 template <rl::signed_integral I, rl::floating_point F>
 constexpr F rl::unit_dot(const rl::point2<I>& a, const point2<I>& b) noexcept
 {
-    const auto distance = rl::distance_between<I, F>(a, b);
-    if (distance == static_cast<F>(0))
+    if (a == b)
     {
         return static_cast<F>(0);
     }
@@ -66,8 +65,7 @@ constexpr I rl::dot(const rl::point2<I>& a, const segment2<I>& b) noexcept
 template <rl::signed_integral I, rl::floating_point F>
 constexpr F rl::unit_dot(const rl::point2<I>& a, const segment2<I>& b) noexcept
 {
-    const auto distance = rl::distance_between<I, F>(a, b);
-    if (distance == static_cast<F>(0))
+    if (a == b)
     {
         return static_cast<F>(0);
     }
