@@ -36,13 +36,13 @@ namespace rl
     template<rl::signed_integral I, rl::floating_point F>
     struct circle2;
 
-    template<rl::signed_integral I = int>
+    template<rl::signed_integral I = int, rl::floating_point F = float>
     constexpr rl::box2<I> bounding_box2(const rl::point2<I>& point) noexcept;
 
-    template<rl::signed_integral I = int>
+    template<rl::signed_integral I = int, rl::floating_point F = float>
     constexpr rl::box2<I> bounding_box2(const rl::segment2<I>& segment) noexcept;
 
-    template<rl::signed_integral I = int>
+    template<rl::signed_integral I = int, rl::floating_point F = float>
     constexpr rl::box2<I> bounding_box2(const rl::box2<I>& box) noexcept;
 
     template<rl::signed_integral I = int, rl::floating_point F = float>

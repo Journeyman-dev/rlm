@@ -34,7 +34,7 @@
 #include <cmath>
 #include <cassert>
 
-template<rl::signed_integral I>
+template<rl::signed_integral I, rl::floating_point F>
 constexpr rl::box2<I> rl::bounding_box2(const rl::point2<I>& point) noexcept
 {
     return
@@ -46,7 +46,7 @@ constexpr rl::box2<I> rl::bounding_box2(const rl::point2<I>& point) noexcept
         );
 }
 
-template<rl::signed_integral I>
+template<rl::signed_integral I, rl::floating_point F>
 constexpr rl::box2<I> rl::bounding_box2(const rl::segment2<I>& segment) noexcept
 {
     const auto min_x = rl::min(segment.start_x, segment.end_x);
@@ -62,7 +62,7 @@ constexpr rl::box2<I> rl::bounding_box2(const rl::segment2<I>& segment) noexcept
         );
 }
 
-template<rl::signed_integral I>
+template<rl::signed_integral I, rl::floating_point F>
 constexpr rl::box2<I> rl::bounding_box2(const rl::box2<I>& box) noexcept
 {
     assert(!rl::is_degenerate(box) && "degenerate box2");
@@ -112,5 +112,5 @@ template<
 >
 constexpr rl::box2<I> rl::bounding_box2(const S& a, const Ss&... n) noexcept
 {
-    return rl::inl::bounding_pair_box2(rl::bounding_box2(a), rl::bounding_box2(n...));
+    return rl::inl::bounding_pair_box2<I>(rl::bounding_box2<I, F>(a), rl::bounding_box2<I, F>(n...));
 }
