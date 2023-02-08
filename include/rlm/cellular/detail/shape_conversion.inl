@@ -180,7 +180,7 @@ constexpr bool rl::is_box2(const rl::segment2<I>& segment) noexcept
 }
 
 template<rl::signed_integral I, rl::floating_point F>
-constexpr bool is_box2(const rl::box2<I>& box) noexcept
+constexpr bool rl::is_box2(const rl::box2<I>& box) noexcept
 {
     return true;
 }
@@ -283,7 +283,7 @@ constexpr std::optional<rl::circle2<I, F>> rl::as_circle2(const rl::point2<I>& p
 template<rl::signed_integral I, rl::floating_point F>
 constexpr std::optional<rl::circle2<I, F>> rl::as_circle2(const rl::segment2<I>& segment) noexcept
 {
-    if (rl::is_circle2<I, F>(segment))
+    if (!rl::is_circle2<I, F>(segment))
     {
         return std::nullopt;
     }
