@@ -43,7 +43,7 @@
 template <rl::signed_integral I, rl::floating_point F>
 constexpr F rl::distance_between(const rl::point2<I>& point_a, const rl::point2<I>& point_b) noexcept
 {
-    rl::magnitude<I, F>(point_a - point_b);
+    return rl::magnitude<I, F>(point_a - point_b);
 }
 
 template <rl::signed_integral I, rl::floating_point F>
