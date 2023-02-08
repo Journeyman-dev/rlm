@@ -31,7 +31,7 @@ SCENARIO("It is determined if a box2 is degenerate")
         const rl::box2 box;
         THEN("The box2 is degenerate")
         {
-            CHECK(rl::is_degenerate(box) == true);
+            CHECK(rl::is_degenerate(box));
         }
     }
     GIVEN("A box2 with a negative width")
@@ -39,7 +39,7 @@ SCENARIO("It is determined if a box2 is degenerate")
         const rl::box2 box(1, 1, -2, 2);
         THEN("The box2 is degenerate")
         {
-            CHECK(rl::is_degenerate(box) == true);
+            CHECK(rl::is_degenerate(box));
         }
     }
     GIVEN("A box2 with a negative height")
@@ -47,7 +47,7 @@ SCENARIO("It is determined if a box2 is degenerate")
         const rl::box2 box(1, 1, 2, -2);
         THEN("The box2 is degenerate")
         {
-            CHECK(rl::is_degenerate(box) == true);
+            CHECK(rl::is_degenerate(box));
         }
     }
     GIVEN("A box2 with positive dimensions")
@@ -55,7 +55,7 @@ SCENARIO("It is determined if a box2 is degenerate")
         const rl::box2 box(1, 1, 2, 2);
         THEN("The box2 is not degenerate")
         {
-            CHECK(rl::is_degenerate(box) == false);
+            CHECK_FALSE(rl::is_degenerate(box));
         }
     }
 }
@@ -67,7 +67,7 @@ SCENARIO("It is determined if a circle2 is degenerate")
         const rl::circle2 circle;
         THEN("The circle2 is degenerate")
         {
-            CHECK(rl::is_degenerate(circle) == true);
+            CHECK(rl::is_degenerate(circle));
         }
     }
     GIVEN("A circle2 with a negative radius")
@@ -75,7 +75,7 @@ SCENARIO("It is determined if a circle2 is degenerate")
         const rl::circle2 circle(1, 1, -1.0f);
         THEN("The circle2 is degenerate")
         {
-            CHECK(rl::is_degenerate(circle) == true);
+            CHECK(rl::is_degenerate(circle));
         }
     }
     GIVEN("A circle2 with a radius of 0.49f")
@@ -83,7 +83,7 @@ SCENARIO("It is determined if a circle2 is degenerate")
         const rl::circle2 circle(1, 1, 0.49f);
         THEN("The circle is degenerate")
         {
-            CHECK(rl::is_degenerate(circle) == true);
+            CHECK(rl::is_degenerate(circle));
         }
     }
     GIVEN("A circle with a radius of 10.0f")
@@ -91,7 +91,7 @@ SCENARIO("It is determined if a circle2 is degenerate")
         const rl::circle2 circle(1, 1, 10.0f);
         THEN("The circle is not degenerate")
         {
-            CHECK(rl::is_degenerate(circle) == false);
+            CHECK_FALSE(rl::is_degenerate(circle));
         }
     }
 }
