@@ -115,7 +115,7 @@ constexpr bool rl::do_intersect(const rl::segment2<I>& segment_a, const rl::segm
                     surrounded
                 );
         };
-    if (
+    return
         points_are_collinear_and_surrounding(
             rl::start<I>(segment_a),
             rl::end<I>(segment_a),
@@ -135,12 +135,7 @@ constexpr bool rl::do_intersect(const rl::segment2<I>& segment_a, const rl::segm
             rl::start<I>(segment_b),
             rl::end<I>(segment_b),
             rl::start<I>(segment_a)
-        )
-    )
-    {
-        return true;
-    }
-    return false;
+        );
 }
 
 template <rl::signed_integral I>
