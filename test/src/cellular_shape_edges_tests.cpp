@@ -58,13 +58,13 @@ SCENARIO("The edge coordinates are gotten from a cirlce2")
 {
     GIVEN("A cirlce2")
     {
-        const rl::circle2 circle(1, 2, 3.0f);
+        const rl::circle2 circle(1, 2, 0.5f);
         THEN("The edge coordinates are correct")
         {
-            CHECK(rl::left_x(circle) == -2);
-            CHECK(rl::right_x(circle) == 4);
-            CHECK(rl::top_y(circle) == -1);
-            CHECK(rl::bottom_y(circle) == 5);
+            CHECK(rl::left_x(circle) == 1);
+            CHECK(rl::right_x(circle) == 1);
+            CHECK(rl::top_y(circle) == 2);
+            CHECK(rl::bottom_y(circle) == 2);
         }
     }
 }
