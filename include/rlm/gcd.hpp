@@ -32,6 +32,6 @@ namespace rl
     constexpr P gcd(P number_a, P number_b) noexcept;
 
     template<rl::primitive P = int, rl::primitive... Ps>
-    requires std::conjunction_v<std::is_same<T, Ts>...>
+    requires std::conjunction_v<std::is_same<P, Ps>...>
     constexpr P gcd(P number_a, P number_b, Ps... number_n) noexcept;
 }
