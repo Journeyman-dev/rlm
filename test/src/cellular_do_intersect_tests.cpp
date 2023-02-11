@@ -22,3 +22,201 @@
 
 #include <catch2/catch_all.hpp>
 #include <rlm/cellular/do_intersect.hpp>
+
+SCENARIO("It is determined if grid shapes intersect with other grid shapes")
+{
+    GIVEN("A point2")
+    {
+        const rl::point2 point(1, 1);
+        GIVEN("A point2 that intersects with the point2")
+        {
+            const rl::point2 point_b(1, 1);
+            THEN("The shapes intersect")
+            {
+                CHECK(rl::do_intersect(point, point_b));
+            }
+        }
+        GIVEN("A point2 that does not intersect with the point2")
+        {
+            const rl::point2 point_b(2, 2);
+            THEN("The shapes do not intersect")
+            {
+                CHECK_FALSE(rl::do_intersect(point, point_b));
+            }
+        }
+        GIVEN("A segment2 that intersects with the point2")
+        {
+            const rl::segment2 segment(1, 1, 2, 2);
+            THEN("The shapes intersect")
+            {
+                CHECK(rl::do_intersect(point, segment));
+                CHECK(rl::do_intersect(segment, point));
+            }
+        }
+        GIVEN("A segment2 that does not intersect with the point2")
+        {
+            const rl::segment2 segment(2, 2, 3, 4);
+            THEN("The shapes do not intersect")
+            {
+                CHECK_FALSE(rl::do_intersect(point, segment));
+                CHECK_FALSE(rl::do_intersect(segment, point));
+            }
+        }
+        GIVEN("A box2 that intersects with the point2")
+        {
+            const rl::box2 box(1, 1, 2, 2);
+            THEN("The shapes intersect")
+            {
+                CHECK(rl::do_intersect(point, box));
+                CHECK(rl::do_intersect(box, point));
+            }
+        }
+        GIVEN("A box2 that does not intersect with the point2")
+        {
+            const rl::box2 box(2, 2, 3, 4);
+            THEN("The shapes do not intersect")
+            {
+                CHECK_FALSE(rl::do_intersect(point, box));
+                CHECK_FALSE(rl::do_intersect(box, point));
+            }
+        }
+        GIVEN("A circle2 that intersects with the point2")
+        {
+            const rl::circle2 circle(1, 1, 2.0f);
+            THEN("The shapes intersect")
+            {
+                CHECK(rl::do_intersect(point, circle));
+                CHECK(rl::do_intersect(circle, point));
+            }
+        }
+        GIVEN("A circle2 that does not intersect with the point2")
+        {
+            const rl::circle2 circle(2, 2, 0.5f);
+            THEN("The shapes do not intersect")
+            {
+                CHECK_FALSE(rl::do_intersect(point, circle));
+                CHECK_FALSE(rl::do_intersect(circle, point));
+            }
+        }
+    }
+    GIVEN("A segment2")
+    {
+        const rl::segment2 segment(2, 2, 3, 3);
+        GIVEN("A segment2 that intersects with the segment2")
+        {
+            const rl::segment2 segment_b(3, 1, 1, 3);
+            THEN("The shapes intersect")
+            {
+                CHECK(rl::do_intersect(segment, segment_b));
+                CHECK(rl::do_intersect(segment_b, segment));
+            }
+        }
+        GIVEN("A segment2 that does not intersect with the segment2")
+        {
+            const rl::segment2 segment_b(10, 10, 6, 6);
+            THEN("The shapes do not intersect")
+            {
+                CHECK_FALSE(rl::do_intersect(segment, segment_b));
+                CHECK_FALSE(rl::do_intersect(segment_b, segment));
+            }
+        }
+        GIVEN("A box2 that intersects with the segment2")
+        {
+            const rl::box2 box(2, 2, 3, 3);
+            THEN("The shapes intersect")
+            {
+                CHECK(rl::do_intersect(segment, box));
+                CHECK(rl::do_intersect(box, segment));
+            }
+        }
+        GIVEN("A box2 that does not intersect with the segment2")
+        {
+            const rl::box2 box(10, 10, 6, 6);
+            THEN("The shapes do not intersect")
+            {
+                CHECK_FALSE(rl::do_intersect(segment, box));
+                CHECK_FALSE(rl::do_intersect(box, segment));
+            }
+        }
+        GIVEN("A circle2 that intersects with the segment2")
+        {
+            const rl::circle2 circle(2, 2, 0.5f);
+            THEN("The shapes intersect")
+            {
+                CHECK(rl::do_intersect(segment, circle));
+                CHECK(rl::do_intersect(circle, segment));
+            }
+        }
+        GIVEN("A circle2 that does not intersect with the segment2")
+        {
+            const rl::circle2 circle(10, 10, 2.0f);
+            THEN("The shapes do not intersect")
+            {
+                CHECK_FALSE(rl::do_intersect(segment, circle));
+                CHECK_FALSE(rl::do_intersect(circle, segment));
+            }
+        }
+    }
+    GIVEN("A box2")
+    {
+        const rl::box2 box(1, 1, 2, 2);
+        GIVEN("A box2 that intersects with the box2")
+        {
+            const rl::box2 box_b(2, 2, 3, 3);
+            THEN("The shapes intersect")
+            {
+                CHECK(rl::do_intersect(box, box_b));
+                CHECK(rl::do_intersect(box_b, box));
+            }
+        }
+        GIVEN("A box2 that does not intersect with the box2")
+        {
+            const rl::box2 box_b(10, 10, 6, 6);
+            THEN("The shapes do not intersect")
+            {
+                CHECK_FALSE(rl::do_intersect(box, box_b));
+                CHECK_FALSE(rl::do_intersect(box_b, box));
+            }
+        }
+        GIVEN("A circle2 that intersects with the box2")
+        {
+            const rl::circle2 circle(1, 1, 0.5f);
+            THEN("The shapes intersect")
+            {
+                CHECK(rl::do_intersect(box, circle));
+                CHECK(rl::do_intersect(circle, box));
+            }
+        }
+        GIVEN("A circle2 that does not intersect with the box2")
+        {
+            const rl::circle2 circle(10, 10, 2.0f);
+            THEN("The shapes do not intersect")
+            {
+                CHECK_FALSE(rl::do_intersect(box, circle));
+                CHECK_FALSE(rl::do_intersect(circle, box));
+            }
+        }
+    }
+    GIVEN("A circle2")
+    {
+        const rl::circle2 circle(1, 1, 1.0f);
+        GIVEN("A circle2 that intersects with the circle2")
+        {
+            const rl::circle2 circle_b(2, 2, 1.0f);
+            THEN("The shapes intersect")
+            {
+                CHECK(rl::do_intersect(circle, circle_b));
+                CHECK(rl::do_intersect(circle_b, circle));
+            }
+        }
+        GIVEN("A circle2 that does not intersect with the circle2")
+        {
+            const rl::circle2 circle_b(10, 10, 1.0f);
+            THEN("The shapes do not intersect")
+            {
+                CHECK_FALSE(rl::do_intersect(circle, circle_b));
+                CHECK_FALSE(rl::do_intersect(circle_b, circle));
+            }
+        }
+    }
+}
