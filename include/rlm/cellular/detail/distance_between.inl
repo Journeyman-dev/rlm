@@ -83,18 +83,18 @@ constexpr F rl::distance_between(const rl::point2<I>& point, const rl::segment2<
 template <rl::signed_integral I, rl::floating_point F>
 constexpr F rl::distance_between(const rl::point2<I>& point, const rl::box2<I>& box) noexcept
 {
+    if (rl::does_contain(box, point))
+    {
+        return static_cast<F>(0);
+    }
     return rl::magnitude<I, F>(
         rl::point2<I>(
-            rl::clamp<I>(
-                point.x,
-                rl::left_x<I>(box),
-                rl::right_x<I>(box)
-            ),
-            rl::clamp<I>(
-                point.y, 
-                rl::top_y<I>(box), 
-                rl::bottom_y<I>(box)
-            )
+            point.x < rl::left_x(box) ?
+            rl::left_x(box) - point.x :
+            point.x - rl::right_x(box),
+            point.y < rl::top_y(box) ?
+            rl::top_y(box) - point.y :
+            point.y - rl::bottom_y(box)
         )
     );
 }
