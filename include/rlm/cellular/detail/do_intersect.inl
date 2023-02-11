@@ -220,7 +220,7 @@ constexpr bool rl::do_intersect(const rl::box2<I>& box, const rl::circle2<I, F>&
         rl::distance_between<I, F>(
             box,
             rl::center<I, F>(circle)
-        ) - circle.radius <= circle.radius;
+        ) <= circle.radius;
 }
 
 // circle2
