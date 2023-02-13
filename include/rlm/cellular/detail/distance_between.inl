@@ -199,7 +199,7 @@ constexpr F rl::distance_between(const rl::segment2<I>& segment, const rl::circl
     {
         return static_cast<F>(0);
     }
-    const auto unit_dot = rl::unit_dot<I, F>(segment, circle);
+    const auto unit_dot = rl::unit_dot<I, F>(segment, rl::center(circle));
     const auto closest_segment_point = rl::point2<I>(
         segment.start_x + (unit_dot * (segment.end_x - segment.start_x)),
         segment.start_y + (unit_dot * (segment.end_y - segment.start_y))
