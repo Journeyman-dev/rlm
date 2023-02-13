@@ -91,10 +91,14 @@ constexpr F rl::distance_between(const rl::point2<I>& point, const rl::box2<I>& 
         rl::point2<I>(
             point.x < rl::left_x(box) ?
             rl::left_x(box) - point.x :
-            point.x - rl::right_x(box),
+            point.x > rl::right_x(box) ?
+            point.x - rl::right_x(box) :
+            point.x,
             point.y < rl::top_y(box) ?
             rl::top_y(box) - point.y :
-            point.y - rl::bottom_y(box)
+            point.y > rl::bottom_y(box) ?
+            point.y - rl::bottom_y(box) :
+            point.y
         )
     );
 }
