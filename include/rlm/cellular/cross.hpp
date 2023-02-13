@@ -36,6 +36,11 @@ namespace rl
 
     template<rl::signed_integral I = int>
     constexpr I cross_z(const rl::segment2<I>& a, const rl::segment2<I>& b) noexcept;
+    constexpr I cross_z(const rl::segment2<I>& segment, const rl::point2<I>& point) noexcept;
+
+    template<rl::signed_integral I = int>
+    constexpr I cross_z(const rl::point2<I>& point, const rl::segment2<I>& segment) noexcept;
+
 }    // namespace rl
 
 #include <rlm/cellular/detail/cross.inl>

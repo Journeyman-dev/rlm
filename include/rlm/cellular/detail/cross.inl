@@ -35,6 +35,27 @@ constexpr I rl::cross_z(const rl::point2<I>& point_a, const rl::point2<I>& point
         (point_b.x * point_a.y);
 }
 
+
+template<rl::signed_integral I>
+constexpr I rl::cross_z(const rl::segment2<I>& segment, const rl::point2<I>& point) noexcept
+{
+    return
+        rl::cross_z<I>(
+            rl::translation<I>(segment),
+            point
+        );
+}
+
+template<rl::signed_integral I>
+constexpr I rl::cross_z(const rl::point2<I>& point, const rl::segment2<I>& segment) noexcept
+{
+    return
+        rl::cross_z<I>(
+            segment,
+            point
+        );
+}
+
 template <rl::signed_integral I>
 constexpr I rl::cross_z(const rl::segment2<I>& segment_a, const rl::segment2<I>& segment_b) noexcept
 {
