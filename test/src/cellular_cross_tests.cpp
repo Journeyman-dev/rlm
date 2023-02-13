@@ -22,3 +22,40 @@
 
 #include <catch2/catch_all.hpp>
 #include <rlm/cellular/cross.hpp>
+
+SCENARIO("A cross product is determined")
+{
+    GIVEN("A point2")
+    {
+        const rl::point2 point(1, 1);
+        GIVEN("A point2")
+        {
+            const rl::point2 other_point(2, 2);
+            THEN("The z component of the cross product of the points is correct")
+            {
+                CHECK(rl::cross_z(point, other_point) == 0);
+            }
+        }
+        GIVEN("A segment2")
+        {
+            const rl::segment2 segment(1, 2, 3, 4);
+            THEN("THe z component of the cross product of the point and the segment is correct")
+            {
+                CHECK(rl::cross_z(point, segment) == 0);
+                CHECK(rl::cross_z(segment, point) == 0);
+            }
+        }
+    }
+    GIVEN("A segment2")
+    {
+        const rl::segment2 segment(2, 1, 4, 3);
+        GIVEN("A segment2")
+        {
+            const rl::segment2 other_segment(1, 2, 3, 4);
+            THEN("The z component of the cross product of the segments is correct")
+            {
+                CHECK(rl::cross_z(segment, other_segment) == 0);
+            }
+        }
+    }
+}
