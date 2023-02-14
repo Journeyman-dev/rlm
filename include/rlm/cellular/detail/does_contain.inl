@@ -68,14 +68,14 @@ template <rl::signed_integral I, rl::floating_point F>
 constexpr bool rl::does_contain(const rl::segment2<I>& containing_segment, const rl::point2<I>& contained_point) noexcept
 {
     return
-        rl::cross_z<I>(
-            rl::start<I>(containing_segment),
+        rl::are_collinear<I>(
+            containing_segment,
             contained_point
-        ) ==
-        rl::cross_z<I>(
-            rl::end<I>(containing_segment),
-            contained_point
-        );
+        ) &&
+        contained_point.x >= rl::left_x(containing_segment) &&
+        contained_point.y <= rl::right_x(containing_segment) &&
+        contained_point.y >= rl::top_y(containing_segment) &&
+        contained_point.y <= rl::bottom_y(containing_segment);
 }
 
 template <rl::signed_integral I, rl::floating_point F>
