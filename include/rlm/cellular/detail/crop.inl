@@ -51,7 +51,7 @@ constexpr std::optional<rl::point2<I>> rl::crop(const rl::point2<I>& point, cons
 template<rl::signed_integral I>
 constexpr std::optional<rl::segment2<I>> rl::crop(const rl::segment2<I>& segment, const rl::box2<I>& crop_box) noexcept
 {
-    if (!rl::does_contain<I>(crop_box, segment))
+    if (!rl::do_intersect<I>(crop_box, segment))
     {
         return std::nullopt;
     }
@@ -75,7 +75,7 @@ constexpr std::optional<rl::segment2<I>> rl::crop(const rl::segment2<I>& segment
 template<rl::signed_integral I>
 constexpr std::optional<rl::box2<I>> rl::crop(const rl::box2<I>& box, const rl::box2<I>& crop_box) noexcept
 {
-    if (!rl::does_contain<I>(crop_box, box))
+    if (!rl::do_intersect<I>(crop_box, box))
     {
         return std::nullopt;
     }
