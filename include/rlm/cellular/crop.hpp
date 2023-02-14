@@ -36,11 +36,11 @@ namespace rl
     struct box2;
 
     template<rl::signed_integral I = int>
-    constexpr std::optional<rl::box2<I>> crop(const rl::point2<I>& point,
+    constexpr std::optional<rl::point2<I>> crop(const rl::point2<I>& point,
                                               const rl::box2<I>& crop_box) noexcept;
 
     template<rl::signed_integral I = int>
-    constexpr std::optional<rl::box2<I>> crop(const rl::segment2<I>& segment,
+    constexpr std::optional<rl::segment2<I>> crop(const rl::segment2<I>& segment,
                                               const rl::box2<I>& crop_box) noexcept;
 
     template<rl::signed_integral I = int>

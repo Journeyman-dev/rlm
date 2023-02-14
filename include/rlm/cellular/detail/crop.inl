@@ -39,13 +39,13 @@
 #include <optional>
 
 template<rl::signed_integral I>
-constexpr std::optional<rl::box2<I>> rl::crop(const rl::point2<I>& point, const rl::box2<I>& crop_box) noexcept
+constexpr std::optional<rl::point2<I>> rl::crop(const rl::point2<I>& point, const rl::box2<I>& crop_box) noexcept
 {
     if (!rl::does_contain<I>(crop_box, point))
     {
         return std::nullopt;
     }
-    return rl::as_box2(point);
+    return point;
 }
 
 template<rl::signed_integral I>
