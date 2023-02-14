@@ -70,14 +70,14 @@ constexpr std::optional<rl::segment2<I>> rl::left_border_trimmed(
             (border_corners & rl::BorderCorners::Bottom) == rl::BorderCorners::Bottom ||
             (border_corners & rl::BorderCorners::CounterClockwise) == rl::BorderCorners::CounterClockwise ||
             (border_corners & rl::BorderCorners::Left) == rl::BorderCorners::Left
-        ) ? 1 : 0;
+        ) ? 0 : 1;
     const I top_depth =
         (
             (border_corners & rl::BorderCorners::Top) == rl::BorderCorners::Top ||
             (border_corners & rl::BorderCorners::Clockwise) == rl::BorderCorners::Clockwise ||
             (border_corners & rl::BorderCorners::Left) == rl::BorderCorners::Left
-        ) ? 1 : 0;
-    if (2 - (bottom_depth + top_depth) >= box.height)
+        ) ? 0 : 1;
+    if (box.height - bottom_depth - top_depth <= 0)
     {
         return std::nullopt;
     }
@@ -107,14 +107,14 @@ constexpr std::optional<rl::segment2<I>> rl::right_border_trimmed(
             (border_corners & rl::BorderCorners::Top) == rl::BorderCorners::Top ||
             (border_corners & rl::BorderCorners::CounterClockwise) == rl::BorderCorners::CounterClockwise ||
             (border_corners & rl::BorderCorners::Right) == rl::BorderCorners::Right
-        ) ? 1 : 0;
+        ) ? 0 : 1;
     const I bottom_depth =
         (
             (border_corners & rl::BorderCorners::Bottom) == rl::BorderCorners::Bottom ||
             (border_corners & rl::BorderCorners::Clockwise) == rl::BorderCorners::Clockwise ||
             (border_corners & rl::BorderCorners::Right) == rl::BorderCorners::Right
-        ) ? 1 : 0;
-    if (2 - (top_depth + bottom_depth) >= box.height)
+        ) ? 0 : 1;
+    if (box.height - top_depth - bottom_depth <= 0)
     {
         return std::nullopt;
     }
@@ -144,14 +144,14 @@ constexpr std::optional<rl::segment2<I>> rl::top_border_trimmed(
             (border_corners & rl::BorderCorners::Left) == rl::BorderCorners::Left ||
             (border_corners & rl::BorderCorners::CounterClockwise) == rl::BorderCorners::CounterClockwise ||
             (border_corners & rl::BorderCorners::Top) == rl::BorderCorners::Top
-        ) ? 1 : 0;
+        ) ? 0 : 1;
     const I right_depth =
         (
             (border_corners & rl::BorderCorners::Right) == rl::BorderCorners::Right ||
             (border_corners & rl::BorderCorners::Clockwise) == rl::BorderCorners::Clockwise ||
             (border_corners & rl::BorderCorners::Top) == rl::BorderCorners::Top
-        ) ? 1 : 0;
-    if (2 - (left_depth + right_depth) >= box.width)
+        ) ? 0 : 1;
+    if (box.width - left_depth - right_depth <= 0)
     {
         return std::nullopt;
     }
@@ -181,14 +181,14 @@ constexpr std::optional<rl::segment2<I>> rl::bottom_border_trimmed(
             (border_corners & rl::BorderCorners::Right) == rl::BorderCorners::Right ||
             (border_corners & rl::BorderCorners::CounterClockwise) == rl::BorderCorners::CounterClockwise ||
             (border_corners & rl::BorderCorners::Bottom) == rl::BorderCorners::Bottom
-        ) ? 1 : 0;
+        ) ? 0 : 1;
     const I left_depth =
         (
             (border_corners & rl::BorderCorners::Left) == rl::BorderCorners::Left ||
             (border_corners & rl::BorderCorners::Clockwise) == rl::BorderCorners::Clockwise ||
             (border_corners & rl::BorderCorners::Bottom) == rl::BorderCorners::Bottom
-        ) ? 1 : 0;
-    if (2 - (right_depth + left_depth) >= box.width)
+        ) ? 0 : 1;
+    if (box.width - right_depth - left_depth <= 0)
     {
         return std::nullopt;
     }
