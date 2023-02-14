@@ -92,32 +92,32 @@ SCENARIO("The borders are gotten from a box2 with trimmed corners")
             THEN("The clockwise cornered border is correct")
             {
                 REQUIRE(clockwise_corner_o.has_value());
-                CHECK(clockwise_corner_o.value() == rl::segment2(1, 5, 1, 3));
+                CHECK(clockwise_corner_o.value() == rl::segment2(1, 4, 1, 2));
             }
             THEN("The counter clockwise cornered border is correct")
             {
                 REQUIRE(counter_clockwise_corner_o.has_value());
-                CHECK(counter_clockwise_corner_o.value() == rl::segment2(1, 4, 1, 2));
+                CHECK(counter_clockwise_corner_o.value() == rl::segment2(1, 5, 1, 3));
             }
             THEN("The left cornered border is correct")
             {
                 REQUIRE(left_corner_o.has_value());
-                CHECK(left_corner_o.value() == rl::segment2(1, 4, 1, 3));
+                CHECK(left_corner_o.value() == rl::segment2(1, 5, 1, 2));
             }
             THEN("The right cornered border is correct")
             {
                 REQUIRE(right_corner_o.has_value());
-                CHECK(right_corner_o.value() == rl::segment2(1, 5, 1, 2));
+                CHECK(right_corner_o.value() == rl::segment2(1, 4, 1, 3));
             }
             THEN("The top cornered border is correct")
             {
                 REQUIRE(top_corner_o.has_value());
-                CHECK(top_corner_o.value() == rl::segment2(1, 5, 1, 3));
+                CHECK(top_corner_o.value() == rl::segment2(1, 4, 1, 2));
             }
             THEN("The bottom cornered border is correct")
             {
                 REQUIRE(bottom_corner_o.has_value());
-                CHECK(bottom_corner_o.value() == rl::segment2(1, 5, 1, 3));
+                CHECK(bottom_corner_o.value() == rl::segment2(1, 4, 1, 2));
             }
         }
         WHEN("The left border is gotten from the box in counter clockwise direction")
@@ -161,32 +161,32 @@ SCENARIO("The borders are gotten from a box2 with trimmed corners")
             THEN("The clockwise cornered border is correct")
             {
                 REQUIRE(clockwise_corner_o.has_value());
-                CHECK(clockwise_corner_o.value() == rl::segment2(1, 3, 1, 5));
+                CHECK(clockwise_corner_o.value() == rl::segment2(1, 2, 1, 4));
             }
             THEN("The counter clockwise cornered border is correct")
             {
                 REQUIRE(counter_clockwise_corner_o.has_value());
-                CHECK(counter_clockwise_corner_o.value() == rl::segment2(1, 2, 1, 4));
+                CHECK(counter_clockwise_corner_o.value() == rl::segment2(1, 3, 1, 5));
             }
             THEN("The left cornered border is correct")
             {
                 REQUIRE(left_corner_o.has_value());
-                CHECK(left_corner_o.value() == rl::segment2(1, 3, 1, 4));
+                CHECK(left_corner_o.value() == rl::segment2(1, 2, 1, 5));
             }
             THEN("The right cornered border is correct")
             {
                 REQUIRE(right_corner_o.has_value());
-                CHECK(right_corner_o.value() == rl::segment2(1, 2, 1, 5));
+                CHECK(right_corner_o.value() == rl::segment2(1, 3, 1, 4));
             }
             THEN("The top cornered border is correct")
             {
                 REQUIRE(top_corner_o.has_value());
-                CHECK(top_corner_o.value() == rl::segment2(1, 3, 1, 5));
+                CHECK(top_corner_o.value() == rl::segment2(1, 2, 1, 4));
             }
             THEN("The bottom cornered border is correct")
             {
                 REQUIRE(bottom_corner_o.has_value());
-                CHECK(bottom_corner_o.value() == rl::segment2(1, 3, 1, 5));
+                CHECK(bottom_corner_o.value() == rl::segment2(1, 2, 1, 4));
             }
         }
         WHEN("The right border is gotten from the box in clockwise direction")
@@ -230,32 +230,32 @@ SCENARIO("The borders are gotten from a box2 with trimmed corners")
             THEN("The clockwise cornered border is correct")
             {
                 REQUIRE(clockwise_corner_o.has_value());
-                CHECK(clockwise_corner_o.value() == rl::segment2(3, 2, 3, 4));
+                CHECK(clockwise_corner_o.value() == rl::segment2(3, 3, 3, 5));
             }
             THEN("The counter clockwise cornered border is correct")
             {
                 REQUIRE(counter_clockwise_corner_o.has_value());
-                CHECK(counter_clockwise_corner_o.value() == rl::segment2(3, 3, 3, 5));
+                CHECK(counter_clockwise_corner_o.value() == rl::segment2(3, 2, 3, 4));
             }
             THEN("The left cornered border is correct")
             {
                 REQUIRE(left_corner_o.has_value());
-                CHECK(left_corner_o.value() == rl::segment2(3, 2, 3, 5));
+                CHECK(left_corner_o.value() == rl::segment2(3, 3, 3, 4));
             }
             THEN("The right cornered border is correct")
             {
                 REQUIRE(right_corner_o.has_value());
-                CHECK(right_corner_o.value() == rl::segment2(3, 3, 3, 4));
+                CHECK(right_corner_o.value() == rl::segment2(3, 2, 3, 5));
             }
             THEN("The top cornered border is correct")
             {
                 REQUIRE(top_corner_o.has_value());
-                CHECK(top_corner_o.value() == rl::segment2(3, 3, 3, 5));
+                CHECK(top_corner_o.value() == rl::segment2(3, 2, 3, 4));
             }
             THEN("The bottom cornered border is correct")
             {
                 REQUIRE(bottom_corner_o.has_value());
-                CHECK(bottom_corner_o.value() == rl::segment2(3, 3, 3, 5));
+                CHECK(bottom_corner_o.value() == rl::segment2(3, 2, 3, 4));
             }
         }
         WHEN("The right border is gotten from the box in counter clockwise direction")
@@ -299,32 +299,32 @@ SCENARIO("The borders are gotten from a box2 with trimmed corners")
             THEN("The clockwise cornered border is correct")
             {
                 REQUIRE(clockwise_corner_o.has_value());
-                CHECK(clockwise_corner_o.value() == rl::segment2(3, 4, 3, 2));
+                CHECK(clockwise_corner_o.value() == rl::segment2(3, 5, 3, 3));
             }
             THEN("The counter clockwise cornered border is correct")
             {
                 REQUIRE(counter_clockwise_corner_o.has_value());
-                CHECK(counter_clockwise_corner_o.value() == rl::segment2(3, 5, 3, 3));
+                CHECK(counter_clockwise_corner_o.value() == rl::segment2(3, 4, 3, 2));
             }
             THEN("The left cornered border is correct")
             {
                 REQUIRE(left_corner_o.has_value());
-                CHECK(left_corner_o.value() == rl::segment2(3, 5, 3, 2));
+                CHECK(left_corner_o.value() == rl::segment2(3, 4, 3, 3));
             }
             THEN("The right cornered border is correct")
             {
                 REQUIRE(right_corner_o.has_value());
-                CHECK(right_corner_o.value() == rl::segment2(3, 4, 3, 3));
+                CHECK(right_corner_o.value() == rl::segment2(3, 5, 3, 2));
             }
             THEN("The top cornered border is correct")
             {
                 REQUIRE(top_corner_o.has_value());
-                CHECK(top_corner_o.value() == rl::segment2(3, 5, 3, 3));
+                CHECK(top_corner_o.value() == rl::segment2(3, 4, 3, 2));
             }
             THEN("The bottom cornered border is correct")
             {
                 REQUIRE(bottom_corner_o.has_value());
-                CHECK(bottom_corner_o.value() == rl::segment2(3, 5, 3, 3));
+                CHECK(bottom_corner_o.value() == rl::segment2(3, 4, 3, 2));
             }
         }
         WHEN("The top border is gotten from the box in clockwise direction")
@@ -368,32 +368,32 @@ SCENARIO("The borders are gotten from a box2 with trimmed corners")
             THEN("The clockwise cornered border is correct")
             {
                 REQUIRE(clockwise_corner_o.has_value());
-                CHECK(clockwise_corner_o.value() == rl::segment2(1, 2, 2, 2));
+                CHECK(clockwise_corner_o.value() == rl::segment2(2, 2, 3, 2));
             }
             THEN("The counter clockwise cornered border is correct")
             {
                 REQUIRE(counter_clockwise_corner_o.has_value());
-                CHECK(counter_clockwise_corner_o.value() == rl::segment2(2, 2, 3, 2));
+                CHECK(counter_clockwise_corner_o.value() == rl::segment2(1, 2, 2, 2));
             }
             THEN("The left cornered border is correct")
             {
                 REQUIRE(left_corner_o.has_value());
-                CHECK(left_corner_o.value() == rl::segment2(2, 2, 3, 2));
+                CHECK(left_corner_o.value() == rl::segment2(1, 2, 2, 2));
             }
             THEN("The right cornered border is correct")
             {
                 REQUIRE(right_corner_o.has_value());
-                CHECK(right_corner_o.value() == rl::segment2(1, 2, 2, 2));
+                CHECK(right_corner_o.value() == rl::segment2(2, 2, 3, 2));
             }
             THEN("The top cornered border is correct")
             {
                 REQUIRE(top_corner_o.has_value());
-                CHECK(top_corner_o.value() == rl::segment2(2, 2, 2, 2));
+                CHECK(top_corner_o.value() == rl::segment2(1, 2, 3, 2));
             }
             THEN("The bottom cornered border is correct")
             {
                 REQUIRE(bottom_corner_o.has_value());
-                CHECK(bottom_corner_o.value() == rl::segment2(2, 2, 2, 2));
+                CHECK(bottom_corner_o.value() == rl::segment2(1, 2, 3, 2));
             }
         }
         WHEN("The top border is gotten from the box in counter clockwise direction")
@@ -437,32 +437,32 @@ SCENARIO("The borders are gotten from a box2 with trimmed corners")
             THEN("The clockwise cornered border is correct")
             {
                 REQUIRE(clockwise_corner_o.has_value());
-                CHECK(clockwise_corner_o.value() == rl::segment2(2, 2, 1, 2));
+                CHECK(clockwise_corner_o.value() == rl::segment2(3, 2, 2, 2));
             }
             THEN("The counter clockwise cornered border is correct")
             {
                 REQUIRE(counter_clockwise_corner_o.has_value());
-                CHECK(counter_clockwise_corner_o.value() == rl::segment2(3, 2, 2, 2));
+                CHECK(counter_clockwise_corner_o.value() == rl::segment2(2, 2, 1 ,2));
             }
             THEN("The left cornered border is correct")
             {
                 REQUIRE(left_corner_o.has_value());
-                CHECK(left_corner_o.value() == rl::segment2(3, 2, 2, 2));
+                CHECK(left_corner_o.value() == rl::segment2(2, 2, 1, 2));
             }
             THEN("The right cornered border is correct")
             {
                 REQUIRE(right_corner_o.has_value());
-                CHECK(right_corner_o.value() == rl::segment2(2, 2, 1, 2));
+                CHECK(right_corner_o.value() == rl::segment2(3, 2, 2, 2));
             }
             THEN("The top cornered border is correct")
             {
                 REQUIRE(top_corner_o.has_value());
-                CHECK(top_corner_o.value() == rl::segment2(2, 2, 2, 2));
+                CHECK(top_corner_o.value() == rl::segment2(3, 2, 1, 2));
             }
             THEN("The bottom cornered border is correct")
             {
                 REQUIRE(bottom_corner_o.has_value());
-                CHECK(bottom_corner_o.value() == rl::segment2(2, 2, 2, 2));
+                CHECK(bottom_corner_o.value() == rl::segment2(3, 2, 1, 2));
             }
         }
         WHEN("The bottom border is gotten from the box in clockwise direction")
@@ -506,32 +506,32 @@ SCENARIO("The borders are gotten from a box2 with trimmed corners")
             THEN("The clockwise cornered border is correct")
             {
                 REQUIRE(clockwise_corner_o.has_value());
-                CHECK(clockwise_corner_o.value() == rl::segment2(3, 5, 2, 5));
+                CHECK(clockwise_corner_o.value() == rl::segment2(2, 5, 1, 5));
             }
             THEN("The counter clockwise cornered border is correct")
             {
                 REQUIRE(counter_clockwise_corner_o.has_value());
-                CHECK(counter_clockwise_corner_o.value() == rl::segment2(2, 5, 1, 5));
+                CHECK(counter_clockwise_corner_o.value() == rl::segment2(3, 5, 2, 5));
             }
             THEN("The left cornered border is correct")
             {
                 REQUIRE(left_corner_o.has_value());
-                CHECK(left_corner_o.value() == rl::segment2(3, 5, 2, 5));
+                CHECK(left_corner_o.value() == rl::segment2(2, 5, 1, 5));
             }
             THEN("The right cornered border is correct")
             {
                 REQUIRE(right_corner_o.has_value());
-                CHECK(right_corner_o.value() == rl::segment2(2, 5, 1, 5));
+                CHECK(right_corner_o.value() == rl::segment2(3, 5, 2, 5));
             }
             THEN("The top cornered border is correct")
             {
                 REQUIRE(top_corner_o.has_value());
-                CHECK(top_corner_o.value() == rl::segment2(3, 5, 1, 5));
+                CHECK(top_corner_o.value() == rl::segment2(2, 5, 2, 5));
             }
             THEN("The bottom cornered border is correct")
             {
                 REQUIRE(bottom_corner_o.has_value());
-                CHECK(bottom_corner_o.value() == rl::segment2(3, 5, 1, 5));
+                CHECK(bottom_corner_o.value() == rl::segment2(2, 5, 2, 5));
             }
         }
         WHEN("The bottom border is gotten from the box in counter clockwise direction")
@@ -575,32 +575,32 @@ SCENARIO("The borders are gotten from a box2 with trimmed corners")
             THEN("The clockwise cornered border is correct")
             {
                 REQUIRE(clockwise_corner_o.has_value());
-                CHECK(clockwise_corner_o.value() == rl::segment2(2, 5, 3, 5));
+                CHECK(clockwise_corner_o.value() == rl::segment2(1, 5, 2, 5));
             }
             THEN("The counter clockwise cornered border is correct")
             {
                 REQUIRE(counter_clockwise_corner_o.has_value());
-                CHECK(counter_clockwise_corner_o.value() == rl::segment2(1, 5, 2, 5));
+                CHECK(counter_clockwise_corner_o.value() == rl::segment2(2, 5, 3, 5));
             }
             THEN("The left cornered border is correct")
             {
                 REQUIRE(left_corner_o.has_value());
-                CHECK(left_corner_o.value() == rl::segment2(2, 5, 3, 5));
+                CHECK(left_corner_o.value() == rl::segment2(1, 5, 2, 5));
             }
             THEN("The right cornered border is correct")
             {
                 REQUIRE(right_corner_o.has_value());
-                CHECK(right_corner_o.value() == rl::segment2(1, 5, 2, 5));
+                CHECK(right_corner_o.value() == rl::segment2(2, 5, 3, 5));
             }
             THEN("The top cornered border is correct")
             {
                 REQUIRE(top_corner_o.has_value());
-                CHECK(top_corner_o.value() == rl::segment2(1, 5, 3, 5));
+                CHECK(top_corner_o.value() == rl::segment2(2, 5, 2, 5));
             }
             THEN("The bottom cornered border is correct")
             {
                 REQUIRE(bottom_corner_o.has_value());
-                CHECK(bottom_corner_o.value() == rl::segment2(1, 5, 3, 5));
+                CHECK(bottom_corner_o.value() == rl::segment2(2, 5, 2, 5));
             }
         }
     }
