@@ -80,8 +80,8 @@ SCENARIO("The distance between two cell shapes is determined")
             const rl::box2 box(2, 0, 2, 2);
             THEN("The distance between the segment2 and the box2 is correct")
             {
-                CHECK(rl::distance_between(segment, box) == 1);
-                CHECK(rl::distance_between(box, segment) == 1);
+                CHECK(rl::distance_between(segment, box) == 1.0f);
+                CHECK(rl::distance_between(box, segment) == 1.0f);
             }
         }
         GIVEN("A circle2")
