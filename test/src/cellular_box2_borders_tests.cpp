@@ -37,10 +37,10 @@ SCENARIO("The borders are gotten from a box2")
             const auto bottom_border = rl::bottom_border(box);
             THEN("The values are correct")
             {
-                CHECK(left_border == rl::segment2(1, 4, 1, 3));
-                CHECK(right_border == rl::segment2(3, 3, 3, 4));
-                CHECK(top_border == rl::segment2(2, 2, 2, 2));
-                CHECK(bottom_border == rl::segment2(2, 5, 2, 5));
+                CHECK(left_border == rl::segment2(1, 5, 1, 2));
+                CHECK(right_border == rl::segment2(3, 2, 3, 5));
+                CHECK(top_border == rl::segment2(1, 2, 3, 2));
+                CHECK(bottom_border == rl::segment2(3, 5, 1, 5));
             }
         }
     }
