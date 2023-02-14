@@ -116,6 +116,32 @@ constexpr bool rl::do_intersect(const rl::segment2<I>& segment_a, const rl::segm
                 );
         };
     return
+        (
+            (
+                rl::position_orientation(
+                    rl::start<I>(segment_a),
+                    rl::end<I>(segment_a),
+                    rl::start<I>(segment_b)
+                ) !=
+                rl::position_orientation(
+                    rl::start<I>(segment_a),
+                    rl::end<I>(segment_a),
+                    rl::end<I>(segment_b)
+                )
+            ) &&
+            (
+                rl::position_orientation(
+                    rl::start<I>(segment_b),
+                    rl::end<I>(segment_b),
+                    rl::start<I>(segment_a)
+                ) !=
+                rl::position_orientation(
+                    rl::start<I>(segment_b),
+                    rl::end<I>(segment_b),
+                    rl::end<I>(segment_a)
+                )
+            )
+        ) ||
         points_are_collinear_and_surrounding(
             rl::start<I>(segment_a),
             rl::end<I>(segment_a),
