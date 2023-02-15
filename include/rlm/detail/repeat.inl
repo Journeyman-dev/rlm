@@ -20,8 +20,7 @@
     CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 */
 
-#ifndef RLM_REPEAT_INL
-#define RLM_REPEAT_INL
+#pragma once
 
 #include <rlm/concepts.hpp>
 #include <rlm/min.hpp>
@@ -56,4 +55,3 @@ constexpr F rl::repeat(F value, F a, F b) noexcept
     return min + mod;
 }
 
-#endif

@@ -20,8 +20,7 @@
     CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 */
 
-#ifndef RLM_LINEAR_IS_DEGENERATE_HPP
-#define RLM_LINEAR_IS_DEGENERATE_HPP
+#pragma once
 
 #include <rlm/concepts.hpp>
 
@@ -35,5 +34,3 @@ namespace rl
 }    // namespace rl
 
 #include <rlm/linear/detail/is_degenerate.inl>
-
-#endif

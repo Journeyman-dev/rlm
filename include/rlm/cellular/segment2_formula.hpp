@@ -20,50 +20,29 @@
     CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 */
 
-#ifndef RLM_CELLULAR_BORDERS_HPP
-#define RLM_CELLULAR_BORDERS_HPP
+#pragma once
 
 #include <rlm/concepts.hpp>
-#include <rlm/cellular/border_corners.hpp>
-#include <rlm/rotation_motion.hpp>
-#include <optional>
 
 namespace rl
 {
     template<rl::signed_integral I>
     struct segment2;
-    template<rl::signed_integral I>
-    struct box2;
+
+    template<rl::signed_integral I = int, rl::floating_point F = float>
+    constexpr F slope(const rl::segment2<I>& segment) noexcept;
 
     template<rl::signed_integral I = int>
-    constexpr std::optional<rl::segment2<I>> left_border(
-        const rl::box2<I>& box,
-        rl::BorderCorners border_corners = rl::BorderCorners::All,
-        rl::RotationMotion rotation_motion = rl::RotationMotion::Clockwise
-    ) noexcept;
+    constexpr I rise(const rl::segment2<I>& segment) noexcept;
 
     template<rl::signed_integral I = int>
-    constexpr std::optional<rl::segment2<I>> right_border(
-        const rl::box2<I>& box,
-        rl::BorderCorners border_corners = rl::BorderCorners::All,
-        rl::RotationMotion rotation_motion = rl::RotationMotion::Clockwise
-    ) noexcept;
+    constexpr I run(const rl::segment2<I>& segment) noexcept;
 
     template<rl::signed_integral I = int>
-    constexpr std::optional<rl::segment2<I>> top_border(
-        const rl::box2<I>& box,
-        rl::BorderCorners border_corners = rl::BorderCorners::All,
-        rl::RotationMotion rotation_motion = rl::RotationMotion::Clockwise
-    ) noexcept;
+    constexpr I y_intercept(const rl::segment2<I>& segment) noexcept;
 
     template<rl::signed_integral I = int>
-    constexpr std::optional<rl::segment2<I>> bottom_border(
-        const rl::box2<I>& box,
-        rl::BorderCorners border_corners = rl::BorderCorners::All,
-        rl::RotationMotion rotation_motion = rl::RotationMotion::Clockwise
-    ) noexcept;
-}
+    constexpr I x_intercept(const rl::segment2<I>& segment) noexcept;
+}    // namespace rl
 
-#include <rlm/cellular/detail/borders.inl>
-
-#endif
+#include <rlm/cellular/detail/segment2_formula.inl>

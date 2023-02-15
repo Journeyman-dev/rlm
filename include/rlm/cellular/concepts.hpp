@@ -20,8 +20,7 @@
     CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 */
 
-#ifndef RLM_CELLULAR_CONCEPTS_HPP
-#define RLM_CELLULAR_CONCEPTS_HPP
+#pragma once
 
 #include <rlm/concepts.hpp>
 #include <rlm/cellular/point2.hpp>
@@ -34,13 +33,8 @@ namespace rl
 {
     template<typename T, typename I, typename F>
     concept cellular_shape =
-        rl::is_any_of<
-            T,
-            rl::point2<I>,
-            rl::segment2<I>,
-            rl::box2<I>,
-            rl::circle2<I, F>
-        >;
-}
+        rl::is_any_of<T, rl::point2<I>, rl::segment2<I>, rl::box2<I>, rl::circle2<I, F>>;
 
-#endif
+    template<typename T, typename I>
+    concept point2_or_segment2 = rl::is_any_of<T, rl::point2<I>, rl::segment2<I>>;
+}    // namespace rl

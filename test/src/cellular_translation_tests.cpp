@@ -21,52 +21,21 @@
 */
 
 #include <catch2/catch_all.hpp>
-#include <rlm/cellular/bounds.hpp>
+#include <rlm/cellular/translation.hpp>
 #include <rlm/cellular/ostream.hpp>
 
-SCENARIO("Get the bounding box2 of cell shapes")
+SCENARIO("The translation is gotten from a segment2")
 {
-    GIVEN("A point2")
-    {
-        const rl::point2 point(1, 1);
-        THEN("The bounding box2 is correct")
-        {
-            CHECK(rl::bounding_box2(point) == rl::box2(1, 1, 1, 1));
-        }
-    }
     GIVEN("A segment2")
     {
         const rl::segment2 segment(1, 2, 3, 4);
-        THEN("The bounding box2 is correct")
+        WHEN("The translation is gotten from the segment2")
         {
-            CHECK(rl::bounding_box2(segment) == rl::box2(1, 2, 3, 3));
-        }
-    }
-    GIVEN("A box2")
-    {
-        const rl::box2 box(1, 2, 3, 4);
-        THEN("The bounding box2 is correct")
-        {
-            CHECK(rl::bounding_box2(box) == rl::box2(1, 2, 3, 4));
-        }
-    }
-    GIVEN("A circle2")
-    {
-        const rl::circle2 circle(1, 2, 3.0f);
-        THEN("The bounding box2 is correct")
-        {
-            CHECK(rl::bounding_box2(circle) == rl::box2(-2, -1, 6, 6));
-        }
-    }
-    GIVEN("A point2, segment2, box2, and circle2")
-    {
-        const rl::point2 point(0, 50);
-        const rl::segment2 segment(0, -50, 0, -43);
-        const rl::box2 box(50, 0, 5, 5);
-        const rl::circle2 circle(-50, 0, 3.0f);
-        THEN("The bounding box2 is correct")
-        {
-            CHECK(rl::bounding_box2(point, segment, box, circle) == rl::box2(-53, 54, 108, 116));
+            const auto translation = rl::translation(segment);
+            THEN("The value is correct")
+            {
+                CHECK(translation == rl::point2(2, 2));
+            }
         }
     }
 }

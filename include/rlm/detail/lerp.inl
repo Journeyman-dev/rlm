@@ -20,8 +20,7 @@
     CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 */
 
-#ifndef RLM_LERP_INL
-#define RLM_LERP_INL
+#pragma once
 
 #include <rlm/concepts.hpp>
 #include <cmath>
@@ -38,4 +37,3 @@ constexpr F rl::lerp(F a, F b, F t) noexcept
     return a + t * (b - a);
 }
 
-#endif

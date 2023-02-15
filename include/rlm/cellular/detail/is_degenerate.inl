@@ -20,8 +20,7 @@
     CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 */
 
-#ifndef RLM_CELLULAR_IS_DEGENERATE_INL
-#define RLM_CELLULAR_IS_DEGENERATE_INL
+#pragma once
 
 #include <rlm/cellular/box2.hpp>
 #include <rlm/cellular/circle2.hpp>
@@ -39,4 +38,3 @@ constexpr bool rl::is_degenerate(const rl::circle2<I, F>& circle) noexcept
     return circle.radius < 0.5;
 }
 
-#endif

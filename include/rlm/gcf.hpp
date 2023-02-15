@@ -20,29 +20,20 @@
     CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 */
 
-#ifndef RLM_CELLULAR_DIRECTION_HPP
-#define RLM_CELLULAR_DIRECTION_HPP
+#pragma once
 
 #include <rlm/concepts.hpp>
+#include <type_traits>
+#include <algorithm>
 
 namespace rl
 {
-    template<rl::signed_integral I>
-    struct segment2;
+    template<rl::primitive P = int>
+    constexpr P gcf(P number_a, P number_b) noexcept;
 
-    template<rl::signed_integral I = int>
-    bool goes_left(const rl::segment2<I>& segment);
+    template<rl::primitive P = int, rl::primitive... Ps>
+        requires std::conjunction_v<std::is_same<P, Ps>...>
+    constexpr P gcf(P number_a, P number_b, Ps... number_n) noexcept;
+}    // namespace rl
 
-    template<rl::signed_integral I = int>
-    bool goes_right(const rl::segment2<I>& segment);
-
-    template<rl::signed_integral I = int>
-    bool goes_up(const rl::segment2<I>& segment);
-
-    template<rl::signed_integral I = int>
-    bool goes_down(const rl::segment2<I>& segment);
-}
-
-#include <rlm/cellular/detail/direction.inl>
-
-#endif
+#include <rlm/detail/gcf.inl>

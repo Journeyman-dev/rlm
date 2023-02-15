@@ -20,8 +20,7 @@
     CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 */
 
-#ifndef RLM_CELLULAR_EDGES_INL
-#define RLM_CELLULAR_EDGES_INL
+#pragma once
 
 #include <rlm/concepts.hpp>
 #include <rlm/cellular/box2.hpp>
@@ -87,28 +86,27 @@ template<rl::signed_integral I, rl::floating_point F>
 constexpr I rl::left_x(const rl::circle2<I, F>& circle) noexcept
 {
     assert(!rl::is_degenerate(circle) && "degenerate circle2");
-    return circle.x - static_cast<I>(std::round(circle.radius));
+    return circle.x - static_cast<I>(std::round(circle.radius)) + 1;
 }
 
 template<rl::signed_integral I, rl::floating_point F>
 constexpr I rl::right_x(const rl::circle2<I, F>& circle) noexcept
 {
     assert(!rl::is_degenerate(circle) && "degenerate circle2");
-    return circle.x + static_cast<I>(std::round(circle.radius));
+    return circle.x + static_cast<I>(std::round(circle.radius)) - 1;
 }
 
 template<rl::signed_integral I, rl::floating_point F>
 constexpr I rl::top_y(const rl::circle2<I, F>& circle) noexcept
 {
     assert(!rl::is_degenerate(circle) && "degenerate circle2");
-    return circle.y - static_cast<I>(std::round(circle.radius));
+    return circle.y - static_cast<I>(std::round(circle.radius)) + 1;
 }
 
 template<rl::signed_integral I, rl::floating_point F>
 constexpr I rl::bottom_y(const rl::circle2<I, F>& circle) noexcept
 {
     assert(!rl::is_degenerate(circle) && "degenerate circle2");
-    return circle.y + static_cast<I>(std::round(circle.radius));
+    return circle.y + static_cast<I>(std::round(circle.radius)) - 1;
 }
 
-#endif

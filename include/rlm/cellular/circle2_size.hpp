@@ -20,34 +20,23 @@
     CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 */
 
-#ifndef RLM_CELLULAR_DIRECTION_INL
-#define RLM_CELLULAR_DIRECTION_INL
+#pragma once
 
 #include <rlm/concepts.hpp>
-#include <rlm/cellular/segment2.hpp>
 
-template<rl::signed_integral I>
-bool rl::goes_left(const rl::segment2<I>& segment)
+namespace rl
 {
-    return segment.start_x < segment.end_x;
-}
+    template<rl::signed_integral I, rl::floating_point F>
+    struct circle2;
 
-template<rl::signed_integral I>
-bool rl::goes_right(const rl::segment2<I>& segment)
-{
-    return segment.start_x > segment.end_x;
-}
+    template<rl::signed_integral I = int, rl::floating_point F = float>
+    constexpr I tile_radius(const rl::circle2<I, F>& circle) noexcept;
 
-template<rl::signed_integral I>
-bool rl::goes_up(const rl::segment2<I>& segment)
-{
-    return segment.start_y > segment.end_y;
-}
+    template<rl::signed_integral I = int, rl::floating_point F = float>
+    constexpr F diameter(const rl::circle2<I, F>& circle) noexcept;
 
-template<rl::signed_integral I>
-bool rl::goes_down(const rl::segment2<I>& segment)
-{
-    return segment.start_y < segment.end_y;
-}
+    template<rl::signed_integral I = int, rl::floating_point F = float>
+    constexpr I tile_diameter(const rl::circle2<I, F>& circle) noexcept;
+}    // namespace rl
 
-#endif
+#include <rlm/cellular/detail/circle2_size.inl>

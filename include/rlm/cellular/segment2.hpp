@@ -20,8 +20,7 @@
     CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 */
 
-#ifndef RLM_CELLULAR_SEGMENT2_HPP
-#define RLM_CELLULAR_SEGMENT2_HPP
+#pragma once
 
 #include <rlm/concepts.hpp>
 
@@ -45,5 +44,3 @@ namespace rl
 }    // namespace rl
 
 #include <rlm/cellular/detail/segment2.inl>
-
-#endif

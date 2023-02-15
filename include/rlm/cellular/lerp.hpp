@@ -20,8 +20,7 @@
     CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 */
 
-#ifndef RLM_CELLULAR_LERP_HPP
-#define RLM_CELLULAR_LERP_HPP
+#pragma once
 
 #include <rlm/concepts.hpp>
 
@@ -32,13 +31,11 @@ namespace rl
     template<rl::signed_integral I>
     struct segment2;
 
-    template<rl::signed_integral I, rl::floating_point F>
+    template<rl::signed_integral I = int, rl::floating_point F = float>
     constexpr rl::point2<I> lerp(const rl::point2<I>& a, const rl::point2<I>& b, F t) noexcept;
 
-    template<rl::signed_integral I, rl::floating_point F>
+    template<rl::signed_integral I = int, rl::floating_point F = float>
     constexpr rl::point2<I> lerp(const rl::segment2<I>& segment, F t) noexcept;
-}
+}    // namespace rl
 
 #include <rlm/cellular/detail/lerp.inl>
-
-#endif

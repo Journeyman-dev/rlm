@@ -20,14 +20,13 @@
     CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 */
 
-#ifndef RLM_CELLULAR_SHAPE_POINTS_INL
-#define RLM_CELLULAR_SHAPE_POINTS_INL
+#pragma once
 
 #include <rlm/concepts.hpp>
 #include <rlm/cellular/point2.hpp>
 #include <rlm/cellular/segment2.hpp>
 #include <rlm/cellular/box2.hpp>
-#include <rlm/cellular/edges.hpp>
+#include <rlm/cellular/shape_edges.hpp>
 #include <rlm/cellular/is_degenerate.hpp>
 #include <cassert>
 
@@ -95,4 +94,3 @@ constexpr rl::point2<I> rl::bottom_right(const rl::box2<I>& box) noexcept
         );
 }
 
-#endif

@@ -20,57 +20,29 @@
     CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 */
 
-#ifndef RLM_CELLULAR_EDGES_HPP
-#define RLM_CELLULAR_EDGES_HPP
+#pragma once
 
 #include <rlm/concepts.hpp>
 
 namespace rl
 {
-    template <rl::signed_integral I>
+    template<rl::signed_integral I>
+    struct point2;
+    template<rl::signed_integral I>
     struct segment2;
-    template <rl::signed_integral I>
+    template<rl::signed_integral I>
     struct box2;
-    template <rl::signed_integral I, rl::floating_point>
+    template<rl::signed_integral I, rl::floating_point F>
     struct circle2;
 
     template<rl::signed_integral I = int>
-    constexpr I left_x(const rl::segment2<I>& segment) noexcept;
+    constexpr rl::segment2<I> center(const rl::segment2<I>& segment) noexcept;
 
     template<rl::signed_integral I = int>
-    constexpr I right_x(const rl::segment2<I>& segment) noexcept;
-
-    template<rl::signed_integral I = int>
-    constexpr I top_y(const rl::segment2<I>& segment) noexcept;
-
-    template<rl::signed_integral I = int>
-    constexpr I bottom_y(const rl::segment2<I>& segment) noexcept;
-
-    template<rl::signed_integral I = int>
-    constexpr I left_x(const rl::box2<I>& box) noexcept;
-
-    template<rl::signed_integral I = int>
-    constexpr I right_x(const rl::box2<I>& box) noexcept;
-
-    template<rl::signed_integral I = int>
-    constexpr I top_y(const rl::box2<I>& box) noexcept;
-
-    template<rl::signed_integral I = int>
-    constexpr I bottom_y(const rl::box2<I>& box) noexcept;
+    constexpr rl::box2<I> center(const rl::box2<I>& box) noexcept;
 
     template<rl::signed_integral I = int, rl::floating_point F = float>
-    constexpr I left_x(const rl::circle2<I, F>& circle) noexcept;
+    constexpr rl::point2<I> center(const rl::circle2<I, F>& circle) noexcept;
+}    // namespace rl
 
-    template<rl::signed_integral I = int, rl::floating_point F = float>
-    constexpr I right_x(const rl::circle2<I, F>& circle) noexcept;
-
-    template<rl::signed_integral I = int, rl::floating_point F = float>
-    constexpr I top_y(const rl::circle2<I, F>& circle) noexcept;
-
-    template<rl::signed_integral I = int, rl::floating_point F = float>
-    constexpr I bottom_y(const rl::circle2<I, F>& circle) noexcept;
-}
-
-#include <rlm/cellular/detail/edges.inl>
-
-#endif
+#include <rlm/cellular/detail/center.inl>

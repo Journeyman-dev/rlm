@@ -20,20 +20,17 @@
     CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 */
 
-#ifndef RLM_LERP_HPP
-#define RLM_LERP_HPP
+#pragma once
 
 #include <rlm/concepts.hpp>
 
 namespace rl
 {
-    template<rl::integral I, rl::floating_point F>
+    template<rl::integral I = int, rl::floating_point F = float>
     constexpr I lerp(I a, I b, F t) noexcept;
 
-    template<rl::floating_point F>
+    template<rl::floating_point F = float>
     constexpr F lerp(F a, F b, F t) noexcept;
-}
+}    // namespace rl
 
 #include <rlm/detail/lerp.inl>
-
-#endif

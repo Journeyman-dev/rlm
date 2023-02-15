@@ -20,8 +20,7 @@
     CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 */
 
-#ifndef RLM_CELLULAR_OSTREAM_INL
-#define RLM_CELLULAR_OSTREAM_INL
+#pragma once
 
 #include <ostream>
 #include <rlm/cellular/box2.hpp>
@@ -30,35 +29,34 @@
 #include <rlm/cellular/segment2.hpp>
 #include <rlm/concepts.hpp>
 
-namespace rl {
+namespace rl
+{
     template<rl::signed_integral I>
-    std::ostream& operator<<(std::ostream& os, const rl::point2<I>& point)
+    constexpr std::ostream& operator<<(std::ostream& os, const rl::point2<I>& point)
     {
         os << "(" << point.x << ", " << point.y << ")";
         return os;
     }
 
     template<rl::signed_integral I>
-    std::ostream& operator<<(std::ostream& os, const rl::segment2<I>& segment)
+    constexpr std::ostream& operator<<(std::ostream& os, const rl::segment2<I>& segment)
     {
         os << "(" << segment.start_x << ", " << segment.start_y << ", " << segment.end_x << ", "
-           << segment.end_y << ")";
+            << segment.end_y << ")";
         return os;
     }
 
     template<rl::signed_integral I>
-    std::ostream& operator<<(std::ostream& os, const rl::box2<I>& box)
+    constexpr std::ostream& operator<<(std::ostream& os, const rl::box2<I>& box)
     {
         os << "(" << box.x << ", " << box.y << ", " << box.width << ", " << box.height << ")";
         return os;
     }
 
     template<rl::signed_integral I, rl::floating_point F>
-    std::ostream& operator<<(std::ostream& os, const rl::circle2<I, F>& circle)
+    constexpr std::ostream& operator<<(std::ostream& os, const rl::circle2<I, F>& circle)
     {
         os << "(" << circle.x << ", " << circle.y << ", " << circle.radius << ")";
         return os;
     }
-}    // namespace rl
-
-#endif
+}

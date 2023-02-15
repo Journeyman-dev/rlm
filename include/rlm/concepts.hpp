@@ -20,8 +20,7 @@
     CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 */
 
-#ifndef RLM_CONCEPTS_HPP
-#define RLM_CONCEPTS_HPP
+#pragma once
 
 #include <concepts>
 #include <type_traits>
@@ -55,8 +54,6 @@ namespace rl
     template<typename T>
     concept equality_comparable = std::equality_comparable<T>;
 
-    template<typename T, typename ... Ts>
+    template<typename T, typename... Ts>
     concept is_any_of = (std::same_as<T, Ts> || ...);
 }    // namespace rl
-
-#endif

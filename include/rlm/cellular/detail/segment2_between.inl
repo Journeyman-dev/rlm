@@ -20,44 +20,20 @@
     CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 */
 
-#ifndef RLM_CELLULAR_BOUNDS_HPP
-#define RLM_CELLULAR_BOUNDS_HPP
+#pragma once
 
 #include <rlm/concepts.hpp>
-#include <rlm/cellular/concepts.hpp>
+#include <rlm/cellular/point2.hpp>
+#include <rlm/cellular/segment2.hpp>
 
-namespace rl
+template<rl::signed_integral I>
+constexpr rl::segment2<I> rl::segment2_between(const rl::point2<I>& point_a, const rl::point2<I>& point_b)
 {
-    template<rl::signed_integral I>
-    struct point2;
-    template<rl::signed_integral I>
-    struct segment2;
-    template<rl::signed_integral I>
-    struct box2;
-    template<rl::signed_integral I, rl::floating_point F>
-    struct circle2;
-
-    template<rl::signed_integral I = int>
-    constexpr rl::box2<I> bounding_box2(const rl::point2<I>& point) noexcept;
-
-    template<rl::signed_integral I = int>
-    constexpr rl::box2<I> bounding_box2(const rl::segment2<I>& segment) noexcept;
-
-    template<rl::signed_integral I = int>
-    constexpr rl::box2<I> bounding_box2(const rl::box2<I>& box) noexcept;
-
-    template<rl::signed_integral I = int, rl::floating_point F = float>
-    constexpr rl::box2<I> bounding_box2(const rl::circle2<I, F>& circle) noexcept;
-
-    template<
-        typename I = int,
-        typename F = float,
-        rl::cellular_shape<I, F> S,
-        rl::cellular_shape<I, F>... Ss
-    >
-    constexpr rl::box2<I> bounding_box2(const S& a, const Ss&... n) noexcept;
+    return
+        rl::segment2<I>(
+            point_a.x,
+            point_a.y,
+            point_b.x,
+            point_b.y
+        );
 }
-
-#include <rlm/cellular/detail/bounds.inl>
-
-#endif

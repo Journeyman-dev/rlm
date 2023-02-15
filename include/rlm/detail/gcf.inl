@@ -20,51 +20,37 @@
     CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 */
 
-#include <catch2/catch_all.hpp>
-#include <rlm/cellular/segment2.hpp>
-#include <rlm/cellular/edges.hpp>
+#pragma once
 
-SCENARIO("The edge coordinates are gotten from a segment2")
+#include <rlm/concepts.hpp>
+#include <type_traits>
+#include <algorithm>
+#include <utility>
+
+template<rl::primitive P>
+constexpr P rl::gcf(P number_a, P number_b) noexcept
 {
-    GIVEN("A segment2")
+    if ( number_b > number_a)
     {
-        const rl::segment2 segment(1, 2, 3, 4);
-        THEN("The edge coodinates are correct")
+        std::swap(number_a, number_b);
+    }
+    int gcf;
+    for (int cur_denominator = 1; cur_denominator <=  number_b; cur_denominator++)
+    {
+        if (
+            (number_a % cur_denominator == 0) &&
+            (number_b % cur_denominator == 0)
+        )
         {
-            CHECK(rl::left_x(segment) == 1);
-            CHECK(rl::right_x(segment) == 3);
-            CHECK(rl::top_y(segment) == 2);
-            CHECK(rl::bottom_y(segment) == 4);
+            gcf = cur_denominator;
         }
     }
+    return gcf;
 }
 
-SCENARIO("The edge coordinates are gotten from a box2")
+template<rl::primitive P, rl::primitive... Ps>
+requires std::conjunction_v<std::is_same<P, Ps>...>
+constexpr P rl::gcf(P number_a, P number_b, Ps... number_n) noexcept
 {
-    GIVEN("A box2")
-    {
-        const rl::box2 box(1, 2, 3, 4);
-        THEN("The edge coordinates are correct")
-        {
-            CHECK(rl::left_x(box) == 1);
-            CHECK(rl::right_x(box) == 3);
-            CHECK(rl::top_y(box) == 2);
-            CHECK(rl::bottom_y(box) == 5);
-        }
-    }
-}
-
-SCENARIO("The edge coordinates are gotten from a cirlce2")
-{
-    GIVEN("A cirlce2")
-    {
-        const rl::circle2 circle(1, 2, 3.0f);
-        THEN("The edge coordinates are correct")
-        {
-            CHECK(rl::left_x(circle) == -2);
-            CHECK(rl::right_x(circle) == 4);
-            CHECK(rl::top_y(circle) == -1);
-            CHECK(rl::bottom_y(circle) == 5);
-        }
-    }
+    return rl::gcf(number_a, rl::gcf(number_b, number_n...));
 }

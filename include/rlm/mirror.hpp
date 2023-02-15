@@ -20,8 +20,7 @@
     CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 */
 
-#ifndef RLM_MIRROR_HPP
-#define RLM_MIRROR_HPP
+#pragma once
 
 #include <rlm/concepts.hpp>
 
@@ -32,8 +31,6 @@ namespace rl
 
     template<rl::floating_point F = float>
     constexpr F mirror(F value, F a, F b) noexcept;
-}
+}    // namespace rl
 
 #include <rlm/detail/mirror.inl>
-
-#endif

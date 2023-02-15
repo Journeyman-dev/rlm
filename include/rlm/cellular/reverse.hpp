@@ -20,8 +20,7 @@
     CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 */
 
-#ifndef RLM_CELLULAR_REVERSE_HPP
-#define RLM_CELLULAR_REVERSE_HPP
+#pragma once
 
 #include <rlm/concepts.hpp>
 
@@ -32,8 +31,6 @@ namespace rl
 
     template<rl::signed_integral I = int>
     rl::segment2<I> reverse(const rl::segment2<I>& segment) noexcept;
-}
+}    // namespace rl
 
 #include <rlm/cellular/detail/reverse.inl>
-
-#endif

@@ -20,8 +20,7 @@
     CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 */
 
-#ifndef RLM_CELLULAR_BOX2_INL
-#define RLM_CELLULAR_BOX2_INL
+#pragma once
 
 template<rl::signed_integral I>
 constexpr rl::box2<I>::box2(I x, I y, I width, I height) noexcept
@@ -52,4 +51,3 @@ constexpr bool rl::box2<I>::operator!=(const rl::box2<I>& that) const noexcept
         this->height != that.height;
 }
 
-#endif

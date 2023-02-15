@@ -20,8 +20,7 @@
     CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 */
 
-#ifndef RLM_CELLULAR_BORDERS_INL
-#define RLM_CELLULAR_BORDERS_INL
+#pragma once
 
 #include <rlm/concepts.hpp>
 #include <rlm/cellular/box2.hpp>
@@ -29,13 +28,37 @@
 #include <rlm/cellular/is_degenerate.hpp>
 #include <rlm/cellular/reverse.hpp>
 #include <rlm/cellular/border_corners.hpp>
-#include <rlm/cellular/edges.hpp>
+#include <rlm/cellular/shape_edges.hpp>
 #include <rlm/rotation_motion.hpp>
 #include <cassert>
 #include <optional>
 
 template<rl::signed_integral I>
-constexpr std::optional<rl::segment2<I>> rl::left_border(
+constexpr rl::segment2<I> rl::left_border(const rl::box2<I>& box, rl::RotationMotion rotation_motion) noexcept
+{
+    return rl::left_border_trimmed(box, rl::BorderCorners::All, rotation_motion).value();
+}
+
+template<rl::signed_integral I>
+constexpr rl::segment2<I> rl::right_border(const rl::box2<I>& box, rl::RotationMotion rotation_motion) noexcept
+{
+    return rl::right_border_trimmed(box, rl::BorderCorners::All, rotation_motion).value();
+}
+
+template<rl::signed_integral I>
+constexpr rl::segment2<I> rl::top_border(const rl::box2<I>& box, rl::RotationMotion rotation_motion) noexcept
+{
+    return rl::top_border_trimmed(box, rl::BorderCorners::All, rotation_motion).value();
+}
+
+template<rl::signed_integral I>
+constexpr rl::segment2<I> rl::bottom_border(const rl::box2<I>& box, rl::RotationMotion rotation_motion) noexcept
+{
+    return rl::bottom_border_trimmed(box, rl::BorderCorners::All, rotation_motion).value();
+}
+
+template<rl::signed_integral I>
+constexpr std::optional<rl::segment2<I>> rl::left_border_trimmed(
     const rl::box2<I>& box,
     rl::BorderCorners border_corners,
     rl::RotationMotion rotation_motion
@@ -72,7 +95,7 @@ constexpr std::optional<rl::segment2<I>> rl::left_border(
 }
 
 template<rl::signed_integral I>
-constexpr std::optional<rl::segment2<I>> rl::right_border(
+constexpr std::optional<rl::segment2<I>> rl::right_border_trimmed(
     const rl::box2<I>& box,
     rl::BorderCorners border_corners,
     rl::RotationMotion rotation_motion
@@ -109,7 +132,7 @@ constexpr std::optional<rl::segment2<I>> rl::right_border(
 }
 
 template<rl::signed_integral I>
-constexpr std::optional<rl::segment2<I>> rl::top_border(
+constexpr std::optional<rl::segment2<I>> rl::top_border_trimmed(
     const rl::box2<I>& box,
     rl::BorderCorners border_corners,
     rl::RotationMotion rotation_motion
@@ -146,7 +169,7 @@ constexpr std::optional<rl::segment2<I>> rl::top_border(
 }
 
 template<rl::signed_integral I>
-constexpr std::optional<rl::segment2<I>> rl::bottom_border(
+constexpr std::optional<rl::segment2<I>> rl::bottom_border_trimmed(
     const rl::box2<I>& box,
     rl::BorderCorners border_corners,
     rl::RotationMotion rotation_motion
@@ -182,4 +205,3 @@ constexpr std::optional<rl::segment2<I>> rl::bottom_border(
     return border;
 }
 
-#endif

@@ -20,8 +20,7 @@
     CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 */
 
-#ifndef RLM_LINEAR_VECTOR3_INL
-#define RLM_LINEAR_VECTOR3_INL
+#pragma once
 
 #include <rlm/concepts.hpp>
 
@@ -33,4 +32,3 @@ constexpr rl::vector3<F>::vector3(F x, F y, F z) noexcept
 {
 }
 
-#endif

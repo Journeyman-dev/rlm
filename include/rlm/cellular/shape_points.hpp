@@ -20,8 +20,7 @@
     CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 */
 
-#ifndef RLM_CELLULAR_SHAPE_POINTS_HPP
-#define RLM_CELLULAR_SHAPE_POINTS_HPP
+#pragma once
 
 #include <rlm/concepts.hpp>
 
@@ -51,8 +50,6 @@ namespace rl
 
     template<rl::signed_integral I = int>
     constexpr rl::point2<I> bottom_right(const rl::box2<I>& box) noexcept;
-}
+}    // namespace rl
 
 #include <rlm/cellular/detail/shape_points.inl>
-
-#endif

@@ -20,8 +20,7 @@
     CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 */
 
-#ifndef RLM_CLAMP_HPP
-#define RLM_CLAMP_HPP
+#pragma once
 
 #include <rlm/concepts.hpp>
 
@@ -32,5 +31,3 @@ namespace rl
 }
 
 #include <rlm/detail/clamp.inl>
-
-#endif

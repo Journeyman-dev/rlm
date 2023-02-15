@@ -20,8 +20,7 @@
     CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 */
 
-#ifndef RLM_CELLULAR_MAGNITUDE_HPP
-#define RLM_CELLULAR_MAGNITUDE_HPP
+#pragma once
 
 #include <rlm/concepts.hpp>
 
@@ -29,13 +28,12 @@ namespace rl
 {
     template<rl::signed_integral I>
     struct point2;
-    template<rl::signed_integral I>
-    struct segment2;
 
-    template<rl::signed_integral I, rl::floating_point F = float>
+    template<rl::signed_integral I = int, rl::floating_point F = float>
     constexpr F magnitude(const rl::point2<I>& point) noexcept;
-    }
+
+    template<rl::signed_integral I = int>
+    constexpr I cell_magnitude(const rl::point2<I>& point) noexcept;
+}    // namespace rl
 
 #include <rlm/cellular/detail/magnitude.inl>
-
-#endif

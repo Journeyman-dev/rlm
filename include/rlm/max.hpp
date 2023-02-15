@@ -20,8 +20,7 @@
     CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 */
 
-#ifndef RLM_MAX_HPP
-#define RLM_MAX_HPP
+#pragma once
 
 #include <rlm/concepts.hpp>
 #include <concepts>
@@ -29,13 +28,12 @@
 
 namespace rl
 {
-  template <rl::totally_ordered T = int> constexpr auto max(const T a, const T b);
+    template<rl::totally_ordered T = int>
+    constexpr T max(const T a, const T b);
 
-  template <rl::totally_ordered T = int, rl::totally_ordered... Ts>
-  requires std::conjunction_v<std::is_same<T, Ts>...>
-  constexpr auto max(const T a, const T b, const Ts... n);
-}
+    template<rl::totally_ordered T = int, rl::totally_ordered... Ts>
+        requires std::conjunction_v<std::is_same<T, Ts>...>
+    constexpr T max(const T a, const T b, const Ts... n);
+}    // namespace rl
 
 #include <rlm/detail/max.inl>
-
-#endif
