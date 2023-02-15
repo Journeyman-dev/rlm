@@ -22,3 +22,31 @@
 
 #include <catch2/catch_all.hpp>
 #include <rlm/cellular/center.hpp>
+
+SCENARIO("The center of a cell shape is determined")
+{
+    GIVEN("A segment2")
+    {
+        const rl::segment2 segment(1, 1, 3, 3);
+        THEN("The center is correct")
+        {
+            CHECK(rl::center(segment) == rl::segment2(2, 2, 2, 2));
+        }
+    }
+    GIVEN("A box2")
+    {
+        const rl::box2 box(0, 0, 4, 4);
+        THEN("The center is correct")
+        {
+            CHECK(rl::center(box) == rl::box2(2, 2, 1, 1));
+        }
+    }
+    GIVEN("A circle2")
+    {
+        const rl::circle2 circle(4, 4, 3.5f);
+        THEN("The center is correct")
+        {
+            CHECK(rl::center(circle) == rl::point2(4, 4));
+        }
+    }
+}
