@@ -22,3 +22,15 @@
 
 #include <catch2/catch_all.hpp>
 #include <rlm/cellular/box2_between.hpp>
+
+SCENARIO("Get the box2 between four coordinates")
+{
+    GIVEN("Four coordinates")
+    {
+        const int x1 = 0, y1 = 0, x2 = 4, y2 = 5;
+        THEN("The box2 between the coordinates is correct")
+        {
+            CHECK(rl::box2_between(x1, y1, x2, y2) == rl::box2(0, 0, 5, 6));
+        }
+    }
+}
