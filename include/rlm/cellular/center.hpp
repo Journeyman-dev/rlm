@@ -39,7 +39,7 @@ namespace rl
     constexpr rl::segment2<I> center(const rl::segment2<I>& segment) noexcept;
 
     template<rl::signed_integral I = int>
-    constexpr rl::box2<I> center(const rl::segment2<I>& box) noexcept;
+    constexpr rl::box2<I> center(const rl::box2<I>& box) noexcept;
 
     template<rl::signed_integral I = int, rl::floating_point F = float>
     constexpr rl::point2<I> center(const rl::circle2<I, F>& circle) noexcept;

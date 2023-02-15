@@ -61,7 +61,7 @@ constexpr rl::segment2<I> rl::center(const rl::segment2<I>& segment) noexcept
 }
 
 template<rl::signed_integral I>
-constexpr rl::box2<I> rl::center(const rl::segment2<I>& box) noexcept
+constexpr rl::box2<I> rl::center(const rl::box2<I>& box) noexcept
 {
     return rl::box2<I>(
         box.x + box.width / 2,
