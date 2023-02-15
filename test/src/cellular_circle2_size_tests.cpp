@@ -22,3 +22,23 @@
 
 #include <catch2/catch_all.hpp>
 #include <rlm/cellular/circle2_size.hpp>
+
+SCENARIO("Get the size of a circle2")
+{
+    GIVEN("A cirlce2")
+    {
+        const rl::circle2 circle(1, 1, 2.5f);
+        THEN("The tile radius is correct")
+        {
+            CHECK(rl::tile_radius(circle) == 3);
+        }
+        THEN("The diameter is correct")
+        {
+            CHECK(rl::diameter(circle) == 5.0f);
+        }
+        THEN("The tile diameter is correct")
+        {
+            CHECK(rl::tile_diameter(circle) == 5);
+        }
+    }
+}
