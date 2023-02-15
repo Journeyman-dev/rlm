@@ -23,7 +23,6 @@
 #pragma once
 
 #include <rlm/concepts.hpp>
-#include <rlm/cellular/concepts.hpp>
 
 namespace rl
 {

@@ -23,7 +23,6 @@
 #pragma once
 
 #include <rlm/concepts.hpp>
-#include <rlm/cellular/concepts.hpp>
 #include <rlm/cellular/point2_orientation.hpp>
 #include <rlm/cellular/shape_points.hpp>
 #include <rlm/cellular/segment2_between.hpp>
@@ -67,23 +66,5 @@ constexpr bool rl::are_collinear(const rl::point2<I>& point, const rl::segment2<
             point,
             rl::start<I>(segment),
             rl::end<I>(segment)
-        );
-}
-
-template <typename I, rl::point2_or_segment2<I> ... Ss>
-constexpr bool rl::are_collinear(const rl::point2<I>& point_a, const rl::point2<I>& point_b, const rl::point2<I>& point_c, const Ss&... shape_n) noexcept
-{
-    return
-        rl::are_collinear<I>(
-            point_a,
-            point_b,
-            point_c
-        ) &&
-        rl::are_collinear(
-            rl::segment2_between<I>(
-                point_b,
-                point_c
-            ),
-            shape_n...
         );
 }
