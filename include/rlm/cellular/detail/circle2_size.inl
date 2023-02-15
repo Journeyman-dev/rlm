@@ -23,6 +23,7 @@
 #pragma once
 
 #include <rlm/concepts.hpp>
+#include <rlm/cellular/circle2.hpp>
 #include <cmath>
 
 template<rl::signed_integral I, rl::floating_point F>
