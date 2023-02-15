@@ -44,7 +44,7 @@ constexpr rl::segment2<I> rl::center(const rl::segment2<I>& segment) noexcept
     }
     else
     {
-        result.start_x = segment.start_x - rl::width(segment) / 2;
+        result.start_x = segment.end_x - rl::width(segment) / 2;
         result.end_x = result.start_x - center_change_wide;
     }
     if (rl::goes_down(segment))
@@ -54,7 +54,7 @@ constexpr rl::segment2<I> rl::center(const rl::segment2<I>& segment) noexcept
     }
     else
     {
-        result.start_y = segment.start_y - rl::height(segment) / 2;
+        result.start_y = segment.end_y - rl::height(segment) / 2;
         result.end_y = result.start_y - center_change_tall;
     }
     return result;
