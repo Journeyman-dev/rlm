@@ -23,7 +23,7 @@
 #pragma once
 
 #include <rlm/concepts.hpp>
-#include <rlm/gcd.hpp>
+#include <rlm/gcf.hpp>
 #include <rlm/cellular/segment2_size.hpp>
 
 template<rl::signed_integral I, rl::floating_point F>
@@ -39,7 +39,7 @@ constexpr I rl::rise(const rl::segment2<I>& segment) noexcept
 {
     return
         rl::height<I>(segment) /
-        rl::gcd<I>(
+        rl::gcf<I>(
             rl::width<I>(segment),
             rl::height<I>(segment)
         );
@@ -50,7 +50,7 @@ constexpr I rl::run(const rl::segment2<I>& segment) noexcept
 {
     return
         rl::height<I>(segment) /
-        rl::gcd<I>(
+        rl::gcf<I>(
             rl::width<I>(segment),
             rl::height<I>(segment)
         );

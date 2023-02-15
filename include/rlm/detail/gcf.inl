@@ -28,13 +28,13 @@
 #include <utility>
 
 template<rl::primitive P>
-constexpr P rl::gcd(P number_a, P number_b) noexcept
+constexpr P rl::gcf(P number_a, P number_b) noexcept
 {
     if ( number_b > number_a)
     {
         std::swap(number_a, number_b);
     }
-    int gcd;
+    int gcf;
     for (int cur_denominator = 1; cur_denominator <=  number_b; cur_denominator++)
     {
         if (
@@ -42,15 +42,15 @@ constexpr P rl::gcd(P number_a, P number_b) noexcept
             (number_b % cur_denominator == 0)
         )
         {
-            gcd = cur_denominator;
+            gcf = cur_denominator;
         }
     }
-    return gcd;
+    return gcf;
 }
 
 template<rl::primitive P, rl::primitive... Ps>
 requires std::conjunction_v<std::is_same<P, Ps>...>
-constexpr P rl::gcd(P number_a, P number_b, Ps... number_n) noexcept
+constexpr P rl::gcf(P number_a, P number_b, Ps... number_n) noexcept
 {
-    return rl::gcd(number_a, rl::gcd(number_b, number_n...));
+    return rl::gcf(number_a, rl::gcf(number_b, number_n...));
 }

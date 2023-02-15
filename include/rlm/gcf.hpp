@@ -20,25 +20,20 @@
     CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 */
 
-#include <catch2/catch_all.hpp>
-#include <rlm/gcd.hpp>
+#pragma once
 
-SCENARIO("The greatest common denominator is gotten between numbers")
+#include <rlm/concepts.hpp>
+#include <type_traits>
+#include <algorithm>
+
+namespace rl
 {
-    GIVEN("Two numbers")
-    {
-        const int number_a = 7, number_b = 14;
-        THEN("The greatest common denominator is correct")
-        {
-            CHECK(rl::gcd(number_a, number_b) == 7);
-        }
-    }
-    GIVEN("Four numbers")
-    {
-        const int number_a = 7, number_b = 14, number_c = 21, number_d = 28;
-        THEN("The greatest common denominator is correct")
-        {
-            CHECK(rl::gcd(number_a, number_b, number_c, number_d) == 7);
-        }
-    }
-}
+    template<rl::primitive P = int>
+    constexpr P gcf(P number_a, P number_b) noexcept;
+
+    template<rl::primitive P = int, rl::primitive... Ps>
+        requires std::conjunction_v<std::is_same<P, Ps>...>
+    constexpr P gcf(P number_a, P number_b, Ps... number_n) noexcept;
+}    // namespace rl
+
+#include <rlm/detail/gcf.inl>
