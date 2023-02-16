@@ -25,7 +25,7 @@
 #include <rlm/concepts.hpp>
 #include <rlm/cellular/box2.hpp>
 #include <rlm/cellular/segment2.hpp>
-#include <rlm/cellular/is_degenerate.hpp>
+#include <rlm/cellular/degenerate_shapes.hpp>
 #include <rlm/cellular/reverse.hpp>
 #include <rlm/cellular/border_corners.hpp>
 #include <rlm/cellular/shape_edges.hpp>

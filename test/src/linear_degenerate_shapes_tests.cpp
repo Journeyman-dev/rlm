@@ -20,22 +20,42 @@
     CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 */
 
-#pragma once
+#include <catch2/catch_all.hpp>
+#include <rlm/linear/degenerate_shapes.hpp>
+#include <rlm/linear/ostream.hpp>
 
-#include <rlm/concepts.hpp>
-
-namespace rl
+SCENARIO("It is determined if a rectangle2 is degenerate")
 {
-    template<rl::signed_integral I>
-    struct box2;
-    template<rl::signed_integral I, rl::floating_point F>
-    struct circle2;
-
-    template<rl::signed_integral I = int>
-    constexpr bool is_degenerate(const rl::box2<I>& box) noexcept;
-
-    template<rl::signed_integral I = int, rl::floating_point F = float>
-    constexpr bool is_degenerate(const rl::circle2<I, F>& circle) noexcept;
-}    // namespace rl
-
-#include <rlm/cellular/detail/is_degenerate.inl>
+    GIVEN("A default constructed rectangle2")
+    {
+        const rl::rectangle2 rectangle;
+        THEN("The rectangle2 is degenerate")
+        {
+            CHECK(rl::is_degenerate(rectangle) == true);
+        }
+    }
+    GIVEN("A rectangle2 with a negative width")
+    {
+        const rl::rectangle2 rectangle(1.0f, 1.0f, -2.0f, 2.0f);
+        THEN("The rectangle2 is degenerate")
+        {
+            CHECK(rl::is_degenerate(rectangle) == true);
+        }
+    }
+    GIVEN("A rectangle2 with a negative height")
+    {
+        const rl::rectangle2 rectangle(1.0f, 1.0f, 2.0f, -2.0f);
+        THEN("The rectangle2 is degenerate")
+        {
+            CHECK(rl::is_degenerate(rectangle) == true);
+        }
+    }
+    GIVEN("A box2 with positive dimensions")
+    {
+        const rl::rectangle2 rectangle(1.0f, 1.0f, 2.0f, 2.0f);
+        THEN("The box2 is not degenerate")
+        {
+            CHECK(rl::is_degenerate(rectangle) == false);
+        }
+    }
+}

@@ -24,7 +24,7 @@
 
 #include <rlm/concepts.hpp>
 #include <rlm/cellular/box2.hpp>
-#include <rlm/cellular/is_degenerate.hpp>
+#include <rlm/cellular/degenerate_shapes.hpp>
 #include <rlm/min.hpp>
 #include <rlm/max.hpp>
 #include <cassert>

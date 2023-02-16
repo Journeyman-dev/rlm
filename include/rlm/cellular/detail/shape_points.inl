@@ -27,7 +27,7 @@
 #include <rlm/cellular/segment2.hpp>
 #include <rlm/cellular/box2.hpp>
 #include <rlm/cellular/shape_edges.hpp>
-#include <rlm/cellular/is_degenerate.hpp>
+#include <rlm/cellular/degenerate_shapes.hpp>
 #include <cassert>
 
 template<rl::signed_integral I>

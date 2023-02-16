@@ -21,7 +21,7 @@
 */
 
 #include <catch2/catch_all.hpp>
-#include <rlm/cellular/is_degenerate.hpp>
+#include <rlm/cellular/degenerate_shapes.hpp>
 #include <rlm/cellular/ostream.hpp>
 
 SCENARIO("It is determined if a box2 is degenerate")

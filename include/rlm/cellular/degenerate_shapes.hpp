@@ -26,11 +26,16 @@
 
 namespace rl
 {
-    template<rl::floating_point F>
-    struct rectangle2;
+    template<rl::signed_integral I>
+    struct box2;
+    template<rl::signed_integral I, rl::floating_point F>
+    struct circle2;
 
-    template<rl::floating_point F = float>
-    constexpr bool is_degenerate(const rl::rectangle2<F>& rectangle) noexcept;
+    template<rl::signed_integral I = int>
+    constexpr bool is_degenerate(const rl::box2<I>& box) noexcept;
+
+    template<rl::signed_integral I = int, rl::floating_point F = float>
+    constexpr bool is_degenerate(const rl::circle2<I, F>& circle) noexcept;
 }    // namespace rl
 
-#include <rlm/linear/detail/is_degenerate.inl>
+#include <rlm/cellular/detail/degenerate_shapes.inl>
