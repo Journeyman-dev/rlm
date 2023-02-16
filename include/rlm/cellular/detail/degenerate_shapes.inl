@@ -38,3 +38,26 @@ constexpr bool rl::is_degenerate(const rl::circle2<I, F>& circle) noexcept
     return circle.radius < 0.5;
 }
 
+template<rl::signed_integral I>
+constexpr rl::box2<I> rl::fix_degeneracy(const rl::box2<I>& box) noexcept
+{
+    return
+        rl::box2(
+            box.x,
+            box.y,
+            box.width <= 0 ? 1 : box.width,
+            box.height <= 0 ? 1 : box.height
+        );
+}
+
+template<rl::signed_integral I, rl::floating_point F>
+constexpr rl::circle2<I, F> rl::fix_degeneracy(const rl::circle2<I, F>& circle) noexcept
+{
+    return
+        rl::circle2<I, F>(
+            circle.x,
+            circle.y,
+            circle.radius <= 0.5f ? 0.5f : circle.radius
+        );
+}
+
