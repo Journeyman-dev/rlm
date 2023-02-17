@@ -31,6 +31,9 @@ namespace rl
 
     template<rl::floating_point F = float>
     constexpr bool is_degenerate(const rl::rectangle2<F>& rectangle) noexcept;
+
+    template<rl::floating_point F = float>
+    constexpr rl::rectangle2<F> fix_degeneracy(const rl::rectangle2<F>& rectangle) noexcept;
 }    // namespace rl
 
 #include <rlm/linear/detail/degenerate_shapes.inl>

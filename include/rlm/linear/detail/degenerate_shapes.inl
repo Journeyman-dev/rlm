@@ -28,6 +28,17 @@
 template<rl::floating_point F>
 constexpr bool rl::is_degenerate(const rl::rectangle2<F>& rectangle) noexcept
 {
-    return rectangle.width <= 0 || rectangle.height <= 0;
+    return rectangle.width <= 0.0f || rectangle.height <= 0.0f;
 }
 
+template<rl::floating_point F>
+constexpr rl::rectangle2<F> rl::fix_degeneracy(const rl::rectangle2<F>& rectangle) noexcept
+{
+    return
+        rl::rectangle2<F>(
+            rectangle.x,
+            rectangle.y,
+            rectangle.width <= 0.0f ? 0.0f : rectangle.width,
+            rectangle.height <= 0.0f ? 0.0f : rectangle.height
+        );
+}
