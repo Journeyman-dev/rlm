@@ -50,3 +50,29 @@ SCENARIO("A rectangle2 is constructed")
         }
     }
 }
+
+SCENARIO("Two rectangle2 are compared")
+{
+    GIVEN("A rectangle2")
+    {
+        const rl::rectangle2 rectangle_a(1.0f, 2.0f, 3.0f, 4.0f);
+        GIVEN("A rectangle2 that is the same")
+        {
+            const rl::rectangle2 rectangle_b(1.0f, 2.0f, 3.0f, 4.0f);
+            THEN("The rectangle2 are equal")
+            {
+                CHECK(rectangle_a == rectangle_b);
+                CHECK_FALSE(rectangle_a != rectangle_b);
+            }
+        }
+        GIVEN("A rectangle2 that is different")
+        {
+            const rl::rectangle2 rectangle_b(5.0f, 6.0f, 7.0f, 8.0f);
+            THEN("The rectangle2 are not equal")
+            {
+                CHECK_FALSE(rectangle_a == rectangle_b);
+                CHECK(rectangle_a != rectangle_b);
+            }
+        }
+    }
+}
