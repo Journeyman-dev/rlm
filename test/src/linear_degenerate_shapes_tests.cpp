@@ -59,3 +59,23 @@ SCENARIO("It is determined if a rectangle2 is degenerate")
         }
     }
 }
+
+SCENARIO("A rectangle2 is fixed")
+{
+    GIVEN("A degenerate rectangle2")
+    {
+        const rl::rectangle2 rectangle(1.0f, 1.0f, -1.0f, -1.0f);
+        THEN("The fixed box2 has minimum dimnensions")
+        {
+            CHECK(rl::fix_degeneracy(rectangle) == rl::rectangle2(1.0f, 1.0f, 0.0f, 0.0f));
+        }
+    }
+    GIVEN("A non-degenerate rectangle2")
+    {
+        const rl::rectangle2 rectangle(1.0f, 1.0f, 10.0f, 15.0f);
+        THEN("THe fixed rectangle2 is the same")
+        {
+            CHECK(rl::fix_degeneracy(rectangle) == rl::rectangle2(1.0f, 1.0f, 10.0f, 15.0f));
+        }
+    }
+}
