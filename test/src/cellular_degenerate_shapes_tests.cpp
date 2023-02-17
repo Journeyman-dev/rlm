@@ -60,6 +60,26 @@ SCENARIO("It is determined if a box2 is degenerate")
     }
 }
 
+SCENARIO("A box2 is fixed")
+{
+    GIVEN("A degenerate box2")
+    {
+        const rl::box2 box(1, 1, -1, -1);
+        THEN("The fixed box2 has minimum dimnensions")
+        {
+            CHECK(rl::fix_degeneracy(box) == rl::box2(1, 1, 1, 1));
+        }
+    }
+    GIVEN("A non-degenerate box2")
+    {
+        const rl::box2 box(1, 1, 10, 15);
+        THEN("THe fixed box2 is the same")
+        {
+            CHECK(rl::fix_degeneracy(box) == rl::box2(1, 1, 10, 15));
+        }
+    }
+}
+
 SCENARIO("It is determined if a circle2 is degenerate")
 {
     GIVEN("A default constructed circle2")
@@ -92,6 +112,26 @@ SCENARIO("It is determined if a circle2 is degenerate")
         THEN("The circle is not degenerate")
         {
             CHECK_FALSE(rl::is_degenerate(circle));
+        }
+    }
+}
+
+SCENARIO("A circle2 is fixed")
+{
+    GIVEN("A degenerate circle2")
+    {
+        const rl::circle2 circle(1, 1, -0.5f);
+        THEN("The fixed circle2 has minimum radius")
+        {
+            CHECK(rl::fix_degeneracy(circle) == rl::circle2(1, 1, 0.5f));
+        }
+    }
+    GIVEN("A non-degenerate circle2")
+    {
+        const rl::circle2 circle(1, 1, 10.0f);
+        THEN("THe fixed circle2 is the same")
+        {
+            CHECK(rl::fix_degeneracy(circle) == rl::circle2(1, 1, 10.0f));
         }
     }
 }
