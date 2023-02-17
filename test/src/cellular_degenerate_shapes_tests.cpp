@@ -24,6 +24,54 @@
 #include <rlm/cellular/degenerate_shapes.hpp>
 #include <rlm/cellular/ostream.hpp>
 
+SCENARIO("It is determined if a point2 is degenerate")
+{
+    GIVEN("A point2")
+    {
+        const rl::point2 point;
+        THEN("The point2 is not degenerate")
+        {
+            CHECK_FALSE(rl::is_degenerate(point));
+        }
+    }
+}
+
+SCENARIO("A point2 is fixed")
+{
+    GIVEN("A point2")
+    {
+        const rl::point2 point;
+        THEN("The fixed point2 is the same")
+        {
+            CHECK(rl::fix_degeneracy(point) == rl::point2());
+        }
+    }
+}
+
+SCENARIO("It is determined if a segment2 is degenerate")
+{
+    GIVEN("A segment2")
+    {
+        const rl::segment2 segment;
+        THEN("The segment2 is not degenerate")
+        {
+            CHECK_FALSE(rl::is_degenerate(segment));
+        }
+    }
+}
+
+SCENARIO("A segment2 is fixed")
+{
+    GIVEN("A segment2")
+    {
+        const rl::segment2 segment;
+        THEN("The fixed segment2 is the same")
+        {
+            CHECK(rl::fix_degeneracy(segment) == rl::segment2());
+        }
+    }
+}
+
 SCENARIO("It is determined if a box2 is degenerate")
 {
     GIVEN("A default constructed box2")
