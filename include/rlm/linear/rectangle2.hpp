@@ -36,6 +36,10 @@ namespace rl
 
         constexpr rectangle2() noexcept = default;
         constexpr rectangle2(F x, F y, F width, F height) noexcept;
+
+        constexpr bool operator==(const rl::rectangle2<F>& that) const noexcept;
+
+        constexpr bool operator!=(const rl::rectangle2<F>& that) const noexcept;
     };
 }    // namespace rl
 

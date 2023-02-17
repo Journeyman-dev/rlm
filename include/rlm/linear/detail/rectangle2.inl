@@ -33,3 +33,22 @@ constexpr rl::rectangle2<F>::rectangle2(F x, F y, F width, F height) noexcept
 {
 }
 
+template<rl::floating_point F>
+constexpr bool rl::rectangle2<F>::operator==(const rl::rectangle2<F>& that) const noexcept
+{
+    return
+        this->x == that.x &&
+        this->y == that.y &&
+        this->width == that.width &&
+        this->height == that.height;
+}
+
+template<rl::floating_point F>
+constexpr bool rl::rectangle2<F>::operator!=(const rl::rectangle2<F>& that) const noexcept
+{
+    return
+        this->x != that.x ||
+        this->y != that.y ||
+        this->width != that.width ||
+        this->height != that.height;
+}
