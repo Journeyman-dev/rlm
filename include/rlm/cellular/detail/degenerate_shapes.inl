@@ -27,6 +27,18 @@
 #include <rlm/concepts.hpp>
 
 template<rl::signed_integral I>
+constexpr bool rl::is_degenerate(const rl::point2<I>& point) noexcept
+{
+    return false;
+}
+
+template<rl::signed_integral I>
+constexpr bool rl::is_degenerate(const rl::segment2<I>& segment) noexcept
+{
+    return false;
+}
+
+template<rl::signed_integral I>
 constexpr bool rl::is_degenerate(const rl::box2<I>& box) noexcept
 {
     return box.width <= 0 || box.height <= 0;
@@ -36,6 +48,18 @@ template<rl::signed_integral I, rl::floating_point F>
 constexpr bool rl::is_degenerate(const rl::circle2<I, F>& circle) noexcept
 {
     return circle.radius < 0.5;
+}
+
+template<rl::signed_integral I>
+constexpr rl::point2<I> rl::fix_degeneracy(const rl::point2<I>& point) noexcept
+{
+    return point;
+}
+
+template<rl::signed_integral I>
+constexpr rl::segment2<I> rl::fix_degeneracy(const rl::segment2<I>& segment) noexcept
+{
+    return segment;
 }
 
 template<rl::signed_integral I>
