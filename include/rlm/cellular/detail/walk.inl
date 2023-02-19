@@ -47,7 +47,7 @@ constexpr void walk(const rl::cell_segment2<I>& segment, const rl::walk_predicat
 {
     for (I cell_i = 0; cell_i < rl::diagonal_length<I>(segment); cell_i++)
     {
-        F percent = static_cast<F>(rl::diagonal_length<I>(segment)) / static_cast<F>(cell_i);
+        const F percent = static_cast<F>(rl::diagonal_length<I>(segment)) / static_cast<F>(cell_i);
         predicate(
             rl::lerp<I, F>(
                 segment,
