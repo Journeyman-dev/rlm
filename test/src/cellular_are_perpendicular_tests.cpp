@@ -23,22 +23,22 @@
 #include <catch2/catch_all.hpp>
 #include <rlm/cellular/are_perpendicular.hpp>
 
-SCENARIO("Get if two segment2 are perpendicular")
+SCENARIO("Get if two cell_segment2 are perpendicular")
 {
-    GIVEN("A segment2")
+    GIVEN("A cell_segment2")
     {
-        const rl::segment2 segment(0, 0, 3, 3);
-        GIVEN("A perpendicular segment2")
+        const rl::cell_segment2 segment(0, 0, 3, 3);
+        GIVEN("A perpendicular cell_segment2")
         {
-            const rl::segment2 segment_b(3, 0, 0, 3);
+            const rl::cell_segment2 segment_b(3, 0, 0, 3);
             THEN("The segments are perpendicular")
             {
                 CHECK(rl::are_perpendicular(segment, segment_b));
             }
         }
-        GIVEN("A non-perpendicular segment2")
+        GIVEN("A non-perpendicular cell_segment2")
         {
-            const rl::segment2 segment_b(-1, 0, 3, 4);
+            const rl::cell_segment2 segment_b(-1, 0, 3, 4);
             THEN("The segments are not perpendicular")
             {
                 CHECK_FALSE(rl::are_perpendicular(segment, segment_b));

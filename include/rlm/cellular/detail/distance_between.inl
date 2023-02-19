@@ -23,35 +23,35 @@
 #pragma once
 
 #include <rlm/concepts.hpp>
-#include <rlm/cellular/point2.hpp>
-#include <rlm/cellular/segment2.hpp>
-#include <rlm/cellular/box2.hpp>
-#include <rlm/cellular/circle2.hpp>
+#include <rlm/cellular/cell_vector2.hpp>
+#include <rlm/cellular/cell_segment2.hpp>
+#include <rlm/cellular/cell_box2.hpp>
+#include <rlm/cellular/cell_circle2.hpp>
 #include <rlm/cellular/center.hpp>
-#include <rlm/cellular/bounding_box2.hpp>
+#include <rlm/cellular/bounding_cell_box2.hpp>
 #include <rlm/cellular/dot.hpp>
 #include <rlm/cellular/shape_conversion.hpp>
 #include <rlm/clamp.hpp>
 #include <rlm/cellular/are_parallel.hpp>
 #include <rlm/cellular/do_intersect.hpp>
-#include <rlm/cellular/segment2_direction.hpp>
-#include <rlm/cellular/segment2_formula.hpp>
-#include <rlm/cellular/box2_borders.hpp>
+#include <rlm/cellular/cell_segment2_direction.hpp>
+#include <rlm/cellular/cell_segment2_formula.hpp>
+#include <rlm/cellular/cell_box2_borders.hpp>
 #include <rlm/configuration.hpp>
 #include <rlm/cellular/degenerate_shapes.hpp>
 #include <optional>
 
-// point2
+// cell_vector2
 template <rl::signed_integral I, rl::floating_point F>
-constexpr F rl::distance_between(const rl::point2<I>& point_a, const rl::point2<I>& point_b) noexcept
+constexpr F rl::distance_between(const rl::cell_vector2<I>& point_a, const rl::cell_vector2<I>& point_b) noexcept
 {
     return rl::magnitude<I, F>(point_a - point_b);
 }
 
 template <rl::signed_integral I, rl::floating_point F>
-constexpr F rl::distance_between(const rl::point2<I>& point, const rl::segment2<I>& segment) noexcept
+constexpr F rl::distance_between(const rl::cell_vector2<I>& point, const rl::cell_segment2<I>& segment) noexcept
 {
-    const auto segment_as_point_o = rl::as_point2<I>(segment);
+    const auto segment_as_point_o = rl::as_cell_vector2<I>(segment);
     if (segment_as_point_o.has_value())
     {
         return rl::distance_between<I, F>(point, segment_as_point_o.value());
@@ -83,7 +83,7 @@ constexpr F rl::distance_between(const rl::point2<I>& point, const rl::segment2<
 }
 
 template <rl::signed_integral I, rl::floating_point F>
-constexpr F rl::distance_between(const rl::point2<I>& point, const rl::box2<I>& box) noexcept
+constexpr F rl::distance_between(const rl::cell_vector2<I>& point, const rl::cell_box2<I>& box) noexcept
 {
     RLM_HANDLE_DEGENERACY(fixed_box, box);
     if (rl::does_contain(fixed_box, point))
@@ -91,7 +91,7 @@ constexpr F rl::distance_between(const rl::point2<I>& point, const rl::box2<I>& 
         return static_cast<F>(0);
     }
     return rl::magnitude<I, F>(
-        rl::point2<I>(
+        rl::cell_vector2<I>(
             point.x < rl::left_x(fixed_box) ?
             rl::left_x(fixed_box) - point.x :
             point.x > rl::right_x(fixed_box) ?
@@ -107,7 +107,7 @@ constexpr F rl::distance_between(const rl::point2<I>& point, const rl::box2<I>& 
 }
 
 template <rl::signed_integral I, rl::floating_point F>
-constexpr F rl::distance_between(const rl::point2<I>& point, const rl::circle2<I, F>& circle) noexcept
+constexpr F rl::distance_between(const rl::cell_vector2<I>& point, const rl::cell_circle2<I, F>& circle) noexcept
 {
     RLM_HANDLE_DEGENERACY(fixed_circle, circle);
     return
@@ -120,15 +120,15 @@ constexpr F rl::distance_between(const rl::point2<I>& point, const rl::circle2<I
         );
 }
 
-// segment2
+// cell_segment2
 template <rl::signed_integral I, rl::floating_point F>
-constexpr F rl::distance_between(const rl::segment2<I>& segment, const rl::point2<I>& point) noexcept
+constexpr F rl::distance_between(const rl::cell_segment2<I>& segment, const rl::cell_vector2<I>& point) noexcept
 {
     return rl::distance_between<I, F>(point, segment);
 }
 
 template <rl::signed_integral I, rl::floating_point F>
-constexpr F rl::distance_between(const rl::segment2<I>& segment_a, const rl::segment2<I>& segment_b) noexcept
+constexpr F rl::distance_between(const rl::cell_segment2<I>& segment_a, const rl::cell_segment2<I>& segment_b) noexcept
 {
     if (rl::are_parallel<I>(segment_a, segment_b))
     {
@@ -169,7 +169,7 @@ constexpr F rl::distance_between(const rl::segment2<I>& segment_a, const rl::seg
 }
 
 template <rl::signed_integral I, rl::floating_point F>
-constexpr F rl::distance_between(const rl::segment2<I>& segment, const rl::box2<I>& box) noexcept
+constexpr F rl::distance_between(const rl::cell_segment2<I>& segment, const rl::cell_box2<I>& box) noexcept
 {
     RLM_HANDLE_DEGENERACY(fixed_box, box);
     if (rl::do_intersect<I>(segment, fixed_box))
@@ -198,7 +198,7 @@ constexpr F rl::distance_between(const rl::segment2<I>& segment, const rl::box2<
 }
 
 template <rl::signed_integral I, rl::floating_point F>
-constexpr F rl::distance_between(const rl::segment2<I>& segment, const rl::circle2<I, F>& circle) noexcept
+constexpr F rl::distance_between(const rl::cell_segment2<I>& segment, const rl::cell_circle2<I, F>& circle) noexcept
 {
     RLM_HANDLE_DEGENERACY(fixed_circle, circle);
     if (rl::do_intersect<I, F>(segment, fixed_circle))
@@ -206,7 +206,7 @@ constexpr F rl::distance_between(const rl::segment2<I>& segment, const rl::circl
         return static_cast<F>(0);
     }
     const auto unit_dot = rl::unit_dot<I, F>(segment, rl::center(fixed_circle));
-    const auto closest_segment_point = rl::point2<I>(
+    const auto closest_segment_point = rl::cell_vector2<I>(
         segment.start_x + (unit_dot * (segment.end_x - segment.start_x)),
         segment.start_y + (unit_dot * (segment.end_y - segment.start_y))
     );
@@ -214,34 +214,34 @@ constexpr F rl::distance_between(const rl::segment2<I>& segment, const rl::circl
     return rl::distance_between<I, F>(closest_segment_point, fixed_circle);
 }
 
-// box2
+// cell_box2
 template <rl::signed_integral I, rl::floating_point F>
-constexpr F rl::distance_between(const rl::box2<I>& box, const rl::point2<I>& point) noexcept
+constexpr F rl::distance_between(const rl::cell_box2<I>& box, const rl::cell_vector2<I>& point) noexcept
 {
     RLM_HANDLE_DEGENERACY(fixed_box, box);
     return rl::distance_between<I, F>(point, fixed_box);
 }
 
 template <rl::signed_integral I, rl::floating_point F>
-constexpr F rl::distance_between(const rl::box2<I>& box, const rl::segment2<I>& segment) noexcept
+constexpr F rl::distance_between(const rl::cell_box2<I>& box, const rl::cell_segment2<I>& segment) noexcept
 {
     RLM_HANDLE_DEGENERACY(fixed_box, box);
     return rl::distance_between<I, F>(segment, fixed_box);
 }
 
 template <rl::signed_integral I, rl::floating_point F>
-constexpr F rl::distance_between(const rl::box2<I>& box_a, const rl::box2<I>& box_b) noexcept
+constexpr F rl::distance_between(const rl::cell_box2<I>& box_a, const rl::cell_box2<I>& box_b) noexcept
 {
     RLM_HANDLE_DEGENERACY(fixed_box_a, box_a);
     RLM_HANDLE_DEGENERACY(fixed_box_b, box_b);
-    const auto bounds = rl::bounding_box2<I, F>(fixed_box_a, fixed_box_b);
+    const auto bounds = rl::bounding_cell_box2<I, F>(fixed_box_a, fixed_box_b);
     const auto inner_width = rl::max<I>(bounds.width - fixed_box_a.width - fixed_box_b.width, 0);
     const auto inner_height = rl::max<I>(bounds.height - fixed_box_a.height - fixed_box_b.height, 0);
     return std::sqrt(static_cast<F>((inner_width * inner_width) + (inner_height * inner_height)));
 }
 
 template <rl::signed_integral I, rl::floating_point F>
-constexpr F rl::distance_between(const rl::box2<I>& box, const rl::circle2<I, F>& circle) noexcept
+constexpr F rl::distance_between(const rl::cell_box2<I>& box, const rl::cell_circle2<I, F>& circle) noexcept
 {
     RLM_HANDLE_DEGENERACY(fixed_box, box);
     RLM_HANDLE_DEGENERACY(fixed_circle, circle);
@@ -254,23 +254,23 @@ constexpr F rl::distance_between(const rl::box2<I>& box, const rl::circle2<I, F>
     );
 }
 
-// circle2
+// cell_circle2
 template <rl::signed_integral I, rl::floating_point F>
-constexpr F rl::distance_between(const rl::circle2<I, F>& circle, const rl::point2<I>& point) noexcept
+constexpr F rl::distance_between(const rl::cell_circle2<I, F>& circle, const rl::cell_vector2<I>& point) noexcept
 {
     RLM_HANDLE_DEGENERACY(fixed_circle, circle);
     return rl::distance_between<I, F>(point, fixed_circle);
 }
 
 template <rl::signed_integral I, rl::floating_point F>
-constexpr F rl::distance_between(const rl::circle2<I, F>& circle, const rl::segment2<I>& segment) noexcept
+constexpr F rl::distance_between(const rl::cell_circle2<I, F>& circle, const rl::cell_segment2<I>& segment) noexcept
 {
     RLM_HANDLE_DEGENERACY(fixed_circle, circle);
     return rl::distance_between<I, F>(segment, fixed_circle);
 }
 
 template <rl::signed_integral I, rl::floating_point F>
-constexpr F rl::distance_between(const rl::circle2<I, F>& circle, const rl::box2<I>& box) noexcept
+constexpr F rl::distance_between(const rl::cell_circle2<I, F>& circle, const rl::cell_box2<I>& box) noexcept
 {
     RLM_HANDLE_DEGENERACY(fixed_circle, circle);
     RLM_HANDLE_DEGENERACY(fixed_box, box);
@@ -278,7 +278,7 @@ constexpr F rl::distance_between(const rl::circle2<I, F>& circle, const rl::box2
 }
 
 template <rl::signed_integral I, rl::floating_point F>
-constexpr F rl::distance_between(const rl::circle2<I, F>& circle_a, const rl::circle2<I, F>& circle_b) noexcept
+constexpr F rl::distance_between(const rl::cell_circle2<I, F>& circle_a, const rl::cell_circle2<I, F>& circle_b) noexcept
 {
     RLM_HANDLE_DEGENERACY(fixed_circle_a, circle_a);
     RLM_HANDLE_DEGENERACY(fixed_circle_b, circle_b);

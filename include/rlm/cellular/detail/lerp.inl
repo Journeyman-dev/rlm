@@ -24,15 +24,15 @@
 
 #include <rlm/concepts.hpp>
 #include <rlm/lerp.hpp>
-#include <rlm/cellular/point2.hpp>
-#include <rlm/cellular/segment2.hpp>
+#include <rlm/cellular/cell_vector2.hpp>
+#include <rlm/cellular/cell_segment2.hpp>
 #include <rlm/cellular/shape_points.hpp>
 
 template<rl::signed_integral I, rl::floating_point F>
-constexpr rl::point2<I> rl::lerp(const rl::point2<I>& a, const rl::point2<I>& b, F t) noexcept
+constexpr rl::cell_vector2<I> rl::lerp(const rl::cell_vector2<I>& a, const rl::cell_vector2<I>& b, F t) noexcept
 {
     return
-        rl::point2<I>(
+        rl::cell_vector2<I>(
             rl::lerp<I, F>(
                 a.x,
                 b.x,
@@ -47,7 +47,7 @@ constexpr rl::point2<I> rl::lerp(const rl::point2<I>& a, const rl::point2<I>& b,
 }
 
 template<rl::signed_integral I, rl::floating_point F>
-constexpr rl::point2<I> rl::lerp(const rl::segment2<I>& segment, F t) noexcept
+constexpr rl::cell_vector2<I> rl::lerp(const rl::cell_segment2<I>& segment, F t) noexcept
 {
   return
     rl::lerp<I, F>(

@@ -24,17 +24,17 @@
 #include <rlm/cellular/translation.hpp>
 #include <rlm/cellular/ostream.hpp>
 
-SCENARIO("The translation is gotten from a segment2")
+SCENARIO("The translation is gotten from a cell_segment2")
 {
-    GIVEN("A segment2")
+    GIVEN("A cell_segment2")
     {
-        const rl::segment2 segment(1, 2, 3, 4);
-        WHEN("The translation is gotten from the segment2")
+        const rl::cell_segment2 segment(1, 2, 3, 4);
+        WHEN("The translation is gotten from the cell_segment2")
         {
             const auto translation = rl::translation(segment);
             THEN("The value is correct")
             {
-                CHECK(translation == rl::point2(2, 2));
+                CHECK(translation == rl::cell_vector2(2, 2));
             }
         }
     }

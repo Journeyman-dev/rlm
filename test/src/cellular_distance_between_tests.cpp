@@ -25,103 +25,103 @@
 
 SCENARIO("The distance between two cell shapes is determined")
 {
-    GIVEN("A point2")
+    GIVEN("A cell_vector2")
     {
-        const rl::point2 point(1, 0);
-        GIVEN("A point2")
+        const rl::cell_vector2 point(1, 0);
+        GIVEN("A cell_vector2")
         {
-            const rl::point2 other_point(2, 0);
-            THEN("The distance between the two point2 is correct.")
+            const rl::cell_vector2 other_point(2, 0);
+            THEN("The distance between the two cell_vector2 is correct.")
             {
                 CHECK(rl::distance_between(point, other_point) == 1);
             }
         }
-        GIVEN("A segment2")
+        GIVEN("A cell_segment2")
         {
-            const rl::segment2 segment(2, 0, 3, 0);
-            THEN("The distance between the point2 and the segment2 is correct")
+            const rl::cell_segment2 segment(2, 0, 3, 0);
+            THEN("The distance between the cell_vector2 and the cell_segment2 is correct")
             {
                 CHECK(rl::distance_between(point, segment) == 1);
                 CHECK(rl::distance_between(segment, point) == 1);
             }
         }
-        GIVEN("A box2")
+        GIVEN("A cell_box2")
         {
-            const rl::box2 box(2, 0, 2, 2);
-            THEN("The distance between the point2 and the box2 is correct")
+            const rl::cell_box2 box(2, 0, 2, 2);
+            THEN("The distance between the cell_vector2 and the cell_box2 is correct")
             {
                 CHECK(rl::distance_between(point, box) == 1);
                 CHECK(rl::distance_between(box, point) == 1);
             }
         }
-        GIVEN("A circle2")
+        GIVEN("A cell_circle2")
         {
-            const rl::circle2 circle(2, 0, 0.5f);
-            THEN("The distance between the point2 and the circle2 is correct")
+            const rl::cell_circle2 circle(2, 0, 0.5f);
+            THEN("The distance between the cell_vector2 and the cell_circle2 is correct")
             {
                 CHECK(rl::distance_between(point, circle) == 0.5f);
                 CHECK(rl::distance_between(circle, point) == 0.5f);
             }
         }
     }
-    GIVEN("A segment2")
+    GIVEN("A cell_segment2")
     {
-        const rl::segment2 segment(-1, 0, 1, 0);
-        GIVEN("A segment2")
+        const rl::cell_segment2 segment(-1, 0, 1, 0);
+        GIVEN("A cell_segment2")
         {
-            const rl::segment2 other_segment(2, 0, 3, 0);
-            THEN("The distance between the two segment2 is correct.")
+            const rl::cell_segment2 other_segment(2, 0, 3, 0);
+            THEN("The distance between the two cell_segment2 is correct.")
             {
                 CHECK(rl::distance_between(segment, other_segment) == 3.0f);
             }
         }
-        GIVEN("A box2")
+        GIVEN("A cell_box2")
         {
-            const rl::box2 box(2, 0, 2, 2);
-            THEN("The distance between the segment2 and the box2 is correct")
+            const rl::cell_box2 box(2, 0, 2, 2);
+            THEN("The distance between the cell_segment2 and the cell_box2 is correct")
             {
                 CHECK(rl::distance_between(segment, box) == 1.0f);
                 CHECK(rl::distance_between(box, segment) == 1.0f);
             }
         }
-        GIVEN("A circle2")
+        GIVEN("A cell_circle2")
         {
-            const rl::circle2 circle(2, 0, 0.5f);
-            THEN("The distance between the segment2 and the circle2 is correct")
+            const rl::cell_circle2 circle(2, 0, 0.5f);
+            THEN("The distance between the cell_segment2 and the cell_circle2 is correct")
             {
                 CHECK(rl::distance_between(segment, circle) == 8.5f);
                 CHECK(rl::distance_between(circle, segment) == 8.5f);
             }
         }
     }
-    GIVEN("A box2")
+    GIVEN("A cell_box2")
     {
-        const rl::box2 box(-1, 0, 1, 1);
-        GIVEN("A box2")
+        const rl::cell_box2 box(-1, 0, 1, 1);
+        GIVEN("A cell_box2")
         {
-            const rl::box2 other_box(2, 0, 2, 2);
-            THEN("The distance between the two box2 is correct.")
+            const rl::cell_box2 other_box(2, 0, 2, 2);
+            THEN("The distance between the two cell_box2 is correct.")
             {
                 CHECK(rl::distance_between(box, other_box) == 2.0f);
             }
         }
-        GIVEN("A circle2")
+        GIVEN("A cell_circle2")
         {
-            const rl::circle2 circle(2, 0, 0.5f);
-            THEN("The distance between the segment2 and the circle2 is correct")
+            const rl::cell_circle2 circle(2, 0, 0.5f);
+            THEN("The distance between the cell_segment2 and the cell_circle2 is correct")
             {
                 CHECK(rl::distance_between(box, circle) == 2.5f);
                 CHECK(rl::distance_between(circle, box) == 2.5f);
             }
         }
     }
-    GIVEN("A circle2")
+    GIVEN("A cell_circle2")
     {
-        const rl::circle2 circle(1, 0, 0.5f);
-        GIVEN("A box2")
+        const rl::cell_circle2 circle(1, 0, 0.5f);
+        GIVEN("A cell_box2")
         {
-            const rl::circle2 other_circle(3, 0, 0.5f);
-            THEN("The distance between the two circle2 is correct.")
+            const rl::cell_circle2 other_circle(3, 0, 0.5f);
+            THEN("The distance between the two cell_circle2 is correct.")
             {
                 CHECK(rl::distance_between(circle, other_circle) == 1.0f);
             }

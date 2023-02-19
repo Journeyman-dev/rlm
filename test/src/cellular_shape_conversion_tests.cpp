@@ -24,114 +24,114 @@
 #include <rlm/cellular/shape_conversion.hpp>
 #include <rlm/cellular/ostream.hpp>
 
-SCENARIO("A point2 is converted into a point2")
+SCENARIO("A cell_vector2 is converted into a cell_vector2")
 {
-    GIVEN("A point2")
+    GIVEN("A cell_vector2")
     {
-        const rl::point2 point(1, 1);
-        WHEN("It is determined if the point2 is a point2")
+        const rl::cell_vector2 point(1, 1);
+        WHEN("It is determined if the cell_vector2 is a cell_vector2")
         {
-            const auto is_point2 = rl::is_point2(point);
-            THEN("The point2 is a point2")
+            const auto is_cell_vector2 = rl::is_cell_vector2(point);
+            THEN("The cell_vector2 is a cell_vector2")
             {
-                CHECK(is_point2);
+                CHECK(is_cell_vector2);
             }
         }
-        WHEN("The point2 is converted to a point2")
+        WHEN("The cell_vector2 is converted to a cell_vector2")
         {
-            const auto point2_o = rl::as_point2(point);
-            THEN("The correct point2 was returned")
+            const auto cell_vector2_o = rl::as_cell_vector2(point);
+            THEN("The correct cell_vector2 was returned")
             {
-                REQUIRE(point2_o.has_value());
-                CHECK(point2_o.value() == rl::point2(1, 1));
+                REQUIRE(cell_vector2_o.has_value());
+                CHECK(cell_vector2_o.value() == rl::cell_vector2(1, 1));
             }
         }
     }
 }
 
-SCENARIO("A segment2 is converted into a point2")
+SCENARIO("A cell_segment2 is converted into a cell_vector2")
 {
-    GIVEN("A segment2 that is a point2")
+    GIVEN("A cell_segment2 that is a cell_vector2")
     {
-        const rl::segment2 segment(1, 1, 1, 1);
-        WHEN("It is determined if the segment2 is a point2")
+        const rl::cell_segment2 segment(1, 1, 1, 1);
+        WHEN("It is determined if the cell_segment2 is a cell_vector2")
         {
-            const auto is_point2 = rl::is_point2(segment);
-            THEN("The segment2 is a point2")
+            const auto is_cell_vector2 = rl::is_cell_vector2(segment);
+            THEN("The cell_segment2 is a cell_vector2")
             {
-                CHECK(is_point2);
+                CHECK(is_cell_vector2);
             }
         }
-        WHEN("The segment2 is converted to a point2")
+        WHEN("The cell_segment2 is converted to a cell_vector2")
         {
-            const auto point2_o = rl::as_point2(segment);
-            THEN("The correct point2 was returned")
+            const auto cell_vector2_o = rl::as_cell_vector2(segment);
+            THEN("The correct cell_vector2 was returned")
             {
-                REQUIRE(point2_o.has_value());
-                CHECK(point2_o.value() == rl::point2(1, 1));
+                REQUIRE(cell_vector2_o.has_value());
+                CHECK(cell_vector2_o.value() == rl::cell_vector2(1, 1));
             }
         }
     }
-    GIVEN("A segment2 that is not a point2")
+    GIVEN("A cell_segment2 that is not a cell_vector2")
     {
-        const rl::segment2 segment(1, 2, 3, 4);
-        WHEN("It is determined if the segment2 is a point2")
+        const rl::cell_segment2 segment(1, 2, 3, 4);
+        WHEN("It is determined if the cell_segment2 is a cell_vector2")
         {
-            const auto is_point2 = rl::is_point2(segment);
-            THEN("The segment2 is not a point2")
+            const auto is_cell_vector2 = rl::is_cell_vector2(segment);
+            THEN("The cell_segment2 is not a cell_vector2")
             {
-                CHECK_FALSE(is_point2);
+                CHECK_FALSE(is_cell_vector2);
             }
         }
-        WHEN("The segment2 is converted to a point2")
+        WHEN("The cell_segment2 is converted to a cell_vector2")
         {
-            const auto point2_o = rl::as_point2(segment);
-            THEN("No point2 was returned")
+            const auto cell_vector2_o = rl::as_cell_vector2(segment);
+            THEN("No cell_vector2 was returned")
             {
-                CHECK_FALSE(point2_o.has_value());
+                CHECK_FALSE(cell_vector2_o.has_value());
             }
         }
     }
 }
 
-SCENARIO("A box2 is converted into a point2")
+SCENARIO("A cell_box2 is converted into a cell_vector2")
 {
-    GIVEN("A box2 that is a point2")
+    GIVEN("A cell_box2 that is a cell_vector2")
     {
-        const rl::box2 box(1, 1, 1, 1);
-        WHEN("It is determined if the box2 is a point2")
+        const rl::cell_box2 box(1, 1, 1, 1);
+        WHEN("It is determined if the cell_box2 is a cell_vector2")
         {
-            const auto is_point = rl::is_point2(box);
-            THEN("The box is a point2")
+            const auto is_point = rl::is_cell_vector2(box);
+            THEN("The box is a cell_vector2")
             {
                 CHECK(is_point);
             }
         }
-        WHEN("The box2 is converted to a point2")
+        WHEN("The cell_box2 is converted to a cell_vector2")
         {
-            const auto point_o = rl::as_point2(box);
-            THEN("The correct point2 was returned")
+            const auto point_o = rl::as_cell_vector2(box);
+            THEN("The correct cell_vector2 was returned")
             {
                 REQUIRE(point_o.has_value());
-                CHECK(point_o.value() == rl::point2(1, 1));
+                CHECK(point_o.value() == rl::cell_vector2(1, 1));
             }
         }
     }
-    GIVEN("A box2 that is not a point2")
+    GIVEN("A cell_box2 that is not a cell_vector2")
     {
-        const rl::box2 box(1, 2, 3, 4);
-        WHEN("It is determined if the box2 is a point2")
+        const rl::cell_box2 box(1, 2, 3, 4);
+        WHEN("It is determined if the cell_box2 is a cell_vector2")
         {
-            const auto is_point = rl::is_point2(box);
-            THEN("The box2 is not a point2")
+            const auto is_point = rl::is_cell_vector2(box);
+            THEN("The cell_box2 is not a cell_vector2")
             {
                 CHECK_FALSE(is_point);
             }
         }
-        WHEN("The box2 is converted to a point2")
+        WHEN("The cell_box2 is converted to a cell_vector2")
         {
-            const auto point_o = rl::as_point2(box);
-            THEN("No point2 was returned")
+            const auto point_o = rl::as_cell_vector2(box);
+            THEN("No cell_vector2 was returned")
             {
                 CHECK_FALSE(point_o.has_value());
             }
@@ -139,44 +139,44 @@ SCENARIO("A box2 is converted into a point2")
     }
 }
 
-SCENARIO("A circle2 is converted into a point2")
+SCENARIO("A cell_circle2 is converted into a cell_vector2")
 {
-    GIVEN("A circle2 that is a point2")
+    GIVEN("A cell_circle2 that is a cell_vector2")
     {
-        const rl::circle2 circle(1, 1, 0.5f);
-        WHEN("It is determined if the circle2 is a point2")
+        const rl::cell_circle2 circle(1, 1, 0.5f);
+        WHEN("It is determined if the cell_circle2 is a cell_vector2")
         {
-            const auto is_point = rl::is_point2(circle);
-            THEN("The circle is a point2")
+            const auto is_point = rl::is_cell_vector2(circle);
+            THEN("The circle is a cell_vector2")
             {
                 CHECK(is_point);
             }
         }
-        WHEN("The circle2 is converted to a point2")
+        WHEN("The cell_circle2 is converted to a cell_vector2")
         {
-            const auto point_o = rl::as_point2(circle);
-            THEN("The correct point2 was returned")
+            const auto point_o = rl::as_cell_vector2(circle);
+            THEN("The correct cell_vector2 was returned")
             {
                 REQUIRE(point_o.has_value());
-                CHECK(point_o.value() == rl::point2(1, 1));
+                CHECK(point_o.value() == rl::cell_vector2(1, 1));
             }
         }
     }
-    GIVEN("A circle2 that is not a point2")
+    GIVEN("A cell_circle2 that is not a cell_vector2")
     {
-        const rl::circle2 circle(1, 2, 3.0f);
-        WHEN("It is determined if the circle2 is a point2")
+        const rl::cell_circle2 circle(1, 2, 3.0f);
+        WHEN("It is determined if the cell_circle2 is a cell_vector2")
         {
-            const auto is_point = rl::is_point2(circle);
-            THEN("The circle2 is not a point2")
+            const auto is_point = rl::is_cell_vector2(circle);
+            THEN("The cell_circle2 is not a cell_vector2")
             {
                 CHECK_FALSE(is_point);
             }
         }
-        WHEN("The circle2 is converted to a point2")
+        WHEN("The cell_circle2 is converted to a cell_vector2")
         {
-            const auto point_o = rl::as_point2(circle);
-            THEN("No point2 was returned")
+            const auto point_o = rl::as_cell_vector2(circle);
+            THEN("No cell_vector2 was returned")
             {
                 CHECK_FALSE(point_o.has_value());
             }
@@ -184,94 +184,94 @@ SCENARIO("A circle2 is converted into a point2")
     }
 }
 
-SCENARIO("A point2 is converted into a segment2")
+SCENARIO("A cell_vector2 is converted into a cell_segment2")
 {
-    GIVEN("A point2")
+    GIVEN("A cell_vector2")
     {
-        const rl::point2 point(1, 1);
-        WHEN("It is determined if the point2 is a segment2")
+        const rl::cell_vector2 point(1, 1);
+        WHEN("It is determined if the cell_vector2 is a cell_segment2")
         {
-            const auto is_segment = rl::is_segment2(point);
-            THEN("The point is a segment2")
+            const auto is_segment = rl::is_cell_segment2(point);
+            THEN("The point is a cell_segment2")
             {
                 CHECK(is_segment);
             }
         }
-        WHEN("The point2 is converted to a segment2")
+        WHEN("The cell_vector2 is converted to a cell_segment2")
         {
-            const auto segment_o = rl::as_segment2(point);
-            THEN("The correct segment2 was returned")
+            const auto segment_o = rl::as_cell_segment2(point);
+            THEN("The correct cell_segment2 was returned")
             {
                 REQUIRE(segment_o.has_value());
-                CHECK(segment_o.value() == rl::segment2(1, 1, 1, 1));
+                CHECK(segment_o.value() == rl::cell_segment2(1, 1, 1, 1));
             }
         }
     }
 }
 
-SCENARIO("A segment2 is converted into a segment2")
+SCENARIO("A cell_segment2 is converted into a cell_segment2")
 {
-    GIVEN("A segment2")
+    GIVEN("A cell_segment2")
     {
-        const rl::segment2 segment(1, 1, 1, 1);
-        WHEN("It is determined if the segment2 is a segment2")
+        const rl::cell_segment2 segment(1, 1, 1, 1);
+        WHEN("It is determined if the cell_segment2 is a cell_segment2")
         {
-            const auto is_segment = rl::is_segment2(segment);
-            THEN("The segment is a segment2")
+            const auto is_segment = rl::is_cell_segment2(segment);
+            THEN("The segment is a cell_segment2")
             {
                 CHECK(is_segment);
             }
         }
-        WHEN("The segment2 is converted to a segment2")
+        WHEN("The cell_segment2 is converted to a cell_segment2")
         {
-            const auto segment_o = rl::as_segment2(segment);
-            THEN("The correct segment2 was returned")
+            const auto segment_o = rl::as_cell_segment2(segment);
+            THEN("The correct cell_segment2 was returned")
             {
                 REQUIRE(segment_o.has_value());
-                CHECK(segment_o.value() == rl::segment2(1, 1, 1, 1));
+                CHECK(segment_o.value() == rl::cell_segment2(1, 1, 1, 1));
             }
         }
     }
 }
 
-SCENARIO("A box2 is converted into a segment2")
+SCENARIO("A cell_box2 is converted into a cell_segment2")
 {
-    GIVEN("A box2 that is a segment2")
+    GIVEN("A cell_box2 that is a cell_segment2")
     {
-        const rl::box2 box(1, 1, 1, 1);
-        WHEN("It is determined if the box2 is a segment2")
+        const rl::cell_box2 box(1, 1, 1, 1);
+        WHEN("It is determined if the cell_box2 is a cell_segment2")
         {
-            const auto is_segment = rl::is_segment2(box);
-            THEN("The box is a segment2")
+            const auto is_segment = rl::is_cell_segment2(box);
+            THEN("The box is a cell_segment2")
             {
                 CHECK(is_segment);
             }
         }
-        WHEN("The box2 is converted to a segment2")
+        WHEN("The cell_box2 is converted to a cell_segment2")
         {
-            const auto segment_o = rl::as_segment2(box);
-            THEN("The correct segment2 was returned")
+            const auto segment_o = rl::as_cell_segment2(box);
+            THEN("The correct cell_segment2 was returned")
             {
                 REQUIRE(segment_o.has_value());
-                CHECK(segment_o.value() == rl::segment2(1, 1, 1, 1));
+                CHECK(segment_o.value() == rl::cell_segment2(1, 1, 1, 1));
             }
         }
     }
-    GIVEN("A box2 that is not a segment2")
+    GIVEN("A cell_box2 that is not a cell_segment2")
     {
-        const rl::box2 box(1, 2, 3, 4);
-        WHEN("It is determined if the box2 is a segment2")
+        const rl::cell_box2 box(1, 2, 3, 4);
+        WHEN("It is determined if the cell_box2 is a cell_segment2")
         {
-            const auto is_segment = rl::is_segment2(box);
-            THEN("The box2 is not a segment2")
+            const auto is_segment = rl::is_cell_segment2(box);
+            THEN("The cell_box2 is not a cell_segment2")
             {
                 CHECK_FALSE(is_segment);
             }
         }
-        WHEN("The box2 is converted to a segment2")
+        WHEN("The cell_box2 is converted to a cell_segment2")
         {
-            const auto segment_o = rl::as_segment2(box);
-            THEN("No segment2 was returned")
+            const auto segment_o = rl::as_cell_segment2(box);
+            THEN("No cell_segment2 was returned")
             {
                 CHECK_FALSE(segment_o.has_value());
             }
@@ -279,44 +279,44 @@ SCENARIO("A box2 is converted into a segment2")
     }
 }
 
-SCENARIO("A circle2 is converted into a segment2")
+SCENARIO("A cell_circle2 is converted into a cell_segment2")
 {
-    GIVEN("A circle2 that is a segment2")
+    GIVEN("A cell_circle2 that is a cell_segment2")
     {
-        const rl::circle2 circle(1, 1, 0.5f);
-        WHEN("It is determined if the circle2 is a segment2")
+        const rl::cell_circle2 circle(1, 1, 0.5f);
+        WHEN("It is determined if the cell_circle2 is a cell_segment2")
         {
-            const auto is_segment = rl::is_segment2(circle);
-            THEN("The circle is a segment2")
+            const auto is_segment = rl::is_cell_segment2(circle);
+            THEN("The circle is a cell_segment2")
             {
                 CHECK(is_segment);
             }
         }
-        WHEN("The circle2 is converted to a segment2")
+        WHEN("The cell_circle2 is converted to a cell_segment2")
         {
-            const auto segment_o = rl::as_segment2(circle);
-            THEN("The correct segment2 was returned")
+            const auto segment_o = rl::as_cell_segment2(circle);
+            THEN("The correct cell_segment2 was returned")
             {
                 REQUIRE(segment_o.has_value());
-                CHECK(segment_o.value() == rl::segment2(1, 1, 1, 1));
+                CHECK(segment_o.value() == rl::cell_segment2(1, 1, 1, 1));
             }
         }
     }
-    GIVEN("A circle2 that is not a segment2")
+    GIVEN("A cell_circle2 that is not a cell_segment2")
     {
-        const rl::circle2 circle(1, 1, 2.5f);
-        WHEN("It is determined if the circle2 is a segment2")
+        const rl::cell_circle2 circle(1, 1, 2.5f);
+        WHEN("It is determined if the cell_circle2 is a cell_segment2")
         {
-            const auto is_segment = rl::is_segment2(circle);
-            THEN("The circle2 is not a segment2")
+            const auto is_segment = rl::is_cell_segment2(circle);
+            THEN("The cell_circle2 is not a cell_segment2")
             {
                 CHECK_FALSE(is_segment);
             }
         }
-        WHEN("The circle2 is converted to a segment2")
+        WHEN("The cell_circle2 is converted to a cell_segment2")
         {
-            const auto segment_o = rl::as_segment2(circle);
-            THEN("No segment2 was returned")
+            const auto segment_o = rl::as_cell_segment2(circle);
+            THEN("No cell_segment2 was returned")
             {
                 CHECK_FALSE(segment_o.has_value());
             }
@@ -324,69 +324,69 @@ SCENARIO("A circle2 is converted into a segment2")
     }
 }
 
-SCENARIO("A point2 is converted into a box2")
+SCENARIO("A cell_vector2 is converted into a cell_box2")
 {
-    GIVEN("A point2")
+    GIVEN("A cell_vector2")
     {
-        const rl::point2 point(1, 1);
-        WHEN("It is determined if the point2 is a box2")
+        const rl::cell_vector2 point(1, 1);
+        WHEN("It is determined if the cell_vector2 is a cell_box2")
         {
-            const auto is_box = rl::is_box2(point);
-            THEN("The point is a box2")
+            const auto is_box = rl::is_cell_box2(point);
+            THEN("The point is a cell_box2")
             {
                 CHECK(is_box);
             }
         }
-        WHEN("The point2 is converted to a box2")
+        WHEN("The cell_vector2 is converted to a cell_box2")
         {
-            const auto box_o = rl::as_box2(point);
-            THEN("The correct box2 was returned")
+            const auto box_o = rl::as_cell_box2(point);
+            THEN("The correct cell_box2 was returned")
             {
                 REQUIRE(box_o.has_value());
-                CHECK(box_o.value() == rl::box2(1, 1, 1, 1));
+                CHECK(box_o.value() == rl::cell_box2(1, 1, 1, 1));
             }
         }
     }
 }
 
-SCENARIO("A segment2 is converted into a box2")
+SCENARIO("A cell_segment2 is converted into a cell_box2")
 {
-    GIVEN("A segment2 that is a box2")
+    GIVEN("A cell_segment2 that is a cell_box2")
     {
-        const rl::segment2 segment(1, 1, 1, 1);
-        WHEN("It is determined if the segment2 is a box2")
+        const rl::cell_segment2 segment(1, 1, 1, 1);
+        WHEN("It is determined if the cell_segment2 is a cell_box2")
         {
-            const auto is_box = rl::is_box2(segment);
-            THEN("The segment2 is a box2")
+            const auto is_box = rl::is_cell_box2(segment);
+            THEN("The cell_segment2 is a cell_box2")
             {
                 CHECK(is_box);
             }
         }
-        WHEN("The segment2 is converted to a box2")
+        WHEN("The cell_segment2 is converted to a cell_box2")
         {
-            const auto box_o = rl::as_box2(segment);
-            THEN("The correct box2 was returned")
+            const auto box_o = rl::as_cell_box2(segment);
+            THEN("The correct cell_box2 was returned")
             {
                 REQUIRE(box_o.has_value());
-                CHECK(box_o.value() == rl::box2(1, 1, 1, 1));
+                CHECK(box_o.value() == rl::cell_box2(1, 1, 1, 1));
             }
         }
     }
-    GIVEN("A segment2 that is not a box2")
+    GIVEN("A cell_segment2 that is not a cell_box2")
     {
-        const rl::segment2 segment(1, 2, 3, 4);
-        WHEN("It is determined if the segment2 is a box2")
+        const rl::cell_segment2 segment(1, 2, 3, 4);
+        WHEN("It is determined if the cell_segment2 is a cell_box2")
         {
-            const auto is_box = rl::is_box2(segment);
-            THEN("The segment2 is not a box2")
+            const auto is_box = rl::is_cell_box2(segment);
+            THEN("The cell_segment2 is not a cell_box2")
             {
                 CHECK_FALSE(is_box);
             }
         }
-        WHEN("The segment2 is converted to a box2")
+        WHEN("The cell_segment2 is converted to a cell_box2")
         {
-            const auto box_o = rl::as_box2(segment);
-            THEN("No box2 was returned")
+            const auto box_o = rl::as_cell_box2(segment);
+            THEN("No cell_box2 was returned")
             {
                 CHECK_FALSE(box_o.has_value());
             }
@@ -394,69 +394,69 @@ SCENARIO("A segment2 is converted into a box2")
     }
 }
 
-SCENARIO("A box2 is converted into a box2")
+SCENARIO("A cell_box2 is converted into a cell_box2")
 {
-    GIVEN("A box2")
+    GIVEN("A cell_box2")
     {
-        const rl::box2 box(1, 1, 1, 1);
-        WHEN("It is determined if the box2 is a box2")
+        const rl::cell_box2 box(1, 1, 1, 1);
+        WHEN("It is determined if the cell_box2 is a cell_box2")
         {
-            const auto is_box = rl::is_box2(box);
-            THEN("The box is a box2")
+            const auto is_box = rl::is_cell_box2(box);
+            THEN("The box is a cell_box2")
             {
                 CHECK(is_box);
             }
         }
-        WHEN("The box2 is converted to a box2")
+        WHEN("The cell_box2 is converted to a cell_box2")
         {
-            const auto box_o = rl::as_box2(box);
-            THEN("The correct box2 was returned")
+            const auto box_o = rl::as_cell_box2(box);
+            THEN("The correct cell_box2 was returned")
             {
                 REQUIRE(box_o.has_value());
-                CHECK(box_o.value() == rl::box2(1, 1, 1, 1));
+                CHECK(box_o.value() == rl::cell_box2(1, 1, 1, 1));
             }
         }
     }
 }
 
-SCENARIO("A circle2 is converted into a box2")
+SCENARIO("A cell_circle2 is converted into a cell_box2")
 {
-    GIVEN("A circle2 that is a box2")
+    GIVEN("A cell_circle2 that is a cell_box2")
     {
-        const rl::circle2 circle(1, 1, 0.5f);
-        WHEN("It is determined if the circle2 is a box2")
+        const rl::cell_circle2 circle(1, 1, 0.5f);
+        WHEN("It is determined if the cell_circle2 is a cell_box2")
         {
-            const auto is_box = rl::is_box2(circle);
-            THEN("The circle2 is a box2")
+            const auto is_box = rl::is_cell_box2(circle);
+            THEN("The cell_circle2 is a cell_box2")
             {
                 CHECK(is_box);
             }
         }
-        WHEN("The circle2 is converted to a box2")
+        WHEN("The cell_circle2 is converted to a cell_box2")
         {
-            const auto box_o = rl::as_box2(circle);
-            THEN("The correct box2 was returned")
+            const auto box_o = rl::as_cell_box2(circle);
+            THEN("The correct cell_box2 was returned")
             {
                 REQUIRE(box_o.has_value());
-                CHECK(box_o.value() == rl::box2(1, 1, 1, 1));
+                CHECK(box_o.value() == rl::cell_box2(1, 1, 1, 1));
             }
         }
     }
-    GIVEN("A circle2 that is not a box2")
+    GIVEN("A cell_circle2 that is not a cell_box2")
     {
-        const rl::circle2 circle(1, 2, 7.0f);
-        WHEN("It is determined if the circle2 is a box2")
+        const rl::cell_circle2 circle(1, 2, 7.0f);
+        WHEN("It is determined if the cell_circle2 is a cell_box2")
         {
-            const auto is_box = rl::is_box2(circle);
-            THEN("The circle2 is not a box2")
+            const auto is_box = rl::is_cell_box2(circle);
+            THEN("The cell_circle2 is not a cell_box2")
             {
                 CHECK_FALSE(is_box);
             }
         }
-        WHEN("The circle2 is converted to a box2")
+        WHEN("The cell_circle2 is converted to a cell_box2")
         {
-            const auto box_o = rl::as_box2(circle);
-            THEN("No box2 was returned")
+            const auto box_o = rl::as_cell_box2(circle);
+            THEN("No cell_box2 was returned")
             {
                 CHECK_FALSE(box_o.has_value());
             }
@@ -464,69 +464,69 @@ SCENARIO("A circle2 is converted into a box2")
     }
 }
 
-SCENARIO("A point2 is converted into a circle2")
+SCENARIO("A cell_vector2 is converted into a cell_circle2")
 {
-    GIVEN("A point2")
+    GIVEN("A cell_vector2")
     {
-        const rl::point2 point(1, 1);
-        WHEN("It is determined if the point2 is a circle2")
+        const rl::cell_vector2 point(1, 1);
+        WHEN("It is determined if the cell_vector2 is a cell_circle2")
         {
-            const auto is_circle = rl::is_circle2(point);
-            THEN("The point is a circle2")
+            const auto is_circle = rl::is_cell_circle2(point);
+            THEN("The point is a cell_circle2")
             {
                 CHECK(is_circle);
             }
         }
-        WHEN("The point2 is converted to a circle2")
+        WHEN("The cell_vector2 is converted to a cell_circle2")
         {
-            const auto circle_o = rl::as_circle2(point);
-            THEN("The correct circle2 was returned")
+            const auto circle_o = rl::as_cell_circle2(point);
+            THEN("The correct cell_circle2 was returned")
             {
                 REQUIRE(circle_o.has_value());
-                CHECK(circle_o.value() == rl::circle2(1, 1, 0.5f));
+                CHECK(circle_o.value() == rl::cell_circle2(1, 1, 0.5f));
             }
         }
     }
 }
 
-SCENARIO("A segment2 is converted into a circle2")
+SCENARIO("A cell_segment2 is converted into a cell_circle2")
 {
-    GIVEN("A segment2 that is a circle2")
+    GIVEN("A cell_segment2 that is a cell_circle2")
     {
-        const rl::segment2 segment(1, 1, 1, 1);
-        WHEN("It is determined if the segment2 is a circle2")
+        const rl::cell_segment2 segment(1, 1, 1, 1);
+        WHEN("It is determined if the cell_segment2 is a cell_circle2")
         {
-            const auto is_circle = rl::is_circle2(segment);
-            THEN("The segment2 is a circle2")
+            const auto is_circle = rl::is_cell_circle2(segment);
+            THEN("The cell_segment2 is a cell_circle2")
             {
                 CHECK(is_circle);
             }
         }
-        WHEN("The segment2 is converted to a circle2")
+        WHEN("The cell_segment2 is converted to a cell_circle2")
         {
-            const auto circle_o = rl::as_circle2(segment);
-            THEN("The correct circle2 was returned")
+            const auto circle_o = rl::as_cell_circle2(segment);
+            THEN("The correct cell_circle2 was returned")
             {
                 REQUIRE(circle_o.has_value());
-                CHECK(circle_o.value() == rl::circle2(1, 1, 0.5f));
+                CHECK(circle_o.value() == rl::cell_circle2(1, 1, 0.5f));
             }
         }
     }
-    GIVEN("A segment2 that is not a circle2")
+    GIVEN("A cell_segment2 that is not a cell_circle2")
     {
-        const rl::segment2 segment(1, 2, 3, 4);
-        WHEN("It is determined if the segment2 is a circle2")
+        const rl::cell_segment2 segment(1, 2, 3, 4);
+        WHEN("It is determined if the cell_segment2 is a cell_circle2")
         {
-            const auto is_circle = rl::is_circle2(segment);
-            THEN("The segment2 is not a circle2")
+            const auto is_circle = rl::is_cell_circle2(segment);
+            THEN("The cell_segment2 is not a cell_circle2")
             {
                 CHECK_FALSE(is_circle);
             }
         }
-        WHEN("The segment2 is converted to a circle2")
+        WHEN("The cell_segment2 is converted to a cell_circle2")
         {
-            const auto circle_o = rl::as_circle2(segment);
-            THEN("No circle2 was returned")
+            const auto circle_o = rl::as_cell_circle2(segment);
+            THEN("No cell_circle2 was returned")
             {
                 CHECK_FALSE(circle_o.has_value());
             }
@@ -534,44 +534,44 @@ SCENARIO("A segment2 is converted into a circle2")
     }
 }
 
-SCENARIO("A box2 is converted into a circle2")
+SCENARIO("A cell_box2 is converted into a cell_circle2")
 {
-    GIVEN("A box2 that is a circle2")
+    GIVEN("A cell_box2 that is a cell_circle2")
     {
-        const rl::box2 box(1, 1, 1, 1);
-        WHEN("It is determined if the box2 is a circle2")
+        const rl::cell_box2 box(1, 1, 1, 1);
+        WHEN("It is determined if the cell_box2 is a cell_circle2")
         {
-            const auto is_circle = rl::is_circle2(box);
-            THEN("The box2 is a circle2")
+            const auto is_circle = rl::is_cell_circle2(box);
+            THEN("The cell_box2 is a cell_circle2")
             {
                 CHECK(is_circle);
             }
         }
-        WHEN("The box2 is converted to a circle2")
+        WHEN("The cell_box2 is converted to a cell_circle2")
         {
-            const auto circle_o = rl::as_circle2(box);
-            THEN("The correct circle2 was returned")
+            const auto circle_o = rl::as_cell_circle2(box);
+            THEN("The correct cell_circle2 was returned")
             {
                 REQUIRE(circle_o.has_value());
-                CHECK(circle_o.value() == rl::circle2(1, 1, 0.5f));
+                CHECK(circle_o.value() == rl::cell_circle2(1, 1, 0.5f));
             }
         }
     }
-    GIVEN("A box2 that is not a circle2")
+    GIVEN("A cell_box2 that is not a cell_circle2")
     {
-        const rl::box2 box(1, 2, 3, 4);
-        WHEN("It is determined if the box2 is a circle2")
+        const rl::cell_box2 box(1, 2, 3, 4);
+        WHEN("It is determined if the cell_box2 is a cell_circle2")
         {
-            const auto is_circle = rl::is_circle2(box);
-            THEN("The box2 is not a circle2")
+            const auto is_circle = rl::is_cell_circle2(box);
+            THEN("The cell_box2 is not a cell_circle2")
             {
                 CHECK_FALSE(is_circle);
             }
         }
-        WHEN("The box2 is converted to a circle2")
+        WHEN("The cell_box2 is converted to a cell_circle2")
         {
-            const auto circle_o = rl::as_circle2(box);
-            THEN("No circle2 was returned")
+            const auto circle_o = rl::as_cell_circle2(box);
+            THEN("No cell_circle2 was returned")
             {
                 CHECK_FALSE(circle_o.has_value());
             }
@@ -579,26 +579,26 @@ SCENARIO("A box2 is converted into a circle2")
     }
 }
 
-SCENARIO("A circle2 is converted into a circle2")
+SCENARIO("A cell_circle2 is converted into a cell_circle2")
 {
-    GIVEN("A circle2")
+    GIVEN("A cell_circle2")
     {
-        const rl::circle2 circle(1, 1, 0.5f);
-        WHEN("It is determined if the circle2 is a circle2")
+        const rl::cell_circle2 circle(1, 1, 0.5f);
+        WHEN("It is determined if the cell_circle2 is a cell_circle2")
         {
-            const auto is_circle = rl::is_circle2(circle);
-            THEN("The circle is a circle2")
+            const auto is_circle = rl::is_cell_circle2(circle);
+            THEN("The circle is a cell_circle2")
             {
                 CHECK(is_circle);
             }
         }
-        WHEN("The circle2 is converted to a circle2")
+        WHEN("The cell_circle2 is converted to a cell_circle2")
         {
-            const auto circle_o = rl::as_circle2(circle);
-            THEN("The correct circle2 was returned")
+            const auto circle_o = rl::as_cell_circle2(circle);
+            THEN("The correct cell_circle2 was returned")
             {
                 REQUIRE(circle_o.has_value());
-                CHECK(circle_o.value() == rl::circle2(1, 1, 0.5f));
+                CHECK(circle_o.value() == rl::cell_circle2(1, 1, 0.5f));
             }
         }
     }

@@ -25,40 +25,40 @@
 
 SCENARIO("Get if grid shapes are collinear")
 {
-    GIVEN("Three collinear point2")
+    GIVEN("Three collinear cell_vector2")
     {
-        const rl::point2 point_a(0, 0);
-        const rl::point2 point_b(1, 1);
-        const rl::point2 point_c(2, 2);
-        THEN("The point2 are collinear")
+        const rl::cell_vector2 point_a(0, 0);
+        const rl::cell_vector2 point_b(1, 1);
+        const rl::cell_vector2 point_c(2, 2);
+        THEN("The cell_vector2 are collinear")
         {
             CHECK(rl::are_collinear(point_a, point_b, point_c));
         }
     }
-    GIVEN("Three non-collinear point2")
+    GIVEN("Three non-collinear cell_vector2")
     {
-        const rl::point2 point_a(0, 0);
-        const rl::point2 point_b(1, 1);
-        const rl::point2 point_c(2, 3);
-        THEN("The point2 are not collinear")
+        const rl::cell_vector2 point_a(0, 0);
+        const rl::cell_vector2 point_b(1, 1);
+        const rl::cell_vector2 point_c(2, 3);
+        THEN("The cell_vector2 are not collinear")
         {
             CHECK_FALSE(rl::are_collinear(point_a, point_b, point_c));
         }
     }
-    GIVEN("A point2 and a segment2 that are collinear")
+    GIVEN("A cell_vector2 and a cell_segment2 that are collinear")
     {
-        const rl::point2 point(0, 0);
-        const rl::segment2 segment(-5, -5, 15, 15);
+        const rl::cell_vector2 point(0, 0);
+        const rl::cell_segment2 segment(-5, -5, 15, 15);
         THEN("The shapes are collinear")
         {
             CHECK(rl::are_collinear(point, segment));
             CHECK(rl::are_collinear(segment, point));
         }
     }
-    GIVEN("A point2 and a segment2 that are not collinear")
+    GIVEN("A cell_vector2 and a cell_segment2 that are not collinear")
     {
-        const rl::point2 point(0, 1);
-        const rl::segment2 segment(-5, -5, 15, 15);
+        const rl::cell_vector2 point(0, 1);
+        const rl::cell_segment2 segment(-5, -5, 15, 15);
         THEN("The shapes are not collinear")
         {
             CHECK_FALSE(rl::are_collinear(point, segment));

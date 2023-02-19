@@ -23,26 +23,26 @@
 #pragma once
 
 #include <rlm/concepts.hpp>
-#include <rlm/cellular/point2.hpp>
-#include <rlm/cellular/segment2.hpp>
-#include <rlm/cellular/box2.hpp>
-#include <rlm/cellular/circle2.hpp>
+#include <rlm/cellular/cell_vector2.hpp>
+#include <rlm/cellular/cell_segment2.hpp>
+#include <rlm/cellular/cell_box2.hpp>
+#include <rlm/cellular/cell_circle2.hpp>
 
 template<rl::signed_integral Ia, rl::signed_integral Ib>
-constexpr rl::point2<Ia> rl::template_cast(const rl::point2<Ib>& point) noexcept
+constexpr rl::cell_vector2<Ia> rl::template_cast(const rl::cell_vector2<Ib>& point) noexcept
 {
     return
-        rl::point2<Ia>(
+        rl::cell_vector2<Ia>(
             static_cast<Ia>(point.x),
             static_cast<Ia>(point.y)
         );
 }
 
 template<rl::signed_integral Ia, rl::signed_integral Ib>
-constexpr rl::segment2<Ia> rl::template_cast(const rl::segment2<Ib>& segment) noexcept
+constexpr rl::cell_segment2<Ia> rl::template_cast(const rl::cell_segment2<Ib>& segment) noexcept
 {
     return
-        rl::segment2<Ia>(
+        rl::cell_segment2<Ia>(
             static_cast<Ia>(segment.start_x),
             static_cast<Ia>(segment.start_y),
             static_cast<Ia>(segment.end_x),
@@ -51,11 +51,11 @@ constexpr rl::segment2<Ia> rl::template_cast(const rl::segment2<Ib>& segment) no
 }
 
 template<rl::signed_integral Ia, rl::signed_integral Ib>
-constexpr rl::box2<Ia> rl::template_cast(const rl::box2<Ib>& box) noexcept
+constexpr rl::cell_box2<Ia> rl::template_cast(const rl::cell_box2<Ib>& box) noexcept
 {
     RLM_HANDLE_DEGENERACY(fixed_box, box);
     return
-        rl::box2<Ia>(
+        rl::cell_box2<Ia>(
             static_cast<Ia>(fixed_box.x),
             static_cast<Ia>(fixed_box.y),
             static_cast<Ia>(fixed_box.width),
@@ -64,11 +64,11 @@ constexpr rl::box2<Ia> rl::template_cast(const rl::box2<Ib>& box) noexcept
 }
 
 template<rl::signed_integral Ia, rl::floating_point Fa, rl::signed_integral Ib, rl::floating_point Fb>
-constexpr rl::circle2<Ia, Fa> rl::template_cast(const rl::circle2<Ib, Fb>& circle) noexcept
+constexpr rl::cell_circle2<Ia, Fa> rl::template_cast(const rl::cell_circle2<Ib, Fb>& circle) noexcept
 {
     RLM_HANDLE_DEGENERACY(fixed_circle, circle);
     return
-        rl::circle2<Ia, Fa>(
+        rl::cell_circle2<Ia, Fa>(
             static_cast<Ia>(fixed_circle.x),
             static_cast<Ia>(fixed_circle.y),
             static_cast<Fa>(fixed_circle.radius)

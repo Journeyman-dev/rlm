@@ -23,13 +23,13 @@
 #include <catch2/catch_all.hpp>
 #include <rlm/cellular/dot.hpp>
 
-SCENARIO("The dot product is gotten between two point2")
+SCENARIO("The dot product is gotten between two cell_vector2")
 {
-    GIVEN("Two point2")
+    GIVEN("Two cell_vector2")
     {
-        const rl::point2 point_a(1, 2);
-        const rl::point2 point_b(2, 4);
-        WHEN("The dot product of the two point2 is gotten")
+        const rl::cell_vector2 point_a(1, 2);
+        const rl::cell_vector2 point_b(2, 4);
+        WHEN("The dot product of the two cell_vector2 is gotten")
         {
             const auto dot = rl::dot(point_a, point_b);
             THEN("The value is correct")
@@ -40,13 +40,13 @@ SCENARIO("The dot product is gotten between two point2")
     }
 }
 
-SCENARIO("The unit dot product is gotten between two point2")
+SCENARIO("The unit dot product is gotten between two cell_vector2")
 {
-    GIVEN("Two point2")
+    GIVEN("Two cell_vector2")
     {
-        const rl::point2 point_a(1, 2);
-        const rl::point2 point_b(2, 4);
-        WHEN("The unit dot product of the two point2 is gotten")
+        const rl::cell_vector2 point_a(1, 2);
+        const rl::cell_vector2 point_b(2, 4);
+        WHEN("The unit dot product of the two cell_vector2 is gotten")
         {
             const auto unit_dot = rl::unit_dot(point_a, point_b);
             THEN("The value is correct")
@@ -57,12 +57,12 @@ SCENARIO("The unit dot product is gotten between two point2")
     }
 }
 
-SCENARIO("The dot product is gotten between a point2 and a segment2")
+SCENARIO("The dot product is gotten between a cell_vector2 and a cell_segment2")
 {
-    GIVEN("A point2 and a segment2")
+    GIVEN("A cell_vector2 and a cell_segment2")
     {
-        const rl::point2 point(1, 2);
-        const rl::segment2 segment(2, 4, 5, 6);
+        const rl::cell_vector2 point(1, 2);
+        const rl::cell_segment2 segment(2, 4, 5, 6);
         WHEN("The dot product of the shapes is gotten")
         {
             const auto dot = rl::dot(point, segment);
@@ -79,12 +79,12 @@ SCENARIO("The dot product is gotten between a point2 and a segment2")
     }
 }
 
-SCENARIO("The unit dot product is gotten between a point2 and a segment2")
+SCENARIO("The unit dot product is gotten between a cell_vector2 and a cell_segment2")
 {
-    GIVEN("A point2 and a segment2")
+    GIVEN("A cell_vector2 and a cell_segment2")
     {
-        const rl::point2 point(1, 2);
-        const rl::segment2 segment(2, 4, 5, 6);
+        const rl::cell_vector2 point(1, 2);
+        const rl::cell_segment2 segment(2, 4, 5, 6);
         WHEN("The unit dot product of the shapes is gotten")
         {
             const auto unit_dot = rl::unit_dot(point, segment);
@@ -101,13 +101,13 @@ SCENARIO("The unit dot product is gotten between a point2 and a segment2")
     }
 }
 
-SCENARIO("The dot product is gotten between two segment2")
+SCENARIO("The dot product is gotten between two cell_segment2")
 {
-    GIVEN("Two segment2")
+    GIVEN("Two cell_segment2")
     {
-        const rl::segment2 segment_a(1, 2, 3, 4);
-        const rl::segment2 segment_b(2, 4, 5, 6);
-        WHEN("The dot product of the two segment2 is gotten")
+        const rl::cell_segment2 segment_a(1, 2, 3, 4);
+        const rl::cell_segment2 segment_b(2, 4, 5, 6);
+        WHEN("The dot product of the two cell_segment2 is gotten")
         {
             const auto dot = rl::dot(segment_a, segment_b);
             THEN("The value is correct")
@@ -118,13 +118,13 @@ SCENARIO("The dot product is gotten between two segment2")
     }
 }
 
-SCENARIO("The unit dot product is gotten between two segment2")
+SCENARIO("The unit dot product is gotten between two cell_segment2")
 {
-    GIVEN("Two segment2")
+    GIVEN("Two cell_segment2")
     {
-        const rl::segment2 segment_a(1, 2, 3, 4);
-        const rl::segment2 segment_b(2, 4, 5, 6);
-        WHEN("The unit dot product of the two segment2 is gotten")
+        const rl::cell_segment2 segment_a(1, 2, 3, 4);
+        const rl::cell_segment2 segment_b(2, 4, 5, 6);
+        WHEN("The unit dot product of the two cell_segment2 is gotten")
         {
             const auto unit_dot = rl::unit_dot(segment_a, segment_b);
             THEN("The value is correct")

@@ -23,73 +23,73 @@
 #pragma once
 
 #include <rlm/concepts.hpp>
-#include <rlm/cellular/point2.hpp>
-#include <rlm/cellular/segment2.hpp>
-#include <rlm/cellular/box2.hpp>
+#include <rlm/cellular/cell_vector2.hpp>
+#include <rlm/cellular/cell_segment2.hpp>
+#include <rlm/cellular/cell_box2.hpp>
 #include <rlm/cellular/shape_edges.hpp>
 #include <rlm/cellular/degenerate_shapes.hpp>
 #include <rlm/configuration.hpp>
 #include <cassert>
 
 template<rl::signed_integral I>
-constexpr rl::point2<I> rl::start(const rl::segment2<I>& segment) noexcept
+constexpr rl::cell_vector2<I> rl::start(const rl::cell_segment2<I>& segment) noexcept
 {
     return
-        rl::point2<I>(
+        rl::cell_vector2<I>(
             segment.start_x,
             segment.start_y
         );
 }
 
 template<rl::signed_integral I>
-constexpr rl::point2<I> rl::end(const rl::segment2<I>& segment) noexcept
+constexpr rl::cell_vector2<I> rl::end(const rl::cell_segment2<I>& segment) noexcept
 {
     return
-        rl::point2<I>(
+        rl::cell_vector2<I>(
             segment.end_x,
             segment.end_y
         );
 }
 
 template<rl::signed_integral I>
-constexpr rl::point2<I> rl::top_left(const rl::box2<I>& box) noexcept
+constexpr rl::cell_vector2<I> rl::top_left(const rl::cell_box2<I>& box) noexcept
 {
     RLM_HANDLE_DEGENERACY(fixed_box, box);
     return
-        rl::point2<I>(
+        rl::cell_vector2<I>(
             rl::left_x(fixed_box),
             rl::top_y(fixed_box)
         );
 }
 
 template<rl::signed_integral I>
-constexpr rl::point2<I> rl::top_right(const rl::box2<I>& box) noexcept
+constexpr rl::cell_vector2<I> rl::top_right(const rl::cell_box2<I>& box) noexcept
 {
     RLM_HANDLE_DEGENERACY(fixed_box, box);
     return
-        rl::point2<I>(
+        rl::cell_vector2<I>(
             rl::right_x(box),
             rl::top_y(box)
         );
 }
 
 template<rl::signed_integral I>
-constexpr rl::point2<I> rl::bottom_left(const rl::box2<I>& box) noexcept
+constexpr rl::cell_vector2<I> rl::bottom_left(const rl::cell_box2<I>& box) noexcept
 {
     RLM_HANDLE_DEGENERACY(fixed_box, box);
     return
-        rl::point2<I>(
+        rl::cell_vector2<I>(
             rl::left_x(fixed_box),
             rl::bottom_y(fixed_box)
         );
 }
 
 template<rl::signed_integral I>
-constexpr rl::point2<I> rl::bottom_right(const rl::box2<I>& box) noexcept
+constexpr rl::cell_vector2<I> rl::bottom_right(const rl::cell_box2<I>& box) noexcept
 {
     RLM_HANDLE_DEGENERACY(fixed_box, box);
     return
-        rl::point2<I>(
+        rl::cell_vector2<I>(
             rl::right_x(fixed_box),
             rl::bottom_y(fixed_box)
         );

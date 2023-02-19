@@ -22,52 +22,52 @@
 
 #pragma once
 
-#include <rlm/cellular/box2.hpp>
-#include <rlm/cellular/circle2.hpp>
+#include <rlm/cellular/cell_box2.hpp>
+#include <rlm/cellular/cell_circle2.hpp>
 #include <rlm/max.hpp>
 #include <rlm/concepts.hpp>
 
 template<rl::signed_integral I>
-constexpr bool rl::is_degenerate(const rl::point2<I>& point) noexcept
+constexpr bool rl::is_degenerate(const rl::cell_vector2<I>& point) noexcept
 {
     return false;
 }
 
 template<rl::signed_integral I>
-constexpr bool rl::is_degenerate(const rl::segment2<I>& segment) noexcept
+constexpr bool rl::is_degenerate(const rl::cell_segment2<I>& segment) noexcept
 {
     return false;
 }
 
 template<rl::signed_integral I>
-constexpr bool rl::is_degenerate(const rl::box2<I>& box) noexcept
+constexpr bool rl::is_degenerate(const rl::cell_box2<I>& box) noexcept
 {
     return box.width <= 0 || box.height <= 0;
 }
 
 template<rl::signed_integral I, rl::floating_point F>
-constexpr bool rl::is_degenerate(const rl::circle2<I, F>& circle) noexcept
+constexpr bool rl::is_degenerate(const rl::cell_circle2<I, F>& circle) noexcept
 {
     return circle.radius < 0.5;
 }
 
 template<rl::signed_integral I>
-constexpr rl::point2<I> rl::fix_degeneracy(const rl::point2<I>& point) noexcept
+constexpr rl::cell_vector2<I> rl::fix_degeneracy(const rl::cell_vector2<I>& point) noexcept
 {
     return point;
 }
 
 template<rl::signed_integral I>
-constexpr rl::segment2<I> rl::fix_degeneracy(const rl::segment2<I>& segment) noexcept
+constexpr rl::cell_segment2<I> rl::fix_degeneracy(const rl::cell_segment2<I>& segment) noexcept
 {
     return segment;
 }
 
 template<rl::signed_integral I>
-constexpr rl::box2<I> rl::fix_degeneracy(const rl::box2<I>& box) noexcept
+constexpr rl::cell_box2<I> rl::fix_degeneracy(const rl::cell_box2<I>& box) noexcept
 {
     return
-        rl::box2(
+        rl::cell_box2(
             box.x,
             box.y,
             rl::max(box.width, 1),
@@ -76,10 +76,10 @@ constexpr rl::box2<I> rl::fix_degeneracy(const rl::box2<I>& box) noexcept
 }
 
 template<rl::signed_integral I, rl::floating_point F>
-constexpr rl::circle2<I, F> rl::fix_degeneracy(const rl::circle2<I, F>& circle) noexcept
+constexpr rl::cell_circle2<I, F> rl::fix_degeneracy(const rl::cell_circle2<I, F>& circle) noexcept
 {
     return
-        rl::circle2<I, F>(
+        rl::cell_circle2<I, F>(
             circle.x,
             circle.y,
             rl::max(circle.radius, 0.5f)

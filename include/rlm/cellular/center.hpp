@@ -27,22 +27,22 @@
 namespace rl
 {
     template<rl::signed_integral I>
-    struct point2;
+    struct cell_vector2;
     template<rl::signed_integral I>
-    struct segment2;
+    struct cell_segment2;
     template<rl::signed_integral I>
-    struct box2;
+    struct cell_box2;
     template<rl::signed_integral I, rl::floating_point F>
-    struct circle2;
+    struct cell_circle2;
 
     template<rl::signed_integral I = int>
-    constexpr rl::segment2<I> center(const rl::segment2<I>& segment) noexcept;
+    constexpr rl::cell_segment2<I> center(const rl::cell_segment2<I>& segment) noexcept;
 
     template<rl::signed_integral I = int>
-    constexpr rl::box2<I> center(const rl::box2<I>& box) noexcept;
+    constexpr rl::cell_box2<I> center(const rl::cell_box2<I>& box) noexcept;
 
     template<rl::signed_integral I = int, rl::floating_point F = float>
-    constexpr rl::point2<I> center(const rl::circle2<I, F>& circle) noexcept;
+    constexpr rl::cell_vector2<I> center(const rl::cell_circle2<I, F>& circle) noexcept;
 }    // namespace rl
 
 #include <rlm/cellular/detail/center.inl>

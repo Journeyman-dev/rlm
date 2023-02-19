@@ -23,17 +23,17 @@
 #pragma once
 
 #include <rlm/concepts.hpp>
-#include <rlm/cellular/point2.hpp>
+#include <rlm/cellular/cell_vector2.hpp>
 #include <cmath>
 
 template<rl::signed_integral I, rl::floating_point F>
-constexpr F rl::magnitude(const rl::point2<I>& point) noexcept
+constexpr F rl::magnitude(const rl::cell_vector2<I>& point) noexcept
 {
     return std::sqrt(static_cast<F>(std::abs((point.x * point.x) + (point.y * point.y))));
 }
 
 template<rl::signed_integral I>
-constexpr I cell_magnitude(const rl::point2<I>& point) noexcept
+constexpr I cell_magnitude(const rl::cell_vector2<I>& point) noexcept
 {
     return static_cast<I>(std::floor(rl::magnitude(point)));
 }

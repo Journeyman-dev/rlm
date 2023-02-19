@@ -27,28 +27,28 @@
 namespace rl
 {
     template<rl::signed_integral I>
-    struct point2;
+    struct cell_vector2;
     template<rl::signed_integral I>
-    struct segment2;
+    struct cell_segment2;
     template<rl::signed_integral I>
-    struct box2;
+    struct cell_box2;
     template<rl::signed_integral I, rl::floating_point F>
-    struct circle2;
+    struct cell_circle2;
 
     template<rl::signed_integral Ia, rl::signed_integral Ib>
-    constexpr rl::point2<Ia> template_cast(const rl::point2<Ib>& point) noexcept;
+    constexpr rl::cell_vector2<Ia> template_cast(const rl::cell_vector2<Ib>& point) noexcept;
 
     template<rl::signed_integral Ia, rl::signed_integral Ib>
-    constexpr rl::segment2<Ia> template_cast(const rl::segment2<Ib>& segment) noexcept;
+    constexpr rl::cell_segment2<Ia> template_cast(const rl::cell_segment2<Ib>& segment) noexcept;
 
     template<rl::signed_integral Ia, rl::signed_integral Ib>
-    constexpr rl::box2<Ia> template_cast(const rl::box2<Ib>& box) noexcept;
+    constexpr rl::cell_box2<Ia> template_cast(const rl::cell_box2<Ib>& box) noexcept;
 
     template<rl::signed_integral Ia,
              rl::floating_point Fa,
              rl::signed_integral Ib,
              rl::floating_point Fb>
-    constexpr rl::circle2<Ia, Fa> template_cast(const rl::circle2<Ib, Fb>& circle) noexcept;
+    constexpr rl::cell_circle2<Ia, Fa> template_cast(const rl::cell_circle2<Ib, Fb>& circle) noexcept;
 }    // namespace rl
 
 #include <rlm/cellular/detail/template_cast.inl>

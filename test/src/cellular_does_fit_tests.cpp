@@ -24,23 +24,23 @@
 #include <rlm/cellular/does_fit.hpp>
 #include <rlm/cellular/ostream.hpp>
 
-SCENARIO("It is determined if a box2 fits in a different box2")
+SCENARIO("It is determined if a cell_box2 fits in a different cell_box2")
 {
-    GIVEN("A box2")
+    GIVEN("A cell_box2")
     {
-        const rl::box2 box(1, 1, 4, 4);
-        GIVEN("Another box2 the first box fits into")
+        const rl::cell_box2 box(1, 1, 4, 4);
+        GIVEN("Another cell_box2 the first box fits into")
         {
-            const rl::box2 fitting_box(133, 14, 6, 10);
-            THEN("The first box2 fits in the second box2")
+            const rl::cell_box2 fitting_box(133, 14, 6, 10);
+            THEN("The first cell_box2 fits in the second cell_box2")
             {
                 CHECK(rl::does_fit(fitting_box, box));
             }
         }
-        GIVEN("Another box2 the first box does not fit into")
+        GIVEN("Another cell_box2 the first box does not fit into")
         {
-            const rl::box2 fitting_box(133, 4, 2, 5);
-            THEN("The first box2 does not fit in the second box2")
+            const rl::cell_box2 fitting_box(133, 4, 2, 5);
+            THEN("The first cell_box2 does not fit in the second cell_box2")
             {
                 CHECK_FALSE(rl::does_fit(fitting_box, box));
             }

@@ -25,9 +25,9 @@
 
 SCENARIO("The magnitude of grid shapes is determined")
 {
-    GIVEN("A point2")
+    GIVEN("A cell_vector2")
     {
-        const rl::point2 point(1, 0);
+        const rl::cell_vector2 point(1, 0);
         WHEN("The magnitude is determined")
         {
             const auto magnitude = rl::magnitude(point);

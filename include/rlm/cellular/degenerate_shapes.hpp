@@ -28,37 +28,37 @@
 namespace rl
 {
     template<rl::signed_integral I>
-    struct point2;
+    struct cell_vector2;
     template<rl::signed_integral I>
-    struct segment2;
+    struct cell_segment2;
     template<rl::signed_integral I>
-    struct box2;
+    struct cell_box2;
     template<rl::signed_integral I, rl::floating_point F>
-    struct circle2;
+    struct cell_circle2;
 
     template<rl::signed_integral I = int>
-    constexpr bool is_degenerate(const rl::point2<I>& point) noexcept;
+    constexpr bool is_degenerate(const rl::cell_vector2<I>& point) noexcept;
 
     template<rl::signed_integral I = int>
-    constexpr bool is_degenerate(const rl::segment2<I>& segment) noexcept;
+    constexpr bool is_degenerate(const rl::cell_segment2<I>& segment) noexcept;
 
     template<rl::signed_integral I = int>
-    constexpr bool is_degenerate(const rl::box2<I>& box) noexcept;
+    constexpr bool is_degenerate(const rl::cell_box2<I>& box) noexcept;
 
     template<rl::signed_integral I = int, rl::floating_point F = float>
-    constexpr bool is_degenerate(const rl::circle2<I, F>& circle) noexcept;
+    constexpr bool is_degenerate(const rl::cell_circle2<I, F>& circle) noexcept;
 
     template<rl::signed_integral I = int>
-    constexpr rl::point2<I> fix_degeneracy(const rl::point2<I>& point) noexcept;
+    constexpr rl::cell_vector2<I> fix_degeneracy(const rl::cell_vector2<I>& point) noexcept;
 
     template<rl::signed_integral I = int>
-    constexpr rl::segment2<I> fix_degeneracy(const rl::segment2<I>& segment) noexcept;
+    constexpr rl::cell_segment2<I> fix_degeneracy(const rl::cell_segment2<I>& segment) noexcept;
 
     template<rl::signed_integral I = int>
-    constexpr rl::box2<I> fix_degeneracy(const rl::box2<I>& box) noexcept;
+    constexpr rl::cell_box2<I> fix_degeneracy(const rl::cell_box2<I>& box) noexcept;
 
     template<rl::signed_integral I = int, rl::floating_point F = float>
-    constexpr rl::circle2<I, F> fix_degeneracy(const rl::circle2<I, F>& circle) noexcept;
+    constexpr rl::cell_circle2<I, F> fix_degeneracy(const rl::cell_circle2<I, F>& circle) noexcept;
 }    // namespace rl
 
 #include <rlm/cellular/detail/degenerate_shapes.inl>

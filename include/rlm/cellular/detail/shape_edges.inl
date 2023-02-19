@@ -23,7 +23,7 @@
 #pragma once
 
 #include <rlm/concepts.hpp>
-#include <rlm/cellular/box2.hpp>
+#include <rlm/cellular/cell_box2.hpp>
 #include <rlm/cellular/degenerate_shapes.hpp>
 #include <rlm/min.hpp>
 #include <rlm/max.hpp>
@@ -31,80 +31,80 @@
 #include <cmath>
 
 template<rl::signed_integral I>
-constexpr I rl::left_x(const rl::segment2<I>& segment) noexcept
+constexpr I rl::left_x(const rl::cell_segment2<I>& segment) noexcept
 {
     return rl::min(segment.start_x, segment.end_x);
 }
 
 template<rl::signed_integral I>
-constexpr I rl::right_x(const rl::segment2<I>& segment) noexcept
+constexpr I rl::right_x(const rl::cell_segment2<I>& segment) noexcept
 {
     return rl::max(segment.start_x, segment.end_x);
 }
 
 template<rl::signed_integral I>
-constexpr I rl::top_y(const rl::segment2<I>& segment) noexcept
+constexpr I rl::top_y(const rl::cell_segment2<I>& segment) noexcept
 {
     return rl::min(segment.start_y, segment.end_y);
 }
 
 template<rl::signed_integral I>
-constexpr I rl::bottom_y(const rl::segment2<I>& segment) noexcept
+constexpr I rl::bottom_y(const rl::cell_segment2<I>& segment) noexcept
 {
     return rl::max(segment.start_y, segment.end_y);
 }
 
 template<rl::signed_integral I>
-constexpr I rl::left_x(const rl::box2<I>& box) noexcept
+constexpr I rl::left_x(const rl::cell_box2<I>& box) noexcept
 {
     RLM_HANDLE_DEGENERACY(fixed_box, box);
     return fixed_box.x;
 }
 
 template<rl::signed_integral I>
-constexpr I rl::right_x(const rl::box2<I>& box) noexcept
+constexpr I rl::right_x(const rl::cell_box2<I>& box) noexcept
 {
     RLM_HANDLE_DEGENERACY(fixed_box, box);
     return fixed_box.x + fixed_box.width - 1;
 }
 
 template<rl::signed_integral I>
-constexpr I rl::top_y(const rl::box2<I>& box) noexcept
+constexpr I rl::top_y(const rl::cell_box2<I>& box) noexcept
 {
     RLM_HANDLE_DEGENERACY(fixed_box, box);
     return fixed_box.y;
 }
 
 template<rl::signed_integral I>
-constexpr I rl::bottom_y(const rl::box2<I>& box) noexcept
+constexpr I rl::bottom_y(const rl::cell_box2<I>& box) noexcept
 {
     RLM_HANDLE_DEGENERACY(fixed_box, box);
     return fixed_box.y + fixed_box.height - 1;
 }
 
 template<rl::signed_integral I, rl::floating_point F>
-constexpr I rl::left_x(const rl::circle2<I, F>& circle) noexcept
+constexpr I rl::left_x(const rl::cell_circle2<I, F>& circle) noexcept
 {
     RLM_HANDLE_DEGENERACY(fixed_circle, circle);
     return fixed_circle.x - static_cast<I>(std::round(fixed_circle.radius)) + 1;
 }
 
 template<rl::signed_integral I, rl::floating_point F>
-constexpr I rl::right_x(const rl::circle2<I, F>& circle) noexcept
+constexpr I rl::right_x(const rl::cell_circle2<I, F>& circle) noexcept
 {
     RLM_HANDLE_DEGENERACY(fixed_circle, circle);
     return fixed_circle.x + static_cast<I>(std::round(fixed_circle.radius)) - 1;
 }
 
 template<rl::signed_integral I, rl::floating_point F>
-constexpr I rl::top_y(const rl::circle2<I, F>& circle) noexcept
+constexpr I rl::top_y(const rl::cell_circle2<I, F>& circle) noexcept
 {
     RLM_HANDLE_DEGENERACY(fixed_circle, circle);
     return fixed_circle.y - static_cast<I>(std::round(fixed_circle.radius)) + 1;
 }
 
 template<rl::signed_integral I, rl::floating_point F>
-constexpr I rl::bottom_y(const rl::circle2<I, F>& circle) noexcept
+constexpr I rl::bottom_y(const rl::cell_circle2<I, F>& circle) noexcept
 {
     RLM_HANDLE_DEGENERACY(fixed_circle, circle);
     return fixed_circle.y + static_cast<I>(std::round(fixed_circle.radius)) - 1;

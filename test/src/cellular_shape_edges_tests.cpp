@@ -21,14 +21,14 @@
 */
 
 #include <catch2/catch_all.hpp>
-#include <rlm/cellular/segment2.hpp>
+#include <rlm/cellular/cell_segment2.hpp>
 #include <rlm/cellular/shape_edges.hpp>
 
-SCENARIO("The edge coordinates are gotten from a segment2")
+SCENARIO("The edge coordinates are gotten from a cell_segment2")
 {
-    GIVEN("A segment2")
+    GIVEN("A cell_segment2")
     {
-        const rl::segment2 segment(1, 2, 3, 4);
+        const rl::cell_segment2 segment(1, 2, 3, 4);
         THEN("The edge coodinates are correct")
         {
             CHECK(rl::left_x(segment) == 1);
@@ -39,11 +39,11 @@ SCENARIO("The edge coordinates are gotten from a segment2")
     }
 }
 
-SCENARIO("The edge coordinates are gotten from a box2")
+SCENARIO("The edge coordinates are gotten from a cell_box2")
 {
-    GIVEN("A box2")
+    GIVEN("A cell_box2")
     {
-        const rl::box2 box(1, 2, 3, 4);
+        const rl::cell_box2 box(1, 2, 3, 4);
         THEN("The edge coordinates are correct")
         {
             CHECK(rl::left_x(box) == 1);
@@ -58,7 +58,7 @@ SCENARIO("The edge coordinates are gotten from a cirlce2")
 {
     GIVEN("A cirlce2")
     {
-        const rl::circle2 circle(1, 2, 0.5f);
+        const rl::cell_circle2 circle(1, 2, 0.5f);
         THEN("The edge coordinates are correct")
         {
             CHECK(rl::left_x(circle) == 1);

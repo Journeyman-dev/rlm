@@ -24,16 +24,16 @@
 
 #include <rlm/concepts.hpp>
 #include <rlm/cellular/concepts.hpp>
-#include <rlm/cellular/point2.hpp>
-#include <rlm/cellular/segment2.hpp>
-#include <rlm/cellular/box2.hpp>
-#include <rlm/cellular/circle2.hpp>
+#include <rlm/cellular/cell_vector2.hpp>
+#include <rlm/cellular/cell_segment2.hpp>
+#include <rlm/cellular/cell_box2.hpp>
+#include <rlm/cellular/cell_circle2.hpp>
 #include <rlm/cellular/does_contain.hpp>
 #include <rlm/cellular/shape_conversion.hpp>
 #include <rlm/cellular/shape_points.hpp>
 #include <rlm/cellular/shape_edges.hpp>
-#include <rlm/cellular/box2_between.hpp>
-#include <rlm/cellular/segment2_direction.hpp>
+#include <rlm/cellular/cell_box2_between.hpp>
+#include <rlm/cellular/cell_segment2_direction.hpp>
 #include <rlm/min.hpp>
 #include <rlm/max.hpp>
 #include <rlm/configuration.hpp>
@@ -41,7 +41,7 @@
 #include <optional>
 
 template<rl::signed_integral I>
-constexpr std::optional<rl::point2<I>> rl::crop(const rl::point2<I>& point, const rl::box2<I>& crop_box) noexcept
+constexpr std::optional<rl::cell_vector2<I>> rl::crop(const rl::cell_vector2<I>& point, const rl::cell_box2<I>& crop_box) noexcept
 {
     RLM_HANDLE_DEGENERACY(fixed_crop_box, crop_box);
     if (!rl::does_contain<I>(fixed_crop_box, point))
@@ -52,7 +52,7 @@ constexpr std::optional<rl::point2<I>> rl::crop(const rl::point2<I>& point, cons
 }
 
 template<rl::signed_integral I>
-constexpr std::optional<rl::segment2<I>> rl::crop(const rl::segment2<I>& segment, const rl::box2<I>& crop_box) noexcept
+constexpr std::optional<rl::cell_segment2<I>> rl::crop(const rl::cell_segment2<I>& segment, const rl::cell_box2<I>& crop_box) noexcept
 {
     RLM_HANDLE_DEGENERACY(fixed_crop_box, crop_box);
     if (!rl::do_intersect<I>(fixed_crop_box, segment))
@@ -60,7 +60,7 @@ constexpr std::optional<rl::segment2<I>> rl::crop(const rl::segment2<I>& segment
         return std::nullopt;
     }
     auto result =
-        rl::segment2<I>(
+        rl::cell_segment2<I>(
             rl::max<I>(rl::left_x<I>(segment), rl::left_x<I>(fixed_crop_box)),
             rl::max<I>(rl::top_y<I>(segment), rl::top_y<I>(fixed_crop_box)),
             rl::min<I>(rl::right_x<I>(segment), rl::right_x<I>(fixed_crop_box)),
@@ -77,7 +77,7 @@ constexpr std::optional<rl::segment2<I>> rl::crop(const rl::segment2<I>& segment
 }
 
 template<rl::signed_integral I>
-constexpr std::optional<rl::box2<I>> rl::crop(const rl::box2<I>& box, const rl::box2<I>& crop_box) noexcept
+constexpr std::optional<rl::cell_box2<I>> rl::crop(const rl::cell_box2<I>& box, const rl::cell_box2<I>& crop_box) noexcept
 {
     RLM_HANDLE_DEGENERACY(fixed_box, box);
     RLM_HANDLE_DEGENERACY(fixed_crop_box, crop_box);
@@ -86,7 +86,7 @@ constexpr std::optional<rl::box2<I>> rl::crop(const rl::box2<I>& box, const rl::
         return std::nullopt;
     }
     return
-        rl::box2_between<I>(
+        rl::cell_box2_between<I>(
             rl::max<I>(rl::left_x<I>(fixed_box), rl::left_x<I>(fixed_crop_box)),
             rl::max<I>(rl::top_y<I>(fixed_box), rl::top_y<I>(fixed_crop_box)),
             rl::min<I>(rl::right_x<I>(fixed_box), rl::right_x<I>(fixed_crop_box)),

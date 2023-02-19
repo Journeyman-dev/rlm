@@ -23,20 +23,20 @@
 #pragma once
 
 #include <rlm/concepts.hpp>
-#include <rlm/linear/rectangle2.hpp>
+#include <rlm/linear/box2.hpp>
 #include <rlm/max.hpp>
 
 template<rl::floating_point F>
-constexpr bool rl::is_degenerate(const rl::rectangle2<F>& rectangle) noexcept
+constexpr bool rl::is_degenerate(const rl::box2<F>& rectangle) noexcept
 {
     return rectangle.width < 0.0f || rectangle.height < 0.0f;
 }
 
 template<rl::floating_point F>
-constexpr rl::rectangle2<F> rl::fix_degeneracy(const rl::rectangle2<F>& rectangle) noexcept
+constexpr rl::box2<F> rl::fix_degeneracy(const rl::box2<F>& rectangle) noexcept
 {
     return
-        rl::rectangle2<F>(
+        rl::box2<F>(
             rectangle.x,
             rectangle.y,
             rl::max(rectangle.width, 0.0f),

@@ -23,30 +23,30 @@
 #pragma once
 
 #include <rlm/concepts.hpp>
-#include <rlm/cellular/point2.hpp>
-#include <rlm/cellular/segment2.hpp>
-#include <rlm/cellular/box2.hpp>
-#include <rlm/cellular/circle2.hpp>
+#include <rlm/cellular/cell_vector2.hpp>
+#include <rlm/cellular/cell_segment2.hpp>
+#include <rlm/cellular/cell_box2.hpp>
+#include <rlm/cellular/cell_circle2.hpp>
 #include <rlm/cellular/center.hpp>
 #include <rlm/cellular/does_contain.hpp>
 #include <rlm/cellular/shape_points.hpp>
 #include <rlm/cellular/dot.hpp>
-#include <rlm/cellular/box2_borders.hpp>
+#include <rlm/cellular/cell_box2_borders.hpp>
 #include <rlm/cellular/are_collinear.hpp>
-#include <rlm/cellular/segment2_formula.hpp>
+#include <rlm/cellular/cell_segment2_formula.hpp>
 #include <rlm/cellular/shape_edges.hpp>
 #include <rlm/configuration.hpp>
 #include <rlm/cellular/degenerate_shapes.hpp>
 
-// point2
+// cell_vector2
 template <rl::signed_integral I>
-constexpr bool rl::do_intersect(const rl::point2<I>& point_a, const rl::point2<I>& point_b) noexcept
+constexpr bool rl::do_intersect(const rl::cell_vector2<I>& point_a, const rl::cell_vector2<I>& point_b) noexcept
 {
     return point_a == point_b;
 }
 
 template <rl::signed_integral I>
-constexpr bool rl::do_intersect(const rl::point2<I>& point, const rl::segment2<I>& segment) noexcept
+constexpr bool rl::do_intersect(const rl::cell_vector2<I>& point, const rl::cell_segment2<I>& segment) noexcept
 {
     return
         rl::does_contain<I>(
@@ -56,7 +56,7 @@ constexpr bool rl::do_intersect(const rl::point2<I>& point, const rl::segment2<I
 }
 
 template <rl::signed_integral I>
-constexpr bool rl::do_intersect(const rl::point2<I>& point, const rl::box2<I>& box) noexcept
+constexpr bool rl::do_intersect(const rl::cell_vector2<I>& point, const rl::cell_box2<I>& box) noexcept
 {
     RLM_HANDLE_DEGENERACY(fixed_box, box);
     return
@@ -67,7 +67,7 @@ constexpr bool rl::do_intersect(const rl::point2<I>& point, const rl::box2<I>& b
 }
 
 template <rl::signed_integral I, rl::floating_point F>
-constexpr bool rl::do_intersect(const rl::point2<I>& point, const rl::circle2<I, F>& circle) noexcept
+constexpr bool rl::do_intersect(const rl::cell_vector2<I>& point, const rl::cell_circle2<I, F>& circle) noexcept
 {
     return
         rl::does_contain<I>(
@@ -76,21 +76,21 @@ constexpr bool rl::do_intersect(const rl::point2<I>& point, const rl::circle2<I,
         );
 }
 
-// segment2
+// cell_segment2
 template <rl::signed_integral I>
-constexpr bool rl::do_intersect(const rl::segment2<I>& segment, const rl::point2<I>& point) noexcept
+constexpr bool rl::do_intersect(const rl::cell_segment2<I>& segment, const rl::cell_vector2<I>& point) noexcept
 {
     return rl::do_intersect<I>(point, segment);
 }
 
 template <rl::signed_integral I>
-constexpr bool rl::do_intersect(const rl::segment2<I>& segment_a, const rl::segment2<I>& segment_b) noexcept
+constexpr bool rl::do_intersect(const rl::cell_segment2<I>& segment_a, const rl::cell_segment2<I>& segment_b) noexcept
 {
     auto collinear_points_are_surrounding =
         [](
-            const rl::point2<I>& surrounding_a,
-            const rl::point2<I>& surrounding_b,
-            const rl::point2<I>& surrounded
+            const rl::cell_vector2<I>& surrounding_a,
+            const rl::cell_vector2<I>& surrounding_b,
+            const rl::cell_vector2<I>& surrounded
         )
         {
             return
@@ -101,9 +101,9 @@ constexpr bool rl::do_intersect(const rl::segment2<I>& segment_a, const rl::segm
         };
     auto points_are_collinear_and_surrounding =
         [&](
-            const rl::point2<I>& surrounding_a,
-            const rl::point2<I>& surrounding_b,
-            const rl::point2<I>& surrounded
+            const rl::cell_vector2<I>& surrounding_a,
+            const rl::cell_vector2<I>& surrounding_b,
+            const rl::cell_vector2<I>& surrounded
         )
         {
             return
@@ -168,7 +168,7 @@ constexpr bool rl::do_intersect(const rl::segment2<I>& segment_a, const rl::segm
 }
 
 template <rl::signed_integral I>
-constexpr bool rl::do_intersect(const rl::segment2<I>& segment, const rl::box2<I>& box) noexcept
+constexpr bool rl::do_intersect(const rl::cell_segment2<I>& segment, const rl::cell_box2<I>& box) noexcept
 {
     RLM_HANDLE_DEGENERACY(fixed_box, box);
     return
@@ -196,7 +196,7 @@ constexpr bool rl::do_intersect(const rl::segment2<I>& segment, const rl::box2<I
 }
 
 template <rl::signed_integral I, rl::floating_point F>
-constexpr bool rl::do_intersect(const rl::segment2<I>& segment, const rl::circle2<I, F>& circle) noexcept
+constexpr bool rl::do_intersect(const rl::cell_segment2<I>& segment, const rl::cell_circle2<I, F>& circle) noexcept
 {
     RLM_HANDLE_DEGENERACY(fixed_circle, circle);
     if (
@@ -213,7 +213,7 @@ constexpr bool rl::do_intersect(const rl::segment2<I>& segment, const rl::circle
         return true;
     }
     const auto unit_dot = rl::unit_dot<I, F>(segment, rl::center<I, F>(fixed_circle));
-    rl::point2<I> closest_segment_point(
+    rl::cell_vector2<I> closest_segment_point(
         segment.start_x + (unit_dot * (segment.end_x - segment.start_x)),
         segment.start_y + (unit_dot * (segment.end_y - segment.start_y))
     );
@@ -221,23 +221,23 @@ constexpr bool rl::do_intersect(const rl::segment2<I>& segment, const rl::circle
     return rl::does_contain<I, F>(fixed_circle, closest_segment_point);
 }
 
-// box2
+// cell_box2
 template <rl::signed_integral I>
-constexpr bool rl::do_intersect(const rl::box2<I>& box, const rl::point2<I>& point) noexcept
+constexpr bool rl::do_intersect(const rl::cell_box2<I>& box, const rl::cell_vector2<I>& point) noexcept
 {
     RLM_HANDLE_DEGENERACY(fixed_box, box);
     return rl::do_intersect(point, fixed_box);
 }
 
 template <rl::signed_integral I>
-constexpr bool rl::do_intersect(const rl::box2<I>& box, const rl::segment2<I>& segment) noexcept
+constexpr bool rl::do_intersect(const rl::cell_box2<I>& box, const rl::cell_segment2<I>& segment) noexcept
 {
     RLM_HANDLE_DEGENERACY(fixed_box, box);
     return rl::do_intersect(segment, fixed_box);
 }
 
 template <rl::signed_integral I>
-constexpr bool rl::do_intersect(const rl::box2<I>& box_a, const rl::box2<I>& box_b) noexcept
+constexpr bool rl::do_intersect(const rl::cell_box2<I>& box_a, const rl::cell_box2<I>& box_b) noexcept
 {
     RLM_HANDLE_DEGENERACY(fixed_box_a, box_a);
     RLM_HANDLE_DEGENERACY(fixed_box_b, box_b);
@@ -249,7 +249,7 @@ constexpr bool rl::do_intersect(const rl::box2<I>& box_a, const rl::box2<I>& box
 }
 
 template <rl::signed_integral I, rl::floating_point F>
-constexpr bool rl::do_intersect(const rl::box2<I>& box, const rl::circle2<I, F>& circle) noexcept
+constexpr bool rl::do_intersect(const rl::cell_box2<I>& box, const rl::cell_circle2<I, F>& circle) noexcept
 {
     RLM_HANDLE_DEGENERACY(fixed_box, box);
     RLM_HANDLE_DEGENERACY(fixed_circle, circle);
@@ -260,23 +260,23 @@ constexpr bool rl::do_intersect(const rl::box2<I>& box, const rl::circle2<I, F>&
         ) <= fixed_circle.radius;
 }
 
-// circle2
+// cell_circle2
 template <rl::signed_integral I, rl::floating_point F>
-constexpr bool rl::do_intersect(const rl::circle2<I, F>& circle, const rl::point2<I>& point) noexcept
+constexpr bool rl::do_intersect(const rl::cell_circle2<I, F>& circle, const rl::cell_vector2<I>& point) noexcept
 {
     RLM_HANDLE_DEGENERACY(fixed_circle, circle);
     return rl::do_intersect<I, F>(point, fixed_circle);
 }
 
 template <rl::signed_integral I, rl::floating_point F>
-constexpr bool rl::do_intersect(const rl::circle2<I, F>& circle, const rl::segment2<I>& segment) noexcept
+constexpr bool rl::do_intersect(const rl::cell_circle2<I, F>& circle, const rl::cell_segment2<I>& segment) noexcept
 {
     RLM_HANDLE_DEGENERACY(fixed_circle, circle);
     return rl::do_intersect<I, F>(segment, fixed_circle);
 }
 
 template <rl::signed_integral I, rl::floating_point F>
-constexpr bool rl::do_intersect(const rl::circle2<I, F>& circle, const rl::box2<I>& box) noexcept
+constexpr bool rl::do_intersect(const rl::cell_circle2<I, F>& circle, const rl::cell_box2<I>& box) noexcept
 {
     RLM_HANDLE_DEGENERACY(fixed_box, box);
     RLM_HANDLE_DEGENERACY(fixed_circle, circle);
@@ -284,7 +284,7 @@ constexpr bool rl::do_intersect(const rl::circle2<I, F>& circle, const rl::box2<
 }
 
 template <rl::signed_integral I, rl::floating_point F>
-constexpr bool rl::do_intersect(const rl::circle2<I, F>& circle_a, const rl::circle2<I, F>& circle_b) noexcept
+constexpr bool rl::do_intersect(const rl::cell_circle2<I, F>& circle_a, const rl::cell_circle2<I, F>& circle_b) noexcept
 {
     RLM_HANDLE_DEGENERACY(fixed_circle_a, circle_a);
     RLM_HANDLE_DEGENERACY(fixed_circle_b, circle_b);
