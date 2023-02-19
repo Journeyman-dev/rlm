@@ -52,7 +52,7 @@ namespace rl
              typename F = float,
              rl::cellular_shape<I, F> S,
              rl::cellular_shape<I, F>... Ss>
-    constexpr rl::box2<I> bounding_box2(const S& a, const Ss&... n) noexcept;
+    constexpr rl::box2<I> bounding_box2(const S& shape_a, const Ss&... shape_n) noexcept;
 }    // namespace rl
 
 #include <rlm/cellular/detail/bounding_box2.inl>

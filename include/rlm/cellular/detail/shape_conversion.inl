@@ -50,13 +50,15 @@ constexpr bool rl::is_point2(const rl::segment2<I>& segment) noexcept
 template<rl::signed_integral I, rl::floating_point F>
 constexpr bool rl::is_point2(const rl::box2<I>& box) noexcept
 {
-    return box.width == 1 && box.height == 1;
+    RLM_HANDLE_DEGENERACY(fixed_box, box);
+    return fixed_box.width == 1 && fixed_box.height == 1;
 }
 
 template<rl::signed_integral I, rl::floating_point F>
 constexpr bool rl::is_point2(const rl::circle2<I, F>& circle) noexcept
 {
-    return circle.radius <= 1.5f && circle.radius >= 0.5f;
+    RLM_HANDLE_DEGENERACY(fixed_circle, circle);
+    return fixed_circle.radius <= 1.5f && fixed_circle.radius >= 0.5f;
 }
 
 template<rl::signed_integral I, rl::floating_point F>
@@ -78,21 +80,23 @@ constexpr std::optional<rl::point2<I>> rl::as_point2(const rl::segment2<I>& segm
 template<rl::signed_integral I, rl::floating_point F>
 constexpr std::optional<rl::point2<I>> rl::as_point2(const rl::box2<I>& box) noexcept
 {
-    if (!rl::is_point2(box))
+    RLM_HANDLE_DEGENERACY(fixed_box, box);
+    if (!rl::is_point2(fixed_box))
     {
         return std::nullopt;
     }
-    return rl::top_left(box);
+    return rl::top_left(fixed_box);
 }
 
 template<rl::signed_integral I, rl::floating_point F>
 constexpr std::optional<rl::point2<I>> rl::as_point2(const rl::circle2<I, F>& circle) noexcept
 {
-    if (!rl::is_point2<I, F>(circle))
+    RLM_HANDLE_DEGENERACY(fixed_circle, circle);
+    if (!rl::is_point2<I, F>(fixed_circle))
     {
         return std::nullopt;
     }
-    return rl::center<I, F>(circle);
+    return rl::center<I, F>(fixed_circle);
 }
 
 template<rl::signed_integral I, rl::floating_point F>
@@ -110,13 +114,15 @@ constexpr bool rl::is_segment2(const rl::segment2<I>& segment) noexcept
 template<rl::signed_integral I, rl::floating_point F>
 constexpr bool rl::is_segment2(const rl::box2<I>& box) noexcept
 {
-    return box.width == 1 || box.height == 1;
+    RLM_HANDLE_DEGENERACY(fixed_box, box);
+    return fixed_box.width == 1 || fixed_box.height == 1;
 }
 
 template<rl::signed_integral I, rl::floating_point F>
 constexpr bool rl::is_segment2(const rl::circle2<I, F>& circle) noexcept
 {
-    return rl::is_point2<I, F>(circle);
+    RLM_HANDLE_DEGENERACY(fixed_circle, circle);
+    return rl::is_point2<I, F>(fixed_circle);
 }
 
 template<rl::signed_integral I, rl::floating_point F>
@@ -140,28 +146,30 @@ constexpr std::optional<rl::segment2<I>> rl::as_segment2(const rl::segment2<I>& 
 template<rl::signed_integral I, rl::floating_point F>
 constexpr std::optional<rl::segment2<I>> rl::as_segment2(const rl::box2<I>& box) noexcept
 {
-    if (!rl::is_segment2(box))
+    RLM_HANDLE_DEGENERACY(fixed_box, box);
+    if (!rl::is_segment2(fixed_box))
     {
         return std::nullopt;
     }
     return
         rl::segment2_between(
-            rl::top_left(box),
-            rl::bottom_right(box)
+            rl::top_left(fixed_box),
+            rl::bottom_right(fixed_box)
         );
 }
 
 template<rl::signed_integral I, rl::floating_point F>
 constexpr std::optional<rl::segment2<I>> rl::as_segment2(const rl::circle2<I, F>& circle) noexcept
 {
-    if (!rl::is_segment2<I, F>(circle))
+    RLM_HANDLE_DEGENERACY(fixed_circle, circle);
+    if (!rl::is_segment2<I, F>(fixed_circle))
     {
         return std::nullopt;
     }
     return
         rl::segment2_between(
-            rl::center(circle),
-            rl::center(circle)
+            rl::center(fixed_circle),
+            rl::center(fixed_circle)
         );
 }
 
@@ -182,12 +190,14 @@ constexpr bool rl::is_box2(const rl::segment2<I>& segment) noexcept
 template<rl::signed_integral I, rl::floating_point F>
 constexpr bool rl::is_box2(const rl::box2<I>& box) noexcept
 {
+    RLM_HANDLE_DEGENERACY(fixed_box, box);
     return true;
 }
 
 template<rl::signed_integral I, rl::floating_point F>
 constexpr bool rl::is_box2(const rl::circle2<I, F>& circle) noexcept
 {
+    RLM_HANDLE_DEGENERACY(fixed_circle, circle);
     return
         rl::is_point2(circle);
 }
@@ -229,14 +239,15 @@ constexpr std::optional<rl::box2<I>> rl::as_box2(const rl::box2<I>& box) noexcep
 template<rl::signed_integral I, rl::floating_point F>
 constexpr std::optional<rl::box2<I>> rl::as_box2(const rl::circle2<I, F>& circle) noexcept
 {
-    if (!rl::is_box2<I, F>(circle))
+    RLM_HANDLE_DEGENERACY(fixed_circle, circle);
+    if (!rl::is_box2<I, F>(fixed_circle))
     {
         return std::nullopt;
     }
     return
         rl::box2<I>(
-            circle.x,
-            circle.y,
+            fixed_circle.x,
+            fixed_circle.y,
             1,
             1
         );
@@ -257,15 +268,17 @@ constexpr bool rl::is_circle2(const rl::segment2<I>& segment) noexcept
 template<rl::signed_integral I, rl::floating_point F>
 constexpr bool rl::is_circle2(const rl::box2<I>& box) noexcept
 {
+    RLM_HANDLE_DEGENERACY(fixed_box, box);
     return
-        (box.width == 1 && box.height == 1) ||
-        (box.width == 3 && box.height == 3) ||
-        (box.width == 5 && box.height == 5);
+        (fixed_box.width == 1 && fixed_box.height == 1) ||
+        (fixed_box.width == 3 && fixed_box.height == 3) ||
+        (fixed_box.width == 5 && fixed_box.height == 5);
 }
 
 template<rl::signed_integral I, rl::floating_point F>
 constexpr bool rl::is_circle2(const rl::circle2<I, F>& circle) noexcept
 {
+    RLM_HANDLE_DEGENERACY(fixed_circle, circle);
     return true;
 }
 
@@ -298,16 +311,17 @@ constexpr std::optional<rl::circle2<I, F>> rl::as_circle2(const rl::segment2<I>&
 template<rl::signed_integral I, rl::floating_point F>
 constexpr std::optional<rl::circle2<I, F>> rl::as_circle2(const rl::box2<I>& box) noexcept
 {
-    if (box.width == 5 && box.height == 5)
+    RLM_HANDLE_DEGENERACY(fixed_box, box);
+    if (fixed_box.width == 5 && fixed_box.height == 5)
     {
         return
             rl::circle2<I, F>(
-                box.x + 1,
-                box.y + 1,
+                fixed_box.x + 1,
+                fixed_box.y + 1,
                 2.9f
             );
     }
-    else if (box.width == 3 && box.height == 3)
+    else if (fixed_box.width == 3 && fixed_box.height == 3)
     {
         return
             rl::circle2<I, F>(
@@ -316,11 +330,11 @@ constexpr std::optional<rl::circle2<I, F>> rl::as_circle2(const rl::box2<I>& box
                 1.5f
             );
     }
-    else if (box.width == 1 && box.height == 1)
+    else if (fixed_box.width == 1 && fixed_box.height == 1)
     {
         return rl::circle2<I, F>(
-            box.x,
-            box.y,
+            fixed_box.x,
+            fixed_box.y,
             0.5f
         );
     }
@@ -330,5 +344,6 @@ constexpr std::optional<rl::circle2<I, F>> rl::as_circle2(const rl::box2<I>& box
 template<rl::signed_integral I, rl::floating_point F>
 constexpr std::optional<rl::circle2<I, F>> rl::as_circle2(const rl::circle2<I, F>& circle) noexcept
 {
-    return circle;
+    RLM_HANDLE_DEGENERACY(fixed_circle, circle);
+    return fixed_circle;
 }

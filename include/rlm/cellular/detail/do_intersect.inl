@@ -35,6 +35,8 @@
 #include <rlm/cellular/are_collinear.hpp>
 #include <rlm/cellular/segment2_formula.hpp>
 #include <rlm/cellular/shape_edges.hpp>
+#include <rlm/configuration.hpp>
+#include <rlm/cellular/degenerate_shapes.hpp>
 
 // point2
 template <rl::signed_integral I>
@@ -56,6 +58,7 @@ constexpr bool rl::do_intersect(const rl::point2<I>& point, const rl::segment2<I
 template <rl::signed_integral I>
 constexpr bool rl::do_intersect(const rl::point2<I>& point, const rl::box2<I>& box) noexcept
 {
+    RLM_HANDLE_DEGENERACY(fixed_box, box);
     return
         rl::does_contain<I>(
             box,
@@ -167,26 +170,27 @@ constexpr bool rl::do_intersect(const rl::segment2<I>& segment_a, const rl::segm
 template <rl::signed_integral I>
 constexpr bool rl::do_intersect(const rl::segment2<I>& segment, const rl::box2<I>& box) noexcept
 {
+    RLM_HANDLE_DEGENERACY(fixed_box, box);
     return
         rl::does_contain<I>(
-            box,
+            fixed_box,
             segment
         ) ||
         rl::do_intersect<I>(
             segment,
-            rl::left_border<I>(box)
+            rl::left_border<I>(fixed_box)
         ) ||
         rl::do_intersect<I>(
             segment,
-            rl::right_border<I>(box)
+            rl::right_border<I>(fixed_box)
         ) ||
         rl::do_intersect<I>(
             segment,
-            rl::top_border<I>(box)
+            rl::top_border<I>(fixed_box)
         ) ||
         rl::do_intersect<I>(
             segment,
-            rl::bottom_border<I>(box)
+            rl::bottom_border<I>(fixed_box)
         );
 
 }
@@ -194,88 +198,101 @@ constexpr bool rl::do_intersect(const rl::segment2<I>& segment, const rl::box2<I
 template <rl::signed_integral I, rl::floating_point F>
 constexpr bool rl::do_intersect(const rl::segment2<I>& segment, const rl::circle2<I, F>& circle) noexcept
 {
+    RLM_HANDLE_DEGENERACY(fixed_circle, circle);
     if (
         rl::do_intersect<I, F>(
             rl::start<I>(segment),
-            circle
+            fixed_circle
         ) ||
         rl::do_intersect<I, F>(
             rl::end<I>(segment),
-            circle
+            fixed_circle
         )
     )
     {
         return true;
     }
-    const auto unit_dot = rl::unit_dot<I, F>(segment, rl::center<I, F>(circle));
+    const auto unit_dot = rl::unit_dot<I, F>(segment, rl::center<I, F>(fixed_circle));
     rl::point2<I> closest_segment_point(
         segment.start_x + (unit_dot * (segment.end_x - segment.start_x)),
         segment.start_y + (unit_dot * (segment.end_y - segment.start_y))
     );
     if (!rl::does_contain<I>(segment, closest_segment_point)) return false;
-    return rl::does_contain<I, F>(circle, closest_segment_point);
+    return rl::does_contain<I, F>(fixed_circle, closest_segment_point);
 }
 
 // box2
 template <rl::signed_integral I>
 constexpr bool rl::do_intersect(const rl::box2<I>& box, const rl::point2<I>& point) noexcept
 {
-    return rl::do_intersect(point, box);
+    RLM_HANDLE_DEGENERACY(fixed_box, box);
+    return rl::do_intersect(point, fixed_box);
 }
 
 template <rl::signed_integral I>
 constexpr bool rl::do_intersect(const rl::box2<I>& box, const rl::segment2<I>& segment) noexcept
 {
-    return rl::do_intersect(segment, box);
+    RLM_HANDLE_DEGENERACY(fixed_box, box);
+    return rl::do_intersect(segment, fixed_box);
 }
 
 template <rl::signed_integral I>
 constexpr bool rl::do_intersect(const rl::box2<I>& box_a, const rl::box2<I>& box_b) noexcept
 {
+    RLM_HANDLE_DEGENERACY(fixed_box_a, box_a);
+    RLM_HANDLE_DEGENERACY(fixed_box_b, box_b);
     return
-        rl::left_x<I>(box_a) <= rl::right_x<I>(box_b) &&
-        rl::right_x<I>(box_a) >= rl::left_x<I>(box_b) &&
-        rl::top_y<I>(box_a) <= rl::bottom_y<I>(box_b) &&
-        rl::bottom_y<I>(box_a) >= rl::top_y<I>(box_b);
+        rl::left_x<I>(fixed_box_a) <= rl::right_x<I>(fixed_box_b) &&
+        rl::right_x<I>(fixed_box_a) >= rl::left_x<I>(fixed_box_b) &&
+        rl::top_y<I>(fixed_box_a) <= rl::bottom_y<I>(fixed_box_b) &&
+        rl::bottom_y<I>(fixed_box_a) >= rl::top_y<I>(fixed_box_b);
 }
 
 template <rl::signed_integral I, rl::floating_point F>
 constexpr bool rl::do_intersect(const rl::box2<I>& box, const rl::circle2<I, F>& circle) noexcept
 {
+    RLM_HANDLE_DEGENERACY(fixed_box, box);
+    RLM_HANDLE_DEGENERACY(fixed_circle, circle);
     return
         rl::distance_between<I, F>(
-            box,
-            rl::center<I, F>(circle)
-        ) <= circle.radius;
+            fixed_box,
+            rl::center<I, F>(fixed_circle)
+        ) <= fixed_circle.radius;
 }
 
 // circle2
 template <rl::signed_integral I, rl::floating_point F>
 constexpr bool rl::do_intersect(const rl::circle2<I, F>& circle, const rl::point2<I>& point) noexcept
 {
-    return rl::do_intersect<I, F>(point, circle);
+    RLM_HANDLE_DEGENERACY(fixed_circle, circle);
+    return rl::do_intersect<I, F>(point, fixed_circle);
 }
 
 template <rl::signed_integral I, rl::floating_point F>
 constexpr bool rl::do_intersect(const rl::circle2<I, F>& circle, const rl::segment2<I>& segment) noexcept
 {
-    return rl::do_intersect<I, F>(segment, circle);
+    RLM_HANDLE_DEGENERACY(fixed_circle, circle);
+    return rl::do_intersect<I, F>(segment, fixed_circle);
 }
 
 template <rl::signed_integral I, rl::floating_point F>
 constexpr bool rl::do_intersect(const rl::circle2<I, F>& circle, const rl::box2<I>& box) noexcept
 {
-    return rl::do_intersect<I, F>(box, circle);
+    RLM_HANDLE_DEGENERACY(fixed_box, box);
+    RLM_HANDLE_DEGENERACY(fixed_circle, circle);
+    return rl::do_intersect<I, F>(fixed_box, fixed_circle);
 }
 
 template <rl::signed_integral I, rl::floating_point F>
 constexpr bool rl::do_intersect(const rl::circle2<I, F>& circle_a, const rl::circle2<I, F>& circle_b) noexcept
 {
+    RLM_HANDLE_DEGENERACY(fixed_circle_a, circle_a);
+    RLM_HANDLE_DEGENERACY(fixed_circle_b, circle_b);
     return
         rl::distance_between<I, F>(
-            rl::center<I, F>(circle_a),
-            rl::center<I, F>(circle_b)
+            rl::center<I, F>(fixed_circle_a),
+            rl::center<I, F>(fixed_circle_b)
         ) <=
-        circle_a.radius + circle_b.radius;
+        fixed_circle_a.radius + fixed_circle_b.radius;
 }
 

@@ -22,6 +22,9 @@
 
 #pragma once
 
+#include <rlm/configuration.hpp>
+#include <rlm/cellular/degenerate_shapes.hpp>
+
 template<rl::signed_integral I, rl::floating_point F>
 constexpr rl::circle2<I, F>::circle2(I x, I y, F radius) noexcept
     : x(x)
@@ -33,18 +36,22 @@ constexpr rl::circle2<I, F>::circle2(I x, I y, F radius) noexcept
 template<rl::signed_integral I, rl::floating_point F>
 constexpr bool rl::circle2<I, F>::operator==(const rl::circle2<I, F>& that) const noexcept
 {
+    RLM_HANDLE_DEGENERACY(fixed_this, *this);
+    RLM_HANDLE_DEGENERACY(fixed_that, that);
     return
-        this->x == that.x &&
-        this->y == that.y &&
-        this->radius == that.radius;
+        fixed_this.x == fixed_that.x &&
+        fixed_this.y == fixed_that.y &&
+        fixed_this.radius == fixed_that.radius;
 }
 
 template<rl::signed_integral I, rl::floating_point F>
 constexpr bool rl::circle2<I, F>::operator!=(const rl::circle2<I, F>& that) const noexcept
 {
+    RLM_HANDLE_DEGENERACY(fixed_this, *this);
+    RLM_HANDLE_DEGENERACY(fixed_that, that);
     return
-        this->x != that.x ||
-        this->y != that.y ||
-        this->radius != that.radius;
+        fixed_this.x != fixed_that.x ||
+        fixed_this.y != fixed_that.y ||
+        fixed_this.radius != fixed_that.radius;
 }
 

@@ -31,6 +31,8 @@
 #include <rlm/cellular/shape_edges.hpp>
 #include <rlm/min.hpp>
 #include <rlm/max.hpp>
+#include <rlm/configuration.hpp>
+#include <rlm/cellular/degenerate_shapes.hpp>
 #include <cmath>
 #include <cassert>
 
@@ -65,18 +67,18 @@ constexpr rl::box2<I> rl::bounding_box2(const rl::segment2<I>& segment) noexcept
 template<rl::signed_integral I, rl::floating_point F>
 constexpr rl::box2<I> rl::bounding_box2(const rl::box2<I>& box) noexcept
 {
-    assert(!rl::is_degenerate(box) && "degenerate box2");
-    return box;
+    RLM_HANDLE_DEGENERACY(fixed_box, box);
+    return fixed_box;
 }
 
 template<rl::signed_integral I, rl::floating_point F>
 constexpr rl::box2<I> rl::bounding_box2(const rl::circle2<I, F>& circle) noexcept
 {
-    assert(!rl::is_degenerate(circle) && "degenerate box2");
-    const auto tile_diameter = static_cast<I>(std::round(circle.radius)) * 2;
+    RLM_HANDLE_DEGENERACY(fixed_circle, circle);
+    const auto tile_diameter = static_cast<I>(std::round(fixed_circle.radius)) * 2;
     return rl::box2<I>(
-        rl::left_x(circle),
-        rl::top_y(circle),
+        rl::left_x(fixed_circle),
+        rl::top_y(fixed_circle),
         tile_diameter,
         tile_diameter
     );
@@ -85,13 +87,14 @@ constexpr rl::box2<I> rl::bounding_box2(const rl::circle2<I, F>& circle) noexcep
 namespace rl::inl
 {
     template<rl::signed_integral I>
-    constexpr rl::box2<I> bounding_pair_box2(const rl::box2<I>& a, const rl::box2<I>& b) noexcept
+    constexpr rl::box2<I> bounding_pair_box2(const rl::box2<I>& box_a, const rl::box2<I>& box_b) noexcept
     {
-        assert(!rl::is_degenerate(a) || !rl::is_degenerate(b) && "degenerate box2");
-        const auto left_x = rl::min(rl::left_x(a), rl::left_x(b));
-        const auto right_x = rl::max(rl::right_x(a), rl::right_x(b));
-        const auto top_y = rl::min(rl::top_y(a), rl::top_y(b));
-        const auto bottom_y = rl::max(rl::bottom_y(a), rl::bottom_y(b));
+        RLM_HANDLE_DEGENERACY(fixed_box_a, box_a);
+        RLM_HANDLE_DEGENERACY(fixed_box_b, box_b);
+        const auto left_x = rl::min(rl::left_x(fixed_box_a), rl::left_x(box_b));
+        const auto right_x = rl::max(rl::right_x(fixed_box_a), rl::right_x(box_b));
+        const auto top_y = rl::min(rl::top_y(fixed_box_a), rl::top_y(box_b));
+        const auto bottom_y = rl::max(rl::bottom_y(fixed_box_a), rl::bottom_y(box_b));
         const auto width = (right_x - left_x) + 1;
         const auto height = (bottom_y - top_y) + 1;
         return
@@ -110,7 +113,8 @@ template<
     rl::cellular_shape<I, F> S,
     rl::cellular_shape<I, F>... Ss
 >
-constexpr rl::box2<I> rl::bounding_box2(const S& a, const Ss&... n) noexcept
+constexpr rl::box2<I> rl::bounding_box2(const S& shape_a, const Ss&... shape_n) noexcept
 {
-    return rl::inl::bounding_pair_box2<I>(rl::bounding_box2<I, F>(a), rl::bounding_box2<I, F>(n...));
+    RLM_HANDLE_DEGENERACY(fixed_shape_a, shape_a);
+    return rl::inl::bounding_pair_box2<I>(rl::bounding_box2<I, F>(fixed_shape_a), rl::bounding_box2<I, F>(shape_n...));
 }

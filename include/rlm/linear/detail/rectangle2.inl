@@ -23,6 +23,8 @@
 #pragma once
 
 #include <rlm/concepts.hpp>
+#include <rlm/configuration.hpp>
+#include <rlm/linear/degenerate_shapes.hpp>
 
 template<rl::floating_point F>
 constexpr rl::rectangle2<F>::rectangle2(F x, F y, F width, F height) noexcept
@@ -36,19 +38,23 @@ constexpr rl::rectangle2<F>::rectangle2(F x, F y, F width, F height) noexcept
 template<rl::floating_point F>
 constexpr bool rl::rectangle2<F>::operator==(const rl::rectangle2<F>& that) const noexcept
 {
+    RLM_HANDLE_DEGENERACY(fixed_this, *this);
+    RLM_HANDLE_DEGENERACY(fixed_that, that);
     return
-        this->x == that.x &&
-        this->y == that.y &&
-        this->width == that.width &&
-        this->height == that.height;
+        fixed_this.x == fixed_that.x &&
+        fixed_this.y == fixed_that.y &&
+        fixed_this.width == fixed_that.width &&
+        fixed_this.height == fixed_that.height;
 }
 
 template<rl::floating_point F>
 constexpr bool rl::rectangle2<F>::operator!=(const rl::rectangle2<F>& that) const noexcept
 {
+    RLM_HANDLE_DEGENERACY(fixed_this, *this);
+    RLM_HANDLE_DEGENERACY(fixed_that, that);
     return
-        this->x != that.x ||
-        this->y != that.y ||
-        this->width != that.width ||
-        this->height != that.height;
+        fixed_this.x != fixed_that.x ||
+        fixed_this.y != fixed_that.y ||
+        fixed_this.width != fixed_that.width ||
+        fixed_this.height != fixed_that.height;
 }

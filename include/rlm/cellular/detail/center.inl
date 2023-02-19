@@ -30,6 +30,8 @@
 #include <rlm/cellular/segment2_direction.hpp>
 #include <rlm/cellular/segment2_size.hpp>
 #include <rlm/cellular/shape_edges.hpp>
+#include <rlm/configuration.hpp>
+#include <rlm/cellular/degenerate_shapes.hpp>
 
 template<rl::signed_integral I>
 constexpr rl::segment2<I> rl::center(const rl::segment2<I>& segment) noexcept
@@ -63,20 +65,24 @@ constexpr rl::segment2<I> rl::center(const rl::segment2<I>& segment) noexcept
 template<rl::signed_integral I>
 constexpr rl::box2<I> rl::center(const rl::box2<I>& box) noexcept
 {
-    return rl::box2<I>(
-        box.x + box.width / 2,
-        box.y + box.height / 2,
-        (box.width % 2 == 0) ? 1 : 2,
-        (box.height % 2 == 0) ? 1 : 2
-    );
+    RLM_HANDLE_DEGENERACY(fixed_box, box);
+    return
+        rl::box2<I>(
+            fixed_box.x + fixed_box.width / 2,
+            fixed_box.y + fixed_box.height / 2,
+            (fixed_box.width % 2 == 0) ? 1 : 2,
+            (fixed_box.height % 2 == 0) ? 1 : 2
+        );
 }
 
 template<rl::signed_integral I, rl::floating_point F>
 constexpr rl::point2<I> rl::center(const rl::circle2<I, F>& circle) noexcept
 {
-    return rl::point2<I>(
-        circle.x,
-        circle.y
-    );
+    RLM_HANDLE_DEGENERACY(fixed_circle, circle);
+    return
+        rl::point2<I>(
+            fixed_circle.x,
+            fixed_circle.y
+        );
 }
 

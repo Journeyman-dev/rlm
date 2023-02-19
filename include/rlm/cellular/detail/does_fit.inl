@@ -24,11 +24,15 @@
 
 #include <rlm/concepts.hpp>
 #include <rlm/cellular/box2.hpp>
+#include <rlm/configuration.hpp>
+#include <rlm/cellular/degenerate_shapes.hpp>
 
 template<rl::signed_integral I>
 constexpr bool rl::does_fit(const rl::box2<I>& fitting_box, const rl::box2<I>& fitted_box) noexcept
 {
+    RLM_HANDLE_DEGENERACY(fixed_fitting_box, fitting_box);
+    RLM_HANDLE_DEGENERACY(fixed_fitted_box, fitted_box);
     return
-        fitting_box.width >= fitted_box.width &&
-        fitting_box.height >= fitted_box.height;
+        fixed_fitting_box.width >= fixed_fitted_box.width &&
+        fixed_fitting_box.height >= fixed_fitted_box.height;
 }

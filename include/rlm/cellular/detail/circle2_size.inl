@@ -24,23 +24,28 @@
 
 #include <rlm/concepts.hpp>
 #include <rlm/cellular/circle2.hpp>
+#include <rlm/configuration.hpp>
+#include <rlm/cellular/degenerate_shapes.hpp>
 #include <cmath>
 
 template<rl::signed_integral I, rl::floating_point F>
 constexpr I rl::tile_radius(const rl::circle2<I, F>& circle) noexcept
 {
-    return std::round(circle.radius);
+    RLM_HANDLE_DEGENERACY(fixed_circle, circle);
+    return std::round(fixed_circle.radius);
 }
 
 template<rl::signed_integral I, rl::floating_point F>
 constexpr F rl::diameter(const rl::circle2<I, F>& circle) noexcept
 {
-    return circle.radius * 2;
+    RLM_HANDLE_DEGENERACY(fixed_circle, circle);
+    return fixed_circle.radius * 2;
 }
 
 template<rl::signed_integral I, rl::floating_point F>
 constexpr I rl::tile_diameter(const rl::circle2<I, F>& circle) noexcept
 {
-    return std::round(circle.radius * 2);
+    RLM_HANDLE_DEGENERACY(fixed_circle, circle);
+    return std::round(fixed_circle.radius * 2);
 }
 

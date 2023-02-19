@@ -23,6 +23,7 @@
 #pragma once
 
 #include <rlm/concepts.hpp>
+#include <rlm/configuration.hpp>
 
 namespace rl
 {

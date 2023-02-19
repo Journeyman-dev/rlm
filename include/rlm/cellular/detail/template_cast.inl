@@ -53,23 +53,25 @@ constexpr rl::segment2<Ia> rl::template_cast(const rl::segment2<Ib>& segment) no
 template<rl::signed_integral Ia, rl::signed_integral Ib>
 constexpr rl::box2<Ia> rl::template_cast(const rl::box2<Ib>& box) noexcept
 {
+    RLM_HANDLE_DEGENERACY(fixed_box, box);
     return
         rl::box2<Ia>(
-            static_cast<Ia>(box.x),
-            static_cast<Ia>(box.y),
-            static_cast<Ia>(box.width),
-            static_cast<Ia>(box.height)
+            static_cast<Ia>(fixed_box.x),
+            static_cast<Ia>(fixed_box.y),
+            static_cast<Ia>(fixed_box.width),
+            static_cast<Ia>(fixed_box.height)
         );
 }
 
 template<rl::signed_integral Ia, rl::floating_point Fa, rl::signed_integral Ib, rl::floating_point Fb>
 constexpr rl::circle2<Ia, Fa> rl::template_cast(const rl::circle2<Ib, Fb>& circle) noexcept
 {
+    RLM_HANDLE_DEGENERACY(fixed_circle, circle);
     return
         rl::circle2<Ia, Fa>(
-            static_cast<Ia>(circle.x),
-            static_cast<Ia>(circle.y),
-            static_cast<Fa>(circle.radius)
+            static_cast<Ia>(fixed_circle.x),
+            static_cast<Ia>(fixed_circle.y),
+            static_cast<Fa>(fixed_circle.radius)
         );
 }
 
