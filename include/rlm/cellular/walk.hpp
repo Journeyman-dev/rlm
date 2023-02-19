@@ -40,7 +40,7 @@ namespace rl
     using walk_predicate = std::function<void(const rl::cell_vector2<I>& step)>;
 
     template<rl::signed_integral I = int, rl::signed_integral F = float>
-    constexpr void walk(const rl::cell_vector2<I>& vector, const rl::walk_predicate<I>& predicate);
+    constexpr void walk(const rl::cell_vector2<I>& point, const rl::walk_predicate<I>& predicate);
 
     template<rl::signed_integral I = int, rl::signed_integral F = float>
     constexpr void walk(const rl::cell_segment2<I>& segment, const rl::walk_predicate<I>& predicate);

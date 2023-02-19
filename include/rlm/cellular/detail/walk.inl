@@ -35,9 +35,9 @@
 #include <cmath>
 
 template<rl::signed_integral I, rl::signed_integral F>
-constexpr void walk(const rl::cell_vector2<I>& vector, const rl::walk_predicate<I>& predicate)
+constexpr void walk(const rl::cell_vector2<I>& point, const rl::walk_predicate<I>& predicate)
 {
-    predicate(vector);
+    predicate(point);
 }
 
 template<rl::signed_integral I, rl::signed_integral F>
