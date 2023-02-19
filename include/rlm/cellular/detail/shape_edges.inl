@@ -24,7 +24,7 @@
 
 #include <rlm/concepts.hpp>
 #include <rlm/cellular/box2.hpp>
-#include <rlm/cellular/is_degenerate.hpp>
+#include <rlm/cellular/degenerate_shapes.hpp>
 #include <rlm/min.hpp>
 #include <rlm/max.hpp>
 #include <cassert>
@@ -57,56 +57,56 @@ constexpr I rl::bottom_y(const rl::segment2<I>& segment) noexcept
 template<rl::signed_integral I>
 constexpr I rl::left_x(const rl::box2<I>& box) noexcept
 {
-    assert(!rl::is_degenerate(box) && "degenerate box2");
-    return box.x;
+    RLM_HANDLE_DEGENERACY(fixed_box, box);
+    return fixed_box.x;
 }
 
 template<rl::signed_integral I>
 constexpr I rl::right_x(const rl::box2<I>& box) noexcept
 {
-    assert(!rl::is_degenerate(box) && "degenerate box2");
-    return box.x + box.width - 1;
+    RLM_HANDLE_DEGENERACY(fixed_box, box);
+    return fixed_box.x + fixed_box.width - 1;
 }
 
 template<rl::signed_integral I>
 constexpr I rl::top_y(const rl::box2<I>& box) noexcept
 {
-    assert(!rl::is_degenerate(box) && "degenerate box2");
-    return box.y;
+    RLM_HANDLE_DEGENERACY(fixed_box, box);
+    return fixed_box.y;
 }
 
 template<rl::signed_integral I>
 constexpr I rl::bottom_y(const rl::box2<I>& box) noexcept
 {
-    assert(!rl::is_degenerate(box) && "degenerate box2");
-    return box.y + box.height - 1;
+    RLM_HANDLE_DEGENERACY(fixed_box, box);
+    return fixed_box.y + fixed_box.height - 1;
 }
 
 template<rl::signed_integral I, rl::floating_point F>
 constexpr I rl::left_x(const rl::circle2<I, F>& circle) noexcept
 {
-    assert(!rl::is_degenerate(circle) && "degenerate circle2");
-    return circle.x - static_cast<I>(std::round(circle.radius)) + 1;
+    RLM_HANDLE_DEGENERACY(fixed_circle, circle);
+    return fixed_circle.x - static_cast<I>(std::round(fixed_circle.radius)) + 1;
 }
 
 template<rl::signed_integral I, rl::floating_point F>
 constexpr I rl::right_x(const rl::circle2<I, F>& circle) noexcept
 {
-    assert(!rl::is_degenerate(circle) && "degenerate circle2");
-    return circle.x + static_cast<I>(std::round(circle.radius)) - 1;
+    RLM_HANDLE_DEGENERACY(fixed_circle, circle);
+    return fixed_circle.x + static_cast<I>(std::round(fixed_circle.radius)) - 1;
 }
 
 template<rl::signed_integral I, rl::floating_point F>
 constexpr I rl::top_y(const rl::circle2<I, F>& circle) noexcept
 {
-    assert(!rl::is_degenerate(circle) && "degenerate circle2");
-    return circle.y - static_cast<I>(std::round(circle.radius)) + 1;
+    RLM_HANDLE_DEGENERACY(fixed_circle, circle);
+    return fixed_circle.y - static_cast<I>(std::round(fixed_circle.radius)) + 1;
 }
 
 template<rl::signed_integral I, rl::floating_point F>
 constexpr I rl::bottom_y(const rl::circle2<I, F>& circle) noexcept
 {
-    assert(!rl::is_degenerate(circle) && "degenerate circle2");
-    return circle.y + static_cast<I>(std::round(circle.radius)) - 1;
+    RLM_HANDLE_DEGENERACY(fixed_circle, circle);
+    return fixed_circle.y + static_cast<I>(std::round(fixed_circle.radius)) - 1;
 }
 

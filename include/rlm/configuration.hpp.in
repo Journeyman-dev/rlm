@@ -22,15 +22,19 @@
 
 #pragma once
 
-#include <rlm/concepts.hpp>
+#cmakedefine RLM_FIX_DEGENERACY
+#cmakedefine RLM_ASSERT_DEGENERACY
 
-namespace rl
-{
-    template<rl::floating_point F>
-    struct rectangle2;
+#include <cassert>
 
-    template<rl::floating_point F = float>
-    constexpr bool is_degenerate(const rl::rectangle2<F>& rectangle) noexcept;
-}    // namespace rl
-
-#include <rlm/linear/detail/is_degenerate.inl>
+#ifndef RLM_HANDLE_DEGENERACY
+#if defined(RLM_FIX_DEGENERACY) && defined(RLM_ASSERT_DEGENERACY)
+#define RLM_HANDLE_DEGENERACY(fixed, unfixed) assert(!rl::is_degenerate(unfixed); const auto fixed = rl::fix_degeneracy(unfixed)
+#elif defined(RLM_FIX_DEGENERACY) && !defined(RLM_ASSERT_DEGENERACY)
+#define RLM_HANDLE_DEGENERACY(fixed, const auto fixed = rl::fix_degeneracy(unfixed)
+#elif !defined(RLM_FIX_DEGENERACY) && defined(RLM_ASSERT_DEGENERACY)
+#define RLM_HANDLE_DEGENERACY(fixed, unfixed) assert(!rl::is_degenerate(unfixed)); const auto& fixed = unfixed
+#else
+#define RLM_HANDLE_DEGENERACY(fixed, unfixed) const auto& fixed = unfixed
+#endif
+#endif

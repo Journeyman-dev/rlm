@@ -25,7 +25,8 @@
 #include <rlm/concepts.hpp>
 #include <rlm/cellular/box2.hpp>
 #include <rlm/cellular/segment2.hpp>
-#include <rlm/cellular/is_degenerate.hpp>
+#include <rlm/configuration.hpp>
+#include <rlm/cellular/degenerate_shapes.hpp>
 #include <rlm/cellular/reverse.hpp>
 #include <rlm/cellular/border_corners.hpp>
 #include <rlm/cellular/shape_edges.hpp>
@@ -36,25 +37,29 @@
 template<rl::signed_integral I>
 constexpr rl::segment2<I> rl::left_border(const rl::box2<I>& box, rl::RotationMotion rotation_motion) noexcept
 {
-    return rl::left_border_trimmed(box, rl::BorderCorners::All, rotation_motion).value();
+    RLM_HANDLE_DEGENERACY(fixed_box, box);
+    return rl::left_border_trimmed(fixed_box, rl::BorderCorners::All, rotation_motion).value();
 }
 
 template<rl::signed_integral I>
 constexpr rl::segment2<I> rl::right_border(const rl::box2<I>& box, rl::RotationMotion rotation_motion) noexcept
 {
-    return rl::right_border_trimmed(box, rl::BorderCorners::All, rotation_motion).value();
+    RLM_HANDLE_DEGENERACY(fixed_box, box);
+    return rl::right_border_trimmed(fixed_box, rl::BorderCorners::All, rotation_motion).value();
 }
 
 template<rl::signed_integral I>
 constexpr rl::segment2<I> rl::top_border(const rl::box2<I>& box, rl::RotationMotion rotation_motion) noexcept
 {
-    return rl::top_border_trimmed(box, rl::BorderCorners::All, rotation_motion).value();
+    RLM_HANDLE_DEGENERACY(fixed_box, box);
+    return rl::top_border_trimmed(fixed_box, rl::BorderCorners::All, rotation_motion).value();
 }
 
 template<rl::signed_integral I>
 constexpr rl::segment2<I> rl::bottom_border(const rl::box2<I>& box, rl::RotationMotion rotation_motion) noexcept
 {
-    return rl::bottom_border_trimmed(box, rl::BorderCorners::All, rotation_motion).value();
+    RLM_HANDLE_DEGENERACY(fixed_box, box);
+    return rl::bottom_border_trimmed(fixed_box, rl::BorderCorners::All, rotation_motion).value();
 }
 
 template<rl::signed_integral I>
@@ -64,7 +69,7 @@ constexpr std::optional<rl::segment2<I>> rl::left_border_trimmed(
     rl::RotationMotion rotation_motion
 ) noexcept
 {
-    assert(!rl::is_degenerate(box) && "degenerate box2");
+    RLM_HANDLE_DEGENERACY(fixed_box, box);
     const I bottom_depth =
         (
             (border_corners & rl::BorderCorners::Bottom) == rl::BorderCorners::Bottom ||
@@ -77,15 +82,15 @@ constexpr std::optional<rl::segment2<I>> rl::left_border_trimmed(
             (border_corners & rl::BorderCorners::Clockwise) == rl::BorderCorners::Clockwise ||
             (border_corners & rl::BorderCorners::Left) == rl::BorderCorners::Left
         ) ? 0 : 1;
-    if (box.height - bottom_depth - top_depth <= 0)
+    if (fixed_box.height - bottom_depth - top_depth <= 0)
     {
         return std::nullopt;
     }
     const rl::segment2<I> border(
-        rl::left_x(box),
-        rl::bottom_y(box) - bottom_depth,
-        rl::left_x(box),
-        rl::top_y(box) + top_depth
+        rl::left_x(fixed_box),
+        rl::bottom_y(fixed_box) - bottom_depth,
+        rl::left_x(fixed_box),
+        rl::top_y(fixed_box) + top_depth
     );
     if (rotation_motion == rl::RotationMotion::CounterClockwise)
     {
@@ -101,7 +106,7 @@ constexpr std::optional<rl::segment2<I>> rl::right_border_trimmed(
     rl::RotationMotion rotation_motion
 ) noexcept
 {
-    assert(!rl::is_degenerate(box) && "degenerate box2");
+    RLM_HANDLE_DEGENERACY(fixed_box, box);
     const I top_depth =
         (
             (border_corners & rl::BorderCorners::Top) == rl::BorderCorners::Top ||
@@ -114,15 +119,15 @@ constexpr std::optional<rl::segment2<I>> rl::right_border_trimmed(
             (border_corners & rl::BorderCorners::Clockwise) == rl::BorderCorners::Clockwise ||
             (border_corners & rl::BorderCorners::Right) == rl::BorderCorners::Right
         ) ? 0 : 1;
-    if (box.height - top_depth - bottom_depth <= 0)
+    if (fixed_box.height - top_depth - bottom_depth <= 0)
     {
         return std::nullopt;
     }
     const rl::segment2<I> border(
-        rl::right_x(box),
-        rl::top_y(box) + top_depth,
-        rl::right_x(box),
-        rl::bottom_y(box) - bottom_depth
+        rl::right_x(fixed_box),
+        rl::top_y(fixed_box) + top_depth,
+        rl::right_x(fixed_box),
+        rl::bottom_y(fixed_box) - bottom_depth
     );
     if (rotation_motion == rl::RotationMotion::CounterClockwise)
     {
@@ -138,7 +143,7 @@ constexpr std::optional<rl::segment2<I>> rl::top_border_trimmed(
     rl::RotationMotion rotation_motion
 ) noexcept
 {
-    assert(!rl::is_degenerate(box) && "degenerate box2");
+    RLM_HANDLE_DEGENERACY(fixed_box, box);
     const I left_depth =
         (
             (border_corners & rl::BorderCorners::Left) == rl::BorderCorners::Left ||
@@ -151,15 +156,15 @@ constexpr std::optional<rl::segment2<I>> rl::top_border_trimmed(
             (border_corners & rl::BorderCorners::Clockwise) == rl::BorderCorners::Clockwise ||
             (border_corners & rl::BorderCorners::Top) == rl::BorderCorners::Top
         ) ? 0 : 1;
-    if (box.width - left_depth - right_depth <= 0)
+    if (fixed_box.width - left_depth - right_depth <= 0)
     {
         return std::nullopt;
     }
     const rl::segment2<I> border(
-        rl::left_x(box) + left_depth,
-        rl::top_y(box),
-        rl::right_x(box) - right_depth,
-        rl::top_y(box)
+        rl::left_x(fixed_box) + left_depth,
+        rl::top_y(fixed_box),
+        rl::right_x(fixed_box) - right_depth,
+        rl::top_y(fixed_box)
     );
     if (rotation_motion == rl::RotationMotion::CounterClockwise)
     {
@@ -175,7 +180,7 @@ constexpr std::optional<rl::segment2<I>> rl::bottom_border_trimmed(
     rl::RotationMotion rotation_motion
 ) noexcept
 {
-    assert(!rl::is_degenerate(box) && "degenerate box2");
+    RLM_HANDLE_DEGENERACY(fixed_box, box);
     const I right_depth =
         (
             (border_corners & rl::BorderCorners::Right) == rl::BorderCorners::Right ||
@@ -188,15 +193,15 @@ constexpr std::optional<rl::segment2<I>> rl::bottom_border_trimmed(
             (border_corners & rl::BorderCorners::Clockwise) == rl::BorderCorners::Clockwise ||
             (border_corners & rl::BorderCorners::Bottom) == rl::BorderCorners::Bottom
         ) ? 0 : 1;
-    if (box.width - right_depth - left_depth <= 0)
+    if (fixed_box.width - right_depth - left_depth <= 0)
     {
         return std::nullopt;
     }
     const rl::segment2<I> border(
-        rl::right_x(box) - right_depth,
-        rl::bottom_y(box),
-        rl::left_x(box) + left_depth,
-        rl::bottom_y(box)
+        rl::right_x(fixed_box) - right_depth,
+        rl::bottom_y(fixed_box),
+        rl::left_x(fixed_box) + left_depth,
+        rl::bottom_y(fixed_box)
     );
     if (rotation_motion == rl::RotationMotion::CounterClockwise)
     {

@@ -22,6 +22,9 @@
 
 #pragma once
 
+#include <rlm/configuration.hpp>
+#include <rlm/cellular/degenerate_shapes.hpp>
+
 template<rl::signed_integral I>
 constexpr rl::box2<I>::box2(I x, I y, I width, I height) noexcept
     : x(x)
@@ -34,20 +37,24 @@ constexpr rl::box2<I>::box2(I x, I y, I width, I height) noexcept
 template<rl::signed_integral I>
 constexpr bool rl::box2<I>::operator==(const rl::box2<I>& that) const noexcept
 {
+    RLM_HANDLE_DEGENERACY(fixed_this, *this);
+    RLM_HANDLE_DEGENERACY(fixed_that, that);
     return
-        this->x == that.x &&
-        this->y == that.y &&
-        this->width == that.width &&
-        this->height == that.height;
+        fixed_this.x == fixed_that.x &&
+        fixed_this.y == fixed_that.y &&
+        fixed_this.width == fixed_that.width &&
+        fixed_this.height == fixed_that.height;
 }
 
 template<rl::signed_integral I>
 constexpr bool rl::box2<I>::operator!=(const rl::box2<I>& that) const noexcept
 {
+    RLM_HANDLE_DEGENERACY(fixed_this, *this);
+    RLM_HANDLE_DEGENERACY(fixed_that, that);
     return
-        this->x != that.x ||
-        this->y != that.y ||
-        this->width != that.width ||
-        this->height != that.height;
+        fixed_this.x != fixed_that.x ||
+        fixed_this.y != fixed_that.y ||
+        fixed_this.width != fixed_that.width ||
+        fixed_this.height != fixed_that.height;
 }
 

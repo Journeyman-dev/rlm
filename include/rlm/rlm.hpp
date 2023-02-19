@@ -27,7 +27,7 @@
 
 #include <rlm/cellular/box2.hpp>
 #include <rlm/cellular/circle2.hpp>
-#include <rlm/cellular/is_degenerate.hpp>
+#include <rlm/cellular/degenerate_shapes.hpp>
 #include <rlm/cellular/ostream.hpp>
 #include <rlm/cellular/point2.hpp>
 #include <rlm/cellular/segment2.hpp>

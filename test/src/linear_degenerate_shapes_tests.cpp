@@ -21,77 +21,61 @@
 */
 
 #include <catch2/catch_all.hpp>
-#include <rlm/cellular/is_degenerate.hpp>
-#include <rlm/cellular/ostream.hpp>
+#include <rlm/linear/degenerate_shapes.hpp>
+#include <rlm/linear/ostream.hpp>
 
-SCENARIO("It is determined if a box2 is degenerate")
+SCENARIO("It is determined if a rectangle2 is degenerate")
 {
-    GIVEN("A default constructed box2")
+    GIVEN("A default constructed rectangle2")
     {
-        const rl::box2 box;
-        THEN("The box2 is degenerate")
+        const rl::rectangle2 rectangle;
+        THEN("The rectangle2 is not degenerate")
         {
-            CHECK(rl::is_degenerate(box));
+            CHECK_FALSE(rl::is_degenerate(rectangle));
         }
     }
-    GIVEN("A box2 with a negative width")
+    GIVEN("A rectangle2 with a negative width")
     {
-        const rl::box2 box(1, 1, -2, 2);
-        THEN("The box2 is degenerate")
+        const rl::rectangle2 rectangle(1.0f, 1.0f, -2.0f, 2.0f);
+        THEN("The rectangle2 is degenerate")
         {
-            CHECK(rl::is_degenerate(box));
+            CHECK(rl::is_degenerate(rectangle));
         }
     }
-    GIVEN("A box2 with a negative height")
+    GIVEN("A rectangle2 with a negative height")
     {
-        const rl::box2 box(1, 1, 2, -2);
-        THEN("The box2 is degenerate")
+        const rl::rectangle2 rectangle(1.0f, 1.0f, 2.0f, -2.0f);
+        THEN("The rectangle2 is degenerate")
         {
-            CHECK(rl::is_degenerate(box));
+            CHECK(rl::is_degenerate(rectangle));
         }
     }
     GIVEN("A box2 with positive dimensions")
     {
-        const rl::box2 box(1, 1, 2, 2);
+        const rl::rectangle2 rectangle(1.0f, 1.0f, 2.0f, 2.0f);
         THEN("The box2 is not degenerate")
         {
-            CHECK_FALSE(rl::is_degenerate(box));
+            CHECK_FALSE(rl::is_degenerate(rectangle));
         }
     }
 }
 
-SCENARIO("It is determined if a circle2 is degenerate")
+SCENARIO("A rectangle2 is fixed")
 {
-    GIVEN("A default constructed circle2")
+    GIVEN("A degenerate rectangle2")
     {
-        const rl::circle2 circle;
-        THEN("The circle2 is degenerate")
+        const rl::rectangle2 rectangle(1.0f, 1.0f, -1.0f, -1.0f);
+        THEN("The fixed box2 has minimum dimnensions")
         {
-            CHECK(rl::is_degenerate(circle));
+            CHECK(rl::fix_degeneracy(rectangle) == rl::rectangle2(1.0f, 1.0f, 0.0f, 0.0f));
         }
     }
-    GIVEN("A circle2 with a negative radius")
+    GIVEN("A non-degenerate rectangle2")
     {
-        const rl::circle2 circle(1, 1, -1.0f);
-        THEN("The circle2 is degenerate")
+        const rl::rectangle2 rectangle(1.0f, 1.0f, 10.0f, 15.0f);
+        THEN("THe fixed rectangle2 is the same")
         {
-            CHECK(rl::is_degenerate(circle));
-        }
-    }
-    GIVEN("A circle2 with a radius of 0.49f")
-    {
-        const rl::circle2 circle(1, 1, 0.49f);
-        THEN("The circle is degenerate")
-        {
-            CHECK(rl::is_degenerate(circle));
-        }
-    }
-    GIVEN("A circle with a radius of 10.0f")
-    {
-        const rl::circle2 circle(1, 1, 10.0f);
-        THEN("The circle is not degenerate")
-        {
-            CHECK_FALSE(rl::is_degenerate(circle));
+            CHECK(rl::fix_degeneracy(rectangle) == rl::rectangle2(1.0f, 1.0f, 10.0f, 15.0f));
         }
     }
 }

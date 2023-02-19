@@ -28,6 +28,8 @@
 #include <rlm/cellular/distance_between.hpp>
 #include <rlm/cellular/circle2_size.hpp>
 #include <rlm/cellular/are_collinear.hpp>
+#include <rlm/configuration.hpp>
+#include <rlm/cellular/degenerate_shapes.hpp>
 
 // point2
 template <rl::signed_integral I, rl::floating_point F>
@@ -48,7 +50,8 @@ constexpr bool rl::does_contain(const rl::point2<I>& containing_point, const rl:
 template <rl::signed_integral I, rl::floating_point F>
 constexpr bool rl::does_contain(const rl::point2<I>& containing_point, const rl::box2<I>& contained_box) noexcept
 {
-    const auto contained_box_as_point_o = rl::as_point2<I>(contained_box);
+    RLM_HANDLE_DEGENERACY(fixed_contained_box, contained_box);
+    const auto contained_box_as_point_o = rl::as_point2<I>(fixed_contained_box);
     return
         contained_box_as_point_o.has_value() &&
         containing_point == contained_box_as_point_o.value();
@@ -57,7 +60,8 @@ constexpr bool rl::does_contain(const rl::point2<I>& containing_point, const rl:
 template <rl::signed_integral I, rl::floating_point F>
 constexpr bool rl::does_contain(const rl::point2<I>& containing_point, const rl::circle2<I, F>& contained_circle) noexcept
 {
-    const auto contained_circle_as_point_o = rl::as_point2<I, F>(contained_circle);
+    RLM_HANDLE_DEGENERACY(fixed_contained_circle, contained_circle);
+    const auto contained_circle_as_point_o = rl::as_point2<I, F>(fixed_contained_circle);
     return
         contained_circle_as_point_o.has_value() &&
         containing_point == contained_circle_as_point_o.value();
@@ -117,36 +121,38 @@ constexpr bool rl::does_contain(const rl::segment2<I>& containing_segment, const
 template <rl::signed_integral I, rl::floating_point F>
 constexpr bool rl::does_contain(const rl::segment2<I>& containing_segment, const rl::box2<I>& contained_box) noexcept
 {
+    RLM_HANDLE_DEGENERACY(fixed_contained_box, contained_box);
     return
         rl::is_point2<I>(
-            contained_box
+            fixed_contained_box
         ) &&
         rl::does_contain<I>(
             containing_segment,
-            rl::top_left<I>(contained_box)
+            rl::top_left<I>(fixed_contained_box)
         ) &&
         rl::does_contain<I>(
             containing_segment,
-            rl::top_right<I>(contained_box)
+            rl::top_right<I>(fixed_contained_box)
         ) &&
         rl::does_contain<I>(
             containing_segment,
-            rl::bottom_left<I>(contained_box)
+            rl::bottom_left<I>(fixed_contained_box)
         ) &&
         rl::does_contain<I>(
             containing_segment,
-            rl::bottom_right<I>(contained_box)
+            rl::bottom_right<I>(fixed_contained_box)
         );
 }
 
 template <rl::signed_integral I, rl::floating_point F>
 constexpr bool rl::does_contain(const rl::segment2<I>& containing_segment, const rl::circle2<I, F>& contained_circle) noexcept
 {
+    RLM_HANDLE_DEGENERACY(fixed_contained_circle, contained_circle);
     return
-        (rl::tile_diameter<I, F>(contained_circle) == 1) &&
+        (rl::tile_diameter<I, F>(fixed_contained_circle) == 1) &&
         rl::does_contain<I, F>(
             containing_segment,
-            rl::center<I, F>(contained_circle)
+            rl::center<I, F>(fixed_contained_circle)
         );
 }
 
@@ -154,86 +160,98 @@ constexpr bool rl::does_contain(const rl::segment2<I>& containing_segment, const
 template <rl::signed_integral I, rl::floating_point F>
 constexpr bool rl::does_contain(const rl::box2<I>& containing_box, const rl::point2<I>& contained_point) noexcept
 {
+    RLM_HANDLE_DEGENERACY(fixed_containing_box, containing_box);
     return
-        rl::left_x<I>(containing_box) <= contained_point.x &&
-        rl::right_x<I>(containing_box) >= contained_point.x &&
-        rl::left_x<I>(containing_box) <= contained_point.y &&
-        rl::right_x<I>(containing_box) >= contained_point.y;
+        rl::left_x<I>(fixed_containing_box) <= contained_point.x &&
+        rl::right_x<I>(fixed_containing_box) >= contained_point.x &&
+        rl::left_x<I>(fixed_containing_box) <= contained_point.y &&
+        rl::right_x<I>(fixed_containing_box) >= contained_point.y;
 }
 
 template <rl::signed_integral I, rl::floating_point F>
 constexpr bool rl::does_contain(const rl::box2<I>& containing_box, const rl::segment2<I>& contained_segment) noexcept
 {
+    RLM_HANDLE_DEGENERACY(fixed_containing_box, containing_box);
     return
-        rl::left_x<I>(containing_box) <= rl::left_x<I>(contained_segment) &&
-        rl::right_x<I>(containing_box) >= rl::right_x<I>(contained_segment) &&
-        rl::top_y<I>(containing_box) <= rl::top_y<I>(contained_segment) &&
-        rl::bottom_y<I>(containing_box) >= rl::bottom_y<I>(contained_segment);
+        rl::left_x<I>(fixed_containing_box) <= rl::left_x<I>(contained_segment) &&
+        rl::right_x<I>(fixed_containing_box) >= rl::right_x<I>(contained_segment) &&
+        rl::top_y<I>(fixed_containing_box) <= rl::top_y<I>(contained_segment) &&
+        rl::bottom_y<I>(fixed_containing_box) >= rl::bottom_y<I>(contained_segment);
 }
 
 template <rl::signed_integral I, rl::floating_point F>
 constexpr bool rl::does_contain(const rl::box2<I>& containing_box, const rl::box2<I>& contained_box) noexcept
 {
+    RLM_HANDLE_DEGENERACY(fixed_containing_box, containing_box);
+    RLM_HANDLE_DEGENERACY(fixed_contained_box, contained_box);
     return
-        rl::left_x<I>(containing_box) <= rl::left_x<I>(contained_box) &&
-        rl::right_x<I>(containing_box) >= rl::right_x<I>(contained_box) &&
-        rl::top_y<I>(containing_box) <= rl::top_y<I>(contained_box) &&
-        rl::bottom_y<I>(containing_box) >= rl::bottom_y<I>(contained_box);
+        rl::left_x<I>(fixed_containing_box) <= rl::left_x<I>(fixed_contained_box) &&
+        rl::right_x<I>(fixed_containing_box) >= rl::right_x<I>(fixed_contained_box) &&
+        rl::top_y<I>(fixed_containing_box) <= rl::top_y<I>(fixed_contained_box) &&
+        rl::bottom_y<I>(fixed_containing_box) >= rl::bottom_y<I>(fixed_contained_box);
 }
 
 template <rl::signed_integral I, rl::floating_point F>
 constexpr bool rl::does_contain(const rl::box2<I>& containing_box, const rl::circle2<I, F>& contained_circle) noexcept
 {
+    RLM_HANDLE_DEGENERACY(fixed_containing_box, containing_box);
+    RLM_HANDLE_DEGENERACY(fixed_contained_circle, contained_circle);
     return
-        rl::left_x<I>(containing_box) <= rl::left_x<I, F>(contained_circle) &&
-        rl::right_x<I>(containing_box) >= rl::right_x<I, F>(contained_circle) &&
-        rl::top_y<I>(containing_box) <= rl::top_y<I, F>(contained_circle) &&
-        rl::bottom_y<I>(containing_box) >= rl::bottom_y<I, F>(contained_circle);
+        rl::left_x<I>(fixed_containing_box) <= rl::left_x<I, F>(fixed_contained_circle) &&
+        rl::right_x<I>(fixed_containing_box) >= rl::right_x<I, F>(fixed_contained_circle) &&
+        rl::top_y<I>(fixed_containing_box) <= rl::top_y<I, F>(fixed_contained_circle) &&
+        rl::bottom_y<I>(fixed_containing_box) >= rl::bottom_y<I, F>(fixed_contained_circle);
 }
 
 // circle2
 template <rl::signed_integral I, rl::floating_point F>
 constexpr bool rl::does_contain(const rl::circle2<I, F>& containing_circle, const rl::point2<I>& containing_segment) noexcept
 {
+    RLM_HANDLE_DEGENERACY(fixed_containing_circle, containing_circle);
     return
         rl::distance_between<I, F>(
-            rl::center<I, F>(containing_circle),
+            rl::center<I, F>(fixed_containing_circle),
             containing_segment
         ) <
-        containing_circle.radius;
+        fixed_containing_circle.radius;
 }
 
 template <rl::signed_integral I, rl::floating_point F>
 constexpr bool rl::does_contain(const rl::circle2<I, F>& containing_circle, const rl::segment2<I>& contained_segment) noexcept
 {
+    RLM_HANDLE_DEGENERACY(fixed_containing_circle, containing_circle);
     return
         rl::distance_between<I, F>(
-            rl::center<I, F>(containing_circle),
+            rl::center<I, F>(fixed_containing_circle),
             contained_segment
         ) <
-        containing_circle.radius;
+        fixed_containing_circle.radius;
 }
 
 template <rl::signed_integral I, rl::floating_point F>
 constexpr bool rl::does_contain(const rl::circle2<I, F>& containing_circle, const rl::box2<I>& contained_box) noexcept
 {
+    RLM_HANDLE_DEGENERACY(fixed_containing_circle, containing_circle);
+    RLM_HANDLE_DEGENERACY(fixed_contained_box, contained_box);
     return
         rl::distance_between<I, F>(
-            rl::center<I, F>(containing_circle),
-            contained_box
+            rl::center<I, F>(fixed_containing_circle),
+            fixed_contained_box
         ) <
-        containing_circle.radius;
+        fixed_containing_circle.radius;
 }
 
 template <rl::signed_integral I, rl::floating_point F>
 constexpr bool rl::does_contain(const rl::circle2<I, F>& containing_circle, const rl::circle2<I, F>& contained_circle) noexcept
 {
+    RLM_HANDLE_DEGENERACY(fixed_containing_circle, containing_circle);
+    RLM_HANDLE_DEGENERACY(fixed_contained_circle, contained_circle);
     return
         rl::distance_between<I, F>(
-            rl::center<I, F>(containing_circle),
-            contained_circle
+            rl::center<I, F>(fixed_containing_circle),
+            rl::center<I, F>(fixed_contained_circle)
         ) <
-        containing_circle.radius - contained_circle.radius;
+        fixed_containing_circle.radius - fixed_contained_circle.radius;
 }
 
 template<
@@ -245,13 +263,15 @@ template<
 >
 constexpr rl::box2<I> rl::does_contain(const Sa& containing_shape, const Sb& contained_shape_a, const Ss&... contained_shape_n) noexcept
 {
+    RLM_HANDLE_DEGENERACY(fixed_containing_shape, containing_shape);
+    RLM_HANDLE_DEGENERACY(fixed_contained_shape_a, contained_shape_a);
     return
         rl::does_contain<I, F>(
-            containing_shape,
-            contained_shape_a
+            fixed_containing_shape,
+            fixed_contained_shape_a
         ) &&
         rl::does_contain<I, F>(
-            containing_shape,
+            fixed_containing_shape,
             contained_shape_n...
         );
 }

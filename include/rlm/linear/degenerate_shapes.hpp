@@ -20,42 +20,21 @@
     CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 */
 
-#include <catch2/catch_all.hpp>
-#include <rlm/linear/is_degenerate.hpp>
-#include <rlm/linear/ostream.hpp>
+#pragma once
 
-SCENARIO("It is determined if a rectangle2 is degenerate")
+#include <rlm/concepts.hpp>
+#include <rlm/configuration.hpp>
+
+namespace rl
 {
-    GIVEN("A default constructed rectangle2")
-    {
-        const rl::rectangle2 rectangle;
-        THEN("The rectangle2 is degenerate")
-        {
-            CHECK(rl::is_degenerate(rectangle) == true);
-        }
-    }
-    GIVEN("A rectangle2 with a negative width")
-    {
-        const rl::rectangle2 rectangle(1.0f, 1.0f, -2.0f, 2.0f);
-        THEN("The rectangle2 is degenerate")
-        {
-            CHECK(rl::is_degenerate(rectangle) == true);
-        }
-    }
-    GIVEN("A rectangle2 with a negative height")
-    {
-        const rl::rectangle2 rectangle(1.0f, 1.0f, 2.0f, -2.0f);
-        THEN("The rectangle2 is degenerate")
-        {
-            CHECK(rl::is_degenerate(rectangle) == true);
-        }
-    }
-    GIVEN("A box2 with positive dimensions")
-    {
-        const rl::rectangle2 rectangle(1.0f, 1.0f, 2.0f, 2.0f);
-        THEN("The box2 is not degenerate")
-        {
-            CHECK(rl::is_degenerate(rectangle) == false);
-        }
-    }
-}
+    template<rl::floating_point F>
+    struct rectangle2;
+
+    template<rl::floating_point F = float>
+    constexpr bool is_degenerate(const rl::rectangle2<F>& rectangle) noexcept;
+
+    template<rl::floating_point F = float>
+    constexpr rl::rectangle2<F> fix_degeneracy(const rl::rectangle2<F>& rectangle) noexcept;
+}    // namespace rl
+
+#include <rlm/linear/detail/degenerate_shapes.inl>
