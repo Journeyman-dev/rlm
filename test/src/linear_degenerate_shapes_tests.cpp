@@ -29,9 +29,9 @@ SCENARIO("It is determined if a rectangle2 is degenerate")
     GIVEN("A default constructed rectangle2")
     {
         const rl::rectangle2 rectangle;
-        THEN("The rectangle2 is degenerate")
+        THEN("The rectangle2 is not degenerate")
         {
-            CHECK(rl::is_degenerate(rectangle) == true);
+            CHECK_FALSE(rl::is_degenerate(rectangle));
         }
     }
     GIVEN("A rectangle2 with a negative width")
@@ -39,7 +39,7 @@ SCENARIO("It is determined if a rectangle2 is degenerate")
         const rl::rectangle2 rectangle(1.0f, 1.0f, -2.0f, 2.0f);
         THEN("The rectangle2 is degenerate")
         {
-            CHECK(rl::is_degenerate(rectangle) == true);
+            CHECK(rl::is_degenerate(rectangle));
         }
     }
     GIVEN("A rectangle2 with a negative height")
@@ -47,7 +47,7 @@ SCENARIO("It is determined if a rectangle2 is degenerate")
         const rl::rectangle2 rectangle(1.0f, 1.0f, 2.0f, -2.0f);
         THEN("The rectangle2 is degenerate")
         {
-            CHECK(rl::is_degenerate(rectangle) == true);
+            CHECK(rl::is_degenerate(rectangle));
         }
     }
     GIVEN("A box2 with positive dimensions")
@@ -55,7 +55,7 @@ SCENARIO("It is determined if a rectangle2 is degenerate")
         const rl::rectangle2 rectangle(1.0f, 1.0f, 2.0f, 2.0f);
         THEN("The box2 is not degenerate")
         {
-            CHECK(rl::is_degenerate(rectangle) == false);
+            CHECK_FALSE(rl::is_degenerate(rectangle));
         }
     }
 }
