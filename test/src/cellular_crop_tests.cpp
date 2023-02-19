@@ -23,28 +23,28 @@
 #include <catch2/catch_all.hpp>
 #include <rlm/cellular/crop.hpp>
 
-SCENARIO("A shape is cropped by a box2")
+SCENARIO("A shape is cropped by a cell_box2")
 {
-    GIVEN("A box2")
+    GIVEN("A cell_box2")
     {
-        const rl::box2 crop_box(1, 1, 5, 5);
-        GIVEN("A point2 that is intersects the box2")
+        const rl::cell_box2 crop_box(1, 1, 5, 5);
+        GIVEN("A cell_vector2 that is intersects the cell_box2")
         {
-            const rl::point2 point(2, 2);
-            WHEN("The point2 is cropped in the box2")
+            const rl::cell_vector2 point(2, 2);
+            WHEN("The cell_vector2 is cropped in the cell_box2")
             {
                 const auto cropped_point_o = rl::crop(point, crop_box);
                 THEN("The cropped point is correct")
                 {
                     REQUIRE(cropped_point_o.has_value());
-                    CHECK(cropped_point_o.value() == rl::point2(2, 2));
+                    CHECK(cropped_point_o.value() == rl::cell_vector2(2, 2));
                 }
             }
         }
-        GIVEN("A point2 that does not intersect the box2")
+        GIVEN("A cell_vector2 that does not intersect the cell_box2")
         {
-            const rl::point2 point(0, 0);
-            WHEN("The points is cropped in the box2")
+            const rl::cell_vector2 point(0, 0);
+            WHEN("The points is cropped in the cell_box2")
             {
                 const auto cropped_point_o = rl::crop(point, crop_box);
                 THEN("The cropped point is nullopt")
@@ -53,23 +53,23 @@ SCENARIO("A shape is cropped by a box2")
                 }
             }
         }
-        GIVEN("A segment2 that intersects the box2")
+        GIVEN("A cell_segment2 that intersects the cell_box2")
         {
-            const rl::segment2 segment(0, 0, 2, 2);
-            WHEN("The point2 is cropped in the box2")
+            const rl::cell_segment2 segment(0, 0, 2, 2);
+            WHEN("The cell_vector2 is cropped in the cell_box2")
             {
                 const auto cropped_segment_o = rl::crop(segment, crop_box);
-                THEN("The cropped segment2 is correct")
+                THEN("The cropped cell_segment2 is correct")
                 {
                     REQUIRE(cropped_segment_o.has_value());
-                    CHECK(cropped_segment_o.value() == rl::segment2(1, 1, 2, 2));
+                    CHECK(cropped_segment_o.value() == rl::cell_segment2(1, 1, 2, 2));
                 }
             }
         }
-        GIVEN("A segment2 that does not intersect of the box2")
+        GIVEN("A cell_segment2 that does not intersect of the cell_box2")
         {
-            const rl::segment2 segment(0, 0, -4, -4);
-            WHEN("The points is cropped in the box2")
+            const rl::cell_segment2 segment(0, 0, -4, -4);
+            WHEN("The points is cropped in the cell_box2")
             {
                 const auto cropped_segment_o = rl::crop(segment, crop_box);
                 THEN("The cropped point is nullopt")

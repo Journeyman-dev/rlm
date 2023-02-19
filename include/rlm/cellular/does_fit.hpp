@@ -27,10 +27,10 @@
 namespace rl
 {
     template<rl::signed_integral I>
-    struct box2;
+    struct cell_box2;
 
     template<rl::signed_integral I = int>
-    constexpr bool does_fit(const rl::box2<I>& fitting_box, const rl::box2<I>& fitted_box) noexcept;
+    constexpr bool does_fit(const rl::cell_box2<I>& fitting_box, const rl::cell_box2<I>& fitted_box) noexcept;
 }    // namespace rl
 
 #include <rlm/cellular/detail/does_fit.inl>

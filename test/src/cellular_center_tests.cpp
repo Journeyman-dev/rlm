@@ -25,28 +25,28 @@
 
 SCENARIO("The center of a cell shape is determined")
 {
-    GIVEN("A segment2")
+    GIVEN("A cell_segment2")
     {
-        const rl::segment2 segment(1, 1, 3, 3);
+        const rl::cell_segment2 segment(1, 1, 3, 3);
         THEN("The center is correct")
         {
-            CHECK(rl::center(segment) == rl::segment2(2, 2, 2, 2));
+            CHECK(rl::center(segment) == rl::cell_segment2(2, 2, 2, 2));
         }
     }
-    GIVEN("A box2")
+    GIVEN("A cell_box2")
     {
-        const rl::box2 box(0, 0, 4, 4);
+        const rl::cell_box2 box(0, 0, 4, 4);
         THEN("The center is correct")
         {
-            CHECK(rl::center(box) == rl::box2(2, 2, 1, 1));
+            CHECK(rl::center(box) == rl::cell_box2(2, 2, 1, 1));
         }
     }
-    GIVEN("A circle2")
+    GIVEN("A cell_circle2")
     {
-        const rl::circle2 circle(4, 4, 3.5f);
+        const rl::cell_circle2 circle(4, 4, 3.5f);
         THEN("The center is correct")
         {
-            CHECK(rl::center(circle) == rl::point2(4, 4));
+            CHECK(rl::center(circle) == rl::cell_vector2(4, 4));
         }
     }
 }

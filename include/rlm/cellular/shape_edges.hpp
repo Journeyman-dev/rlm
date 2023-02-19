@@ -27,47 +27,47 @@
 namespace rl
 {
     template<rl::signed_integral I>
-    struct segment2;
+    struct cell_segment2;
     template<rl::signed_integral I>
-    struct box2;
+    struct cell_box2;
     template<rl::signed_integral I, rl::floating_point>
-    struct circle2;
+    struct cell_circle2;
 
     template<rl::signed_integral I = int>
-    constexpr I left_x(const rl::segment2<I>& segment) noexcept;
+    constexpr I left_x(const rl::cell_segment2<I>& segment) noexcept;
 
     template<rl::signed_integral I = int>
-    constexpr I right_x(const rl::segment2<I>& segment) noexcept;
+    constexpr I right_x(const rl::cell_segment2<I>& segment) noexcept;
 
     template<rl::signed_integral I = int>
-    constexpr I top_y(const rl::segment2<I>& segment) noexcept;
+    constexpr I top_y(const rl::cell_segment2<I>& segment) noexcept;
 
     template<rl::signed_integral I = int>
-    constexpr I bottom_y(const rl::segment2<I>& segment) noexcept;
+    constexpr I bottom_y(const rl::cell_segment2<I>& segment) noexcept;
 
     template<rl::signed_integral I = int>
-    constexpr I left_x(const rl::box2<I>& box) noexcept;
+    constexpr I left_x(const rl::cell_box2<I>& box) noexcept;
 
     template<rl::signed_integral I = int>
-    constexpr I right_x(const rl::box2<I>& box) noexcept;
+    constexpr I right_x(const rl::cell_box2<I>& box) noexcept;
 
     template<rl::signed_integral I = int>
-    constexpr I top_y(const rl::box2<I>& box) noexcept;
+    constexpr I top_y(const rl::cell_box2<I>& box) noexcept;
 
     template<rl::signed_integral I = int>
-    constexpr I bottom_y(const rl::box2<I>& box) noexcept;
+    constexpr I bottom_y(const rl::cell_box2<I>& box) noexcept;
 
     template<rl::signed_integral I = int, rl::floating_point F = float>
-    constexpr I left_x(const rl::circle2<I, F>& circle) noexcept;
+    constexpr I left_x(const rl::cell_circle2<I, F>& circle) noexcept;
 
     template<rl::signed_integral I = int, rl::floating_point F = float>
-    constexpr I right_x(const rl::circle2<I, F>& circle) noexcept;
+    constexpr I right_x(const rl::cell_circle2<I, F>& circle) noexcept;
 
     template<rl::signed_integral I = int, rl::floating_point F = float>
-    constexpr I top_y(const rl::circle2<I, F>& circle) noexcept;
+    constexpr I top_y(const rl::cell_circle2<I, F>& circle) noexcept;
 
     template<rl::signed_integral I = int, rl::floating_point F = float>
-    constexpr I bottom_y(const rl::circle2<I, F>& circle) noexcept;
+    constexpr I bottom_y(const rl::cell_circle2<I, F>& circle) noexcept;
 }    // namespace rl
 
 #include <rlm/cellular/detail/shape_edges.inl>

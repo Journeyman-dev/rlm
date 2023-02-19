@@ -27,15 +27,15 @@
 namespace rl
 {
     template<rl::signed_integral I>
-    struct point2;
+    struct cell_vector2;
     template<rl::signed_integral I>
-    struct segment2;
+    struct cell_segment2;
 
     template<rl::signed_integral I = int, rl::floating_point F = float>
-    constexpr rl::point2<I> lerp(const rl::point2<I>& a, const rl::point2<I>& b, F t) noexcept;
+    constexpr rl::cell_vector2<I> lerp(const rl::cell_vector2<I>& a, const rl::cell_vector2<I>& b, F t) noexcept;
 
     template<rl::signed_integral I = int, rl::floating_point F = float>
-    constexpr rl::point2<I> lerp(const rl::segment2<I>& segment, F t) noexcept;
+    constexpr rl::cell_vector2<I> lerp(const rl::cell_segment2<I>& segment, F t) noexcept;
 }    // namespace rl
 
 #include <rlm/cellular/detail/lerp.inl>

@@ -24,12 +24,12 @@
 #include <rlm/cellular/shape_points.hpp>
 #include <rlm/cellular/ostream.hpp>
 
-SCENARIO("Get the start and end point2 of a segment2")
+SCENARIO("Get the start and end cell_vector2 of a cell_segment2")
 {
-    GIVEN("A segment2")
+    GIVEN("A cell_segment2")
     {
-        const rl::segment2 segment(-49, 55, 32, -2);
-        WHEN("The start and end point2 are gotten from the segment2")
+        const rl::cell_segment2 segment(-49, 55, 32, -2);
+        WHEN("The start and end cell_vector2 are gotten from the cell_segment2")
         {
             const auto start = rl::start(segment);
             const auto end = rl::end(segment);
@@ -44,12 +44,12 @@ SCENARIO("Get the start and end point2 of a segment2")
     }
 }
 
-SCENARIO("Get the corners of a box2")
+SCENARIO("Get the corners of a cell_box2")
 {
-    GIVEN("A box2")
+    GIVEN("A cell_box2")
     {
-        const rl::box2 box(1, 2, 3, 4);
-        WHEN("The corners are gotten from the box2")
+        const rl::cell_box2 box(1, 2, 3, 4);
+        WHEN("The corners are gotten from the cell_box2")
         {
             const auto top_left = rl::top_left(box);
             const auto top_right = rl::top_right(box);
@@ -57,10 +57,10 @@ SCENARIO("Get the corners of a box2")
             const auto bottom_right = rl::bottom_right(box);
             THEN("The values are correct")
             {
-                CHECK(top_left == rl::point2(1, 2));
-                CHECK(top_right == rl::point2(3, 2));
-                CHECK(bottom_left == rl::point2(1, 5));
-                CHECK(bottom_right == rl::point2(3, 5));
+                CHECK(top_left == rl::cell_vector2(1, 2));
+                CHECK(top_right == rl::cell_vector2(3, 2));
+                CHECK(bottom_left == rl::cell_vector2(1, 5));
+                CHECK(bottom_right == rl::cell_vector2(3, 5));
             }
         }
     }

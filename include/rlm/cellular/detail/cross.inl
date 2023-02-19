@@ -23,12 +23,12 @@
 #pragma once
 
 #include <rlm/concepts.hpp>
-#include <rlm/cellular/point2.hpp>
-#include <rlm/cellular/segment2.hpp>
+#include <rlm/cellular/cell_vector2.hpp>
+#include <rlm/cellular/cell_segment2.hpp>
 #include <rlm/cellular/translation.hpp>
 
 template <rl::signed_integral I>
-constexpr I rl::cross_z(const rl::point2<I>& point_a, const rl::point2<I>& point_b) noexcept
+constexpr I rl::cross_z(const rl::cell_vector2<I>& point_a, const rl::cell_vector2<I>& point_b) noexcept
 {
     return
         (point_a.x * point_b.y) -
@@ -37,7 +37,7 @@ constexpr I rl::cross_z(const rl::point2<I>& point_a, const rl::point2<I>& point
 
 
 template<rl::signed_integral I>
-constexpr I rl::cross_z(const rl::segment2<I>& segment, const rl::point2<I>& point) noexcept
+constexpr I rl::cross_z(const rl::cell_segment2<I>& segment, const rl::cell_vector2<I>& point) noexcept
 {
     return
         rl::cross_z<I>(
@@ -47,7 +47,7 @@ constexpr I rl::cross_z(const rl::segment2<I>& segment, const rl::point2<I>& poi
 }
 
 template<rl::signed_integral I>
-constexpr I rl::cross_z(const rl::point2<I>& point, const rl::segment2<I>& segment) noexcept
+constexpr I rl::cross_z(const rl::cell_vector2<I>& point, const rl::cell_segment2<I>& segment) noexcept
 {
     return
         rl::cross_z<I>(
@@ -57,7 +57,7 @@ constexpr I rl::cross_z(const rl::point2<I>& point, const rl::segment2<I>& segme
 }
 
 template <rl::signed_integral I>
-constexpr I rl::cross_z(const rl::segment2<I>& segment_a, const rl::segment2<I>& segment_b) noexcept
+constexpr I rl::cross_z(const rl::cell_segment2<I>& segment_a, const rl::cell_segment2<I>& segment_b) noexcept
 {
     return
         rl::cross_z<I>(

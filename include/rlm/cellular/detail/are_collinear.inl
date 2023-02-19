@@ -23,19 +23,19 @@
 #pragma once
 
 #include <rlm/concepts.hpp>
-#include <rlm/cellular/point2_orientation.hpp>
+#include <rlm/cellular/cell_vector2_orientation.hpp>
 #include <rlm/cellular/shape_points.hpp>
-#include <rlm/cellular/segment2_between.hpp>
+#include <rlm/cellular/cell_segment2_between.hpp>
 
 template <rl::signed_integral I>
-constexpr bool rl::are_collinear(const rl::point2<I>& point_a, const rl::point2<I>& point_b, const rl::point2<I>& point_c) noexcept
+constexpr bool rl::are_collinear(const rl::cell_vector2<I>& point_a, const rl::cell_vector2<I>& point_b, const rl::cell_vector2<I>& point_c) noexcept
 {
     return
         rl::orientation_determinant<I>(point_a, point_b, point_c) == 0;
 }
 
 template <rl::signed_integral I>
-constexpr bool rl::are_collinear(const rl::segment2<I>& segment_a, const rl::segment2<I>& segment_b) noexcept
+constexpr bool rl::are_collinear(const rl::cell_segment2<I>& segment_a, const rl::cell_segment2<I>& segment_b) noexcept
 {
     return
         rl::are_collinear<I>(
@@ -49,7 +49,7 @@ constexpr bool rl::are_collinear(const rl::segment2<I>& segment_a, const rl::seg
 }
 
 template <rl::signed_integral I>
-constexpr bool rl::are_collinear(const rl::segment2<I>& segment, const rl::point2<I>& point) noexcept
+constexpr bool rl::are_collinear(const rl::cell_segment2<I>& segment, const rl::cell_vector2<I>& point) noexcept
 {
     return
         rl::are_collinear<I>(
@@ -59,7 +59,7 @@ constexpr bool rl::are_collinear(const rl::segment2<I>& segment, const rl::point
 }
 
 template <rl::signed_integral I>
-constexpr bool rl::are_collinear(const rl::point2<I>& point, const rl::segment2<I>& segment) noexcept
+constexpr bool rl::are_collinear(const rl::cell_vector2<I>& point, const rl::cell_segment2<I>& segment) noexcept
 {
     return
         rl::are_collinear<I>(

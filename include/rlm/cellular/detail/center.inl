@@ -23,22 +23,22 @@
 #pragma once
 
 #include <rlm/concepts.hpp>
-#include <rlm/cellular/point2.hpp>
-#include <rlm/cellular/segment2.hpp>
-#include <rlm/cellular/box2.hpp>
-#include <rlm/cellular/circle2.hpp>
-#include <rlm/cellular/segment2_direction.hpp>
-#include <rlm/cellular/segment2_size.hpp>
+#include <rlm/cellular/cell_vector2.hpp>
+#include <rlm/cellular/cell_segment2.hpp>
+#include <rlm/cellular/cell_box2.hpp>
+#include <rlm/cellular/cell_circle2.hpp>
+#include <rlm/cellular/cell_segment2_direction.hpp>
+#include <rlm/cellular/cell_segment2_size.hpp>
 #include <rlm/cellular/shape_edges.hpp>
 #include <rlm/configuration.hpp>
 #include <rlm/cellular/degenerate_shapes.hpp>
 
 template<rl::signed_integral I>
-constexpr rl::segment2<I> rl::center(const rl::segment2<I>& segment) noexcept
+constexpr rl::cell_segment2<I> rl::center(const rl::cell_segment2<I>& segment) noexcept
 {
     const auto center_change_wide = rl::width(segment) % 2 == 0 ? 1 : 0;
     const auto center_change_tall = rl::height(segment) % 2 == 0 ? 1 : 0;
-    rl::segment2<I> result;
+    rl::cell_segment2<I> result;
     if (rl::goes_right(segment))
     {
         result.start_x = segment.start_x + rl::width(segment) / 2;
@@ -63,11 +63,11 @@ constexpr rl::segment2<I> rl::center(const rl::segment2<I>& segment) noexcept
 }
 
 template<rl::signed_integral I>
-constexpr rl::box2<I> rl::center(const rl::box2<I>& box) noexcept
+constexpr rl::cell_box2<I> rl::center(const rl::cell_box2<I>& box) noexcept
 {
     RLM_HANDLE_DEGENERACY(fixed_box, box);
     return
-        rl::box2<I>(
+        rl::cell_box2<I>(
             fixed_box.x + fixed_box.width / 2,
             fixed_box.y + fixed_box.height / 2,
             (fixed_box.width % 2 == 0) ? 1 : 2,
@@ -76,11 +76,11 @@ constexpr rl::box2<I> rl::center(const rl::box2<I>& box) noexcept
 }
 
 template<rl::signed_integral I, rl::floating_point F>
-constexpr rl::point2<I> rl::center(const rl::circle2<I, F>& circle) noexcept
+constexpr rl::cell_vector2<I> rl::center(const rl::cell_circle2<I, F>& circle) noexcept
 {
     RLM_HANDLE_DEGENERACY(fixed_circle, circle);
     return
-        rl::point2<I>(
+        rl::cell_vector2<I>(
             fixed_circle.x,
             fixed_circle.y
         );

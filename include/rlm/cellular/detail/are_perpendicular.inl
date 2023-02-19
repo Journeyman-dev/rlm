@@ -24,10 +24,10 @@
 
 #include <rlm/concepts.hpp>
 #include <rlm/cellular/dot.hpp>
-#include <rlm/cellular/segment2.hpp>
+#include <rlm/cellular/cell_segment2.hpp>
 
 template <rl::signed_integral I>
-constexpr bool rl::are_perpendicular(const rl::segment2<I>& segment_a, const rl::segment2<I>& segment_b) noexcept
+constexpr bool rl::are_perpendicular(const rl::cell_segment2<I>& segment_a, const rl::cell_segment2<I>& segment_b) noexcept
 {
     return rl::dot<I>(segment_a, segment_b) == 0;
 }

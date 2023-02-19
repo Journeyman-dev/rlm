@@ -23,33 +23,33 @@
 #include <catch2/catch_all.hpp>
 #include <rlm/cellular/are_parallel.hpp>
 
-SCENARIO("Test if segment2 are parallel")
+SCENARIO("Test if cell_segment2 are parallel")
 {
-    GIVEN("A segment2")
+    GIVEN("A cell_segment2")
     {
-        const rl::segment2 segment(0, 0, 1, 1);
-        GIVEN("A parallel segment2")
+        const rl::cell_segment2 segment(0, 0, 1, 1);
+        GIVEN("A parallel cell_segment2")
         {
-            const rl::segment2 segment_b(1, 1, 2, 2);
+            const rl::cell_segment2 segment_b(1, 1, 2, 2);
             THEN("The segments are parallel")
             {
                 CHECK(rl::are_parallel(segment, segment_b));
             }
         }
-        GIVEN("A non-parallel segment2")
+        GIVEN("A non-parallel cell_segment2")
         {
-            const rl::segment2 segment_b(2, 0, 1, 0);
+            const rl::cell_segment2 segment_b(2, 0, 1, 0);
             THEN("The segments are not parallel")
             {
                 CHECK_FALSE(rl::are_parallel(segment, segment_b));
             }
         }
-        GIVEN("Four parallel segment2")
+        GIVEN("Four parallel cell_segment2")
         {
-            const rl::segment2 segment_b(1, 1, 0, 0);
-            const rl::segment2 segment_c (15, 15, 89, 89);
-            const rl::segment2 segment_d(-245, -245, 55, 55);
-            const rl::segment2 segment_e(5, 5, 10, 10);
+            const rl::cell_segment2 segment_b(1, 1, 0, 0);
+            const rl::cell_segment2 segment_c (15, 15, 89, 89);
+            const rl::cell_segment2 segment_d(-245, -245, 55, 55);
+            const rl::cell_segment2 segment_e(5, 5, 10, 10);
             THEN("The segments are parallel")
             {
                 CHECK(
@@ -63,12 +63,12 @@ SCENARIO("Test if segment2 are parallel")
                 );
             }
         }
-        GIVEN("Three parallel and one non-parallel segment2")
+        GIVEN("Three parallel and one non-parallel cell_segment2")
         {
-            const rl::segment2 segment_b(1, 1, 0, 0);
-            const rl::segment2 segment_c (15, 15, 89, 89);
-            const rl::segment2 segment_d(-245, -245, 55, 55);
-            const rl::segment2 segment_e(5, 5, 10, 11);
+            const rl::cell_segment2 segment_b(1, 1, 0, 0);
+            const rl::cell_segment2 segment_c (15, 15, 89, 89);
+            const rl::cell_segment2 segment_d(-245, -245, 55, 55);
+            const rl::cell_segment2 segment_e(5, 5, 10, 11);
             THEN("The segments are not parallel")
             {
                 CHECK_FALSE(

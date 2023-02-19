@@ -27,10 +27,10 @@
 namespace rl
 {
     template<rl::signed_integral I>
-    struct segment2;
+    struct cell_segment2;
 
     template<rl::signed_integral I = int>
-    rl::segment2<I> reverse(const rl::segment2<I>& segment) noexcept;
+    rl::cell_segment2<I> reverse(const rl::cell_segment2<I>& segment) noexcept;
 }    // namespace rl
 
 #include <rlm/cellular/detail/reverse.inl>

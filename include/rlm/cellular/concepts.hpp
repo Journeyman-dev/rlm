@@ -23,18 +23,18 @@
 #pragma once
 
 #include <rlm/concepts.hpp>
-#include <rlm/cellular/point2.hpp>
-#include <rlm/cellular/segment2.hpp>
-#include <rlm/cellular/box2.hpp>
-#include <rlm/cellular/circle2.hpp>
+#include <rlm/cellular/cell_vector2.hpp>
+#include <rlm/cellular/cell_segment2.hpp>
+#include <rlm/cellular/cell_box2.hpp>
+#include <rlm/cellular/cell_circle2.hpp>
 #include <concepts>
 
 namespace rl
 {
     template<typename T, typename I, typename F>
     concept cellular_shape =
-        rl::is_any_of<T, rl::point2<I>, rl::segment2<I>, rl::box2<I>, rl::circle2<I, F>>;
+        rl::is_any_of<T, rl::cell_vector2<I>, rl::cell_segment2<I>, rl::cell_box2<I>, rl::cell_circle2<I, F>>;
 
     template<typename T, typename I>
-    concept point2_or_segment2 = rl::is_any_of<T, rl::point2<I>, rl::segment2<I>>;
+    concept cell_vector2_or_cell_segment2 = rl::is_any_of<T, rl::cell_vector2<I>, rl::cell_segment2<I>>;
 }    // namespace rl

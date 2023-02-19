@@ -29,23 +29,23 @@
 namespace rl
 {
     template<rl::signed_integral I>
-    struct point2;
+    struct cell_vector2;
     template<rl::signed_integral I>
-    struct segment2;
+    struct cell_segment2;
     template<rl::signed_integral I>
-    struct box2;
+    struct cell_box2;
 
     template<rl::signed_integral I = int>
-    constexpr std::optional<rl::point2<I>> crop(const rl::point2<I>& point,
-                                              const rl::box2<I>& crop_box) noexcept;
+    constexpr std::optional<rl::cell_vector2<I>> crop(const rl::cell_vector2<I>& point,
+                                              const rl::cell_box2<I>& crop_box) noexcept;
 
     template<rl::signed_integral I = int>
-    constexpr std::optional<rl::segment2<I>> crop(const rl::segment2<I>& segment,
-                                              const rl::box2<I>& crop_box) noexcept;
+    constexpr std::optional<rl::cell_segment2<I>> crop(const rl::cell_segment2<I>& segment,
+                                              const rl::cell_box2<I>& crop_box) noexcept;
 
     template<rl::signed_integral I = int>
-    constexpr std::optional<rl::box2<I>> crop(const rl::box2<I>& box,
-                                              const rl::box2<I>& crop_box) noexcept;
+    constexpr std::optional<rl::cell_box2<I>> crop(const rl::cell_box2<I>& box,
+                                              const rl::cell_box2<I>& crop_box) noexcept;
 }    // namespace rl
 
 #include <rlm/cellular/detail/crop.inl>

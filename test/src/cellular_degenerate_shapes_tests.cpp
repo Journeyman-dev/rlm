@@ -24,131 +24,131 @@
 #include <rlm/cellular/degenerate_shapes.hpp>
 #include <rlm/cellular/ostream.hpp>
 
-SCENARIO("It is determined if a point2 is degenerate")
+SCENARIO("It is determined if a cell_vector2 is degenerate")
 {
-    GIVEN("A point2")
+    GIVEN("A cell_vector2")
     {
-        const rl::point2 point;
-        THEN("The point2 is not degenerate")
+        const rl::cell_vector2 point;
+        THEN("The cell_vector2 is not degenerate")
         {
             CHECK_FALSE(rl::is_degenerate(point));
         }
     }
 }
 
-SCENARIO("A point2 is fixed")
+SCENARIO("A cell_vector2 is fixed")
 {
-    GIVEN("A point2")
+    GIVEN("A cell_vector2")
     {
-        const rl::point2 point;
-        THEN("The fixed point2 is the same")
+        const rl::cell_vector2 point;
+        THEN("The fixed cell_vector2 is the same")
         {
-            CHECK(rl::fix_degeneracy(point) == rl::point2());
+            CHECK(rl::fix_degeneracy(point) == rl::cell_vector2());
         }
     }
 }
 
-SCENARIO("It is determined if a segment2 is degenerate")
+SCENARIO("It is determined if a cell_segment2 is degenerate")
 {
-    GIVEN("A segment2")
+    GIVEN("A cell_segment2")
     {
-        const rl::segment2 segment;
-        THEN("The segment2 is not degenerate")
+        const rl::cell_segment2 segment;
+        THEN("The cell_segment2 is not degenerate")
         {
             CHECK_FALSE(rl::is_degenerate(segment));
         }
     }
 }
 
-SCENARIO("A segment2 is fixed")
+SCENARIO("A cell_segment2 is fixed")
 {
-    GIVEN("A segment2")
+    GIVEN("A cell_segment2")
     {
-        const rl::segment2 segment;
-        THEN("The fixed segment2 is the same")
+        const rl::cell_segment2 segment;
+        THEN("The fixed cell_segment2 is the same")
         {
-            CHECK(rl::fix_degeneracy(segment) == rl::segment2());
+            CHECK(rl::fix_degeneracy(segment) == rl::cell_segment2());
         }
     }
 }
 
-SCENARIO("It is determined if a box2 is degenerate")
+SCENARIO("It is determined if a cell_box2 is degenerate")
 {
-    GIVEN("A default constructed box2")
+    GIVEN("A default constructed cell_box2")
     {
-        const rl::box2 box;
-        THEN("The box2 is degenerate")
+        const rl::cell_box2 box;
+        THEN("The cell_box2 is degenerate")
         {
             CHECK(rl::is_degenerate(box));
         }
     }
-    GIVEN("A box2 with a negative width")
+    GIVEN("A cell_box2 with a negative width")
     {
-        const rl::box2 box(1, 1, -2, 2);
-        THEN("The box2 is degenerate")
+        const rl::cell_box2 box(1, 1, -2, 2);
+        THEN("The cell_box2 is degenerate")
         {
             CHECK(rl::is_degenerate(box));
         }
     }
-    GIVEN("A box2 with a negative height")
+    GIVEN("A cell_box2 with a negative height")
     {
-        const rl::box2 box(1, 1, 2, -2);
-        THEN("The box2 is degenerate")
+        const rl::cell_box2 box(1, 1, 2, -2);
+        THEN("The cell_box2 is degenerate")
         {
             CHECK(rl::is_degenerate(box));
         }
     }
-    GIVEN("A box2 with positive dimensions")
+    GIVEN("A cell_box2 with positive dimensions")
     {
-        const rl::box2 box(1, 1, 2, 2);
-        THEN("The box2 is not degenerate")
+        const rl::cell_box2 box(1, 1, 2, 2);
+        THEN("The cell_box2 is not degenerate")
         {
             CHECK_FALSE(rl::is_degenerate(box));
         }
     }
 }
 
-SCENARIO("A box2 is fixed")
+SCENARIO("A cell_box2 is fixed")
 {
-    GIVEN("A degenerate box2")
+    GIVEN("A degenerate cell_box2")
     {
-        const rl::box2 box(1, 1, -1, -1);
-        THEN("The fixed box2 has minimum dimnensions")
+        const rl::cell_box2 box(1, 1, -1, -1);
+        THEN("The fixed cell_box2 has minimum dimnensions")
         {
-            CHECK(rl::fix_degeneracy(box) == rl::box2(1, 1, 1, 1));
+            CHECK(rl::fix_degeneracy(box) == rl::cell_box2(1, 1, 1, 1));
         }
     }
-    GIVEN("A non-degenerate box2")
+    GIVEN("A non-degenerate cell_box2")
     {
-        const rl::box2 box(1, 1, 10, 15);
-        THEN("THe fixed box2 is the same")
+        const rl::cell_box2 box(1, 1, 10, 15);
+        THEN("THe fixed cell_box2 is the same")
         {
-            CHECK(rl::fix_degeneracy(box) == rl::box2(1, 1, 10, 15));
+            CHECK(rl::fix_degeneracy(box) == rl::cell_box2(1, 1, 10, 15));
         }
     }
 }
 
-SCENARIO("It is determined if a circle2 is degenerate")
+SCENARIO("It is determined if a cell_circle2 is degenerate")
 {
-    GIVEN("A default constructed circle2")
+    GIVEN("A default constructed cell_circle2")
     {
-        const rl::circle2 circle;
-        THEN("The circle2 is degenerate")
+        const rl::cell_circle2 circle;
+        THEN("The cell_circle2 is degenerate")
         {
             CHECK(rl::is_degenerate(circle));
         }
     }
-    GIVEN("A circle2 with a negative radius")
+    GIVEN("A cell_circle2 with a negative radius")
     {
-        const rl::circle2 circle(1, 1, -1.0f);
-        THEN("The circle2 is degenerate")
+        const rl::cell_circle2 circle(1, 1, -1.0f);
+        THEN("The cell_circle2 is degenerate")
         {
             CHECK(rl::is_degenerate(circle));
         }
     }
-    GIVEN("A circle2 with a radius of 0.49f")
+    GIVEN("A cell_circle2 with a radius of 0.49f")
     {
-        const rl::circle2 circle(1, 1, 0.49f);
+        const rl::cell_circle2 circle(1, 1, 0.49f);
         THEN("The circle is degenerate")
         {
             CHECK(rl::is_degenerate(circle));
@@ -156,7 +156,7 @@ SCENARIO("It is determined if a circle2 is degenerate")
     }
     GIVEN("A circle with a radius of 10.0f")
     {
-        const rl::circle2 circle(1, 1, 10.0f);
+        const rl::cell_circle2 circle(1, 1, 10.0f);
         THEN("The circle is not degenerate")
         {
             CHECK_FALSE(rl::is_degenerate(circle));
@@ -164,22 +164,22 @@ SCENARIO("It is determined if a circle2 is degenerate")
     }
 }
 
-SCENARIO("A circle2 is fixed")
+SCENARIO("A cell_circle2 is fixed")
 {
-    GIVEN("A degenerate circle2")
+    GIVEN("A degenerate cell_circle2")
     {
-        const rl::circle2 circle(1, 1, -0.5f);
-        THEN("The fixed circle2 has minimum radius")
+        const rl::cell_circle2 circle(1, 1, -0.5f);
+        THEN("The fixed cell_circle2 has minimum radius")
         {
-            CHECK(rl::fix_degeneracy(circle) == rl::circle2(1, 1, 0.5f));
+            CHECK(rl::fix_degeneracy(circle) == rl::cell_circle2(1, 1, 0.5f));
         }
     }
-    GIVEN("A non-degenerate circle2")
+    GIVEN("A non-degenerate cell_circle2")
     {
-        const rl::circle2 circle(1, 1, 10.0f);
-        THEN("THe fixed circle2 is the same")
+        const rl::cell_circle2 circle(1, 1, 10.0f);
+        THEN("THe fixed cell_circle2 is the same")
         {
-            CHECK(rl::fix_degeneracy(circle) == rl::circle2(1, 1, 10.0f));
+            CHECK(rl::fix_degeneracy(circle) == rl::cell_circle2(1, 1, 10.0f));
         }
     }
 }

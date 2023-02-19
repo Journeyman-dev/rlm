@@ -23,14 +23,14 @@
 #pragma once
 
 #include <rlm/concepts.hpp>
-#include <rlm/cellular/point2.hpp>
-#include <rlm/cellular/segment2.hpp>
+#include <rlm/cellular/cell_vector2.hpp>
+#include <rlm/cellular/cell_segment2.hpp>
 #include <rlm/cellular/shape_points.hpp>
 #include <rlm/cellular/translation.hpp>
 #include <rlm/cellular/distance_between.hpp>
 
 template <rl::signed_integral I>
-constexpr I rl::dot(const rl::point2<I>& point_a, const point2<I>& point_b) noexcept
+constexpr I rl::dot(const rl::cell_vector2<I>& point_a, const cell_vector2<I>& point_b) noexcept
 {
     return
         (point_a.x * point_b.x) +
@@ -38,7 +38,7 @@ constexpr I rl::dot(const rl::point2<I>& point_a, const point2<I>& point_b) noex
 }
 
 template <rl::signed_integral I, rl::floating_point F>
-constexpr F rl::unit_dot(const rl::point2<I>& point_a, const point2<I>& point_b) noexcept
+constexpr F rl::unit_dot(const rl::cell_vector2<I>& point_a, const cell_vector2<I>& point_b) noexcept
 {
     if (point_a == point_b)
     {
@@ -53,7 +53,7 @@ constexpr F rl::unit_dot(const rl::point2<I>& point_a, const point2<I>& point_b)
 }
 
 template <rl::signed_integral I>
-constexpr I rl::dot(const rl::point2<I>& point, const segment2<I>& segment) noexcept
+constexpr I rl::dot(const rl::cell_vector2<I>& point, const cell_segment2<I>& segment) noexcept
 {
     return
         (
@@ -67,7 +67,7 @@ constexpr I rl::dot(const rl::point2<I>& point, const segment2<I>& segment) noex
 }
 
 template <rl::signed_integral I, rl::floating_point F>
-constexpr F rl::unit_dot(const rl::point2<I>& point, const segment2<I>& segment) noexcept
+constexpr F rl::unit_dot(const rl::cell_vector2<I>& point, const cell_segment2<I>& segment) noexcept
 {
     if (point == rl::start<I>(segment) && point == rl::end<I>(segment))
     {
@@ -82,19 +82,19 @@ constexpr F rl::unit_dot(const rl::point2<I>& point, const segment2<I>& segment)
 }
 
 template <rl::signed_integral I>
-constexpr I rl::dot(const rl::segment2<I>& segment, const point2<I>& point) noexcept
+constexpr I rl::dot(const rl::cell_segment2<I>& segment, const cell_vector2<I>& point) noexcept
 {
     return rl::dot<I>(point, segment);
 }
 
 template <rl::signed_integral I, rl::floating_point F>
-constexpr F rl::unit_dot(const rl::segment2<I>& segment, const point2<I>& point) noexcept
+constexpr F rl::unit_dot(const rl::cell_segment2<I>& segment, const cell_vector2<I>& point) noexcept
 {
     return rl::unit_dot<I, F>(point, segment);
 }
 
 template <rl::signed_integral I>
-constexpr I rl::dot(const rl::segment2<I>& segment_a, const segment2<I>& segment_b) noexcept
+constexpr I rl::dot(const rl::cell_segment2<I>& segment_a, const cell_segment2<I>& segment_b) noexcept
 {
     return rl::dot<I>(
         rl::translation(segment_a),
@@ -103,7 +103,7 @@ constexpr I rl::dot(const rl::segment2<I>& segment_a, const segment2<I>& segment
 }
 
 template <rl::signed_integral I, rl::floating_point F>
-constexpr F rl::unit_dot(const rl::segment2<I>& segment_a, const rl::segment2<I>& segment_b) noexcept
+constexpr F rl::unit_dot(const rl::cell_segment2<I>& segment_a, const rl::cell_segment2<I>& segment_b) noexcept
 {
     return rl::unit_dot<I, F>(
         rl::translation(segment_a),

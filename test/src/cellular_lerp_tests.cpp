@@ -24,34 +24,34 @@
 #include <rlm/cellular/lerp.hpp>
 #include <rlm/cellular/ostream.hpp>
 
-SCENARIO("Two point2 are linear interpolated")
+SCENARIO("Two cell_vector2 are linear interpolated")
 {
-    GIVEN("Two point2")
+    GIVEN("Two cell_vector2")
     {
-        const rl::point2 a(1, 1);
-        const rl::point2 b(5, 10);
-        WHEN("The point2 are linear interpolated")
+        const rl::cell_vector2 a(1, 1);
+        const rl::cell_vector2 b(5, 10);
+        WHEN("The cell_vector2 are linear interpolated")
         {
             const auto result = rl::lerp(a, b, 0.65f);
             THEN("The result is correct")
             {
-                CHECK(result == rl::point2(4, 7));
+                CHECK(result == rl::cell_vector2(4, 7));
             }
         }
     }
 }
 
-SCENARIO("A segment2 is linear interpolated")
+SCENARIO("A cell_segment2 is linear interpolated")
 {
-    GIVEN("A segment2")
+    GIVEN("A cell_segment2")
     {
-        const rl::segment2 segment(1, 2, 3, 4);
-        WHEN("The segment2 is linear interpolated")
+        const rl::cell_segment2 segment(1, 2, 3, 4);
+        WHEN("The cell_segment2 is linear interpolated")
         {
             const auto result = rl::lerp(segment, 0.83f);
             THEN("The result is correct")
             {
-                CHECK(result == rl::point2(3, 4));
+                CHECK(result == rl::cell_vector2(3, 4));
             }
         }
     }

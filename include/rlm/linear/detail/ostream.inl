@@ -24,7 +24,7 @@
 
 #include <ostream>
 #include <rlm/concepts.hpp>
-#include <rlm/linear/rectangle2.hpp>
+#include <rlm/linear/box2.hpp>
 #include <rlm/linear/vector2.hpp>
 #include <rlm/linear/vector3.hpp>
 #include <rlm/linear/vector4.hpp>
@@ -32,7 +32,7 @@
 namespace rl
 {
     template<rl::floating_point F>
-    constexpr std::ostream& operator<<(std::ostream& os, const rl::rectangle2<F>& rectangle)
+    constexpr std::ostream& operator<<(std::ostream& os, const rl::box2<F>& rectangle)
     {
         os << "(" << rectangle.x << ", " << rectangle.y << ", " << rectangle.width << ", "
             << rectangle.height << ")";

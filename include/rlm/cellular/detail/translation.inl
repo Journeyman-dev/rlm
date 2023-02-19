@@ -26,7 +26,7 @@
 #include <rlm/cellular/shape_points.hpp>
 
 template <rl::signed_integral I>
-constexpr rl::point2<I> rl::translation(const rl::segment2<I>& segment) noexcept
+constexpr rl::cell_vector2<I> rl::translation(const rl::cell_segment2<I>& segment) noexcept
 {
     return rl::end(segment) - rl::start(segment);
 }
