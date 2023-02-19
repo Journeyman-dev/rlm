@@ -24,6 +24,7 @@
 
 #include <rlm/cellular/box2.hpp>
 #include <rlm/cellular/circle2.hpp>
+#include <rlm/max.hpp>
 #include <rlm/concepts.hpp>
 
 template<rl::signed_integral I>
@@ -69,8 +70,8 @@ constexpr rl::box2<I> rl::fix_degeneracy(const rl::box2<I>& box) noexcept
         rl::box2(
             box.x,
             box.y,
-            box.width <= 0 ? 1 : box.width,
-            box.height <= 0 ? 1 : box.height
+            rl::max(box.width, 1),
+            rl::max(box.height, 1)
         );
 }
 
@@ -81,7 +82,7 @@ constexpr rl::circle2<I, F> rl::fix_degeneracy(const rl::circle2<I, F>& circle) 
         rl::circle2<I, F>(
             circle.x,
             circle.y,
-            circle.radius <= 0.5f ? 0.5f : circle.radius
+            rl::max(circle.radius, 0.5f)
         );
 }
 
