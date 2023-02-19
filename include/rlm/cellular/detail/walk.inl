@@ -81,7 +81,7 @@ constexpr void walk(const rl::cell_circle2<I, F>& circle, const rl::walk_predica
     RLM_HANDLE_DEGENERACY(fixed_circle, circle);
     for (I offset_y = 1; offset_y <= rl::cell_radius(fixed_circle); offset_y++)
     {
-        offset_x = std::floor(std::sqrt(fixed_circle.radius * fixed_circle.radius - offset_y * offset_y));
+        const I offset_x = static_cast<I>(std::floor(std::sqrt(fixed_circle.radius * fixed_circle.radius - offset_y * offset_y)));
         for (I cell_x = fixed_circle.x - offset_x; cell_x <= fixed_circle.x + offset_x; cell_x++)
         {
             predicate(
