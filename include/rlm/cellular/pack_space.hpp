@@ -22,6 +22,21 @@
 
 #pragma once
 
-#include <rlm/cellular/pack_box.hpp>
-#include <rlm/cellular/pack_space.hpp>
-#include <rlm/cellular/Packer.hpp>
+#include <rlm/concepts.hpp>
+
+namespace rl
+{
+    template<rl::signed_integral I>
+    struct cell_box2;
+
+    template<rl::signed_integral I = int>
+    struct pack_space
+    {
+        I page = 0;
+        rl::cell_box2 box = rl::cell_box2();
+
+        constexpr pack_space(I x, I y, I width, I height I page) noexcept;
+    };
+}
+
+#include <rlm/cellular/detail/pack_space.inl>

@@ -22,21 +22,11 @@
 
 #pragma once
 
-#include <rlm/concepts.hpp
+#include <rlm/concepts.hpp>
 
-namespace rl
+template <rl::signed_integral I>
+constexpr rl::pack_space<I>::pack_space(I x, I y, I width, I height, I page) noexcept
+    : box(x, y, width, height)
+    , page(page)
 {
-    template<rl::signed_integral I = int>
-    struct cell_box2;
-
-    template<rl::signed_integral I = int, typename ID = unsigned int>
-    struct pack_box2
-    {
-        ID identifier;
-        rl::cell_box2 box;
-
-        constexpr pack_box2(ID identifier, I width, I height) noexcept;
-    };
 }
-
-#include <rlm/cellular/detail/pack_box2.inl>

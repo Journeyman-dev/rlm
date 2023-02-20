@@ -25,36 +25,49 @@
 #include <rlm/concepts.hpp>
 #include <vector>
 #include <span>
+#include <cstddef>
 
 namespace rl
 {
-    template<rl::signed_integral I = int>
+    template<rl::signed_integral I>
     struct cell_box2;
 
-    template<rl::signed_integral I = int, typename ID = unsigned int>
-    struct pack_box2;
+    template<rl::signed_integral I, typename ID>
+    struct pack_box;
+
+    template<rl::signed_integral I>
+    struct pack_space;
 
     template<rl::signed_integral I = int>
     class Packer
     {
         private:
-            std::vector<rl::cell_box2<I>> spaces = std::vector<rl::cell_box2<I>>();
-            I page_count = 0;
+            std::vector<rl::pack_space<I>> spaces = std::vector<rl::pack_space<I>>();
+            I top_page_i = 0;
             I width = 0;
             I height = 0;
-            I max_page_width = 0;
-            I max_page_height = 0;
+            I max_bin_width = 0;
+            I max_bin_height = 0;
             I top_page_width = 0;
             I top_page_height = 0;
 
+        private:
+            void reserveSpaces(std::size_t box_count);
+            bool tryPlaceSpace(rl::pack_box<I>& box);
+            bool tryPlaceExpandBin(rl::pack_box<I>& box);
+            void createSpacesFromLeftoverPage();
+            void placeNewPage(rl::pack_box<I>&& box);
+
         public:
             constexpr Packer() noexcept = default;
-            Packer(I max_page_width, I max_page_height) noexcept;
+            Packer(I max_bin_width, I max_bin_height);
 
-            void Initialize(I max_page_width, I max_page_height);
+            void Initialize(I max_bin_width, I max_bin_height);
             bool GetIsInitialized() const noexcept;
             bool GetIsEmpty() const noexcept;
-            const std::vector<rl::cell_box2<I>>& GetSpaces() const noexcept;
+            void ReserveSpaces(std::size_t box_count);
+            void TrimToFitSpaces();
+            const std::vector<rl::pack_space<I>>& GetSpaces() const noexcept;
             I GetPageCount() const noexcept;
             I GetWidth() const noexcept;
             I GetHeight() const noexcept;
@@ -62,7 +75,7 @@ namespace rl
             I GetMaxPageHeight() const noexcept;
             I GetTopPageWidth() const noexcept;
             I GetTopPageHeight() const noexcept;
-            void Pack(const std::span<rl::pack_box2<I>>& pack_boxes);
+            void Pack(std::span<rl::pack_box2<I>>& boxes);
     };
 }
 

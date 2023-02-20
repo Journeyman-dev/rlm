@@ -22,6 +22,19 @@
 
 #pragma once
 
-#include <rlm/cellular/pack_box.hpp>
-#include <rlm/cellular/pack_space.hpp>
-#include <rlm/cellular/Packer.hpp>
+#include <rlm/concepts.hpp>
+
+template <rl::signed_integral I>
+constexpr rl::pack_box<I>::pack_box(ID identifier, I width, I height) noexcept
+    : identifier(identifier)
+    , box(0, 0, width, height)
+{
+}
+
+template <rl::signed_integral I>
+constexpr void rl::pack_box<I>::place(I x, I y, I page) noexcept
+{
+    this->box.x = x;
+    this->box.y = y;
+    this->page = page;
+}
