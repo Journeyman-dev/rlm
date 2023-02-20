@@ -86,27 +86,27 @@ template<rl::signed_integral I, rl::floating_point F>
 constexpr I rl::left_x(const rl::cell_circle2<I, F>& circle) noexcept
 {
     RLM_HANDLE_DEGENERACY(fixed_circle, circle);
-    return fixed_circle.x - static_cast<I>(std::round(fixed_circle.radius)) + 1;
+    return fixed_circle.x - static_cast<I>(std::round(fixed_circle.radius));
 }
 
 template<rl::signed_integral I, rl::floating_point F>
 constexpr I rl::right_x(const rl::cell_circle2<I, F>& circle) noexcept
 {
     RLM_HANDLE_DEGENERACY(fixed_circle, circle);
-    return fixed_circle.x + static_cast<I>(std::round(fixed_circle.radius)) - 1;
+    return fixed_circle.x + static_cast<I>(std::round(fixed_circle.radius));
 }
 
 template<rl::signed_integral I, rl::floating_point F>
 constexpr I rl::top_y(const rl::cell_circle2<I, F>& circle) noexcept
 {
     RLM_HANDLE_DEGENERACY(fixed_circle, circle);
-    return fixed_circle.y - static_cast<I>(std::round(fixed_circle.radius)) + 1;
+    return fixed_circle.y - static_cast<I>(std::round(fixed_circle.radius));
 }
 
 template<rl::signed_integral I, rl::floating_point F>
 constexpr I rl::bottom_y(const rl::cell_circle2<I, F>& circle) noexcept
 {
     RLM_HANDLE_DEGENERACY(fixed_circle, circle);
-    return fixed_circle.y + static_cast<I>(std::round(fixed_circle.radius)) - 1;
+    return fixed_circle.y + static_cast<I>(std::round(fixed_circle.radius));
 }
 
