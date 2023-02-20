@@ -61,10 +61,10 @@ SCENARIO("The edge coordinates are gotten from a cirlce2")
         const rl::cell_circle2 circle(1, 2, 0.5f);
         THEN("The edge coordinates are correct")
         {
-            CHECK(rl::left_x(circle) == 1);
-            CHECK(rl::right_x(circle) == 1);
-            CHECK(rl::top_y(circle) == 2);
-            CHECK(rl::bottom_y(circle) == 2);
+            CHECK(rl::left_x(circle) == 0);
+            CHECK(rl::right_x(circle) == 2);
+            CHECK(rl::top_y(circle) == 1);
+            CHECK(rl::bottom_y(circle) == 3);
         }
     }
 }

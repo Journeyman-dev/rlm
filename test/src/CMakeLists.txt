@@ -51,6 +51,7 @@ target_sources(RlmTest
         "cellular_cell_segment2_tests.cpp"
         "cellular_shape_points_tests.cpp"
         "cellular_translation_tests.cpp"
+        "cellular_walk_tests.cpp"
         "clamp_tests.cpp"
         "gcf_tests.cpp"
         "lerp_tests.cpp"
