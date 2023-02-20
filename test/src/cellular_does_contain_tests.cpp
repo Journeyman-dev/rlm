@@ -223,7 +223,7 @@ SCENARIO("It is determined if a cell_box2 contains other cell shapes")
         }
         GIVEN("A cell_circle2 that is within the cell_box2")
         {
-            const rl::cell_circle2 circle(1, 1, 0.5f);
+            const rl::cell_circle2 circle(2, 2, 0.5f);
             THEN("The cell_circle2 is within the cell_box2")
             {
                 CHECK(rl::does_contain(box, circle));
