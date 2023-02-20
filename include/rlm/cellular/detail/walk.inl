@@ -33,21 +33,27 @@
 #include <rlm/cellular/cell_circle2_size.hpp>
 #include <rlm/configuration.hpp>
 #include <rlm/cellular/degenerate_shapes.hpp>
+#include <rlm/cellular/shape_points.hpp>
 #include <functional>
 #include <cmath>
 
-template<rl::signed_integral I, rl::signed_integral F>
-constexpr void walk(const rl::cell_vector2<I>& point, const rl::walk_predicate<I>& predicate)
+template<rl::signed_integral I, rl::floating_point F>
+constexpr void rl::walk(const rl::cell_vector2<I>& point, const rl::walk_predicate<I>& predicate)
 {
     predicate(point);
 }
 
-template<rl::signed_integral I, rl::signed_integral F>
-constexpr void walk(const rl::cell_segment2<I>& segment, const rl::walk_predicate<I>& predicate)
+template<rl::signed_integral I, rl::floating_point F>
+constexpr void rl::walk(const rl::cell_segment2<I>& segment, const rl::walk_predicate<I>& predicate)
 {
-    for (I cell_i = 0; cell_i < rl::diagonal_length<I>(segment); cell_i++)
+    if (rl::cell_length<I>(segment) == 1)
     {
-        const F percent = static_cast<F>(rl::diagonal_length<I>(segment)) / static_cast<F>(cell_i);
+        predicate(rl::start<I>(segment));
+        return;
+    }
+    for (I cell_i = 0; cell_i < rl::cell_length<I>(segment); cell_i++)
+    {
+        const F percent = static_cast<F>(cell_i) / static_cast<F>(rl::cell_length<I>(segment) - 1);
         predicate(
             rl::lerp<I, F>(
                 segment,
@@ -57,8 +63,8 @@ constexpr void walk(const rl::cell_segment2<I>& segment, const rl::walk_predicat
     }
 }
 
-template<rl::signed_integral I, rl::signed_integral F>
-constexpr void walk(const rl::cell_box2<I>& box, const rl::walk_predicate<I>& predicate)
+template<rl::signed_integral I, rl::floating_point F>
+constexpr void rl::walk(const rl::cell_box2<I>& box, const rl::walk_predicate<I>& predicate)
 {
     RLM_HANDLE_DEGENERACY(fixed_box, box);
     for (I cell_y = rl::top_y(fixed_box); cell_y <= rl::bottom_y(fixed_box); cell_y++)
@@ -75,11 +81,11 @@ constexpr void walk(const rl::cell_box2<I>& box, const rl::walk_predicate<I>& pr
     }
 }
 
-template<rl::signed_integral I, rl::signed_integral F>
-constexpr void walk(const rl::cell_circle2<I, F>& circle, const rl::walk_predicate<I>& predicate)
+template<rl::signed_integral I, rl::floating_point F>
+constexpr void rl::walk(const rl::cell_circle2<I, F>& circle, const rl::walk_predicate<I>& predicate)
 {
     RLM_HANDLE_DEGENERACY(fixed_circle, circle);
-    for (I offset_y = 1; offset_y <= rl::cell_radius(fixed_circle); offset_y++)
+    for (I offset_y = 1; offset_y <= rl::tile_radius(fixed_circle); offset_y++)
     {
         const I offset_x = static_cast<I>(std::floor(std::sqrt(fixed_circle.radius * fixed_circle.radius - offset_y * offset_y)));
         for (I cell_x = fixed_circle.x - offset_x; cell_x <= fixed_circle.x + offset_x; cell_x++)
@@ -98,7 +104,7 @@ constexpr void walk(const rl::cell_circle2<I, F>& circle, const rl::walk_predica
             );
         }
     }
-    for (I cell_x = rl::right_x<I, F>(fixed_circle); cell_x <= rl::right_x<I, F>(fixed_circle); cell_x++)
+    for (I cell_x = rl::left_x<I, F>(fixed_circle); cell_x <= rl::right_x<I, F>(fixed_circle); cell_x++)
     {
         predicate(
             rl::cell_vector2<I>(
