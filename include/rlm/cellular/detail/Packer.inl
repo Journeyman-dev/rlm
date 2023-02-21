@@ -141,11 +141,9 @@ bool rl::Packer<I>::tryPlaceSpace(rl::pack_box& box)
         {
             continue;
         }
-        box.place(
-            rl::left_x<I>(space.box),
-            rl::top_y<I>(space.box),
-            space.page
-        );
+        box.box.x = rl::left_x<I>(space.box);
+        box.box.y = rl::top_y<I>(space.box);
+        box.page = space.page;
         // If the extra space to the right of the rect is greater than the extra space bellow...
         if (space.box.width - box.box.width > space.box.height - box.box.height)
         {
@@ -216,11 +214,9 @@ bool rl::Packer<I>::tryPlaceExpandBin(rl::pack_box& box)
 {
     auto place_box_right = [&]()
     {
-        box.place(
-            this->top_bin_width,
-            0,
-            this->top_page_i
-        );
+        box.box.x = this->top_bin_width;
+        box.box.y = 0;
+        box.page = this->top_page_i;
         this->top_bin_width += box.box.width;
         if (box.box.height < this->top_bin_height)
         {

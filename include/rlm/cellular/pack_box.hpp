@@ -38,8 +38,6 @@ namespace rl
 
         constexpr pack_box() noexcept = default;
         constexpr pack_box(ID identifier, I width, I height) noexcept;
-
-        constexpr void place(I x, I y, I page) noexcept;
     };
 }
 

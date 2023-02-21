@@ -30,11 +30,3 @@ constexpr rl::pack_box<I>::pack_box(ID identifier, I width, I height) noexcept
     , box(0, 0, width, height)
 {
 }
-
-template <rl::signed_integral I>
-constexpr void rl::pack_box<I>::place(I x, I y, I page) noexcept
-{
-    this->box.x = x;
-    this->box.y = y;
-    this->page = page;
-}
