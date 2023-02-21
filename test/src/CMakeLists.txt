@@ -43,6 +43,7 @@ target_sources(RlmTest
         "cellular_lerp_tests.cpp"
         "cellular_magnitude_tests.cpp"
         "cellular_pack_box_tests.cpp"
+        "cellular_pack_space_tests.cpp"
         "cellular_cell_vector2_orientation_tests.cpp"
         "cellular_cell_vector2_tests.cpp"
         "cellular_reverse_tests.cpp"
