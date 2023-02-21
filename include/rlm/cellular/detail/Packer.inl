@@ -84,7 +84,7 @@ void rl::Packer<I>::TrimToFitSpaces()
 }
 
 template<rl::signed_integral I>
-const std::vector<rl::cell_box<I>>& rl::Packer<I>::GetSpaces() const noexcept
+const std::vector<rl::pack_space<I>>& rl::Packer<I>::GetSpaces() const noexcept
 {
     return this->spaces;
 }
@@ -132,7 +132,8 @@ I rl::Packer<I>::GetTopPageHeight() const noexcept
 }
 
 template<rl::signed_integral I>
-bool rl::Packer<I>::tryPlaceSpace(rl::pack_box& box)
+template<typename ID>
+bool rl::Packer<I>::tryPlaceSpace(rl::pack_box<I, ID>& box)
 {
     for (std::size_t space_i = 0; space_i < this->spaces.size(); space_i++)
     {
@@ -210,7 +211,8 @@ bool rl::Packer<I>::tryPlaceSpace(rl::pack_box& box)
 }
 
 template<rl::signed_integral I>
-bool rl::Packer<I>::tryPlaceExpandBin(rl::pack_box& box)
+template<typename ID>
+bool rl::Packer<I>::tryPlaceExpandBin(rl::pack_box<I, ID>& box)
 {
     auto place_box_right = [&]()
     {
@@ -233,13 +235,11 @@ bool rl::Packer<I>::tryPlaceExpandBin(rl::pack_box& box)
         this->width = this->top_bin_width;
         }
     };
-    auto place_rect_bellow = [&]()
+    auto place_box_bellow = [&]()
     {
-        box.place(
-            0,
-            this->top_bin_height,
-            this->top_page_i
-        );
+        box.box.x = 0;
+        box.box.y = this->top_bin_height;
+        box.page = this->top_page_i;
         this->top_bin_height += box.box.height;
         if (box.box.width < this->top_bin_width)
         {
@@ -263,12 +263,12 @@ bool rl::Packer<I>::tryPlaceExpandBin(rl::pack_box& box)
     */
     if (fits_bellow && this->top_bin_height <= this->top_bin_width)
     {
-        place_rect_bellow();
+        place_box_bellow();
         return true;
     }
     else if (fits_right && this->top_bin_width <= this->top_bin_height)
     {
-        place_rect_right();
+        place_box_right();
         return true;
     }
     /*
@@ -276,12 +276,12 @@ bool rl::Packer<I>::tryPlaceExpandBin(rl::pack_box& box)
     */
     else if (fits_bellow)
     {
-        place_rect_bellow();
+        place_box_bellow();
         return true;
     }
     else if (fits_right)
     {
-        place_rect_right();
+        place_box_right();
         return true;
     }
     return false;
@@ -313,7 +313,8 @@ void rl::Packer<I>::createSpacesFromLeftoverPage()
 }
 
 template<rl::signed_integral I>
-void rl::Packer<I>::placeNewPage(rl::pack_box&& box)
+template<typename ID>
+void rl::Packer<I>::placeNewPage(rl::pack_box<I, ID>& box)
 {
     if (!this->GetIsEmpty())
     {
@@ -339,18 +340,19 @@ void rl::Packer<I>::placeNewPage(rl::pack_box&& box)
 }
 
 template<rl::signed_integral I>
-void rl::Packer<I>::Pack(std::span<rl::pack_box<I>>& boxes)
+template<typename ID>
+void rl::Packer<I>::Pack(std::span<rl::pack_box<I, ID>>& boxes)
 {
     if (!this->GetIsInitialized())
     {
         throw std::runtime_error("Packer not initialized");
     }
-    if (rects.size() == 0) return;
+    if (boxes.size() == 0) return;
 
     for (auto& box : boxes)
     {
         #ifdef RLM_ASSERT_DEGENERACY
-        std::assert(!rl::is_degenerate(box));
+        assert(!rl::is_degenerate(box));
         #endif
         #ifdef RLM_FIX_DEGENERACY
         box = rl::fix_degeneracy(box);

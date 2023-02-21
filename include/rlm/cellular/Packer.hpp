@@ -23,6 +23,7 @@
 #pragma once
 
 #include <rlm/concepts.hpp>
+#include <rlm/cellular/pack_space.hpp>
 #include <vector>
 #include <span>
 #include <cstddef>
@@ -53,10 +54,13 @@ namespace rl
 
         private:
             void reserveSpaces(std::size_t box_count);
-            bool tryPlaceSpace(rl::pack_box<I>& box);
-            bool tryPlaceExpandBin(rl::pack_box<I>& box);
+            template<typename ID>
+            bool tryPlaceSpace(rl::pack_box<I, ID>& box);
+            template<typename ID>
+            bool tryPlaceExpandBin(rl::pack_box<I, ID>& box);
             void createSpacesFromLeftoverPage();
-            void placeNewPage(rl::pack_box<I>&& box);
+            template<typename ID>
+            void placeNewPage(rl::pack_box<I, ID>& box);
 
         public:
             constexpr Packer() noexcept = default;
@@ -75,7 +79,8 @@ namespace rl
             I GetMaxPageHeight() const noexcept;
             I GetTopPageWidth() const noexcept;
             I GetTopPageHeight() const noexcept;
-            void Pack(std::span<rl::pack_box2<I>>& boxes);
+            template<typename ID>
+            void Pack(std::span<rl::pack_box<I, ID>>& boxes);
     };
 }
 
