@@ -23,8 +23,6 @@
 #pragma once
 
 #include <rlm/concepts.hpp>
-#include <rlm/configuration.hpp>
-#include <rlm/linear/degenerate_shapes.hpp>
 
 template<rl::floating_point F>
 constexpr rl::box2<F>::box2(F x, F y, F width, F height) noexcept
@@ -38,23 +36,19 @@ constexpr rl::box2<F>::box2(F x, F y, F width, F height) noexcept
 template<rl::floating_point F>
 constexpr bool rl::box2<F>::operator==(const rl::box2<F>& that) const noexcept
 {
-    RLM_HANDLE_DEGENERACY(fixed_this, *this);
-    RLM_HANDLE_DEGENERACY(fixed_that, that);
     return
-        fixed_this.x == fixed_that.x &&
-        fixed_this.y == fixed_that.y &&
-        fixed_this.width == fixed_that.width &&
-        fixed_this.height == fixed_that.height;
+        this->x == that.x &&
+        this->y == that.y &&
+        this->width == that.width &&
+        this->height == that.height;
 }
 
 template<rl::floating_point F>
 constexpr bool rl::box2<F>::operator!=(const rl::box2<F>& that) const noexcept
 {
-    RLM_HANDLE_DEGENERACY(fixed_this, *this);
-    RLM_HANDLE_DEGENERACY(fixed_that, that);
     return
-        fixed_this.x != fixed_that.x ||
-        fixed_this.y != fixed_that.y ||
-        fixed_this.width != fixed_that.width ||
-        fixed_this.height != fixed_that.height;
+        this->x != that.x ||
+        this->y != that.y ||
+        this->width != that.width ||
+        this->height != that.height;
 }
