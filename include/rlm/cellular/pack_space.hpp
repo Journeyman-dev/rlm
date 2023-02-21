@@ -35,7 +35,8 @@ namespace rl
         I page = 0;
         rl::cell_box2 box = rl::cell_box2();
 
-        constexpr pack_space(I x, I y, I width, I height I page) noexcept;
+        constexpr pack_space() noexcept = default;
+        constexpr pack_space(I x, I y, I width, I height, I page) noexcept;
     };
 }
 
