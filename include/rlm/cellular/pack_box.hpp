@@ -23,18 +23,16 @@
 #pragma once
 
 #include <rlm/concepts.hpp>
+#include <rlm/cellular/cell_box2.hpp>
 
 namespace rl
 {
-    template<rl::signed_integral I>
-    struct cell_box2;
-
     template<rl::signed_integral I = int, typename ID = unsigned int>
     struct pack_box
     {
         ID identifier = 0;
         I page = 0;
-        rl::cell_box2 box = rl::cell_box2();
+        rl::cell_box2<I> box = rl::cell_box2<I>();
 
         constexpr pack_box() noexcept = default;
         constexpr pack_box(ID identifier, I width, I height) noexcept;
