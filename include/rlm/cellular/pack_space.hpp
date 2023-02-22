@@ -23,32 +23,19 @@
 #pragma once
 
 #include <rlm/concepts.hpp>
+#include <rlm/cellular/cell_box2.hpp>
 
-template<rl::floating_point F>
-constexpr rl::box2<F>::box2(F x, F y, F width, F height) noexcept
-    : x(x)
-    , y(y)
-    , width(width)
-    , height(height)
+namespace rl
 {
+    template<rl::signed_integral I = int>
+    struct pack_space
+    {
+        I page = 0;
+        rl::cell_box2<I> box = rl::cell_box2<I>();
+
+        constexpr pack_space() noexcept = default;
+        constexpr pack_space(I x, I y, I width, I height, I page) noexcept;
+    };
 }
 
-template<rl::floating_point F>
-constexpr bool rl::box2<F>::operator==(const rl::box2<F>& that) const noexcept
-{
-    return
-        this->x == that.x &&
-        this->y == that.y &&
-        this->width == that.width &&
-        this->height == that.height;
-}
-
-template<rl::floating_point F>
-constexpr bool rl::box2<F>::operator!=(const rl::box2<F>& that) const noexcept
-{
-    return
-        this->x != that.x ||
-        this->y != that.y ||
-        this->width != that.width ||
-        this->height != that.height;
-}
+#include <rlm/cellular/detail/pack_space.inl>

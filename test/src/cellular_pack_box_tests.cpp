@@ -20,35 +20,28 @@
     CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 */
 
-#pragma once
+#include <catch2/catch_all.hpp>
+#include <rlm/cellular/pack_box.hpp>
 
-#include <rlm/concepts.hpp>
-
-template<rl::floating_point F>
-constexpr rl::box2<F>::box2(F x, F y, F width, F height) noexcept
-    : x(x)
-    , y(y)
-    , width(width)
-    , height(height)
+SCENARIO("A pack_box is constructed")
 {
-}
-
-template<rl::floating_point F>
-constexpr bool rl::box2<F>::operator==(const rl::box2<F>& that) const noexcept
-{
-    return
-        this->x == that.x &&
-        this->y == that.y &&
-        this->width == that.width &&
-        this->height == that.height;
-}
-
-template<rl::floating_point F>
-constexpr bool rl::box2<F>::operator!=(const rl::box2<F>& that) const noexcept
-{
-    return
-        this->x != that.x ||
-        this->y != that.y ||
-        this->width != that.width ||
-        this->height != that.height;
+    GIVEN("A default constructed pack_box")
+    {
+        const rl::pack_box box;
+        THEN("The properties are correct")
+        {
+            CHECK(box.identifier == 0);
+            CHECK(box.page == 0);
+            CHECK(box.box == rl::cell_box2());
+        }
+    }
+    GIVEN("An overload constructed pack_box")
+    {
+        const rl::pack_box box(1, 2, 3);
+        THEN("The properties are correct")
+        {
+            CHECK(box.identifier == 1);
+            CHECK(box.box == rl::cell_box2(0, 0, 2, 3));
+        }
+    }
 }

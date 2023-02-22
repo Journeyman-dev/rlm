@@ -24,31 +24,9 @@
 
 #include <rlm/concepts.hpp>
 
-template<rl::floating_point F>
-constexpr rl::box2<F>::box2(F x, F y, F width, F height) noexcept
-    : x(x)
-    , y(y)
-    , width(width)
-    , height(height)
+template <rl::signed_integral I>
+constexpr rl::pack_space<I>::pack_space(I x, I y, I width, I height, I page) noexcept
+    : box(x, y, width, height)
+    , page(page)
 {
-}
-
-template<rl::floating_point F>
-constexpr bool rl::box2<F>::operator==(const rl::box2<F>& that) const noexcept
-{
-    return
-        this->x == that.x &&
-        this->y == that.y &&
-        this->width == that.width &&
-        this->height == that.height;
-}
-
-template<rl::floating_point F>
-constexpr bool rl::box2<F>::operator!=(const rl::box2<F>& that) const noexcept
-{
-    return
-        this->x != that.x ||
-        this->y != that.y ||
-        this->width != that.width ||
-        this->height != that.height;
 }
