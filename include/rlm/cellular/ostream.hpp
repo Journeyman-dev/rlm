@@ -20,8 +20,7 @@
     CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 */
 
-#ifndef RLM_CELLULAR_OSTREAM_HPP
-#define RLM_CELLULAR_OSTREAM_HPP
+#pragma once
 
 #include <ostream>
 #include <rlm/concepts.hpp>
@@ -29,27 +28,25 @@
 namespace rl
 {
     template<rl::signed_integral I>
-    struct point2;
+    struct cell_vector2;
     template<rl::signed_integral I>
-    struct segment2;
+    struct cell_segment2;
     template<rl::signed_integral I>
-    struct box2;
+    struct cell_box2;
     template<rl::signed_integral I, rl::floating_point F>
-    struct circle2;
+    struct cell_circle2;
 
-    template<rl::signed_integral I>
-    std::ostream& operator<<(std::ostream& os, const rl::point2<I>& point);
+    template<rl::signed_integral I = int>
+    constexpr std::ostream& operator<<(std::ostream& os, const rl::cell_vector2<I>& point);
 
-    template<rl::signed_integral I>
-    std::ostream& operator<<(std::ostream& os, const rl::segment2<I>& segment);
+    template<rl::signed_integral I = int>
+    constexpr std::ostream& operator<<(std::ostream& os, const rl::cell_segment2<I>& segment);
 
-    template<rl::signed_integral I>
-    std::ostream& operator<<(std::ostream& os, const rl::box2<I>& box);
+    template<rl::signed_integral I = int>
+    constexpr std::ostream& operator<<(std::ostream& os, const rl::cell_box2<I>& box);
 
-    template<rl::signed_integral I, rl::floating_point F>
-    std::ostream& operator<<(std::ostream& os, const rl::circle2<I, F>& circle);
+    template<rl::signed_integral I = int, rl::floating_point F = float>
+    constexpr std::ostream& operator<<(std::ostream& os, const rl::cell_circle2<I, F>& circle);
 }    // namespace rl
 
 #include <rlm/cellular/detail/ostream.inl>
-
-#endif

@@ -20,8 +20,7 @@
     CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 */
 
-#ifndef RLM_CELLULAR_BORDER_CORNERS_HPP
-#define RLM_CELLULAR_BORDER_CORNERS_HPP
+#pragma once
 
 namespace rl
 {
@@ -36,19 +35,11 @@ namespace rl
             Right = (1 << 3),
             Top = (1 << 4),
             Bottom = (1 << 5),
-            All =
-            (
-                BorderCornersEnum::Clockwise |
-                BorderCornersEnum::CounterClockwise |
-                BorderCornersEnum::Left |
-                BorderCornersEnum::Right |
-                BorderCornersEnum::Top |
-                BorderCornersEnum::Bottom
-            )
+            All = (BorderCornersEnum::Clockwise | BorderCornersEnum::CounterClockwise |
+                   BorderCornersEnum::Left | BorderCornersEnum::Right | BorderCornersEnum::Top |
+                   BorderCornersEnum::Bottom)
         };
     };
 
     using BorderCorners = BorderCornersStruct::BorderCornersEnum;
-}
-
-#endif
+}    // namespace rl

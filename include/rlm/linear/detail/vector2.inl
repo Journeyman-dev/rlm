@@ -20,8 +20,7 @@
     CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 */
 
-#ifndef RLM_LINEAR_VECTOR2_INL
-#define RLM_LINEAR_VECTOR2_INL
+#pragma once
 
 #include <rlm/concepts.hpp>
 
@@ -31,5 +30,3 @@ constexpr rl::vector2<F>::vector2(F x, F y) noexcept
     , y(y)
 {
 }
-
-#endif

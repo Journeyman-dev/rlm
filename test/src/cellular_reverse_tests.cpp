@@ -23,17 +23,17 @@
 #include <catch2/catch_all.hpp>
 #include <rlm/cellular/ostream.hpp>
 #include <rlm/cellular/reverse.hpp>
-#include <rlm/cellular/segment2.hpp>
+#include <rlm/cellular/cell_segment2.hpp>
 
-SCENARIO("A segment2 is reversed")
+SCENARIO("A cell_segment2 is reversed")
 {
-    GIVEN("A segment2")
+    GIVEN("A cell_segment2")
     {
-        const rl::segment2 segment(1, 2, 3, 4);
-        WHEN("The segment2 is reversed")
+        const rl::cell_segment2 segment(1, 2, 3, 4);
+        WHEN("The cell_segment2 is reversed")
         {
             const auto reversed = rl::reverse(segment);
-            THEN("The reversed segment2 properties are correct")
+            THEN("The reversed cell_segment2 properties are correct")
             {
                 CHECK(reversed.start_x == 3);
                 CHECK(reversed.start_y == 4);

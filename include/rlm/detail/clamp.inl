@@ -20,8 +20,7 @@
     CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 */
 
-#ifndef RLM_CLAMP_INL
-#define RLM_CLAMP_INL
+#pragma once
 
 #include <rlm/concepts.hpp>
 #include <rlm/min.hpp>
@@ -34,5 +33,3 @@ constexpr P rl::clamp(P value, P a, P b) noexcept
     const auto max = rl::max<P>(a, b);
     return rl::min<P>(max, rl::max<P>(value, min));
 }
-
-#endif

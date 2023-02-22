@@ -20,39 +20,36 @@
     CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 */
 
-#ifndef RLM_CELLULAR_SHAPE_POINTS_HPP
-#define RLM_CELLULAR_SHAPE_POINTS_HPP
+#pragma once
 
 #include <rlm/concepts.hpp>
 
 namespace rl
 {
     template<rl::signed_integral I>
-    struct point2;
+    struct cell_vector2;
     template<rl::signed_integral I>
-    struct segment2;
+    struct cell_segment2;
     template<rl::signed_integral I>
-    struct box2;
+    struct cell_box2;
 
     template<rl::signed_integral I = int>
-    constexpr rl::point2<I> start(const rl::segment2<I>& segment) noexcept;
+    constexpr rl::cell_vector2<I> start(const rl::cell_segment2<I>& segment) noexcept;
 
     template<rl::signed_integral I = int>
-    constexpr rl::point2<I> end(const rl::segment2<I>& segment) noexcept;
+    constexpr rl::cell_vector2<I> end(const rl::cell_segment2<I>& segment) noexcept;
 
     template<rl::signed_integral I = int>
-    constexpr rl::point2<I> top_left(const rl::box2<I>& box) noexcept;
+    constexpr rl::cell_vector2<I> top_left(const rl::cell_box2<I>& box) noexcept;
 
     template<rl::signed_integral I = int>
-    constexpr rl::point2<I> top_right(const rl::box2<I>& box) noexcept;
+    constexpr rl::cell_vector2<I> top_right(const rl::cell_box2<I>& box) noexcept;
 
     template<rl::signed_integral I = int>
-    constexpr rl::point2<I> bottom_left(const rl::box2<I>& box) noexcept;
+    constexpr rl::cell_vector2<I> bottom_left(const rl::cell_box2<I>& box) noexcept;
 
     template<rl::signed_integral I = int>
-    constexpr rl::point2<I> bottom_right(const rl::box2<I>& box) noexcept;
-}
+    constexpr rl::cell_vector2<I> bottom_right(const rl::cell_box2<I>& box) noexcept;
+}    // namespace rl
 
 #include <rlm/cellular/detail/shape_points.inl>
-
-#endif

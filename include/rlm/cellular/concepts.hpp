@@ -20,27 +20,21 @@
     CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 */
 
-#ifndef RLM_CELLULAR_CONCEPTS_HPP
-#define RLM_CELLULAR_CONCEPTS_HPP
+#pragma once
 
 #include <rlm/concepts.hpp>
-#include <rlm/cellular/point2.hpp>
-#include <rlm/cellular/segment2.hpp>
-#include <rlm/cellular/box2.hpp>
-#include <rlm/cellular/circle2.hpp>
+#include <rlm/cellular/cell_vector2.hpp>
+#include <rlm/cellular/cell_segment2.hpp>
+#include <rlm/cellular/cell_box2.hpp>
+#include <rlm/cellular/cell_circle2.hpp>
 #include <concepts>
 
 namespace rl
 {
     template<typename T, typename I, typename F>
-    concept cellular_shape =
-        rl::is_any_of<
-            T,
-            rl::point2<I>,
-            rl::segment2<I>,
-            rl::box2<I>,
-            rl::circle2<I, F>
-        >;
-}
-
-#endif
+    concept cellular_shape = rl::is_any_of<T,
+                                           rl::cell_vector2<I>,
+                                           rl::cell_segment2<I>,
+                                           rl::cell_box2<I>,
+                                           rl::cell_circle2<I, F>>;
+}    // namespace rl

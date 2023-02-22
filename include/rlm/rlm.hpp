@@ -20,18 +20,15 @@
     CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 */
 
-#ifndef RLM_HPP
-#define RLM_HPP
+#pragma once
 
 // This file only includes the most important headers (for roguelike games).
 // Include too much and it will break intellisense.
 
-#include <rlm/cellular/box2.hpp>
-#include <rlm/cellular/circle2.hpp>
-#include <rlm/cellular/is_degenerate.hpp>
+#include <rlm/cellular/cell_box2.hpp>
+#include <rlm/cellular/cell_circle2.hpp>
+#include <rlm/cellular/degenerate_shapes.hpp>
 #include <rlm/cellular/ostream.hpp>
-#include <rlm/cellular/point2.hpp>
-#include <rlm/cellular/segment2.hpp>
+#include <rlm/cellular/cell_vector2.hpp>
+#include <rlm/cellular/cell_segment2.hpp>
 #include <rlm/concepts.hpp>
-
-#endif

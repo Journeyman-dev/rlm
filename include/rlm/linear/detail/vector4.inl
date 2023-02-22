@@ -20,8 +20,7 @@
     CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 */
 
-#ifndef RLM_LINEAR_VECTOR4_INL
-#define RLM_LINEAR_VECTOR4_INL
+#pragma once
 
 #include <rlm/concepts.hpp>
 
@@ -33,5 +32,3 @@ constexpr rl::vector4<F>::vector4(F x, F y, F z, F w) noexcept
     , w(w)
 {
 }
-
-#endif

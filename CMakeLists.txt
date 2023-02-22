@@ -22,14 +22,20 @@
 cmake_minimum_required(VERSION 3.25)
 
 project(rlm
-    VERSION 0.2.0
+    VERSION 0.3.0
     DESCRIPTION "A math library for the development of roguelike games."
     LANGUAGES CXX
 )
 set(RLM_CXX_STANDARD 20)
 option(RLM_BUILD_TESTS "Enable the automatic test framework for RLM." ON)
+option(RLM_FIX_DEGENERACY "Enable automatic fixing of degenerate shapes passed into RLM functions." OFF)
+option(RLM_ASSERT_DEGENERACY "Assert in debug builds when degenerate shapes are passed into RLM functions." ON)
 add_library(${PROJECT_NAME} INTERFACE "")
 add_library(rlm::rlm ALIAS ${PROJECT_NAME})
+configure_file(
+    "${CMAKE_CURRENT_SOURCE_DIR}/include/rlm/configuration.hpp.in"
+    "${CMAKE_CURRENT_SOURCE_DIR}/include/rlm/configuration.hpp"
+)
 target_include_directories(${PROJECT_NAME}
     INTERFACE
         "${CMAKE_CURRENT_SOURCE_DIR}/include/"

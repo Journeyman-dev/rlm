@@ -20,8 +20,7 @@
     CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 */
 
-#ifndef RLM_LINEAR_OSTREAM_HPP
-#define RLM_LINEAR_OSTREAM_HPP
+#pragma once
 
 #include <ostream>
 #include <rlm/concepts.hpp>
@@ -35,21 +34,19 @@ namespace rl
     template<rl::floating_point F>
     struct vector4;
     template<rl::floating_point F>
-    struct rectangle2;
+    struct box2;
 
-    template<rl::signed_integral F>
-    std::ostream& operator<<(std::ostream& os, const rl::vector2<F>& vector);
+    template<rl::signed_integral F = float>
+    constexpr std::ostream& operator<<(std::ostream& os, const rl::vector2<F>& vector);
 
-    template<rl::floating_point F>
-    std::ostream& operator<<(std::ostream& os, const rl::vector3<F>& vector);
+    template<rl::floating_point F = float>
+    constexpr std::ostream& operator<<(std::ostream& os, const rl::vector3<F>& vector);
 
-    template<rl::floating_point F>
-    std::ostream& operator<<(std::ostream& os, const rl::vector4<F>& vector);
+    template<rl::floating_point F = float>
+    constexpr std::ostream& operator<<(std::ostream& os, const rl::vector4<F>& vector);
 
-    template<rl::floating_point F>
-    std::ostream& operator<<(std::ostream& os, const rl::rectangle2<F>& rectangle);
+    template<rl::floating_point F = float>
+    constexpr std::ostream& operator<<(std::ostream& os, const rl::box2<F>& rectangle);
 }    // namespace rl
 
 #include <rlm/linear/detail/ostream.inl>
-
-#endif
