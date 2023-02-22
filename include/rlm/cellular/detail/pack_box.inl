@@ -24,8 +24,8 @@
 
 #include <rlm/concepts.hpp>
 
-template <rl::signed_integral I, typename ID>
-constexpr rl::pack_box<I, ID>::pack_box(ID identifier, I width, I height) noexcept
+template <rl::signed_integral I>
+constexpr rl::pack_box<I>::pack_box(unsigned int identifier, I width, I height) noexcept
     : identifier(identifier)
     , box(0, 0, width, height)
 {

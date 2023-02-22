@@ -27,15 +27,15 @@
 
 namespace rl
 {
-    template<rl::signed_integral I = int, typename ID = unsigned int>
+    template<rl::signed_integral I = int>
     struct pack_box
     {
-        ID identifier = 0;
+        unsigned int identifier = 0;
         I page = 0;
         rl::cell_box2<I> box = rl::cell_box2<I>();
 
         constexpr pack_box() noexcept = default;
-        constexpr pack_box(ID identifier, I width, I height) noexcept;
+        constexpr pack_box(unsigned int identifier, I width, I height) noexcept;
     };
 }
 
