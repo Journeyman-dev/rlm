@@ -24,21 +24,13 @@
 
 #include <rlm/concepts.hpp>
 #include <rlm/cellular/pack_space.hpp>
+#include <rlm/cellular/pack_box.hpp>
 #include <vector>
 #include <span>
 #include <cstddef>
 
 namespace rl
 {
-    template<rl::signed_integral I>
-    struct cell_box2;
-
-    template<rl::signed_integral I, typename ID>
-    struct pack_box;
-
-    template<rl::signed_integral I>
-    struct pack_space;
-
     template<rl::signed_integral I = int>
     class Packer
     {
