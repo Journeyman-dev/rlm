@@ -34,92 +34,67 @@ constexpr rl::cell_vector2<I>::cell_vector2(I x, I y) noexcept
 template<rl::signed_integral I>
 constexpr bool rl::cell_vector2<I>::operator==(const rl::cell_vector2<I>& that) const noexcept
 {
-    return
-        this->x == that.x &&
-        this->y == that.y;
+    return this->x == that.x && this->y == that.y;
 }
 
 template<rl::signed_integral I>
 constexpr bool rl::cell_vector2<I>::operator!=(const rl::cell_vector2<I>& that) const noexcept
 {
-    return
-        this->x != that.x ||
-        this->y != that.y;
+    return this->x != that.x || this->y != that.y;
 }
 
 template<rl::signed_integral I>
-constexpr rl::cell_vector2<I> rl::cell_vector2<I>::operator+(const rl::cell_vector2<I>& that) const noexcept
+constexpr rl::cell_vector2<I>
+rl::cell_vector2<I>::operator+(const rl::cell_vector2<I>& that) const noexcept
 {
-    return rl::cell_vector2<I>(
-        this->x + that.x,
-        this->y + that.y
-    );
+    return rl::cell_vector2<I>(this->x + that.x, this->y + that.y);
 }
 
 template<rl::signed_integral I>
-constexpr rl::cell_vector2<I> rl::cell_vector2<I>::operator-(const rl::cell_vector2<I>& that) const noexcept
+constexpr rl::cell_vector2<I>
+rl::cell_vector2<I>::operator-(const rl::cell_vector2<I>& that) const noexcept
 {
-    return rl::cell_vector2<I>(
-        this->x - that.x,
-        this->y - that.y
-    );
+    return rl::cell_vector2<I>(this->x - that.x, this->y - that.y);
 }
 
 template<rl::signed_integral I>
-constexpr rl::cell_vector2<I> rl::cell_vector2<I>::operator*(const rl::cell_vector2<I>& that) const noexcept
+constexpr rl::cell_vector2<I>
+rl::cell_vector2<I>::operator*(const rl::cell_vector2<I>& that) const noexcept
 {
-    return rl::cell_vector2<I>(
-        this->x * that.x,
-        this->y * that.y
-    );
+    return rl::cell_vector2<I>(this->x * that.x, this->y * that.y);
 }
 
 template<rl::signed_integral I>
-constexpr rl::cell_vector2<I> rl::cell_vector2<I>::operator/(const rl::cell_vector2<I>& that) const noexcept
+constexpr rl::cell_vector2<I>
+rl::cell_vector2<I>::operator/(const rl::cell_vector2<I>& that) const noexcept
 {
-    return rl::cell_vector2<I>(
-        this->x / that.x,
-        this->y / that.y
-    );
+    return rl::cell_vector2<I>(this->x / that.x, this->y / that.y);
 }
 
 template<rl::signed_integral I>
 template<rl::primitive P>
 constexpr rl::cell_vector2<I> rl::cell_vector2<I>::operator+(P scalar) const noexcept
 {
-    return rl::cell_vector2<I>(
-        this->x + scalar,
-        this->y + scalar
-    );
+    return rl::cell_vector2<I>(this->x + scalar, this->y + scalar);
 }
 
 template<rl::signed_integral I>
 template<rl::primitive P>
 constexpr rl::cell_vector2<I> rl::cell_vector2<I>::operator-(P scalar) const noexcept
 {
-    return rl::cell_vector2<I>(
-        this->x - scalar,
-        this->y - scalar
-    );
+    return rl::cell_vector2<I>(this->x - scalar, this->y - scalar);
 }
 
 template<rl::signed_integral I>
 template<rl::primitive P>
 constexpr rl::cell_vector2<I> rl::cell_vector2<I>::operator*(P scalar) const noexcept
 {
-    return rl::cell_vector2<I>(
-        this->x * scalar,
-        this->y * scalar
-    );
+    return rl::cell_vector2<I>(this->x * scalar, this->y * scalar);
 }
 
 template<rl::signed_integral I>
 template<rl::primitive P>
 constexpr rl::cell_vector2<I> rl::cell_vector2<I>::operator/(P scalar) const noexcept
 {
-    return rl::cell_vector2<I>(
-        this->x / scalar,
-        this->y / scalar
-    );
+    return rl::cell_vector2<I>(this->x / scalar, this->y / scalar);
 }
-

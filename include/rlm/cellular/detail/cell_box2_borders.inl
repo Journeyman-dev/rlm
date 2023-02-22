@@ -35,178 +35,147 @@
 #include <optional>
 
 template<rl::signed_integral I>
-constexpr rl::cell_segment2<I> rl::left_border(const rl::cell_box2<I>& box, rl::RotationMotion rotation_motion) noexcept
+constexpr rl::cell_segment2<I> rl::left_border(const rl::cell_box2<I>& box,
+                                               rl::RotationMotion rotation_motion) noexcept
 {
     RLM_HANDLE_DEGENERACY(fixed_box, box);
     return rl::left_border_trimmed(fixed_box, rl::BorderCorners::All, rotation_motion).value();
 }
 
 template<rl::signed_integral I>
-constexpr rl::cell_segment2<I> rl::right_border(const rl::cell_box2<I>& box, rl::RotationMotion rotation_motion) noexcept
+constexpr rl::cell_segment2<I> rl::right_border(const rl::cell_box2<I>& box,
+                                                rl::RotationMotion rotation_motion) noexcept
 {
     RLM_HANDLE_DEGENERACY(fixed_box, box);
     return rl::right_border_trimmed(fixed_box, rl::BorderCorners::All, rotation_motion).value();
 }
 
 template<rl::signed_integral I>
-constexpr rl::cell_segment2<I> rl::top_border(const rl::cell_box2<I>& box, rl::RotationMotion rotation_motion) noexcept
+constexpr rl::cell_segment2<I> rl::top_border(const rl::cell_box2<I>& box,
+                                              rl::RotationMotion rotation_motion) noexcept
 {
     RLM_HANDLE_DEGENERACY(fixed_box, box);
     return rl::top_border_trimmed(fixed_box, rl::BorderCorners::All, rotation_motion).value();
 }
 
 template<rl::signed_integral I>
-constexpr rl::cell_segment2<I> rl::bottom_border(const rl::cell_box2<I>& box, rl::RotationMotion rotation_motion) noexcept
+constexpr rl::cell_segment2<I> rl::bottom_border(const rl::cell_box2<I>& box,
+                                                 rl::RotationMotion rotation_motion) noexcept
 {
     RLM_HANDLE_DEGENERACY(fixed_box, box);
     return rl::bottom_border_trimmed(fixed_box, rl::BorderCorners::All, rotation_motion).value();
 }
 
 template<rl::signed_integral I>
-constexpr std::optional<rl::cell_segment2<I>> rl::left_border_trimmed(
-    const rl::cell_box2<I>& box,
-    rl::BorderCorners border_corners,
-    rl::RotationMotion rotation_motion
-) noexcept
+constexpr std::optional<rl::cell_segment2<I>>
+rl::left_border_trimmed(const rl::cell_box2<I>& box,
+                        rl::BorderCorners border_corners,
+                        rl::RotationMotion rotation_motion) noexcept
 {
     RLM_HANDLE_DEGENERACY(fixed_box, box);
     const I bottom_depth =
-        (
-            (border_corners & rl::BorderCorners::Bottom) == rl::BorderCorners::Bottom ||
-            (border_corners & rl::BorderCorners::CounterClockwise) == rl::BorderCorners::CounterClockwise ||
-            (border_corners & rl::BorderCorners::Left) == rl::BorderCorners::Left
-        ) ? 0 : 1;
+        ((border_corners & rl::BorderCorners::Bottom) == rl::BorderCorners::Bottom ||
+         (border_corners & rl::BorderCorners::CounterClockwise) ==
+             rl::BorderCorners::CounterClockwise ||
+         (border_corners & rl::BorderCorners::Left) == rl::BorderCorners::Left)
+            ? 0
+            : 1;
     const I top_depth =
-        (
-            (border_corners & rl::BorderCorners::Top) == rl::BorderCorners::Top ||
-            (border_corners & rl::BorderCorners::Clockwise) == rl::BorderCorners::Clockwise ||
-            (border_corners & rl::BorderCorners::Left) == rl::BorderCorners::Left
-        ) ? 0 : 1;
-    if (fixed_box.height - bottom_depth - top_depth <= 0)
-    {
-        return std::nullopt;
-    }
-    const rl::cell_segment2<I> border(
-        rl::left_x(fixed_box),
-        rl::bottom_y(fixed_box) - bottom_depth,
-        rl::left_x(fixed_box),
-        rl::top_y(fixed_box) + top_depth
-    );
-    if (rotation_motion == rl::RotationMotion::CounterClockwise)
-    {
-        return rl::reverse(border);
-    }
+        ((border_corners & rl::BorderCorners::Top) == rl::BorderCorners::Top ||
+         (border_corners & rl::BorderCorners::Clockwise) == rl::BorderCorners::Clockwise ||
+         (border_corners & rl::BorderCorners::Left) == rl::BorderCorners::Left)
+            ? 0
+            : 1;
+    if (fixed_box.height - bottom_depth - top_depth <= 0) { return std::nullopt; }
+    const rl::cell_segment2<I> border(rl::left_x(fixed_box),
+                                      rl::bottom_y(fixed_box) - bottom_depth,
+                                      rl::left_x(fixed_box),
+                                      rl::top_y(fixed_box) + top_depth);
+    if (rotation_motion == rl::RotationMotion::CounterClockwise) { return rl::reverse(border); }
     return border;
 }
 
 template<rl::signed_integral I>
-constexpr std::optional<rl::cell_segment2<I>> rl::right_border_trimmed(
-    const rl::cell_box2<I>& box,
-    rl::BorderCorners border_corners,
-    rl::RotationMotion rotation_motion
-) noexcept
+constexpr std::optional<rl::cell_segment2<I>>
+rl::right_border_trimmed(const rl::cell_box2<I>& box,
+                         rl::BorderCorners border_corners,
+                         rl::RotationMotion rotation_motion) noexcept
 {
     RLM_HANDLE_DEGENERACY(fixed_box, box);
-    const I top_depth =
-        (
-            (border_corners & rl::BorderCorners::Top) == rl::BorderCorners::Top ||
-            (border_corners & rl::BorderCorners::CounterClockwise) == rl::BorderCorners::CounterClockwise ||
-            (border_corners & rl::BorderCorners::Right) == rl::BorderCorners::Right
-        ) ? 0 : 1;
+    const I top_depth = ((border_corners & rl::BorderCorners::Top) == rl::BorderCorners::Top ||
+                         (border_corners & rl::BorderCorners::CounterClockwise) ==
+                             rl::BorderCorners::CounterClockwise ||
+                         (border_corners & rl::BorderCorners::Right) == rl::BorderCorners::Right)
+                            ? 0
+                            : 1;
     const I bottom_depth =
-        (
-            (border_corners & rl::BorderCorners::Bottom) == rl::BorderCorners::Bottom ||
-            (border_corners & rl::BorderCorners::Clockwise) == rl::BorderCorners::Clockwise ||
-            (border_corners & rl::BorderCorners::Right) == rl::BorderCorners::Right
-        ) ? 0 : 1;
-    if (fixed_box.height - top_depth - bottom_depth <= 0)
-    {
-        return std::nullopt;
-    }
-    const rl::cell_segment2<I> border(
-        rl::right_x(fixed_box),
-        rl::top_y(fixed_box) + top_depth,
-        rl::right_x(fixed_box),
-        rl::bottom_y(fixed_box) - bottom_depth
-    );
-    if (rotation_motion == rl::RotationMotion::CounterClockwise)
-    {
-        return rl::reverse(border);
-    }
+        ((border_corners & rl::BorderCorners::Bottom) == rl::BorderCorners::Bottom ||
+         (border_corners & rl::BorderCorners::Clockwise) == rl::BorderCorners::Clockwise ||
+         (border_corners & rl::BorderCorners::Right) == rl::BorderCorners::Right)
+            ? 0
+            : 1;
+    if (fixed_box.height - top_depth - bottom_depth <= 0) { return std::nullopt; }
+    const rl::cell_segment2<I> border(rl::right_x(fixed_box),
+                                      rl::top_y(fixed_box) + top_depth,
+                                      rl::right_x(fixed_box),
+                                      rl::bottom_y(fixed_box) - bottom_depth);
+    if (rotation_motion == rl::RotationMotion::CounterClockwise) { return rl::reverse(border); }
     return border;
 }
 
 template<rl::signed_integral I>
-constexpr std::optional<rl::cell_segment2<I>> rl::top_border_trimmed(
-    const rl::cell_box2<I>& box,
-    rl::BorderCorners border_corners,
-    rl::RotationMotion rotation_motion
-) noexcept
+constexpr std::optional<rl::cell_segment2<I>>
+rl::top_border_trimmed(const rl::cell_box2<I>& box,
+                       rl::BorderCorners border_corners,
+                       rl::RotationMotion rotation_motion) noexcept
 {
     RLM_HANDLE_DEGENERACY(fixed_box, box);
-    const I left_depth =
-        (
-            (border_corners & rl::BorderCorners::Left) == rl::BorderCorners::Left ||
-            (border_corners & rl::BorderCorners::CounterClockwise) == rl::BorderCorners::CounterClockwise ||
-            (border_corners & rl::BorderCorners::Top) == rl::BorderCorners::Top
-        ) ? 0 : 1;
+    const I left_depth = ((border_corners & rl::BorderCorners::Left) == rl::BorderCorners::Left ||
+                          (border_corners & rl::BorderCorners::CounterClockwise) ==
+                              rl::BorderCorners::CounterClockwise ||
+                          (border_corners & rl::BorderCorners::Top) == rl::BorderCorners::Top)
+                             ? 0
+                             : 1;
     const I right_depth =
-        (
-            (border_corners & rl::BorderCorners::Right) == rl::BorderCorners::Right ||
-            (border_corners & rl::BorderCorners::Clockwise) == rl::BorderCorners::Clockwise ||
-            (border_corners & rl::BorderCorners::Top) == rl::BorderCorners::Top
-        ) ? 0 : 1;
-    if (fixed_box.width - left_depth - right_depth <= 0)
-    {
-        return std::nullopt;
-    }
-    const rl::cell_segment2<I> border(
-        rl::left_x(fixed_box) + left_depth,
-        rl::top_y(fixed_box),
-        rl::right_x(fixed_box) - right_depth,
-        rl::top_y(fixed_box)
-    );
-    if (rotation_motion == rl::RotationMotion::CounterClockwise)
-    {
-        return rl::reverse(border);
-    }
+        ((border_corners & rl::BorderCorners::Right) == rl::BorderCorners::Right ||
+         (border_corners & rl::BorderCorners::Clockwise) == rl::BorderCorners::Clockwise ||
+         (border_corners & rl::BorderCorners::Top) == rl::BorderCorners::Top)
+            ? 0
+            : 1;
+    if (fixed_box.width - left_depth - right_depth <= 0) { return std::nullopt; }
+    const rl::cell_segment2<I> border(rl::left_x(fixed_box) + left_depth,
+                                      rl::top_y(fixed_box),
+                                      rl::right_x(fixed_box) - right_depth,
+                                      rl::top_y(fixed_box));
+    if (rotation_motion == rl::RotationMotion::CounterClockwise) { return rl::reverse(border); }
     return border;
 }
 
 template<rl::signed_integral I>
-constexpr std::optional<rl::cell_segment2<I>> rl::bottom_border_trimmed(
-    const rl::cell_box2<I>& box,
-    rl::BorderCorners border_corners,
-    rl::RotationMotion rotation_motion
-) noexcept
+constexpr std::optional<rl::cell_segment2<I>>
+rl::bottom_border_trimmed(const rl::cell_box2<I>& box,
+                          rl::BorderCorners border_corners,
+                          rl::RotationMotion rotation_motion) noexcept
 {
     RLM_HANDLE_DEGENERACY(fixed_box, box);
     const I right_depth =
-        (
-            (border_corners & rl::BorderCorners::Right) == rl::BorderCorners::Right ||
-            (border_corners & rl::BorderCorners::CounterClockwise) == rl::BorderCorners::CounterClockwise ||
-            (border_corners & rl::BorderCorners::Bottom) == rl::BorderCorners::Bottom
-        ) ? 0 : 1;
+        ((border_corners & rl::BorderCorners::Right) == rl::BorderCorners::Right ||
+         (border_corners & rl::BorderCorners::CounterClockwise) ==
+             rl::BorderCorners::CounterClockwise ||
+         (border_corners & rl::BorderCorners::Bottom) == rl::BorderCorners::Bottom)
+            ? 0
+            : 1;
     const I left_depth =
-        (
-            (border_corners & rl::BorderCorners::Left) == rl::BorderCorners::Left ||
-            (border_corners & rl::BorderCorners::Clockwise) == rl::BorderCorners::Clockwise ||
-            (border_corners & rl::BorderCorners::Bottom) == rl::BorderCorners::Bottom
-        ) ? 0 : 1;
-    if (fixed_box.width - right_depth - left_depth <= 0)
-    {
-        return std::nullopt;
-    }
-    const rl::cell_segment2<I> border(
-        rl::right_x(fixed_box) - right_depth,
-        rl::bottom_y(fixed_box),
-        rl::left_x(fixed_box) + left_depth,
-        rl::bottom_y(fixed_box)
-    );
-    if (rotation_motion == rl::RotationMotion::CounterClockwise)
-    {
-        return rl::reverse(border);
-    }
+        ((border_corners & rl::BorderCorners::Left) == rl::BorderCorners::Left ||
+         (border_corners & rl::BorderCorners::Clockwise) == rl::BorderCorners::Clockwise ||
+         (border_corners & rl::BorderCorners::Bottom) == rl::BorderCorners::Bottom)
+            ? 0
+            : 1;
+    if (fixed_box.width - right_depth - left_depth <= 0) { return std::nullopt; }
+    const rl::cell_segment2<I> border(rl::right_x(fixed_box) - right_depth,
+                                      rl::bottom_y(fixed_box),
+                                      rl::left_x(fixed_box) + left_depth,
+                                      rl::bottom_y(fixed_box));
+    if (rotation_motion == rl::RotationMotion::CounterClockwise) { return rl::reverse(border); }
     return border;
 }
-

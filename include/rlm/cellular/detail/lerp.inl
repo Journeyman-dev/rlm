@@ -29,31 +29,14 @@
 #include <rlm/cellular/shape_points.hpp>
 
 template<rl::signed_integral I, rl::floating_point F>
-constexpr rl::cell_vector2<I> rl::lerp(const rl::cell_vector2<I>& a, const rl::cell_vector2<I>& b, F t) noexcept
+constexpr rl::cell_vector2<I>
+rl::lerp(const rl::cell_vector2<I>& a, const rl::cell_vector2<I>& b, F t) noexcept
 {
-    return
-        rl::cell_vector2<I>(
-            rl::lerp<I, F>(
-                a.x,
-                b.x,
-                t
-            ),
-            rl::lerp<I, F>(
-                a.y,
-                b.y,
-                t
-            )
-        );
+    return rl::cell_vector2<I>(rl::lerp<I, F>(a.x, b.x, t), rl::lerp<I, F>(a.y, b.y, t));
 }
 
 template<rl::signed_integral I, rl::floating_point F>
 constexpr rl::cell_vector2<I> rl::lerp(const rl::cell_segment2<I>& segment, F t) noexcept
 {
-  return
-    rl::lerp<I, F>(
-        rl::start<I>(segment),
-        rl::end<I>(segment),
-        t
-    );
+    return rl::lerp<I, F>(rl::start<I>(segment), rl::end<I>(segment), t);
 }
-

@@ -60,4 +60,3 @@ constexpr bool rl::is_vertical(const rl::cell_segment2<I>& segment) noexcept
 {
     return segment.start_y == segment.end_y;
 }
-

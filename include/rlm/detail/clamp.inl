@@ -33,4 +33,3 @@ constexpr P rl::clamp(P value, P a, P b) noexcept
     const auto max = rl::max<P>(a, b);
     return rl::min<P>(max, rl::max<P>(value, min));
 }
-

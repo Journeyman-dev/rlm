@@ -43,13 +43,15 @@ namespace rl
     constexpr void walk(const rl::cell_vector2<I>& point, const rl::walk_predicate<I>& predicate);
 
     template<rl::signed_integral I = int, rl::floating_point F = float>
-    constexpr void walk(const rl::cell_segment2<I>& segment, const rl::walk_predicate<I>& predicate);
+    constexpr void walk(const rl::cell_segment2<I>& segment,
+                        const rl::walk_predicate<I>& predicate);
 
     template<rl::signed_integral I = int, rl::floating_point F = float>
     constexpr void walk(const rl::cell_box2<I>& box, const rl::walk_predicate<I>& predicate);
 
     template<rl::signed_integral I = int, rl::floating_point F = float>
-    constexpr void walk(const rl::cell_circle2<I, F>& circle, const rl::walk_predicate<I>& predicate);
-}
+    constexpr void walk(const rl::cell_circle2<I, F>& circle,
+                        const rl::walk_predicate<I>& predicate);
+}    // namespace rl
 
 #include <rlm/cellular/detail/walk.inl>

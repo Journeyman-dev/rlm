@@ -36,4 +36,3 @@ constexpr F rl::lerp(F a, F b, F t) noexcept
 {
     return a + t * (b - a);
 }
-

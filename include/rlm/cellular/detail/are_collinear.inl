@@ -27,44 +27,32 @@
 #include <rlm/cellular/shape_points.hpp>
 #include <rlm/cellular/cell_segment2_between.hpp>
 
-template <rl::signed_integral I>
-constexpr bool rl::are_collinear(const rl::cell_vector2<I>& point_a, const rl::cell_vector2<I>& point_b, const rl::cell_vector2<I>& point_c) noexcept
+template<rl::signed_integral I>
+constexpr bool rl::are_collinear(const rl::cell_vector2<I>& point_a,
+                                 const rl::cell_vector2<I>& point_b,
+                                 const rl::cell_vector2<I>& point_c) noexcept
 {
-    return
-        rl::orientation_determinant<I>(point_a, point_b, point_c) == 0;
+    return rl::orientation_determinant<I>(point_a, point_b, point_c) == 0;
 }
 
-template <rl::signed_integral I>
-constexpr bool rl::are_collinear(const rl::cell_segment2<I>& segment_a, const rl::cell_segment2<I>& segment_b) noexcept
+template<rl::signed_integral I>
+constexpr bool rl::are_collinear(const rl::cell_segment2<I>& segment_a,
+                                 const rl::cell_segment2<I>& segment_b) noexcept
 {
-    return
-        rl::are_collinear<I>(
-            segment_a,
-            rl::start<I>(segment_b)
-        ) &&
-        rl::are_collinear<I>(
-            segment_a,
-            rl::end<I>(segment_b)
-        );
+    return rl::are_collinear<I>(segment_a, rl::start<I>(segment_b)) &&
+           rl::are_collinear<I>(segment_a, rl::end<I>(segment_b));
 }
 
-template <rl::signed_integral I>
-constexpr bool rl::are_collinear(const rl::cell_segment2<I>& segment, const rl::cell_vector2<I>& point) noexcept
+template<rl::signed_integral I>
+constexpr bool rl::are_collinear(const rl::cell_segment2<I>& segment,
+                                 const rl::cell_vector2<I>& point) noexcept
 {
-    return
-        rl::are_collinear<I>(
-            point,
-            segment
-        );
+    return rl::are_collinear<I>(point, segment);
 }
 
-template <rl::signed_integral I>
-constexpr bool rl::are_collinear(const rl::cell_vector2<I>& point, const rl::cell_segment2<I>& segment) noexcept
+template<rl::signed_integral I>
+constexpr bool rl::are_collinear(const rl::cell_vector2<I>& point,
+                                 const rl::cell_segment2<I>& segment) noexcept
 {
-    return
-        rl::are_collinear<I>(
-            point,
-            rl::start<I>(segment),
-            rl::end<I>(segment)
-        );
+    return rl::are_collinear<I>(point, rl::start<I>(segment), rl::end<I>(segment));
 }

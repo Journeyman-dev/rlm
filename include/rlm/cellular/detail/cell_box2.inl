@@ -34,20 +34,13 @@ constexpr rl::cell_box2<I>::cell_box2(I x, I y, I width, I height) noexcept
 template<rl::signed_integral I>
 constexpr bool rl::cell_box2<I>::operator==(const rl::cell_box2<I>& that) const noexcept
 {
-    return
-        this->x == that.x &&
-        this->y == that.y &&
-        this->width == that.width &&
-        this->height == that.height;
+    return this->x == that.x && this->y == that.y && this->width == that.width &&
+           this->height == that.height;
 }
 
 template<rl::signed_integral I>
 constexpr bool rl::cell_box2<I>::operator!=(const rl::cell_box2<I>& that) const noexcept
 {
-    return
-        this->x != that.x ||
-        this->y != that.y ||
-        this->width != that.width ||
-        this->height != that.height;
+    return this->x != that.x || this->y != that.y || this->width != that.width ||
+           this->height != that.height;
 }
-

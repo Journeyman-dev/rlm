@@ -47,39 +47,23 @@ SCENARIO("Test if cell_segment2 are parallel")
         GIVEN("Four parallel cell_segment2")
         {
             const rl::cell_segment2 segment_b(1, 1, 0, 0);
-            const rl::cell_segment2 segment_c (15, 15, 89, 89);
+            const rl::cell_segment2 segment_c(15, 15, 89, 89);
             const rl::cell_segment2 segment_d(-245, -245, 55, 55);
             const rl::cell_segment2 segment_e(5, 5, 10, 10);
             THEN("The segments are parallel")
             {
-                CHECK(
-                    rl::are_parallel(
-                        segment,
-                        segment_b,
-                        segment_c,
-                        segment_d,
-                        segment_e
-                    )
-                );
+                CHECK(rl::are_parallel(segment, segment_b, segment_c, segment_d, segment_e));
             }
         }
         GIVEN("Three parallel and one non-parallel cell_segment2")
         {
             const rl::cell_segment2 segment_b(1, 1, 0, 0);
-            const rl::cell_segment2 segment_c (15, 15, 89, 89);
+            const rl::cell_segment2 segment_c(15, 15, 89, 89);
             const rl::cell_segment2 segment_d(-245, -245, 55, 55);
             const rl::cell_segment2 segment_e(5, 5, 10, 11);
             THEN("The segments are not parallel")
             {
-                CHECK_FALSE(
-                    rl::are_parallel(
-                        segment,
-                        segment_b,
-                        segment_c,
-                        segment_d,
-                        segment_e
-                    )
-                );
+                CHECK_FALSE(rl::are_parallel(segment, segment_b, segment_c, segment_d, segment_e));
             }
         }
     }

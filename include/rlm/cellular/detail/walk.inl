@@ -54,12 +54,7 @@ constexpr void rl::walk(const rl::cell_segment2<I>& segment, const rl::walk_pred
     for (I cell_i = 0; cell_i < rl::cell_length<I>(segment); cell_i++)
     {
         const F percent = static_cast<F>(cell_i) / static_cast<F>(rl::cell_length<I>(segment) - 1);
-        predicate(
-            rl::lerp<I, F>(
-                segment,
-                percent
-            )
-        );
+        predicate(rl::lerp<I, F>(segment, percent));
     }
 }
 
@@ -71,46 +66,29 @@ constexpr void rl::walk(const rl::cell_box2<I>& box, const rl::walk_predicate<I>
     {
         for (I cell_x = rl::left_x(fixed_box); cell_x <= rl::right_x(fixed_box); cell_x++)
         {
-            predicate(
-                rl::cell_vector2<I>(
-                    cell_x,
-                    cell_y
-                )
-            );
+            predicate(rl::cell_vector2<I>(cell_x, cell_y));
         }
     }
 }
 
 template<rl::signed_integral I, rl::floating_point F>
-constexpr void rl::walk(const rl::cell_circle2<I, F>& circle, const rl::walk_predicate<I>& predicate)
+constexpr void rl::walk(const rl::cell_circle2<I, F>& circle,
+                        const rl::walk_predicate<I>& predicate)
 {
     RLM_HANDLE_DEGENERACY(fixed_circle, circle);
     for (I offset_y = 1; offset_y <= rl::tile_radius(fixed_circle); offset_y++)
     {
-        const I offset_x = static_cast<I>(std::floor(std::sqrt(fixed_circle.radius * fixed_circle.radius - offset_y * offset_y)));
+        const I offset_x = static_cast<I>(
+            std::floor(std::sqrt(fixed_circle.radius * fixed_circle.radius - offset_y * offset_y)));
         for (I cell_x = fixed_circle.x - offset_x; cell_x <= fixed_circle.x + offset_x; cell_x++)
         {
-            predicate(
-                rl::cell_vector2<I>(
-                    cell_x,
-                    fixed_circle.y - offset_y
-                )
-            );
-            predicate(
-                rl::cell_vector2<I>(
-                    cell_x,
-                    fixed_circle.y + offset_y
-                )
-            );
+            predicate(rl::cell_vector2<I>(cell_x, fixed_circle.y - offset_y));
+            predicate(rl::cell_vector2<I>(cell_x, fixed_circle.y + offset_y));
         }
     }
-    for (I cell_x = rl::left_x<I, F>(fixed_circle); cell_x <= rl::right_x<I, F>(fixed_circle); cell_x++)
+    for (I cell_x = rl::left_x<I, F>(fixed_circle); cell_x <= rl::right_x<I, F>(fixed_circle);
+         cell_x++)
     {
-        predicate(
-            rl::cell_vector2<I>(
-                cell_x,
-                fixed_circle.y
-            )
-        );
+        predicate(rl::cell_vector2<I>(cell_x, fixed_circle.y));
     }
 }

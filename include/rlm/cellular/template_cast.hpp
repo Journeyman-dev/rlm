@@ -48,7 +48,8 @@ namespace rl
              rl::floating_point Fa,
              rl::signed_integral Ib,
              rl::floating_point Fb>
-    constexpr rl::cell_circle2<Ia, Fa> template_cast(const rl::cell_circle2<Ib, Fb>& circle) noexcept;
+    constexpr rl::cell_circle2<Ia, Fa>
+    template_cast(const rl::cell_circle2<Ib, Fb>& circle) noexcept;
 }    // namespace rl
 
 #include <rlm/cellular/detail/template_cast.inl>

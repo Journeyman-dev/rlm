@@ -27,13 +27,8 @@
 #include <rlm/cellular/cell_segment2.hpp>
 
 template<rl::signed_integral I>
-constexpr rl::cell_segment2<I> rl::cell_segment2_between(const rl::cell_vector2<I>& point_a, const rl::cell_vector2<I>& point_b)
+constexpr rl::cell_segment2<I> rl::cell_segment2_between(const rl::cell_vector2<I>& point_a,
+                                                         const rl::cell_vector2<I>& point_b)
 {
-    return
-        rl::cell_segment2<I>(
-            point_a.x,
-            point_a.y,
-            point_b.x,
-            point_b.y
-        );
+    return rl::cell_segment2<I>(point_a.x, point_a.y, point_b.x, point_b.y);
 }

@@ -37,15 +37,15 @@ namespace rl
 
     template<rl::signed_integral I = int>
     constexpr std::optional<rl::cell_vector2<I>> crop(const rl::cell_vector2<I>& point,
-                                              const rl::cell_box2<I>& crop_box) noexcept;
+                                                      const rl::cell_box2<I>& crop_box) noexcept;
 
     template<rl::signed_integral I = int>
     constexpr std::optional<rl::cell_segment2<I>> crop(const rl::cell_segment2<I>& segment,
-                                              const rl::cell_box2<I>& crop_box) noexcept;
+                                                       const rl::cell_box2<I>& crop_box) noexcept;
 
     template<rl::signed_integral I = int>
     constexpr std::optional<rl::cell_box2<I>> crop(const rl::cell_box2<I>& box,
-                                              const rl::cell_box2<I>& crop_box) noexcept;
+                                                   const rl::cell_box2<I>& crop_box) noexcept;
 }    // namespace rl
 
 #include <rlm/cellular/detail/crop.inl>

@@ -53,42 +53,18 @@ SCENARIO("The borders are gotten from a cell_box2 with trimmed corners")
         const rl::cell_box2 box(1, 2, 3, 4);
         WHEN("The left border is gotten from the box in clockwise direction")
         {
-            const auto clockwise_corner_o =
-                rl::left_border_trimmed(
-                    box,
-                    rl::BorderCorners::Clockwise,
-                    rl::RotationMotion::Clockwise
-                );
-            const auto counter_clockwise_corner_o =
-                rl::left_border_trimmed(
-                    box,
-                    rl::BorderCorners::CounterClockwise,
-                    rl::RotationMotion::Clockwise
-                );
-            const auto left_corner_o =
-                rl::left_border_trimmed(
-                    box,
-                    rl::BorderCorners::Left,
-                    rl::RotationMotion::Clockwise
-                );
-            const auto right_corner_o =
-                rl::left_border_trimmed(
-                    box,
-                    rl::BorderCorners::Right,
-                    rl::RotationMotion::Clockwise
-                );
+            const auto clockwise_corner_o = rl::left_border_trimmed(
+                box, rl::BorderCorners::Clockwise, rl::RotationMotion::Clockwise);
+            const auto counter_clockwise_corner_o = rl::left_border_trimmed(
+                box, rl::BorderCorners::CounterClockwise, rl::RotationMotion::Clockwise);
+            const auto left_corner_o = rl::left_border_trimmed(
+                box, rl::BorderCorners::Left, rl::RotationMotion::Clockwise);
+            const auto right_corner_o = rl::left_border_trimmed(
+                box, rl::BorderCorners::Right, rl::RotationMotion::Clockwise);
             const auto top_corner_o =
-                rl::left_border_trimmed(
-                    box,
-                    rl::BorderCorners::Top,
-                    rl::RotationMotion::Clockwise
-                );
+                rl::left_border_trimmed(box, rl::BorderCorners::Top, rl::RotationMotion::Clockwise);
             const auto bottom_corner_o =
-                rl::left_border_trimmed(
-                    box,
-                    rl::BorderCorners::Top,
-                    rl::RotationMotion::Clockwise
-                );
+                rl::left_border_trimmed(box, rl::BorderCorners::Top, rl::RotationMotion::Clockwise);
             THEN("The clockwise cornered border is correct")
             {
                 REQUIRE(clockwise_corner_o.has_value());
@@ -122,42 +98,18 @@ SCENARIO("The borders are gotten from a cell_box2 with trimmed corners")
         }
         WHEN("The left border is gotten from the box in counter clockwise direction")
         {
-            const auto clockwise_corner_o =
-                rl::left_border_trimmed(
-                    box,
-                    rl::BorderCorners::Clockwise,
-                    rl::RotationMotion::CounterClockwise
-                );
-            const auto counter_clockwise_corner_o =
-                rl::left_border_trimmed(
-                    box,
-                    rl::BorderCorners::CounterClockwise,
-                    rl::RotationMotion::CounterClockwise
-                );
-            const auto left_corner_o =
-                rl::left_border_trimmed(
-                    box,
-                    rl::BorderCorners::Left,
-                    rl::RotationMotion::CounterClockwise
-                );
-            const auto right_corner_o =
-                rl::left_border_trimmed(
-                    box,
-                    rl::BorderCorners::Right,
-                    rl::RotationMotion::CounterClockwise
-                );
-            const auto top_corner_o =
-                rl::left_border_trimmed(
-                    box,
-                    rl::BorderCorners::Top,
-                    rl::RotationMotion::CounterClockwise
-                );
-            const auto bottom_corner_o =
-                rl::left_border_trimmed(
-                    box,
-                    rl::BorderCorners::Top,
-                    rl::RotationMotion::CounterClockwise
-                );
+            const auto clockwise_corner_o = rl::left_border_trimmed(
+                box, rl::BorderCorners::Clockwise, rl::RotationMotion::CounterClockwise);
+            const auto counter_clockwise_corner_o = rl::left_border_trimmed(
+                box, rl::BorderCorners::CounterClockwise, rl::RotationMotion::CounterClockwise);
+            const auto left_corner_o = rl::left_border_trimmed(
+                box, rl::BorderCorners::Left, rl::RotationMotion::CounterClockwise);
+            const auto right_corner_o = rl::left_border_trimmed(
+                box, rl::BorderCorners::Right, rl::RotationMotion::CounterClockwise);
+            const auto top_corner_o = rl::left_border_trimmed(
+                box, rl::BorderCorners::Top, rl::RotationMotion::CounterClockwise);
+            const auto bottom_corner_o = rl::left_border_trimmed(
+                box, rl::BorderCorners::Top, rl::RotationMotion::CounterClockwise);
             THEN("The clockwise cornered border is correct")
             {
                 REQUIRE(clockwise_corner_o.has_value());
@@ -191,42 +143,18 @@ SCENARIO("The borders are gotten from a cell_box2 with trimmed corners")
         }
         WHEN("The right border is gotten from the box in clockwise direction")
         {
-            const auto clockwise_corner_o =
-                rl::right_border_trimmed(
-                    box,
-                    rl::BorderCorners::Clockwise,
-                    rl::RotationMotion::Clockwise
-                );
-            const auto counter_clockwise_corner_o =
-                rl::right_border_trimmed(
-                    box,
-                    rl::BorderCorners::CounterClockwise,
-                    rl::RotationMotion::Clockwise
-                );
-            const auto left_corner_o =
-                rl::right_border_trimmed(
-                    box,
-                    rl::BorderCorners::Left,
-                    rl::RotationMotion::Clockwise
-                );
-            const auto right_corner_o =
-                rl::right_border_trimmed(
-                    box,
-                    rl::BorderCorners::Right,
-                    rl::RotationMotion::Clockwise
-                );
-            const auto top_corner_o =
-                rl::right_border_trimmed(
-                    box,
-                    rl::BorderCorners::Top,
-                    rl::RotationMotion::Clockwise
-                );
-            const auto bottom_corner_o =
-                rl::right_border_trimmed(
-                    box,
-                    rl::BorderCorners::Top,
-                    rl::RotationMotion::Clockwise
-                );
+            const auto clockwise_corner_o = rl::right_border_trimmed(
+                box, rl::BorderCorners::Clockwise, rl::RotationMotion::Clockwise);
+            const auto counter_clockwise_corner_o = rl::right_border_trimmed(
+                box, rl::BorderCorners::CounterClockwise, rl::RotationMotion::Clockwise);
+            const auto left_corner_o = rl::right_border_trimmed(
+                box, rl::BorderCorners::Left, rl::RotationMotion::Clockwise);
+            const auto right_corner_o = rl::right_border_trimmed(
+                box, rl::BorderCorners::Right, rl::RotationMotion::Clockwise);
+            const auto top_corner_o = rl::right_border_trimmed(
+                box, rl::BorderCorners::Top, rl::RotationMotion::Clockwise);
+            const auto bottom_corner_o = rl::right_border_trimmed(
+                box, rl::BorderCorners::Top, rl::RotationMotion::Clockwise);
             THEN("The clockwise cornered border is correct")
             {
                 REQUIRE(clockwise_corner_o.has_value());
@@ -260,42 +188,18 @@ SCENARIO("The borders are gotten from a cell_box2 with trimmed corners")
         }
         WHEN("The right border is gotten from the box in counter clockwise direction")
         {
-            const auto clockwise_corner_o =
-                rl::right_border_trimmed(
-                    box,
-                    rl::BorderCorners::Clockwise,
-                    rl::RotationMotion::CounterClockwise
-                );
-            const auto counter_clockwise_corner_o =
-                rl::right_border_trimmed(
-                    box,
-                    rl::BorderCorners::CounterClockwise,
-                    rl::RotationMotion::CounterClockwise
-                );
-            const auto left_corner_o =
-                rl::right_border_trimmed(
-                    box,
-                    rl::BorderCorners::Left,
-                    rl::RotationMotion::CounterClockwise
-                );
-            const auto right_corner_o =
-                rl::right_border_trimmed(
-                    box,
-                    rl::BorderCorners::Right,
-                    rl::RotationMotion::CounterClockwise
-                );
-            const auto top_corner_o =
-                rl::right_border_trimmed(
-                    box,
-                    rl::BorderCorners::Top,
-                    rl::RotationMotion::CounterClockwise
-                );
-            const auto bottom_corner_o =
-                rl::right_border_trimmed(
-                    box,
-                    rl::BorderCorners::Top,
-                    rl::RotationMotion::CounterClockwise
-                );
+            const auto clockwise_corner_o = rl::right_border_trimmed(
+                box, rl::BorderCorners::Clockwise, rl::RotationMotion::CounterClockwise);
+            const auto counter_clockwise_corner_o = rl::right_border_trimmed(
+                box, rl::BorderCorners::CounterClockwise, rl::RotationMotion::CounterClockwise);
+            const auto left_corner_o = rl::right_border_trimmed(
+                box, rl::BorderCorners::Left, rl::RotationMotion::CounterClockwise);
+            const auto right_corner_o = rl::right_border_trimmed(
+                box, rl::BorderCorners::Right, rl::RotationMotion::CounterClockwise);
+            const auto top_corner_o = rl::right_border_trimmed(
+                box, rl::BorderCorners::Top, rl::RotationMotion::CounterClockwise);
+            const auto bottom_corner_o = rl::right_border_trimmed(
+                box, rl::BorderCorners::Top, rl::RotationMotion::CounterClockwise);
             THEN("The clockwise cornered border is correct")
             {
                 REQUIRE(clockwise_corner_o.has_value());
@@ -329,42 +233,18 @@ SCENARIO("The borders are gotten from a cell_box2 with trimmed corners")
         }
         WHEN("The top border is gotten from the box in clockwise direction")
         {
-            const auto clockwise_corner_o =
-                rl::top_border_trimmed(
-                    box,
-                    rl::BorderCorners::Clockwise,
-                    rl::RotationMotion::Clockwise
-                );
-            const auto counter_clockwise_corner_o =
-                rl::top_border_trimmed(
-                    box,
-                    rl::BorderCorners::CounterClockwise,
-                    rl::RotationMotion::Clockwise
-                );
+            const auto clockwise_corner_o = rl::top_border_trimmed(
+                box, rl::BorderCorners::Clockwise, rl::RotationMotion::Clockwise);
+            const auto counter_clockwise_corner_o = rl::top_border_trimmed(
+                box, rl::BorderCorners::CounterClockwise, rl::RotationMotion::Clockwise);
             const auto left_corner_o =
-                rl::top_border_trimmed(
-                    box,
-                    rl::BorderCorners::Left,
-                    rl::RotationMotion::Clockwise
-                );
-            const auto right_corner_o =
-                rl::top_border_trimmed(
-                    box,
-                    rl::BorderCorners::Right,
-                    rl::RotationMotion::Clockwise
-                );
+                rl::top_border_trimmed(box, rl::BorderCorners::Left, rl::RotationMotion::Clockwise);
+            const auto right_corner_o = rl::top_border_trimmed(
+                box, rl::BorderCorners::Right, rl::RotationMotion::Clockwise);
             const auto top_corner_o =
-                rl::top_border_trimmed(
-                    box,
-                    rl::BorderCorners::Top,
-                    rl::RotationMotion::Clockwise
-                );
+                rl::top_border_trimmed(box, rl::BorderCorners::Top, rl::RotationMotion::Clockwise);
             const auto bottom_corner_o =
-                rl::top_border_trimmed(
-                    box,
-                    rl::BorderCorners::Top,
-                    rl::RotationMotion::Clockwise
-                );
+                rl::top_border_trimmed(box, rl::BorderCorners::Top, rl::RotationMotion::Clockwise);
             THEN("The clockwise cornered border is correct")
             {
                 REQUIRE(clockwise_corner_o.has_value());
@@ -398,42 +278,18 @@ SCENARIO("The borders are gotten from a cell_box2 with trimmed corners")
         }
         WHEN("The top border is gotten from the box in counter clockwise direction")
         {
-            const auto clockwise_corner_o =
-                rl::top_border_trimmed(
-                    box,
-                    rl::BorderCorners::Clockwise,
-                    rl::RotationMotion::CounterClockwise
-                );
-            const auto counter_clockwise_corner_o =
-                rl::top_border_trimmed(
-                    box,
-                    rl::BorderCorners::CounterClockwise,
-                    rl::RotationMotion::CounterClockwise
-                );
-            const auto left_corner_o =
-                rl::top_border_trimmed(
-                    box,
-                    rl::BorderCorners::Left,
-                    rl::RotationMotion::CounterClockwise
-                );
-            const auto right_corner_o =
-                rl::top_border_trimmed(
-                    box,
-                    rl::BorderCorners::Right,
-                    rl::RotationMotion::CounterClockwise
-                );
-            const auto top_corner_o =
-                rl::top_border_trimmed(
-                    box,
-                    rl::BorderCorners::Top,
-                    rl::RotationMotion::CounterClockwise
-                );
-            const auto bottom_corner_o =
-                rl::top_border_trimmed(
-                    box,
-                    rl::BorderCorners::Top,
-                    rl::RotationMotion::CounterClockwise
-                );
+            const auto clockwise_corner_o = rl::top_border_trimmed(
+                box, rl::BorderCorners::Clockwise, rl::RotationMotion::CounterClockwise);
+            const auto counter_clockwise_corner_o = rl::top_border_trimmed(
+                box, rl::BorderCorners::CounterClockwise, rl::RotationMotion::CounterClockwise);
+            const auto left_corner_o = rl::top_border_trimmed(
+                box, rl::BorderCorners::Left, rl::RotationMotion::CounterClockwise);
+            const auto right_corner_o = rl::top_border_trimmed(
+                box, rl::BorderCorners::Right, rl::RotationMotion::CounterClockwise);
+            const auto top_corner_o = rl::top_border_trimmed(
+                box, rl::BorderCorners::Top, rl::RotationMotion::CounterClockwise);
+            const auto bottom_corner_o = rl::top_border_trimmed(
+                box, rl::BorderCorners::Top, rl::RotationMotion::CounterClockwise);
             THEN("The clockwise cornered border is correct")
             {
                 REQUIRE(clockwise_corner_o.has_value());
@@ -442,7 +298,7 @@ SCENARIO("The borders are gotten from a cell_box2 with trimmed corners")
             THEN("The counter clockwise cornered border is correct")
             {
                 REQUIRE(counter_clockwise_corner_o.has_value());
-                CHECK(counter_clockwise_corner_o.value() == rl::cell_segment2(2, 2, 1 ,2));
+                CHECK(counter_clockwise_corner_o.value() == rl::cell_segment2(2, 2, 1, 2));
             }
             THEN("The left cornered border is correct")
             {
@@ -467,42 +323,18 @@ SCENARIO("The borders are gotten from a cell_box2 with trimmed corners")
         }
         WHEN("The bottom border is gotten from the box in clockwise direction")
         {
-            const auto clockwise_corner_o =
-                rl::bottom_border_trimmed(
-                    box,
-                    rl::BorderCorners::Clockwise,
-                    rl::RotationMotion::Clockwise
-                );
-            const auto counter_clockwise_corner_o =
-                rl::bottom_border_trimmed(
-                    box,
-                    rl::BorderCorners::CounterClockwise,
-                    rl::RotationMotion::Clockwise
-                );
-            const auto left_corner_o =
-                rl::bottom_border_trimmed(
-                    box,
-                    rl::BorderCorners::Left,
-                    rl::RotationMotion::Clockwise
-                );
-            const auto right_corner_o =
-                rl::bottom_border_trimmed(
-                    box,
-                    rl::BorderCorners::Right,
-                    rl::RotationMotion::Clockwise
-                );
-            const auto top_corner_o =
-                rl::bottom_border_trimmed(
-                    box,
-                    rl::BorderCorners::Top,
-                    rl::RotationMotion::Clockwise
-                );
-            const auto bottom_corner_o =
-                rl::bottom_border_trimmed(
-                    box,
-                    rl::BorderCorners::Top,
-                    rl::RotationMotion::Clockwise
-                );
+            const auto clockwise_corner_o = rl::bottom_border_trimmed(
+                box, rl::BorderCorners::Clockwise, rl::RotationMotion::Clockwise);
+            const auto counter_clockwise_corner_o = rl::bottom_border_trimmed(
+                box, rl::BorderCorners::CounterClockwise, rl::RotationMotion::Clockwise);
+            const auto left_corner_o = rl::bottom_border_trimmed(
+                box, rl::BorderCorners::Left, rl::RotationMotion::Clockwise);
+            const auto right_corner_o = rl::bottom_border_trimmed(
+                box, rl::BorderCorners::Right, rl::RotationMotion::Clockwise);
+            const auto top_corner_o = rl::bottom_border_trimmed(
+                box, rl::BorderCorners::Top, rl::RotationMotion::Clockwise);
+            const auto bottom_corner_o = rl::bottom_border_trimmed(
+                box, rl::BorderCorners::Top, rl::RotationMotion::Clockwise);
             THEN("The clockwise cornered border is correct")
             {
                 REQUIRE(clockwise_corner_o.has_value());
@@ -536,42 +368,18 @@ SCENARIO("The borders are gotten from a cell_box2 with trimmed corners")
         }
         WHEN("The bottom border is gotten from the box in counter clockwise direction")
         {
-            const auto clockwise_corner_o =
-                rl::bottom_border_trimmed(
-                    box,
-                    rl::BorderCorners::Clockwise,
-                    rl::RotationMotion::CounterClockwise
-                );
-            const auto counter_clockwise_corner_o =
-                rl::bottom_border_trimmed(
-                    box,
-                    rl::BorderCorners::CounterClockwise,
-                    rl::RotationMotion::CounterClockwise
-                );
-            const auto left_corner_o =
-                rl::bottom_border_trimmed(
-                    box,
-                    rl::BorderCorners::Left,
-                    rl::RotationMotion::CounterClockwise
-                );
-            const auto right_corner_o =
-                rl::bottom_border_trimmed(
-                    box,
-                    rl::BorderCorners::Right,
-                    rl::RotationMotion::CounterClockwise
-                );
-            const auto top_corner_o =
-                rl::bottom_border_trimmed(
-                    box,
-                    rl::BorderCorners::Top,
-                    rl::RotationMotion::CounterClockwise
-                );
-            const auto bottom_corner_o =
-                rl::bottom_border_trimmed(
-                    box,
-                    rl::BorderCorners::Top,
-                    rl::RotationMotion::CounterClockwise
-                );
+            const auto clockwise_corner_o = rl::bottom_border_trimmed(
+                box, rl::BorderCorners::Clockwise, rl::RotationMotion::CounterClockwise);
+            const auto counter_clockwise_corner_o = rl::bottom_border_trimmed(
+                box, rl::BorderCorners::CounterClockwise, rl::RotationMotion::CounterClockwise);
+            const auto left_corner_o = rl::bottom_border_trimmed(
+                box, rl::BorderCorners::Left, rl::RotationMotion::CounterClockwise);
+            const auto right_corner_o = rl::bottom_border_trimmed(
+                box, rl::BorderCorners::Right, rl::RotationMotion::CounterClockwise);
+            const auto top_corner_o = rl::bottom_border_trimmed(
+                box, rl::BorderCorners::Top, rl::RotationMotion::CounterClockwise);
+            const auto bottom_corner_o = rl::bottom_border_trimmed(
+                box, rl::BorderCorners::Top, rl::RotationMotion::CounterClockwise);
             THEN("The clockwise cornered border is correct")
             {
                 REQUIRE(clockwise_corner_o.has_value());

@@ -31,4 +31,3 @@ constexpr rl::vector3<F>::vector3(F x, F y, F z) noexcept
     , z(z)
 {
 }
-

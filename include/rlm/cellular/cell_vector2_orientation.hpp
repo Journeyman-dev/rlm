@@ -36,9 +36,10 @@ namespace rl
                                         const rl::cell_vector2<I>& point_c) noexcept;
 
     template<rl::signed_integral I = int>
-    constexpr rl::PositionOrientation position_orientation(const rl::cell_vector2<I>& point_a,
-                                                           const rl::cell_vector2<I>& point_b,
-                                                           const rl::cell_vector2<I>& point_c) noexcept;
+    constexpr rl::PositionOrientation
+    position_orientation(const rl::cell_vector2<I>& point_a,
+                         const rl::cell_vector2<I>& point_b,
+                         const rl::cell_vector2<I>& point_c) noexcept;
 }    // namespace rl
 
 #include <rlm/cellular/detail/cell_vector2_orientation.inl>

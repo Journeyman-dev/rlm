@@ -32,7 +32,8 @@ SCENARIO("The orientation is gotten from three cell_vector2")
         const rl::cell_vector2 point_c(3, 0);
         WHEN("The orientation determinant is gotten from the three cell_vector2")
         {
-            const auto orientation_determinant = rl::orientation_determinant(point_a, point_b, point_c);
+            const auto orientation_determinant =
+                rl::orientation_determinant(point_a, point_b, point_c);
             THEN("The value is correct")
             {
                 CHECK(orientation_determinant == 0);
@@ -54,7 +55,8 @@ SCENARIO("The orientation is gotten from three cell_vector2")
         const rl::cell_vector2 point_c(-1, -1);
         WHEN("The orientation determinant is gotten from the three cell_vector2")
         {
-            const auto orientation_determinant = rl::orientation_determinant(point_a, point_b, point_c);
+            const auto orientation_determinant =
+                rl::orientation_determinant(point_a, point_b, point_c);
             THEN("The value is in the correct range")
             {
                 CHECK(orientation_determinant > 0);
@@ -76,7 +78,8 @@ SCENARIO("The orientation is gotten from three cell_vector2")
         const rl::cell_vector2 point_c(1, -1);
         WHEN("The orientation determinant is gotten from the three cell_vector2")
         {
-            const auto orientation_determinant = rl::orientation_determinant(point_a, point_b, point_c);
+            const auto orientation_determinant =
+                rl::orientation_determinant(point_a, point_b, point_c);
             THEN("The value is in the correct range")
             {
                 CHECK(orientation_determinant < 0);
@@ -92,4 +95,3 @@ SCENARIO("The orientation is gotten from three cell_vector2")
         }
     }
 }
-

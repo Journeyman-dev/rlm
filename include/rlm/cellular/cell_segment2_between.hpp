@@ -33,7 +33,7 @@ namespace rl
 
     template<rl::signed_integral I = int>
     constexpr rl::cell_segment2<I> cell_segment2_between(const rl::cell_vector2<I>& point_a,
-                                               const rl::cell_vector2<I>& point_b);
+                                                         const rl::cell_vector2<I>& point_b);
 }    // namespace rl
 
 #include <rlm/cellular/detail/cell_segment2_between.inl>

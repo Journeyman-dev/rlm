@@ -32,7 +32,8 @@ namespace rl
     struct cell_segment2;
 
     template<rl::signed_integral I = int, rl::floating_point F = float>
-    constexpr rl::cell_vector2<I> lerp(const rl::cell_vector2<I>& a, const rl::cell_vector2<I>& b, F t) noexcept;
+    constexpr rl::cell_vector2<I>
+    lerp(const rl::cell_vector2<I>& a, const rl::cell_vector2<I>& b, F t) noexcept;
 
     template<rl::signed_integral I = int, rl::floating_point F = float>
     constexpr rl::cell_vector2<I> lerp(const rl::cell_segment2<I>& segment, F t) noexcept;

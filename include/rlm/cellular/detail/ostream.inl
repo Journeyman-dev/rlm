@@ -42,7 +42,7 @@ namespace rl
     constexpr std::ostream& operator<<(std::ostream& os, const rl::cell_segment2<I>& segment)
     {
         os << "(" << segment.start_x << ", " << segment.start_y << ", " << segment.end_x << ", "
-            << segment.end_y << ")";
+           << segment.end_y << ")";
         return os;
     }
 
@@ -59,4 +59,4 @@ namespace rl
         os << "(" << circle.x << ", " << circle.y << ", " << circle.radius << ")";
         return os;
     }
-}
+}    // namespace rl

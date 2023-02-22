@@ -66,23 +66,11 @@ constexpr rl::cell_segment2<I> rl::fix_degeneracy(const rl::cell_segment2<I>& se
 template<rl::signed_integral I>
 constexpr rl::cell_box2<I> rl::fix_degeneracy(const rl::cell_box2<I>& box) noexcept
 {
-    return
-        rl::cell_box2(
-            box.x,
-            box.y,
-            rl::max(box.width, 1),
-            rl::max(box.height, 1)
-        );
+    return rl::cell_box2(box.x, box.y, rl::max(box.width, 1), rl::max(box.height, 1));
 }
 
 template<rl::signed_integral I, rl::floating_point F>
 constexpr rl::cell_circle2<I, F> rl::fix_degeneracy(const rl::cell_circle2<I, F>& circle) noexcept
 {
-    return
-        rl::cell_circle2<I, F>(
-            circle.x,
-            circle.y,
-            rl::max(circle.radius, 0.5f)
-        );
+    return rl::cell_circle2<I, F>(circle.x, circle.y, rl::max(circle.radius, 0.5f));
 }
-

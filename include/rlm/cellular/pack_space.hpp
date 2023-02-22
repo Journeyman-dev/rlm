@@ -36,6 +36,6 @@ namespace rl
         constexpr pack_space() noexcept = default;
         constexpr pack_space(I x, I y, I width, I height, I page) noexcept;
     };
-}
+}    // namespace rl
 
 #include <rlm/cellular/detail/pack_space.inl>

@@ -26,39 +26,26 @@
 #include <rlm/position_orientation.hpp>
 #include <rlm/cellular/cell_vector2.hpp>
 
-template <rl::signed_integral I>
-constexpr I rl::orientation_determinant(
-    const rl::cell_vector2<I>& point_a,
-    const rl::cell_vector2<I>& point_b,
-    const rl::cell_vector2<I>& point_c
-) noexcept
+template<rl::signed_integral I>
+constexpr I rl::orientation_determinant(const rl::cell_vector2<I>& point_a,
+                                        const rl::cell_vector2<I>& point_b,
+                                        const rl::cell_vector2<I>& point_c) noexcept
 {
-    return
-        (point_b.y - point_a.y) *
-        (point_c.x - point_b.x) -
-        (point_b.x - point_a.x) *
-        (point_c.y - point_b.y);
+    return (point_b.y - point_a.y) * (point_c.x - point_b.x) -
+           (point_b.x - point_a.x) * (point_c.y - point_b.y);
 }
 
-template <rl::signed_integral I>
-constexpr rl::PositionOrientation rl::position_orientation(
-    const rl::cell_vector2<I>& point_a,
-    const rl::cell_vector2<I>& point_b,
-    const rl::cell_vector2<I>& point_c
-) noexcept
+template<rl::signed_integral I>
+constexpr rl::PositionOrientation
+rl::position_orientation(const rl::cell_vector2<I>& point_a,
+                         const rl::cell_vector2<I>& point_b,
+                         const rl::cell_vector2<I>& point_c) noexcept
 {
     const auto determinant = rl::orientation_determinant(point_a, point_b, point_c);
-    if (determinant == 0)
-    {
-        return rl::PositionOrientation::Collinear;
-    }
-    else if (determinant > 0)
-    {
-        return rl::PositionOrientation::Clockwise;
-    }
-    else  // if (determinant < 0)
+    if (determinant == 0) { return rl::PositionOrientation::Collinear; }
+    else if (determinant > 0) { return rl::PositionOrientation::Clockwise; }
+    else    // if (determinant < 0)
     {
         return rl::PositionOrientation::CounterClockwise;
     }
 }
-

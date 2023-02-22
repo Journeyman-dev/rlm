@@ -32,4 +32,3 @@ constexpr rl::vector4<F>::vector4(F x, F y, F z, F w) noexcept
     , w(w)
 {
 }
-

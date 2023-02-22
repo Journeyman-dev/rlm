@@ -110,8 +110,8 @@ namespace rl
              rl::cellular_shape<I, F> Sb,
              rl::cellular_shape<I, F>... Ss>
     constexpr rl::cell_box2<I> does_contain(const Sa& containing_shape,
-                                       const Sb& contained_shape_a,
-                                       const Ss&... contained_shape_n) noexcept;
+                                            const Sb& contained_shape_a,
+                                            const Ss&... contained_shape_n) noexcept;
 }    // namespace rl
 
 #include <rlm/cellular/detail/does_contain.inl>

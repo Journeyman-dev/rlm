@@ -45,7 +45,8 @@ namespace rl
                                  const rl::cell_segment2<I>& segment) noexcept;
 
     template<rl::signed_integral I = int, rl::floating_point F = float>
-    constexpr F distance_between(const rl::cell_vector2<I>& point, const rl::cell_box2<I>& box) noexcept;
+    constexpr F distance_between(const rl::cell_vector2<I>& point,
+                                 const rl::cell_box2<I>& box) noexcept;
 
     template<rl::signed_integral I = int, rl::floating_point F = float>
     constexpr F distance_between(const rl::cell_vector2<I>& point,
@@ -61,7 +62,8 @@ namespace rl
                                  const rl::cell_segment2<I>& segment_b) noexcept;
 
     template<rl::signed_integral I = int, rl::floating_point F = float>
-    constexpr F distance_between(const rl::cell_segment2<I>& segment, const rl::cell_box2<I>& box) noexcept;
+    constexpr F distance_between(const rl::cell_segment2<I>& segment,
+                                 const rl::cell_box2<I>& box) noexcept;
 
     template<rl::signed_integral I = int, rl::floating_point F = float>
     constexpr F distance_between(const rl::cell_segment2<I>& segment,
@@ -69,16 +71,20 @@ namespace rl
 
     // cell_box2
     template<rl::signed_integral I = int, rl::floating_point F = float>
-    constexpr F distance_between(const rl::cell_box2<I>& box, const rl::cell_vector2<I>& point) noexcept;
+    constexpr F distance_between(const rl::cell_box2<I>& box,
+                                 const rl::cell_vector2<I>& point) noexcept;
 
     template<rl::signed_integral I = int, rl::floating_point F = float>
-    constexpr F distance_between(const rl::cell_box2<I>& box, const rl::cell_segment2<I>& segment) noexcept;
+    constexpr F distance_between(const rl::cell_box2<I>& box,
+                                 const rl::cell_segment2<I>& segment) noexcept;
 
     template<rl::signed_integral I = int, rl::floating_point F = float>
-    constexpr F distance_between(const rl::cell_box2<I>& box_a, const rl::cell_box2<I>& box_b) noexcept;
+    constexpr F distance_between(const rl::cell_box2<I>& box_a,
+                                 const rl::cell_box2<I>& box_b) noexcept;
 
     template<rl::signed_integral I = int, rl::floating_point F = float>
-    constexpr F distance_between(const rl::cell_box2<I>& box, const rl::cell_circle2<I, F>& circle) noexcept;
+    constexpr F distance_between(const rl::cell_box2<I>& box,
+                                 const rl::cell_circle2<I, F>& circle) noexcept;
 
     // cell_circle2
     template<rl::signed_integral I = int, rl::floating_point F = float>
@@ -90,7 +96,8 @@ namespace rl
                                  const rl::cell_segment2<I>& segment) noexcept;
 
     template<rl::signed_integral I = int, rl::floating_point F = float>
-    constexpr F distance_between(const rl::cell_circle2<I, F>& circle, const rl::cell_box2<I>& box) noexcept;
+    constexpr F distance_between(const rl::cell_circle2<I, F>& circle,
+                                 const rl::cell_box2<I>& box) noexcept;
 
     template<rl::signed_integral I = int, rl::floating_point F = float>
     constexpr F distance_between(const rl::cell_circle2<I, F>& circle_a,
