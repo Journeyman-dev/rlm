@@ -31,13 +31,13 @@
 #include <cassert>
 
 template<rl::signed_integral I>
-rl::Packer<I>::Packer(I max_bin_width, I max_bin_height)
+constexpr rl::Packer<I>::Packer(I max_bin_width, I max_bin_height)
 {
     this->Initialize(max_bin_width, max_bin_height);
 }
 
 template<rl::signed_integral I>
-void rl::Packer<I>::Initialize(I max_bin_width, I max_bin_height)
+constexpr void rl::Packer<I>::Initialize(I max_bin_width, I max_bin_height)
 {
     if (
         max_bin_width <= 0 ||
@@ -57,19 +57,19 @@ void rl::Packer<I>::Initialize(I max_bin_width, I max_bin_height)
 }
 
 template<rl::signed_integral I>
-bool rl::Packer<I>::GetIsInitialized() const noexcept
+constexpr bool rl::Packer<I>::GetIsInitialized() const noexcept
 {
     return this->max_bin_width > 0;
 }
 
 template<rl::signed_integral I>
-bool rl::Packer<I>::GetIsEmpty() const noexcept
+constexpr bool rl::Packer<I>::GetIsEmpty() const noexcept
 {
     return this->width == 0; 
 }
 
 template<rl::signed_integral I>
-void rl::Packer<I>::ReserveSpaces(std::size_t box_count)
+constexpr void rl::Packer<I>::ReserveSpaces(std::size_t box_count)
 {
     const auto highest_new_space_count = box_count * 2;
     const auto new_space_capacity = this->spaces.size() + highest_new_space_count;
@@ -78,62 +78,61 @@ void rl::Packer<I>::ReserveSpaces(std::size_t box_count)
 
 
 template<rl::signed_integral I>
-void rl::Packer<I>::TrimToFitSpaces()
+constexpr void rl::Packer<I>::TrimToFitSpaces()
 {
     this->spaces.trim_to_fit();
 }
 
 template<rl::signed_integral I>
-const std::vector<rl::pack_space<I>>& rl::Packer<I>::GetSpaces() const noexcept
+constexpr const std::vector<rl::pack_space<I>>& rl::Packer<I>::GetSpaces() const noexcept
 {
     return this->spaces;
 }
 
 template<rl::signed_integral I>
-I rl::Packer<I>::GetPageCount() const noexcept
+constexpr I rl::Packer<I>::GetPageCount() const noexcept
 {
     return this->top_page_i + 1;
 }
 
 template<rl::signed_integral I>
-I rl::Packer<I>::GetWidth() const noexcept
+constexpr I rl::Packer<I>::GetWidth() const noexcept
 {
     return this->width;
 }
 
 template<rl::signed_integral I>
-I rl::Packer<I>::GetHeight() const noexcept
+constexpr I rl::Packer<I>::GetHeight() const noexcept
 {
     return this->height;
 }
 
 template<rl::signed_integral I>
-I rl::Packer<I>::GetMaxPageWidth() const noexcept
+constexpr I rl::Packer<I>::GetMaxPageWidth() const noexcept
 {
     return this->max_bin_width;
 }
 
 template<rl::signed_integral I>
-I rl::Packer<I>::GetMaxPageHeight() const noexcept
+constexpr I rl::Packer<I>::GetMaxPageHeight() const noexcept
 {
     return this->max_bin_height;
 }
 
 template<rl::signed_integral I>
-I rl::Packer<I>::GetTopPageWidth() const noexcept
+constexpr I rl::Packer<I>::GetTopPageWidth() const noexcept
 {
     return this->top_page_width;
 }
 
 template<rl::signed_integral I>
-I rl::Packer<I>::GetTopPageHeight() const noexcept
+constexpr I rl::Packer<I>::GetTopPageHeight() const noexcept
 {
     return this->top_page_height;
 }
 
 template<rl::signed_integral I>
-template<typename ID>
-bool rl::Packer<I>::tryPlaceSpace(rl::pack_box<I, ID>& box)
+constexpr bool rl::Packer<I>::tryPlaceSpace(rl::pack_box<I>& box)
 {
     for (std::size_t space_i = 0; space_i < this->spaces.size(); space_i++)
     {
@@ -211,8 +210,7 @@ bool rl::Packer<I>::tryPlaceSpace(rl::pack_box<I, ID>& box)
 }
 
 template<rl::signed_integral I>
-template<typename ID>
-bool rl::Packer<I>::tryPlaceExpandBin(rl::pack_box<I, ID>& box)
+constexpr bool rl::Packer<I>::tryPlaceExpandBin(rl::pack_box<I>& box)
 {
     auto place_box_right = [&]()
     {
@@ -288,7 +286,7 @@ bool rl::Packer<I>::tryPlaceExpandBin(rl::pack_box<I, ID>& box)
 }
 
 template<rl::signed_integral I>
-void rl::Packer<I>::createSpacesFromLeftoverPage()
+constexpr void rl::Packer<I>::createSpacesFromLeftoverPage()
 {
     if (this->top_bin_width < this->max_width)
     {
@@ -313,8 +311,7 @@ void rl::Packer<I>::createSpacesFromLeftoverPage()
 }
 
 template<rl::signed_integral I>
-template<typename ID>
-void rl::Packer<I>::placeNewPage(rl::pack_box<I, ID>& box)
+constexpr void rl::Packer<I>::placeNewPage(rl::pack_box<I>& box)
 {
     if (!this->GetIsEmpty())
     {
@@ -340,8 +337,7 @@ void rl::Packer<I>::placeNewPage(rl::pack_box<I, ID>& box)
 }
 
 template<rl::signed_integral I>
-template<typename ID>
-void rl::Packer<I>::Pack(std::span<rl::pack_box<I, ID>>& boxes)
+constexpr void rl::Packer<I>::Pack(const std::span<rl::pack_box<I>> boxes)
 {
     if (!this->GetIsInitialized())
     {

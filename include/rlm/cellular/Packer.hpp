@@ -53,34 +53,30 @@ namespace rl
             I top_page_height = 0;
 
         private:
-            void reserveSpaces(std::size_t box_count);
-            template<typename ID>
-            bool tryPlaceSpace(rl::pack_box<I, ID>& box);
-            template<typename ID>
-            bool tryPlaceExpandBin(rl::pack_box<I, ID>& box);
-            void createSpacesFromLeftoverPage();
-            template<typename ID>
-            void placeNewPage(rl::pack_box<I, ID>& box);
+            constexpr void reserveSpaces(std::size_t box_count);
+            constexpr bool tryPlaceSpace(rl::pack_box<I>& box);
+            constexpr bool tryPlaceExpandBin(rl::pack_box<I>& box);
+            constexpr void createSpacesFromLeftoverPage();
+            constexpr void placeNewPage(rl::pack_box<I>& box);
 
         public:
             constexpr Packer() noexcept = default;
-            Packer(I max_bin_width, I max_bin_height);
+            constexpr Packer(I max_bin_width, I max_bin_height);
 
-            void Initialize(I max_bin_width, I max_bin_height);
-            bool GetIsInitialized() const noexcept;
-            bool GetIsEmpty() const noexcept;
-            void ReserveSpaces(std::size_t box_count);
-            void TrimToFitSpaces();
-            const std::vector<rl::pack_space<I>>& GetSpaces() const noexcept;
-            I GetPageCount() const noexcept;
-            I GetWidth() const noexcept;
-            I GetHeight() const noexcept;
-            I GetMaxPageWidth() const noexcept;
-            I GetMaxPageHeight() const noexcept;
-            I GetTopPageWidth() const noexcept;
-            I GetTopPageHeight() const noexcept;
-            template<typename ID>
-            void Pack(std::span<rl::pack_box<I, ID>>& boxes);
+            constexpr void Initialize(I max_bin_width, I max_bin_height);
+            constexpr bool GetIsInitialized() const noexcept;
+            constexpr bool GetIsEmpty() const noexcept;
+            constexpr void ReserveSpaces(std::size_t box_count);
+            constexpr void TrimToFitSpaces();
+            constexpr const std::vector<rl::pack_space<I>>& GetSpaces() const noexcept;
+            constexpr I GetPageCount() const noexcept;
+            constexpr I GetWidth() const noexcept;
+            constexpr I GetHeight() const noexcept;
+            constexpr I GetMaxPageWidth() const noexcept;
+            constexpr I GetMaxPageHeight() const noexcept;
+            constexpr I GetTopPageWidth() const noexcept;
+            constexpr I GetTopPageHeight() const noexcept;
+            constexpr void Pack(const std::span<rl::pack_box<I>> boxes);
     };
 }
 
