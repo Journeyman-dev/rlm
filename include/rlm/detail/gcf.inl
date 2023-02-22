@@ -30,17 +30,11 @@
 template<rl::primitive P>
 constexpr P rl::gcf(P number_a, P number_b) noexcept
 {
-    if ( number_b > number_a)
-    {
-        std::swap(number_a, number_b);
-    }
+    if (number_b > number_a) { std::swap(number_a, number_b); }
     int gcf;
-    for (int cur_denominator = 1; cur_denominator <=  number_b; cur_denominator++)
+    for (int cur_denominator = 1; cur_denominator <= number_b; cur_denominator++)
     {
-        if (
-            (number_a % cur_denominator == 0) &&
-            (number_b % cur_denominator == 0)
-        )
+        if ((number_a % cur_denominator == 0) && (number_b % cur_denominator == 0))
         {
             gcf = cur_denominator;
         }
@@ -49,7 +43,7 @@ constexpr P rl::gcf(P number_a, P number_b) noexcept
 }
 
 template<rl::primitive P, rl::primitive... Ps>
-requires std::conjunction_v<std::is_same<P, Ps>...>
+    requires std::conjunction_v<std::is_same<P, Ps>...>
 constexpr P rl::gcf(P number_a, P number_b, Ps... number_n) noexcept
 {
     return rl::gcf(number_a, rl::gcf(number_b, number_n...));

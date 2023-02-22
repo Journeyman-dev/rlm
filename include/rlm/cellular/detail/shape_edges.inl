@@ -109,4 +109,3 @@ constexpr I rl::bottom_y(const rl::cell_circle2<I, F>& circle) noexcept
     RLM_HANDLE_DEGENERACY(fixed_circle, circle);
     return fixed_circle.y + static_cast<I>(std::round(fixed_circle.radius));
 }
-

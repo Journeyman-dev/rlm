@@ -32,6 +32,9 @@
 namespace rl
 {
     template<typename T, typename I, typename F>
-    concept cellular_shape =
-        rl::is_any_of<T, rl::cell_vector2<I>, rl::cell_segment2<I>, rl::cell_box2<I>, rl::cell_circle2<I, F>>;
+    concept cellular_shape = rl::is_any_of<T,
+                                           rl::cell_vector2<I>,
+                                           rl::cell_segment2<I>,
+                                           rl::cell_box2<I>,
+                                           rl::cell_circle2<I, F>>;
 }    // namespace rl

@@ -32,16 +32,20 @@ namespace rl
     struct cell_segment2;
 
     template<rl::signed_integral I = int>
-    constexpr I cross_z(const rl::cell_vector2<I>& point_a, const rl::cell_vector2<I>& point_b) noexcept;
+    constexpr I cross_z(const rl::cell_vector2<I>& point_a,
+                        const rl::cell_vector2<I>& point_b) noexcept;
 
     template<rl::signed_integral I = int>
-    constexpr I cross_z(const rl::cell_segment2<I>& segment, const rl::cell_vector2<I>& point) noexcept;
+    constexpr I cross_z(const rl::cell_segment2<I>& segment,
+                        const rl::cell_vector2<I>& point) noexcept;
 
     template<rl::signed_integral I = int>
-    constexpr I cross_z(const rl::cell_vector2<I>& point, const rl::cell_segment2<I>& segment) noexcept;
+    constexpr I cross_z(const rl::cell_vector2<I>& point,
+                        const rl::cell_segment2<I>& segment) noexcept;
 
     template<rl::signed_integral I = int>
-    constexpr I cross_z(const rl::cell_segment2<I>& segment_a, const rl::cell_segment2<I>& segment_b) noexcept;
+    constexpr I cross_z(const rl::cell_segment2<I>& segment_a,
+                        const rl::cell_segment2<I>& segment_b) noexcept;
 }    // namespace rl
 
 #include <rlm/cellular/detail/cross.inl>

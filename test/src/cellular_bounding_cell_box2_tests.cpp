@@ -66,7 +66,8 @@ SCENARIO("Get the bounding cell_box2 of cell shapes")
         const rl::cell_circle2 circle(-50, 0, 3.0f);
         THEN("The bounding cell_box2 is correct")
         {
-            CHECK(rl::bounding_cell_box2(point, segment, box, circle) == rl::cell_box2(-53, 54, 108, 116));
+            CHECK(rl::bounding_cell_box2(point, segment, box, circle) ==
+                  rl::cell_box2(-53, 54, 108, 116));
         }
     }
 }

@@ -33,10 +33,7 @@ constexpr I rl::repeat(I value, I a, I b) noexcept
     const auto min = rl::min<I>(a, b);
     const auto max = rl::max<I>(a, b);
     const auto denominator = max - min;
-    if (denominator == 0)
-    {
-        return min;
-    }
+    if (denominator == 0) { return min; }
     const auto mod = value % denominator;
     return min + mod;
 }
@@ -47,11 +44,7 @@ constexpr F rl::repeat(F value, F a, F b) noexcept
     const auto min = rl::min<F>(a, b);
     const auto max = rl::max<F>(a, b);
     const auto denominator = max - min;
-    if (denominator == 0)
-    {
-        return min;
-    }
+    if (denominator == 0) { return min; }
     const auto mod = fmod(value, denominator);
     return min + mod;
 }
-

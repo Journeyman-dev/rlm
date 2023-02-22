@@ -35,26 +35,16 @@ SCENARIO("A cell_vector2 is walked over")
         const rl::cell_vector2 point(1, 1);
         WHEN("The cell_vector2 is walked over")
         {
-            rl::walk<int>(
-                point,
-                [&](const rl::cell_vector2<int>& step)
-                {
-                    traversed_points.push_back(step);
-                }
-            );
+            rl::walk<int>(point,
+                          [&](const rl::cell_vector2<int>& step)
+                          {
+                              traversed_points.push_back(step);
+                          });
             THEN("The walked over points are correct")
             {
-                std::vector<rl::cell_vector2<int>> correct_points =
-                    {
-                        rl::cell_vector2(1, 1)
-                    };
-                CHECK(
-                    std::equal(
-                        traversed_points.begin(),
-                        traversed_points.end(),
-                        correct_points.begin()
-                    )
-                );
+                std::vector<rl::cell_vector2<int>> correct_points = {rl::cell_vector2(1, 1)};
+                CHECK(std::equal(
+                    traversed_points.begin(), traversed_points.end(), correct_points.begin()));
             }
         }
     }
@@ -63,29 +53,19 @@ SCENARIO("A cell_vector2 is walked over")
         const rl::cell_segment2 segment(1, 1, 4, 2);
         WHEN("The cell_segment2 is walked over")
         {
-            rl::walk<int>(
-                segment,
-                [&](const rl::cell_vector2<int>& step)
-                {
-                    traversed_points.push_back(step);
-                }
-            );
+            rl::walk<int>(segment,
+                          [&](const rl::cell_vector2<int>& step)
+                          {
+                              traversed_points.push_back(step);
+                          });
             THEN("The walked over points are correct")
             {
-                std::vector<rl::cell_vector2<int>> correct_points =
-                    {
-                        rl::cell_vector2(1, 1),
-                        rl::cell_vector2(2, 1),
-                        rl::cell_vector2(3, 2),
-                        rl::cell_vector2(4, 2)
-                    };
-                CHECK(
-                    std::equal(
-                        traversed_points.begin(),
-                        traversed_points.end(),
-                        correct_points.begin()
-                    )
-                );
+                std::vector<rl::cell_vector2<int>> correct_points = {rl::cell_vector2(1, 1),
+                                                                     rl::cell_vector2(2, 1),
+                                                                     rl::cell_vector2(3, 2),
+                                                                     rl::cell_vector2(4, 2)};
+                CHECK(std::equal(
+                    traversed_points.begin(), traversed_points.end(), correct_points.begin()));
             }
         }
     }
@@ -94,34 +74,24 @@ SCENARIO("A cell_vector2 is walked over")
         const rl::cell_box2 box(1, 1, 3, 3);
         WHEN("The cell_box2 is walked over")
         {
-            rl::walk<int>(
-                box,
-                [&](const rl::cell_vector2<int>& step)
-                {
-                    traversed_points.push_back(step);
-                }
-            );
+            rl::walk<int>(box,
+                          [&](const rl::cell_vector2<int>& step)
+                          {
+                              traversed_points.push_back(step);
+                          });
             THEN("The walked over points are correct")
             {
-                std::vector<rl::cell_vector2<int>> correct_points =
-                    {
-                        rl::cell_vector2(1, 1),
-                        rl::cell_vector2(2, 1),
-                        rl::cell_vector2(3, 1),
-                        rl::cell_vector2(1, 2),
-                        rl::cell_vector2(2, 2),
-                        rl::cell_vector2(3, 2),
-                        rl::cell_vector2(1, 3),
-                        rl::cell_vector2(2, 3),
-                        rl::cell_vector2(3, 3)
-                    };
-                CHECK(
-                    std::equal(
-                        traversed_points.begin(),
-                        traversed_points.end(),
-                        correct_points.begin()
-                    )
-                );
+                std::vector<rl::cell_vector2<int>> correct_points = {rl::cell_vector2(1, 1),
+                                                                     rl::cell_vector2(2, 1),
+                                                                     rl::cell_vector2(3, 1),
+                                                                     rl::cell_vector2(1, 2),
+                                                                     rl::cell_vector2(2, 2),
+                                                                     rl::cell_vector2(3, 2),
+                                                                     rl::cell_vector2(1, 3),
+                                                                     rl::cell_vector2(2, 3),
+                                                                     rl::cell_vector2(3, 3)};
+                CHECK(std::equal(
+                    traversed_points.begin(), traversed_points.end(), correct_points.begin()));
             }
         }
     }
@@ -130,38 +100,28 @@ SCENARIO("A cell_vector2 is walked over")
         const rl::cell_circle2 circle(3, 3, 2.0f);
         WHEN("The cell_circle2 is walked over")
         {
-            rl::walk<int>(
-                circle,
-                [&](const rl::cell_vector2<int>& step)
-                {
-                    traversed_points.push_back(step);
-                }
-            );
+            rl::walk<int>(circle,
+                          [&](const rl::cell_vector2<int>& step)
+                          {
+                              traversed_points.push_back(step);
+                          });
             THEN("The walked over points are correct")
             {
-                std::vector<rl::cell_vector2<int>> correct_points =
-                    {
-                        rl::cell_vector2(2, 2),
-                        rl::cell_vector2(2, 4),
-                        rl::cell_vector2(3, 2),
-                        rl::cell_vector2(3, 4),
-                        rl::cell_vector2(4, 2),
-                        rl::cell_vector2(4, 4),
-                        rl::cell_vector2(3, 1),
-                        rl::cell_vector2(3, 5),
-                        rl::cell_vector2(1, 3),
-                        rl::cell_vector2(2, 3),
-                        rl::cell_vector2(3, 3),
-                        rl::cell_vector2(4, 3),
-                        rl::cell_vector2(5, 3)
-                    };
-                CHECK(
-                    std::equal(
-                        traversed_points.begin(),
-                        traversed_points.end(),
-                        correct_points.begin()
-                    )
-                );
+                std::vector<rl::cell_vector2<int>> correct_points = {rl::cell_vector2(2, 2),
+                                                                     rl::cell_vector2(2, 4),
+                                                                     rl::cell_vector2(3, 2),
+                                                                     rl::cell_vector2(3, 4),
+                                                                     rl::cell_vector2(4, 2),
+                                                                     rl::cell_vector2(4, 4),
+                                                                     rl::cell_vector2(3, 1),
+                                                                     rl::cell_vector2(3, 5),
+                                                                     rl::cell_vector2(1, 3),
+                                                                     rl::cell_vector2(2, 3),
+                                                                     rl::cell_vector2(3, 3),
+                                                                     rl::cell_vector2(4, 3),
+                                                                     rl::cell_vector2(5, 3)};
+                CHECK(std::equal(
+                    traversed_points.begin(), traversed_points.end(), correct_points.begin()));
             }
         }
     }

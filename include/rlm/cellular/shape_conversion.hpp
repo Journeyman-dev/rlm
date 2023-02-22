@@ -49,16 +49,20 @@ namespace rl
     constexpr bool is_cell_vector2(const rl::cell_circle2<I, F>& circle) noexcept;
 
     template<rl::signed_integral I = int, rl::floating_point F = float>
-    constexpr std::optional<rl::cell_vector2<I>> as_cell_vector2(const rl::cell_vector2<I>& point) noexcept;
+    constexpr std::optional<rl::cell_vector2<I>>
+    as_cell_vector2(const rl::cell_vector2<I>& point) noexcept;
 
     template<rl::signed_integral I = int, rl::floating_point F = float>
-    constexpr std::optional<rl::cell_vector2<I>> as_cell_vector2(const rl::cell_segment2<I>& segment) noexcept;
+    constexpr std::optional<rl::cell_vector2<I>>
+    as_cell_vector2(const rl::cell_segment2<I>& segment) noexcept;
 
     template<rl::signed_integral I = int, rl::floating_point F = float>
-    constexpr std::optional<rl::cell_vector2<I>> as_cell_vector2(const rl::cell_box2<I>& box) noexcept;
+    constexpr std::optional<rl::cell_vector2<I>>
+    as_cell_vector2(const rl::cell_box2<I>& box) noexcept;
 
     template<rl::signed_integral I = int, rl::floating_point F = float>
-    constexpr std::optional<rl::cell_vector2<I>> as_cell_vector2(const rl::cell_circle2<I, F>& circle) noexcept;
+    constexpr std::optional<rl::cell_vector2<I>>
+    as_cell_vector2(const rl::cell_circle2<I, F>& circle) noexcept;
 
     template<rl::signed_integral I = int, rl::floating_point F = float>
     constexpr bool is_cell_segment2(const rl::cell_vector2<I>& point) noexcept;
@@ -73,16 +77,20 @@ namespace rl
     constexpr bool is_cell_segment2(const rl::cell_circle2<I, F>& circle) noexcept;
 
     template<rl::signed_integral I = int, rl::floating_point F = float>
-    constexpr std::optional<rl::cell_segment2<I>> as_cell_segment2(const rl::cell_vector2<I>& point) noexcept;
+    constexpr std::optional<rl::cell_segment2<I>>
+    as_cell_segment2(const rl::cell_vector2<I>& point) noexcept;
 
     template<rl::signed_integral I = int, rl::floating_point F = float>
-    constexpr std::optional<rl::cell_segment2<I>> as_cell_segment2(const rl::cell_segment2<I>& segment) noexcept;
+    constexpr std::optional<rl::cell_segment2<I>>
+    as_cell_segment2(const rl::cell_segment2<I>& segment) noexcept;
 
     template<rl::signed_integral I = int, rl::floating_point F = float>
-    constexpr std::optional<rl::cell_segment2<I>> as_cell_segment2(const rl::cell_box2<I>& box) noexcept;
+    constexpr std::optional<rl::cell_segment2<I>>
+    as_cell_segment2(const rl::cell_box2<I>& box) noexcept;
 
     template<rl::signed_integral I = int, rl::floating_point F = float>
-    constexpr std::optional<rl::cell_segment2<I>> as_cell_segment2(const rl::cell_circle2<I, F>& circle) noexcept;
+    constexpr std::optional<rl::cell_segment2<I>>
+    as_cell_segment2(const rl::cell_circle2<I, F>& circle) noexcept;
 
     template<rl::signed_integral I = int, rl::floating_point F = float>
     constexpr bool is_cell_box2(const rl::cell_vector2<I>& point) noexcept;
@@ -97,16 +105,19 @@ namespace rl
     constexpr bool is_cell_box2(const rl::cell_circle2<I, F>& circle) noexcept;
 
     template<rl::signed_integral I = int, rl::floating_point F = float>
-    constexpr std::optional<rl::cell_box2<I>> as_cell_box2(const rl::cell_vector2<I>& point) noexcept;
+    constexpr std::optional<rl::cell_box2<I>>
+    as_cell_box2(const rl::cell_vector2<I>& point) noexcept;
 
     template<rl::signed_integral I = int, rl::floating_point F = float>
-    constexpr std::optional<rl::cell_box2<I>> as_cell_box2(const rl::cell_segment2<I>& segment) noexcept;
+    constexpr std::optional<rl::cell_box2<I>>
+    as_cell_box2(const rl::cell_segment2<I>& segment) noexcept;
 
     template<rl::signed_integral I = int, rl::floating_point F = float>
     constexpr std::optional<rl::cell_box2<I>> as_cell_box2(const rl::cell_box2<I>& box) noexcept;
 
     template<rl::signed_integral I = int, rl::floating_point F = float>
-    constexpr std::optional<rl::cell_box2<I>> as_cell_box2(const rl::cell_circle2<I, F>& circle) noexcept;
+    constexpr std::optional<rl::cell_box2<I>>
+    as_cell_box2(const rl::cell_circle2<I, F>& circle) noexcept;
 
     template<rl::signed_integral I = int, rl::floating_point F = float>
     constexpr bool is_cell_circle2(const rl::cell_vector2<I>& point) noexcept;
@@ -121,16 +132,20 @@ namespace rl
     constexpr bool is_cell_circle2(const rl::cell_circle2<I, F>& circle) noexcept;
 
     template<rl::signed_integral I = int, rl::floating_point F = float>
-    constexpr std::optional<rl::cell_circle2<I, F>> as_cell_circle2(const rl::cell_vector2<I>& point) noexcept;
+    constexpr std::optional<rl::cell_circle2<I, F>>
+    as_cell_circle2(const rl::cell_vector2<I>& point) noexcept;
 
     template<rl::signed_integral I = int, rl::floating_point F = float>
-    constexpr std::optional<rl::cell_circle2<I, F>> as_cell_circle2(const rl::cell_segment2<I>& segment) noexcept;
+    constexpr std::optional<rl::cell_circle2<I, F>>
+    as_cell_circle2(const rl::cell_segment2<I>& segment) noexcept;
 
     template<rl::signed_integral I = int, rl::floating_point F = float>
-    constexpr std::optional<rl::cell_circle2<I, F>> as_cell_circle2(const rl::cell_box2<I>& box) noexcept;
+    constexpr std::optional<rl::cell_circle2<I, F>>
+    as_cell_circle2(const rl::cell_box2<I>& box) noexcept;
 
     template<rl::signed_integral I = int, rl::floating_point F = float>
-    constexpr std::optional<rl::cell_circle2<I, F>> as_cell_circle2(const rl::cell_circle2<I, F>& circle) noexcept;
+    constexpr std::optional<rl::cell_circle2<I, F>>
+    as_cell_circle2(const rl::cell_circle2<I, F>& circle) noexcept;
 }    // namespace rl
 
 #include <rlm/cellular/detail/shape_conversion.inl>

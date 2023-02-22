@@ -66,23 +66,15 @@ template<rl::signed_integral I>
 constexpr rl::cell_box2<I> rl::center(const rl::cell_box2<I>& box) noexcept
 {
     RLM_HANDLE_DEGENERACY(fixed_box, box);
-    return
-        rl::cell_box2<I>(
-            fixed_box.x + fixed_box.width / 2,
-            fixed_box.y + fixed_box.height / 2,
-            (fixed_box.width % 2 == 0) ? 1 : 2,
-            (fixed_box.height % 2 == 0) ? 1 : 2
-        );
+    return rl::cell_box2<I>(fixed_box.x + fixed_box.width / 2,
+                            fixed_box.y + fixed_box.height / 2,
+                            (fixed_box.width % 2 == 0) ? 1 : 2,
+                            (fixed_box.height % 2 == 0) ? 1 : 2);
 }
 
 template<rl::signed_integral I, rl::floating_point F>
 constexpr rl::cell_vector2<I> rl::center(const rl::cell_circle2<I, F>& circle) noexcept
 {
     RLM_HANDLE_DEGENERACY(fixed_circle, circle);
-    return
-        rl::cell_vector2<I>(
-            fixed_circle.x,
-            fixed_circle.y
-        );
+    return rl::cell_vector2<I>(fixed_circle.x, fixed_circle.y);
 }
-

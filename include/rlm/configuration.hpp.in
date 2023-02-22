@@ -33,7 +33,9 @@
 #elif defined(RLM_FIX_DEGENERACY) && !defined(RLM_ASSERT_DEGENERACY)
 #define RLM_HANDLE_DEGENERACY(fixed, const auto fixed = rl::fix_degeneracy(unfixed)
 #elif !defined(RLM_FIX_DEGENERACY) && defined(RLM_ASSERT_DEGENERACY)
-#define RLM_HANDLE_DEGENERACY(fixed, unfixed) assert(!rl::is_degenerate(unfixed)); const auto& fixed = unfixed
+#define RLM_HANDLE_DEGENERACY(fixed, unfixed) \
+    assert(!rl::is_degenerate(unfixed));      \
+    const auto& fixed = unfixed
 #else
 #define RLM_HANDLE_DEGENERACY(fixed, unfixed) const auto& fixed = unfixed
 #endif

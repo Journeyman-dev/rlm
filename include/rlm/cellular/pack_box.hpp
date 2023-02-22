@@ -37,6 +37,6 @@ namespace rl
         constexpr pack_box() noexcept = default;
         constexpr pack_box(unsigned int identifier, I width, I height) noexcept;
     };
-}
+}    // namespace rl
 
 #include <rlm/cellular/detail/pack_box.inl>

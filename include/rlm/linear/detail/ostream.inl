@@ -35,7 +35,7 @@ namespace rl
     constexpr std::ostream& operator<<(std::ostream& os, const rl::box2<F>& rectangle)
     {
         os << "(" << rectangle.x << ", " << rectangle.y << ", " << rectangle.width << ", "
-            << rectangle.height << ")";
+           << rectangle.height << ")";
         return os;
     }
 
@@ -58,7 +58,5 @@ namespace rl
     {
         os << "(" << vector.x << ", " << vector.y << ", " << vector.z << ", " << vector.w << ")";
         return os;
-}
-}
-
-
+    }
+}    // namespace rl

@@ -30,4 +30,3 @@ constexpr rl::vector2<F>::vector2(F x, F y) noexcept
     , y(y)
 {
 }
-

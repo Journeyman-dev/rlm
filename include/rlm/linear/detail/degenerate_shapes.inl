@@ -35,11 +35,6 @@ constexpr bool rl::is_degenerate(const rl::box2<F>& rectangle) noexcept
 template<rl::floating_point F>
 constexpr rl::box2<F> rl::fix_degeneracy(const rl::box2<F>& rectangle) noexcept
 {
-    return
-        rl::box2<F>(
-            rectangle.x,
-            rectangle.y,
-            rl::max(rectangle.width, 0.0f),
-            rl::max(rectangle.height, 0.0f)
-        );
+    return rl::box2<F>(
+        rectangle.x, rectangle.y, rl::max(rectangle.width, 0.0f), rl::max(rectangle.height, 0.0f));
 }

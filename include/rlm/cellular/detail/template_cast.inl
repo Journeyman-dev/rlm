@@ -31,47 +31,37 @@
 template<rl::signed_integral Ia, rl::signed_integral Ib>
 constexpr rl::cell_vector2<Ia> rl::template_cast(const rl::cell_vector2<Ib>& point) noexcept
 {
-    return
-        rl::cell_vector2<Ia>(
-            static_cast<Ia>(point.x),
-            static_cast<Ia>(point.y)
-        );
+    return rl::cell_vector2<Ia>(static_cast<Ia>(point.x), static_cast<Ia>(point.y));
 }
 
 template<rl::signed_integral Ia, rl::signed_integral Ib>
 constexpr rl::cell_segment2<Ia> rl::template_cast(const rl::cell_segment2<Ib>& segment) noexcept
 {
-    return
-        rl::cell_segment2<Ia>(
-            static_cast<Ia>(segment.start_x),
-            static_cast<Ia>(segment.start_y),
-            static_cast<Ia>(segment.end_x),
-            static_cast<Ia>(segment.end_y)
-        );
+    return rl::cell_segment2<Ia>(static_cast<Ia>(segment.start_x),
+                                 static_cast<Ia>(segment.start_y),
+                                 static_cast<Ia>(segment.end_x),
+                                 static_cast<Ia>(segment.end_y));
 }
 
 template<rl::signed_integral Ia, rl::signed_integral Ib>
 constexpr rl::cell_box2<Ia> rl::template_cast(const rl::cell_box2<Ib>& box) noexcept
 {
     RLM_HANDLE_DEGENERACY(fixed_box, box);
-    return
-        rl::cell_box2<Ia>(
-            static_cast<Ia>(fixed_box.x),
-            static_cast<Ia>(fixed_box.y),
-            static_cast<Ia>(fixed_box.width),
-            static_cast<Ia>(fixed_box.height)
-        );
+    return rl::cell_box2<Ia>(static_cast<Ia>(fixed_box.x),
+                             static_cast<Ia>(fixed_box.y),
+                             static_cast<Ia>(fixed_box.width),
+                             static_cast<Ia>(fixed_box.height));
 }
 
-template<rl::signed_integral Ia, rl::floating_point Fa, rl::signed_integral Ib, rl::floating_point Fb>
-constexpr rl::cell_circle2<Ia, Fa> rl::template_cast(const rl::cell_circle2<Ib, Fb>& circle) noexcept
+template<rl::signed_integral Ia,
+         rl::floating_point Fa,
+         rl::signed_integral Ib,
+         rl::floating_point Fb>
+constexpr rl::cell_circle2<Ia, Fa>
+rl::template_cast(const rl::cell_circle2<Ib, Fb>& circle) noexcept
 {
     RLM_HANDLE_DEGENERACY(fixed_circle, circle);
-    return
-        rl::cell_circle2<Ia, Fa>(
-            static_cast<Ia>(fixed_circle.x),
-            static_cast<Ia>(fixed_circle.y),
-            static_cast<Fa>(fixed_circle.radius)
-        );
+    return rl::cell_circle2<Ia, Fa>(static_cast<Ia>(fixed_circle.x),
+                                    static_cast<Ia>(fixed_circle.y),
+                                    static_cast<Fa>(fixed_circle.radius));
 }
-

@@ -30,13 +30,6 @@ namespace rl
     template<rl::signed_integral I>
     rl::cell_segment2<I> reverse(const rl::cell_segment2<I>& segment) noexcept
     {
-        return
-            rl::cell_segment2<I>(
-                segment.end_x,
-                segment.end_y,
-                segment.start_x,
-                segment.start_y
-            );
+        return rl::cell_segment2<I>(segment.end_x, segment.end_y, segment.start_x, segment.start_y);
     }
-}
-
+}    // namespace rl

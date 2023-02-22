@@ -29,45 +29,30 @@
 template<rl::signed_integral I, rl::floating_point F>
 constexpr F rl::slope(const rl::cell_segment2<I>& segment) noexcept
 {
-    return
-        static_cast<F>(std::abs(segment.end_y - segment.start_y)) /
-        static_cast<F>(std::abs(segment.end_x - segment.start_x));
+    return static_cast<F>(std::abs(segment.end_y - segment.start_y)) /
+           static_cast<F>(std::abs(segment.end_x - segment.start_x));
 }
 
 template<rl::signed_integral I>
 constexpr I rl::rise(const rl::cell_segment2<I>& segment) noexcept
 {
-    return
-        rl::height<I>(segment) /
-        rl::gcf<I>(
-            rl::width<I>(segment),
-            rl::height<I>(segment)
-        );
+    return rl::height<I>(segment) / rl::gcf<I>(rl::width<I>(segment), rl::height<I>(segment));
 }
 
 template<rl::signed_integral I>
 constexpr I rl::run(const rl::cell_segment2<I>& segment) noexcept
 {
-    return
-        rl::height<I>(segment) /
-        rl::gcf<I>(
-            rl::width<I>(segment),
-            rl::height<I>(segment)
-        );
+    return rl::height<I>(segment) / rl::gcf<I>(rl::width<I>(segment), rl::height<I>(segment));
 }
 
 template<rl::signed_integral I>
 constexpr I rl::y_intercept(const rl::cell_segment2<I>& segment) noexcept
 {
-    return
-        segment.start_y - (rl::slope(segment) * segment.start_x);
+    return segment.start_y - (rl::slope(segment) * segment.start_x);
 }
 
 template<rl::signed_integral I>
 constexpr I rl::x_intercept(const rl::cell_segment2<I>& segment) noexcept
 {
-    return
-        -rl::y_intercept(segment) / rl::slope(segment);
+    return -rl::y_intercept(segment) / rl::slope(segment);
 }
-
-

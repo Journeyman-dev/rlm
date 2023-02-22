@@ -36,12 +36,5 @@ constexpr rl::cell_box2<I> rl::cell_box2_between(I x1, I y1, I x2, I y2) noexcep
     const auto max_y = rl::max<I>(y1, y2);
     const auto width = max_x - min_x + 1;
     const auto height = max_y - min_y + 1;
-    return
-        rl::cell_box2<I>(
-            min_x,
-            min_y,
-            width,
-            height
-        );
+    return rl::cell_box2<I>(min_x, min_y, width, height);
 }
-

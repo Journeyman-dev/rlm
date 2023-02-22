@@ -48,4 +48,3 @@ constexpr I rl::tile_diameter(const rl::cell_circle2<I, F>& circle) noexcept
     RLM_HANDLE_DEGENERACY(fixed_circle, circle);
     return std::round(fixed_circle.radius * 2);
 }
-

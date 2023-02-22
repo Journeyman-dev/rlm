@@ -62,40 +62,35 @@ constexpr bool rl::is_cell_vector2(const rl::cell_circle2<I, F>& circle) noexcep
 }
 
 template<rl::signed_integral I, rl::floating_point F>
-constexpr std::optional<rl::cell_vector2<I>> rl::as_cell_vector2(const rl::cell_vector2<I>& point) noexcept
+constexpr std::optional<rl::cell_vector2<I>>
+rl::as_cell_vector2(const rl::cell_vector2<I>& point) noexcept
 {
     return point;
 }
 
 template<rl::signed_integral I, rl::floating_point F>
-constexpr std::optional<rl::cell_vector2<I>> rl::as_cell_vector2(const rl::cell_segment2<I>& segment) noexcept
+constexpr std::optional<rl::cell_vector2<I>>
+rl::as_cell_vector2(const rl::cell_segment2<I>& segment) noexcept
 {
-    if (!rl::is_cell_vector2(segment))
-    {
-        return std::nullopt;
-    }
+    if (!rl::is_cell_vector2(segment)) { return std::nullopt; }
     return rl::start(segment);
 }
 
 template<rl::signed_integral I, rl::floating_point F>
-constexpr std::optional<rl::cell_vector2<I>> rl::as_cell_vector2(const rl::cell_box2<I>& box) noexcept
+constexpr std::optional<rl::cell_vector2<I>>
+rl::as_cell_vector2(const rl::cell_box2<I>& box) noexcept
 {
     RLM_HANDLE_DEGENERACY(fixed_box, box);
-    if (!rl::is_cell_vector2(fixed_box))
-    {
-        return std::nullopt;
-    }
+    if (!rl::is_cell_vector2(fixed_box)) { return std::nullopt; }
     return rl::top_left(fixed_box);
 }
 
 template<rl::signed_integral I, rl::floating_point F>
-constexpr std::optional<rl::cell_vector2<I>> rl::as_cell_vector2(const rl::cell_circle2<I, F>& circle) noexcept
+constexpr std::optional<rl::cell_vector2<I>>
+rl::as_cell_vector2(const rl::cell_circle2<I, F>& circle) noexcept
 {
     RLM_HANDLE_DEGENERACY(fixed_circle, circle);
-    if (!rl::is_cell_vector2<I, F>(fixed_circle))
-    {
-        return std::nullopt;
-    }
+    if (!rl::is_cell_vector2<I, F>(fixed_circle)) { return std::nullopt; }
     return rl::center<I, F>(fixed_circle);
 }
 
@@ -126,51 +121,35 @@ constexpr bool rl::is_cell_segment2(const rl::cell_circle2<I, F>& circle) noexce
 }
 
 template<rl::signed_integral I, rl::floating_point F>
-constexpr std::optional<rl::cell_segment2<I>> rl::as_cell_segment2(const rl::cell_vector2<I>& point) noexcept
+constexpr std::optional<rl::cell_segment2<I>>
+rl::as_cell_segment2(const rl::cell_vector2<I>& point) noexcept
 {
-    return
-        rl::cell_segment2<I>(
-            point.x,
-            point.y,
-            point.x,
-            point.y
-        );
+    return rl::cell_segment2<I>(point.x, point.y, point.x, point.y);
 }
 
 template<rl::signed_integral I, rl::floating_point F>
-constexpr std::optional<rl::cell_segment2<I>> rl::as_cell_segment2(const rl::cell_segment2<I>& segment) noexcept
+constexpr std::optional<rl::cell_segment2<I>>
+rl::as_cell_segment2(const rl::cell_segment2<I>& segment) noexcept
 {
     return segment;
 }
 
 template<rl::signed_integral I, rl::floating_point F>
-constexpr std::optional<rl::cell_segment2<I>> rl::as_cell_segment2(const rl::cell_box2<I>& box) noexcept
+constexpr std::optional<rl::cell_segment2<I>>
+rl::as_cell_segment2(const rl::cell_box2<I>& box) noexcept
 {
     RLM_HANDLE_DEGENERACY(fixed_box, box);
-    if (!rl::is_cell_segment2(fixed_box))
-    {
-        return std::nullopt;
-    }
-    return
-        rl::cell_segment2_between(
-            rl::top_left(fixed_box),
-            rl::bottom_right(fixed_box)
-        );
+    if (!rl::is_cell_segment2(fixed_box)) { return std::nullopt; }
+    return rl::cell_segment2_between(rl::top_left(fixed_box), rl::bottom_right(fixed_box));
 }
 
 template<rl::signed_integral I, rl::floating_point F>
-constexpr std::optional<rl::cell_segment2<I>> rl::as_cell_segment2(const rl::cell_circle2<I, F>& circle) noexcept
+constexpr std::optional<rl::cell_segment2<I>>
+rl::as_cell_segment2(const rl::cell_circle2<I, F>& circle) noexcept
 {
     RLM_HANDLE_DEGENERACY(fixed_circle, circle);
-    if (!rl::is_cell_segment2<I, F>(fixed_circle))
-    {
-        return std::nullopt;
-    }
-    return
-        rl::cell_segment2_between(
-            rl::center(fixed_circle),
-            rl::center(fixed_circle)
-        );
+    if (!rl::is_cell_segment2<I, F>(fixed_circle)) { return std::nullopt; }
+    return rl::cell_segment2_between(rl::center(fixed_circle), rl::center(fixed_circle));
 }
 
 template<rl::signed_integral I, rl::floating_point F>
@@ -182,9 +161,7 @@ constexpr bool rl::is_cell_box2(const rl::cell_vector2<I>& point) noexcept
 template<rl::signed_integral I, rl::floating_point F>
 constexpr bool rl::is_cell_box2(const rl::cell_segment2<I>& segment) noexcept
 {
-    return
-        segment.start_x == segment.end_x ||
-        segment.start_y == segment.end_y;
+    return segment.start_x == segment.end_x || segment.start_y == segment.end_y;
 }
 
 template<rl::signed_integral I, rl::floating_point F>
@@ -198,36 +175,23 @@ template<rl::signed_integral I, rl::floating_point F>
 constexpr bool rl::is_cell_box2(const rl::cell_circle2<I, F>& circle) noexcept
 {
     RLM_HANDLE_DEGENERACY(fixed_circle, circle);
-    return
-        rl::is_cell_vector2(circle);
+    return rl::is_cell_vector2(circle);
 }
 
 template<rl::signed_integral I, rl::floating_point F>
-constexpr std::optional<rl::cell_box2<I>> rl::as_cell_box2(const rl::cell_vector2<I>& point) noexcept
+constexpr std::optional<rl::cell_box2<I>>
+rl::as_cell_box2(const rl::cell_vector2<I>& point) noexcept
 {
-    return
-        rl::cell_box2<I>(
-            point.x,
-            point.y,
-            1,
-            1
-        );
+    return rl::cell_box2<I>(point.x, point.y, 1, 1);
 }
 
 template<rl::signed_integral I, rl::floating_point F>
-constexpr std::optional<rl::cell_box2<I>> rl::as_cell_box2(const rl::cell_segment2<I>& segment) noexcept
+constexpr std::optional<rl::cell_box2<I>>
+rl::as_cell_box2(const rl::cell_segment2<I>& segment) noexcept
 {
-    if (!rl::is_cell_box2(segment))
-    {
-        return std::nullopt;
-    }
-    return
-        rl::cell_box2(
-            rl::left_x(segment),
-            rl::top_y(segment),
-            rl::width(segment),
-            rl::height(segment)
-        );
+    if (!rl::is_cell_box2(segment)) { return std::nullopt; }
+    return rl::cell_box2(
+        rl::left_x(segment), rl::top_y(segment), rl::width(segment), rl::height(segment));
 }
 
 template<rl::signed_integral I, rl::floating_point F>
@@ -237,20 +201,12 @@ constexpr std::optional<rl::cell_box2<I>> rl::as_cell_box2(const rl::cell_box2<I
 }
 
 template<rl::signed_integral I, rl::floating_point F>
-constexpr std::optional<rl::cell_box2<I>> rl::as_cell_box2(const rl::cell_circle2<I, F>& circle) noexcept
+constexpr std::optional<rl::cell_box2<I>>
+rl::as_cell_box2(const rl::cell_circle2<I, F>& circle) noexcept
 {
     RLM_HANDLE_DEGENERACY(fixed_circle, circle);
-    if (!rl::is_cell_box2<I, F>(fixed_circle))
-    {
-        return std::nullopt;
-    }
-    return
-        rl::cell_box2<I>(
-            fixed_circle.x,
-            fixed_circle.y,
-            1,
-            1
-        );
+    if (!rl::is_cell_box2<I, F>(fixed_circle)) { return std::nullopt; }
+    return rl::cell_box2<I>(fixed_circle.x, fixed_circle.y, 1, 1);
 }
 
 template<rl::signed_integral I, rl::floating_point F>
@@ -269,10 +225,9 @@ template<rl::signed_integral I, rl::floating_point F>
 constexpr bool rl::is_cell_circle2(const rl::cell_box2<I>& box) noexcept
 {
     RLM_HANDLE_DEGENERACY(fixed_box, box);
-    return
-        (fixed_box.width == 1 && fixed_box.height == 1) ||
-        (fixed_box.width == 3 && fixed_box.height == 3) ||
-        (fixed_box.width == 5 && fixed_box.height == 5);
+    return (fixed_box.width == 1 && fixed_box.height == 1) ||
+           (fixed_box.width == 3 && fixed_box.height == 3) ||
+           (fixed_box.width == 5 && fixed_box.height == 5);
 }
 
 template<rl::signed_integral I, rl::floating_point F>
@@ -283,66 +238,43 @@ constexpr bool rl::is_cell_circle2(const rl::cell_circle2<I, F>& circle) noexcep
 }
 
 template<rl::signed_integral I, rl::floating_point F>
-constexpr std::optional<rl::cell_circle2<I, F>> rl::as_cell_circle2(const rl::cell_vector2<I>& point) noexcept
+constexpr std::optional<rl::cell_circle2<I, F>>
+rl::as_cell_circle2(const rl::cell_vector2<I>& point) noexcept
 {
-    return
-        rl::cell_circle2<I, F>(
-            point.x,
-            point.y,
-            0.5f
-        );
+    return rl::cell_circle2<I, F>(point.x, point.y, 0.5f);
 }
 
 template<rl::signed_integral I, rl::floating_point F>
-constexpr std::optional<rl::cell_circle2<I, F>> rl::as_cell_circle2(const rl::cell_segment2<I>& segment) noexcept
+constexpr std::optional<rl::cell_circle2<I, F>>
+rl::as_cell_circle2(const rl::cell_segment2<I>& segment) noexcept
 {
-    if (!rl::is_cell_circle2<I, F>(segment))
-    {
-        return std::nullopt;
-    }
-    return
-        rl::cell_circle2<I, F>(
-            segment.start_x,
-            segment.start_y,
-            0.5f
-        );
+    if (!rl::is_cell_circle2<I, F>(segment)) { return std::nullopt; }
+    return rl::cell_circle2<I, F>(segment.start_x, segment.start_y, 0.5f);
 }
 
 template<rl::signed_integral I, rl::floating_point F>
-constexpr std::optional<rl::cell_circle2<I, F>> rl::as_cell_circle2(const rl::cell_box2<I>& box) noexcept
+constexpr std::optional<rl::cell_circle2<I, F>>
+rl::as_cell_circle2(const rl::cell_box2<I>& box) noexcept
 {
     RLM_HANDLE_DEGENERACY(fixed_box, box);
     if (fixed_box.width == 5 && fixed_box.height == 5)
     {
-        return
-            rl::cell_circle2<I, F>(
-                fixed_box.x + 1,
-                fixed_box.y + 1,
-                2.9f
-            );
+        return rl::cell_circle2<I, F>(fixed_box.x + 1, fixed_box.y + 1, 2.9f);
     }
     else if (fixed_box.width == 3 && fixed_box.height == 3)
     {
-        return
-            rl::cell_circle2<I, F>(
-                box.x + 1,
-                box.y + 1,
-                1.5f
-            );
+        return rl::cell_circle2<I, F>(box.x + 1, box.y + 1, 1.5f);
     }
     else if (fixed_box.width == 1 && fixed_box.height == 1)
     {
-        return rl::cell_circle2<I, F>(
-            fixed_box.x,
-            fixed_box.y,
-            0.5f
-        );
+        return rl::cell_circle2<I, F>(fixed_box.x, fixed_box.y, 0.5f);
     }
     return std::nullopt;
 }
 
 template<rl::signed_integral I, rl::floating_point F>
-constexpr std::optional<rl::cell_circle2<I, F>> rl::as_cell_circle2(const rl::cell_circle2<I, F>& circle) noexcept
+constexpr std::optional<rl::cell_circle2<I, F>>
+rl::as_cell_circle2(const rl::cell_circle2<I, F>& circle) noexcept
 {
     RLM_HANDLE_DEGENERACY(fixed_circle, circle);
     return fixed_circle;

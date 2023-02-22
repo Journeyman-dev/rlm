@@ -27,42 +27,30 @@
 #include <rlm/cellular/cell_segment2.hpp>
 #include <rlm/cellular/translation.hpp>
 
-template <rl::signed_integral I>
-constexpr I rl::cross_z(const rl::cell_vector2<I>& point_a, const rl::cell_vector2<I>& point_b) noexcept
-{
-    return
-        (point_a.x * point_b.y) -
-        (point_b.x * point_a.y);
-}
-
-
 template<rl::signed_integral I>
-constexpr I rl::cross_z(const rl::cell_segment2<I>& segment, const rl::cell_vector2<I>& point) noexcept
+constexpr I rl::cross_z(const rl::cell_vector2<I>& point_a,
+                        const rl::cell_vector2<I>& point_b) noexcept
 {
-    return
-        rl::cross_z<I>(
-            rl::translation<I>(segment),
-            point
-        );
+    return (point_a.x * point_b.y) - (point_b.x * point_a.y);
 }
 
 template<rl::signed_integral I>
-constexpr I rl::cross_z(const rl::cell_vector2<I>& point, const rl::cell_segment2<I>& segment) noexcept
+constexpr I rl::cross_z(const rl::cell_segment2<I>& segment,
+                        const rl::cell_vector2<I>& point) noexcept
 {
-    return
-        rl::cross_z<I>(
-            segment,
-            point
-        );
+    return rl::cross_z<I>(rl::translation<I>(segment), point);
 }
 
-template <rl::signed_integral I>
-constexpr I rl::cross_z(const rl::cell_segment2<I>& segment_a, const rl::cell_segment2<I>& segment_b) noexcept
+template<rl::signed_integral I>
+constexpr I rl::cross_z(const rl::cell_vector2<I>& point,
+                        const rl::cell_segment2<I>& segment) noexcept
 {
-    return
-        rl::cross_z<I>(
-            rl::translation<I>(segment_a),
-            rl::translation<I>(segment_b)
-        );
+    return rl::cross_z<I>(segment, point);
 }
 
+template<rl::signed_integral I>
+constexpr I rl::cross_z(const rl::cell_segment2<I>& segment_a,
+                        const rl::cell_segment2<I>& segment_b) noexcept
+{
+    return rl::cross_z<I>(rl::translation<I>(segment_a), rl::translation<I>(segment_b));
+}

@@ -35,22 +35,26 @@ namespace rl
     constexpr I dot(const rl::cell_vector2<I>& point_a, const cell_vector2<I>& point_b) noexcept;
 
     template<rl::signed_integral I = int, rl::floating_point F = float>
-    constexpr F unit_dot(const rl::cell_vector2<I>& point_a, const cell_vector2<I>& point_b) noexcept;
+    constexpr F unit_dot(const rl::cell_vector2<I>& point_a,
+                         const cell_vector2<I>& point_b) noexcept;
 
     template<rl::signed_integral I = int>
     constexpr I dot(const rl::cell_vector2<I>& point, const cell_segment2<I>& segment) noexcept;
 
     template<rl::signed_integral I = int, rl::floating_point F = float>
-    constexpr F unit_dot(const rl::cell_vector2<I>& point, const cell_segment2<I>& segment) noexcept;
+    constexpr F unit_dot(const rl::cell_vector2<I>& point,
+                         const cell_segment2<I>& segment) noexcept;
 
     template<rl::signed_integral I = int>
     constexpr I dot(const rl::cell_segment2<I>& segment, const cell_vector2<I>& point) noexcept;
 
     template<rl::signed_integral I = int, rl::floating_point F = float>
-    constexpr F unit_dot(const rl::cell_segment2<I>& segment, const cell_vector2<I>& point) noexcept;
+    constexpr F unit_dot(const rl::cell_segment2<I>& segment,
+                         const cell_vector2<I>& point) noexcept;
 
     template<rl::signed_integral I = int>
-    constexpr I dot(const rl::cell_segment2<I>& segment_a, const cell_segment2<I>& segment_b) noexcept;
+    constexpr I dot(const rl::cell_segment2<I>& segment_a,
+                    const cell_segment2<I>& segment_b) noexcept;
 
     template<rl::signed_integral I = int, rl::floating_point F = float>
     constexpr F unit_dot(const rl::cell_segment2<I>& segment_a,

@@ -99,4 +99,3 @@ SCENARIO("The direction is gotten from a cell_segment2")
         }
     }
 }
-

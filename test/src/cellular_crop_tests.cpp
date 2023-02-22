@@ -79,5 +79,4 @@ SCENARIO("A shape is cropped by a cell_box2")
             }
         }
     }
-
 }

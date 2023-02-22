@@ -28,11 +28,11 @@
 #include <rlm/cellular/degenerate_shapes.hpp>
 
 template<rl::signed_integral I>
-constexpr bool rl::does_fit(const rl::cell_box2<I>& fitting_box, const rl::cell_box2<I>& fitted_box) noexcept
+constexpr bool rl::does_fit(const rl::cell_box2<I>& fitting_box,
+                            const rl::cell_box2<I>& fitted_box) noexcept
 {
     RLM_HANDLE_DEGENERACY(fixed_fitting_box, fitting_box);
     RLM_HANDLE_DEGENERACY(fixed_fitted_box, fitted_box);
-    return
-        fixed_fitting_box.width >= fixed_fitted_box.width &&
-        fixed_fitting_box.height >= fixed_fitted_box.height;
+    return fixed_fitting_box.width >= fixed_fitted_box.width &&
+           fixed_fitting_box.height >= fixed_fitted_box.height;
 }

@@ -37,4 +37,3 @@ constexpr I cell_magnitude(const rl::cell_vector2<I>& point) noexcept
 {
     return static_cast<I>(std::floor(rl::magnitude(point)));
 }
-

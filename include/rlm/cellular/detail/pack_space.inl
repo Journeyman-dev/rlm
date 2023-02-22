@@ -24,7 +24,7 @@
 
 #include <rlm/concepts.hpp>
 
-template <rl::signed_integral I>
+template<rl::signed_integral I>
 constexpr rl::pack_space<I>::pack_space(I x, I y, I width, I height, I page) noexcept
     : box(x, y, width, height)
     , page(page)

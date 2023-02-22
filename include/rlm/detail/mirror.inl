@@ -33,17 +33,11 @@ constexpr I rl::mirror(I value, I a, I b) noexcept
     const auto min = rl::min<I>(a, b);
     const auto max = rl::max<I>(a, b);
     const auto denominator = max - min;
-    if (denominator == 0)
-    {
-        return min;
-    }
+    if (denominator == 0) { return min; }
     const auto quotient = value / denominator;
     const auto odd = quotient % 2;
     const auto mod = value % denominator;
-    if (odd == 1)
-    {
-        return max - mod;
-    }
+    if (odd == 1) { return max - mod; }
     return min + mod;
 }
 
@@ -53,17 +47,10 @@ constexpr F rl::mirror(F value, F a, F b) noexcept
     const auto min = rl::min<F>(a, b);
     const auto max = rl::max<F>(a, b);
     const auto denominator = max - min;
-    if (denominator == 0)
-    {
-        return min;
-    }
+    if (denominator == 0) { return min; }
     const auto quotient = value / denominator;
     const auto odd = fmod(quotient, 2.0);
     const auto mod = fmod(value, denominator);
-    if (odd >= 1)
-    {
-        return max - mod;
-    }
+    if (odd >= 1) { return max - mod; }
     return min + mod;
 }
-

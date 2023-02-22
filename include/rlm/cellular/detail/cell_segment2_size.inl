@@ -38,30 +38,17 @@ constexpr F rl::length(const rl::cell_segment2<I>& segment) noexcept
 template<rl::signed_integral I>
 constexpr I rl::cell_length(const rl::cell_segment2<I>& segment) noexcept
 {
-    return
-        rl::max(
-            rl::width(segment),
-            rl::height(segment)
-        );
+    return rl::max(rl::width(segment), rl::height(segment));
 }
 
 template<rl::signed_integral I>
 constexpr I rl::width(const rl::cell_segment2<I>& segment) noexcept
 {
-    return
-        std::abs(
-            segment.end_x -
-            segment.start_x
-        ) + 1;
+    return std::abs(segment.end_x - segment.start_x) + 1;
 }
 
 template<rl::signed_integral I>
 constexpr I rl::height(const rl::cell_segment2<I>& segment) noexcept
 {
-    return
-        std::abs(
-            segment.end_y -
-            segment.start_y
-        ) + 1;
+    return std::abs(segment.end_y - segment.start_y) + 1;
 }
-

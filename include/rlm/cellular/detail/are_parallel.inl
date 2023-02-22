@@ -27,23 +27,18 @@
 #include <rlm/cellular/cross.hpp>
 #include <rlm/cellular/cell_segment2.hpp>
 
-template <rl::signed_integral I>
-constexpr bool rl::are_parallel(const rl::cell_segment2<I>& segment_a, const rl::cell_segment2<I>& segment_b) noexcept
+template<rl::signed_integral I>
+constexpr bool rl::are_parallel(const rl::cell_segment2<I>& segment_a,
+                                const rl::cell_segment2<I>& segment_b) noexcept
 {
     return rl::cross_z<I>(segment_a, segment_b) == 0;
 }
 
-template <typename I, rl::is_any_of<rl::cell_segment2<I>>... SGs>
-constexpr bool rl::are_parallel(const rl::cell_segment2<I>& segment_a, const rl::cell_segment2<I>& segment_b, const SGs&... segment_n) noexcept
+template<typename I, rl::is_any_of<rl::cell_segment2<I>>... SGs>
+constexpr bool rl::are_parallel(const rl::cell_segment2<I>& segment_a,
+                                const rl::cell_segment2<I>& segment_b,
+                                const SGs&... segment_n) noexcept
 {
-    return
-        rl::are_parallel<I>(
-            segment_a,
-            segment_b
-        ) &&
-        rl::are_parallel<I>(
-            segment_b,
-            segment_n...
-        );
+    return rl::are_parallel<I>(segment_a, segment_b) &&
+           rl::are_parallel<I>(segment_b, segment_n...);
 }
-

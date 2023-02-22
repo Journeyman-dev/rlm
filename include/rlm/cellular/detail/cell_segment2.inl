@@ -34,20 +34,13 @@ constexpr rl::cell_segment2<I>::cell_segment2(I start_x, I start_y, I end_x, I e
 template<rl::signed_integral I>
 constexpr bool rl::cell_segment2<I>::operator==(const rl::cell_segment2<I>& that) const noexcept
 {
-    return
-        this->start_x == that.start_x &&
-        this->start_y == that.start_y &&
-        this->end_x == that.end_x &&
-        this->end_y == that.end_y;
+    return this->start_x == that.start_x && this->start_y == that.start_y &&
+           this->end_x == that.end_x && this->end_y == that.end_y;
 }
 
 template<rl::signed_integral I>
 constexpr bool rl::cell_segment2<I>::operator!=(const rl::cell_segment2<I>& that) const noexcept
 {
-    return
-        this->start_x != that.start_x ||
-        this->start_y != that.start_y ||
-        this->end_x != that.end_x ||
-        this->end_y != that.end_y;
+    return this->start_x != that.start_x || this->start_y != that.start_y ||
+           this->end_x != that.end_x || this->end_y != that.end_y;
 }
-

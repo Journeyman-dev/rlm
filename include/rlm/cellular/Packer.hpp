@@ -34,42 +34,42 @@ namespace rl
     template<rl::signed_integral I = int>
     class Packer
     {
-        private:
-            std::vector<rl::pack_space<I>> spaces = std::vector<rl::pack_space<I>>();
-            I top_page_i = 0;
-            I width = 0;
-            I height = 0;
-            I max_bin_width = 0;
-            I max_bin_height = 0;
-            I top_page_width = 0;
-            I top_page_height = 0;
+      private:
+        std::vector<rl::pack_space<I>> spaces = std::vector<rl::pack_space<I>>();
+        I top_page_i = 0;
+        I width = 0;
+        I height = 0;
+        I max_bin_width = 0;
+        I max_bin_height = 0;
+        I top_page_width = 0;
+        I top_page_height = 0;
 
-        private:
-            constexpr void reserveSpaces(std::size_t box_count);
-            constexpr bool tryPlaceSpace(rl::pack_box<I>& box);
-            constexpr bool tryPlaceExpandBin(rl::pack_box<I>& box);
-            constexpr void createSpacesFromLeftoverPage();
-            constexpr void placeNewPage(rl::pack_box<I>& box);
+      private:
+        constexpr void reserveSpaces(std::size_t box_count);
+        constexpr bool tryPlaceSpace(rl::pack_box<I>& box);
+        constexpr bool tryPlaceExpandBin(rl::pack_box<I>& box);
+        constexpr void createSpacesFromLeftoverPage();
+        constexpr void placeNewPage(rl::pack_box<I>& box);
 
-        public:
-            constexpr Packer() noexcept = default;
-            constexpr Packer(I max_bin_width, I max_bin_height);
+      public:
+        constexpr Packer() noexcept = default;
+        constexpr Packer(I max_bin_width, I max_bin_height);
 
-            constexpr void Initialize(I max_bin_width, I max_bin_height);
-            constexpr bool GetIsInitialized() const noexcept;
-            constexpr bool GetIsEmpty() const noexcept;
-            constexpr void ReserveSpaces(std::size_t box_count);
-            constexpr void TrimToFitSpaces();
-            constexpr const std::vector<rl::pack_space<I>>& GetSpaces() const noexcept;
-            constexpr I GetPageCount() const noexcept;
-            constexpr I GetWidth() const noexcept;
-            constexpr I GetHeight() const noexcept;
-            constexpr I GetMaxPageWidth() const noexcept;
-            constexpr I GetMaxPageHeight() const noexcept;
-            constexpr I GetTopPageWidth() const noexcept;
-            constexpr I GetTopPageHeight() const noexcept;
-            constexpr void Pack(const std::span<rl::pack_box<I>> boxes);
+        constexpr void Initialize(I max_bin_width, I max_bin_height);
+        constexpr bool GetIsInitialized() const noexcept;
+        constexpr bool GetIsEmpty() const noexcept;
+        constexpr void ReserveSpaces(std::size_t box_count);
+        constexpr void TrimToFitSpaces();
+        constexpr const std::vector<rl::pack_space<I>>& GetSpaces() const noexcept;
+        constexpr I GetPageCount() const noexcept;
+        constexpr I GetWidth() const noexcept;
+        constexpr I GetHeight() const noexcept;
+        constexpr I GetMaxPageWidth() const noexcept;
+        constexpr I GetMaxPageHeight() const noexcept;
+        constexpr I GetTopPageWidth() const noexcept;
+        constexpr I GetTopPageHeight() const noexcept;
+        constexpr void Pack(const std::span<rl::pack_box<I>> boxes);
     };
-}
+}    // namespace rl
 
 #include <rlm/cellular/detail/Packer.inl>
