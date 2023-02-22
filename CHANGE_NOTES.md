@@ -27,6 +27,48 @@ SPDX-License-Identifier: MIT
 
 All changes made in each version of RLM are tracked here.
 
+## Version 0.3.0
+
+This is the largest update yet. It includes a massive additions to the cellular math portion of the library.
+
+### Features:
+ - Add rl::gcf function to get the greatest common factor of two or more primatives.
+ - Add functions to fix degenerate shape dimensions by changing them to have the minimum valid value.
+ - Add CMake options to configure if degenerate shapes are fixed automatically (RLM_FIX_DEGENERACY) and to configure if asserts are called for degenerate shapes in debug builds (RLM_ASSERT_DEGENERACY).
+ - Port bin packing algorithm from [mpbp](https://github.com/Journeyman-dev/mpbp), which is now archived.
+ - Rename structs to be more consistent:
+    - point2 -> cell_vector2
+    - segment2 -> cell_segment2
+    - box2 -> cell_box2
+    - circle2 -> cell_circle2
+    - rectangle2 -> box2
+ - Add rl::walk function to iterate over every cell of a cell shape.
+ - Add rl::are_collinear function to determine if cell_vector2 and/or cell_segment2 are collinear.
+ - Add rl::are_parallel function to determine if cell_segment2 are parallel.
+ - Add rl::are_perpendicular function to determine if cell_segment2 are perpendicular.
+ - Add rl::bounding_box2 function to get the bounding cell_box2 of one or more cell shapes.
+ - Add rl::box2_between function to get the cell_box2 between four coordinate edges.
+ - Add functions to get the size of a cell_circle2.
+ - Add rl::cell_segment2_between function to get the cell_segment2 between two cell_vector2.
+ - Add functions to get the direction of a cell_segment2.
+ - Add functions to get the size of a cell_segment2.
+ - Add rl::orientation_determinant function to get the orientation determinant of three cell_vector2.
+ - Add rl::position_orientation to get the orientation of three cell_vector2, returned as the new enum rl::PositionOrientation.
+ - Add rl::center function to get the center of cell shapes.
+ - Add rl::crop function to crop cell shapes within a cell_box2.
+ - Add rl::cross_z function to get the z component of the cross product of cell shapes.
+ - Add rl::distance_between functions to get the distance between any two cell shapes.
+ - Add rl::do_intersect function to determine if any two cell shapes share at least one cell.
+ - Add rl::does_contain function to determine if one cell shape is made up of tiles that are entirely within another.
+ - Add rl::does_fit function to determine if a cell shape can contain another if it was moved. Only overloaded for cell_box2 in this release.
+ - Add rl::dot function to calculate the dot product between cell shapes.
+ - Add rl::unit_dot function to calculate the unit dot product between two cell shapes.
+ - Add rl::magnitude function to get the magnitude of a cell_vector2.
+ - Add functions to convert cell shapes to other cell shapes if possible.
+ - Add functions to determine if a cell shape is convertable into a different cell shape type.
+ - Add rl::template_cast to cast a struct into the same struct type with different template arguments, casting the property values.
+ - Add rl::translation to get the translation of a cell_segment2.
+
 ## Version 0.2.0
 
 This version includes a lot of new math functions. Most of these are in the cellular algebra portion of the library.
