@@ -41,8 +41,7 @@ SCENARIO("A pack_box is constructed")
         THEN("The properties are correct")
         {
             CHECK(box.identifier == 1);
-            CHECK(box.box.width == 2);
-            CHECK(box.box.height == 3);
+            CHECK(box.box == rl::cell_box2(0, 0, 2, 3));
         }
     }
 }
