@@ -23,6 +23,7 @@
 #pragma once
 
 #include <rlm/color/concepts.hpp>
+#include <rlm/clamp.hpp>
 #include <type_traits>
 
 template<rl::color_channel Ca, rl::color_channel Cb>
