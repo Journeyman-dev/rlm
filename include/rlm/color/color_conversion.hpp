@@ -35,52 +35,52 @@ namespace rl
     template<rl::color_channel C>
     struct color_rgba;
 
-    template<rl::color_channel C>
+    template<rl::color_channel Ca, rl::color_channel Cb>
     constexpr rl::color_g<Ca> to_color_g(rl::color_g<Cb> color) noexcept; 
 
-    template<rl::color_channel C>
+    template<rl::color_channel Ca, rl::color_channel Cb>
     constexpr rl::color_g<Ca> to_color_g(rl::color_ga<Cb> color) noexcept; 
 
-    template<rl::color_channel C>
+    template<rl::color_channel Ca, rl::color_channel Cb>
     constexpr rl::color_g<Ca> to_color_g(rl::color_rgb<Cb> color) noexcept;
 
-    template<rl::color_channel C>
+    template<rl::color_channel Ca, rl::color_channel Cb>
     constexpr rl::color_g<Ca> to_color_g(rl::color_rgba<Cb> color) noexcept;
 
-    template<rl::color_channel C>
+    template<rl::color_channel Ca, rl::color_channel Cb>
     constexpr rl::color_ga<Ca> to_color_ga(rl::color_g<Cb> color) noexcept; 
 
-    template<rl::color_channel C>
+    template<rl::color_channel Ca, rl::color_channel Cb>
     constexpr rl::color_ga<Ca> to_color_ga(rl::color_ga<Cb> color) noexcept; 
 
-    template<rl::color_channel C>
+    template<rl::color_channel Ca, rl::color_channel Cb>
     constexpr rl::color_ga<Ca> to_color_ga(rl::color_rgb<Cb> color) noexcept;
 
-    template<rl::color_channel C>
+    template<rl::color_channel Ca, rl::color_channel Cb>
     constexpr rl::color_ga<Ca> to_color_ga(rl::color_rgba<Cb> color) noexcept;
 
-    template<rl::color_channel C>
+    template<rl::color_channel Ca, rl::color_channel Cb>
     constexpr rl::color_rgb<Ca> to_color_rgb(rl::color_g<Cb> color) noexcept; 
 
-    template<rl::color_channel C>
+    template<rl::color_channel Ca, rl::color_channel Cb>
     constexpr rl::color_rgb<Ca> to_color_rgb(rl::color_ga<Cb> color) noexcept; 
 
-    template<rl::color_channel C>
+    template<rl::color_channel Ca, rl::color_channel Cb>
     constexpr rl::color_rgb<Ca> to_color_rgb(rl::color_rgb<Cb> color) noexcept;
 
-    template<rl::color_channel C>
+    template<rl::color_channel Ca, rl::color_channel Cb>
     constexpr rl::color_rgb<Ca> to_color_rgb(rl::color_rgba<Cb> color) noexcept;
 
-    template<rl::color_channel C>
+    template<rl::color_channel Ca, rl::color_channel Cb>
     constexpr rl::color_rgba<Ca> to_color_rgba(rl::color_g<Cb> color) noexcept; 
 
-    template<rl::color_channel C>
+    template<rl::color_channel Ca, rl::color_channel Cb>
     constexpr rl::color_rgba<Ca> to_color_rgba(rl::color_ga<Cb> color) noexcept; 
 
-    template<rl::color_channel C>
+    template<rl::color_channel Ca, rl::color_channel Cb>
     constexpr rl::color_rgba<Ca> to_color_rgba(rl::color_rgb<Cb> color) noexcept;
 
-    template<rl::color_channel C>
+    template<rl::color_channel Ca, rl::color_channel Cb>
     constexpr rl::color_rgba<Ca> to_color_rgba(rl::color_rgba<Cb> color) noexcept;
 }
 
