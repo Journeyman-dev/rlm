@@ -30,10 +30,10 @@ namespace rl
     constexpr Ca color_channel_cast(Cb channel) noexcept;
 
     template<rl::color_channel C>
-    constexpr C color_channel_max_value();
+    constexpr C color_channel_max_value() noexcept;
 
     template<rl::color_channel C>
-    constexpr C color_channel_clamp(C channel);
+    constexpr C color_channel_clamp(C channel) noexcept;
 }
 
 #include <rlm/color/detail/color_channel.inl>

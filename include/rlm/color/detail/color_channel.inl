@@ -87,7 +87,7 @@ constexpr Ca rl::color_channel_cast(Cb channel) noexcept
 }
 
 template<rl::color_channel C>
-constexpr C rl::color_channel_max_value()
+constexpr C rl::color_channel_max_value() noexcept
 {
     if constexpr (std::is_floating_point<C>::value)
     {
@@ -102,7 +102,7 @@ constexpr C rl::color_channel_max_value()
 }
 
 template<rl::color_channel C>
-constexpr C rl::color_channel_clamp(C channel)
+constexpr C rl::color_channel_clamp(C channel) noexcept
 {
     if constexpr (std::is_floating_point<C>::value)
     {
