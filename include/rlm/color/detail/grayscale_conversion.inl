@@ -29,7 +29,7 @@
 template<rl::color_channel C>
 constexpr C rl::rgb_to_grayscale_libpng(C r, C g, C b) noexcept
 {
-    if constexpr (rl::is_floating_point<C>::value)
+    if constexpr (std::is_floating_point<C>::value)
     {
         return 
             static_cast<C>(0.21268) *
@@ -39,7 +39,7 @@ constexpr C rl::rgb_to_grayscale_libpng(C r, C g, C b) noexcept
             static_cast<C>(0.07217) *
             rl::color_channel_clamp<C>(b);
     }
-    else // if constexpr (rl::is_unsigned<C>::value)
+    else // if constexpr (std::is_unsigned<C>::value)
     {
         return 
             static_cast<C>(0.21268) *
