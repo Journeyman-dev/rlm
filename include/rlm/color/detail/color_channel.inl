@@ -44,7 +44,7 @@ constexpr Ca rl::color_channel_cast(Cb channel) noexcept
                     static_cast<Cb>(
                         rl::color_channel_max_value<Cb>()
                     )
-                );
+                )
             );
     }
     else if constexpr (
