@@ -99,10 +99,14 @@ constexpr C rl::color_channel_max_value()
 template<rl::color_channel C>
 constexpr C rl::color_channel_clamp(C channel)
 {
-    return
-        rl::clamp<C>(
-            channel,
-            static_cast<C>(0),
-            rl::color_channel_max_value<C>()
-        );
+    if constexpr (std::is_floating_point<C>::value)
+    {
+        return
+            rl::clamp<C>(
+                channel,
+                static_cast<C>(0),
+                rl::color_channel_max_value<C>()
+            );
+    }
+    return channel;
 }
