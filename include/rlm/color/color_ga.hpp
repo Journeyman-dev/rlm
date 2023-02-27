@@ -33,6 +33,6 @@ namespace rl
         C a = 0;
 
         constexpr color_ga() noexcept = default;
-        constepxr color_ga(C g, C a) noexcept;
+        constexpr color_ga(C g, C a) noexcept;
     };
 }
