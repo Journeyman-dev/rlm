@@ -24,21 +24,22 @@
 
 #include <rlm/color/concepts.hpp>
 
-namespace rl
+template<rl::color_channel C>
+constexpr rl::color_g<C>::color_g(C g) noexcept
+    : g(g)
 {
-    template<rl::color_channel C>
-    struct color_ga
-    {
-        C g = 0;
-        C a = 0;
-
-        constexpr color_ga() noexcept = default;
-        constexpr color_ga(C g, C a) noexcept;
-
-        constexpr bool operator==(const rl::color_ga<C>& that) const noexcept;
-
-        constexpr bool operator!=(const rl::color_ga<C>& that) const noexcept;
-    };
 }
 
-#include <rlm/color/detail/color_ga.inl>
+template<rl::color_channel C>
+constexpr bool rl::color_g<C>::operator==(const rl::color_g<C>& that) const noexcept
+{
+    return
+        this->g == that.g;
+}
+
+template<rl::color_channel C>
+constexpr bool rl::color_g<C>::operator!=(const rl::color_g<C>& that) const noexcept
+{
+    return
+        this->g != that.g;
+}

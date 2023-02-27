@@ -33,5 +33,11 @@ namespace rl
 
         constexpr color_g() noexcept = default;
         constexpr color_g(C g) noexcept;
+
+        constexpr bool operator==(const rl::color_g<C>& that) const noexcept;
+
+        constexpr bool operator!=(const rl::color_g<C>& that) const noexcept;
     };
 }
+
+#include <rlm/color/detail/color_g.inl>

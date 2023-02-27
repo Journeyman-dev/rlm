@@ -36,5 +36,11 @@ namespace rl
 
         constexpr color_rgba() noexcept = default;
         constexpr color_rgba(C r, C g, C b, C a) noexcept;
+
+        constexpr bool operator==(const rl::color_rgba<C>& that) const noexcept;
+
+        constexpr bool operator!=(const rl::color_rgba<C>& that) const noexcept;
     };
 }
+
+#include <rlm/color/detail/color_rgba.inl>
