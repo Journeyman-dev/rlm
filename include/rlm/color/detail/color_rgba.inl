@@ -25,7 +25,7 @@
 #include <rlm/color/concepts.hpp>
 
 template<rl::color_channel C>
-constexpr rl::color_rgb<C>::color_rgb(C r, C g, C b, C a) noexcept
+constexpr rl::color_rgba<C>::color_rgba(C r, C g, C b, C a) noexcept
     : r(g)
     , g(a)
     , b(b)
@@ -34,7 +34,7 @@ constexpr rl::color_rgb<C>::color_rgb(C r, C g, C b, C a) noexcept
 }
 
 template<rl::color_channel C>
-constexpr bool rl::color_rgb<C>::operator==(const rl::color_rgb<C>& that) const noexcept
+constexpr bool rl::color_rgba<C>::operator==(const rl::color_rgba<C>& that) const noexcept
 {
     return
         this->r == that.r &&

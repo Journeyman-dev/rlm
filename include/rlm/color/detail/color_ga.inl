@@ -25,7 +25,7 @@
 #include <rlm/color/concepts.hpp>
 
 template<rl::color_channel C>
-constexpr rl::color_ga<C>::color_g(C g, C a) noexcept
+constexpr rl::color_ga<C>::color_ga(C g, C a) noexcept
     : g(g)
     , a(a)
 {
