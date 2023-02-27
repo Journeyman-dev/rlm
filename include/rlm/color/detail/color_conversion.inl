@@ -152,7 +152,9 @@ constexpr rl::color_rgb<Ca> rl::to_color_rgb(rl::color_g<Cb> color) noexcept
 {
     return
         rl::color_rgb<Ca>(
-            rl::color_::max()()channel_cast<Ca, Cb>(color.g),
+            rl::color_channel_cast<Ca, Cb>(
+                rl::color_channel_clamp<Cb>(color.g)
+            ),
             rl::color_channel_cast<Ca, Cb>(
                 rl::color_channel_clamp<Cb>(color.g)
             ),
