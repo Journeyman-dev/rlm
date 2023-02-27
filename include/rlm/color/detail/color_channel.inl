@@ -63,11 +63,11 @@ constexpr Ca rl::color_channel_cast(Cb channel) noexcept
         std::is_unsigned<Cb>::value
     )
     {
-        using LargestType = std::conditional_v<
-            sizeof(Ca) > sizeof(Cb),
+        using LargestType = std::conditional<
+            (sizeof(Ca) > sizeof(Cb)),
             Ca,
             Cb
-        >;
+        >::type;
         return
             static_cast<Ca>(
                 static_cast<LargestType>(std::numeric_limits<Ca>::max()) /
