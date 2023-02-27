@@ -82,6 +82,7 @@ constexpr Ca rl::color_channel_cast(Cb channel) noexcept
         return static_cast<Ca>(channel);
     }
     static_assert("invalid color channel type");
+    return channel;
 }
 
 template<rl::color_channel C>
@@ -96,6 +97,7 @@ constexpr C rl::color_channel_max_value()
         return std::numeric_limits<C>::max();
     }
     static_assert(true, "invalid color channel type");
+    return 0;
 }
 
 template<rl::color_channel C>
@@ -110,5 +112,5 @@ constexpr C rl::color_channel_clamp(C channel)
                 rl::color_channel_max_value<C>()
             );
     }
-    static_assert(true, "invalid color channel type");
+    return channel;
 }
