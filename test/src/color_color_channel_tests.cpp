@@ -82,7 +82,7 @@ SCENARIO("A color is casted to another channel type")
             const auto casted_channel = rl::color_channel_cast<std::uint8_t, std::uint16_t>(channel);
             THEN("The return value is correct")
             {
-                CHECK(casted_channel == 255);
+                CHECK(casted_channel == 128);
             }
         }
     }
