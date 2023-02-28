@@ -78,7 +78,7 @@ constexpr Ca rl::color_channel_cast(Cb channel) noexcept
     {
         return static_cast<Ca>(channel);
     }
-    static_assert("invalid color channel type");
+    static_assert(true, "invalid color channel type");
     return channel;
 }
 
