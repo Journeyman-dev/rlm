@@ -23,6 +23,7 @@
 #pragma once
 
 #include <ostream>
+#include <type_traits>
 #include <rlm/color/concepts.hpp>
 #include <rlm/color/color_g.hpp>
 #include <rlm/color/color_ga.hpp>
@@ -34,28 +35,56 @@ namespace rl
     template<rl::color_channel C>
     constexpr std::ostream& operator<<(std::ostream& os, const rl::color_g<C>& color)
     {
-        os << "(" << color.g << ")";
+        if constexpr (std::is_same<C, unsigned char>::value || std::is_same<C, wchar_t>::value)
+        {
+            os << "(" << static_cast<unsigned int>(color.g) << ")";
+        }
+        else
+        {
+            os << "(" << color.g << ")";
+        }
         return os;
     }
 
     template<rl::color_channel C>
     constexpr std::ostream& operator<<(std::ostream& os, const rl::color_ga<C>& color)
     {
-        os << "(" << color.g << ", " << color.a << ")";
+        if constexpr (std::is_same<C, unsigned char>::value || std::is_same<C, wchar_t>::value)
+        {
+            os << "(" << static_cast<unsigned int>(color.g) << ", " << static_cast<unsigned int>(color.a) << ")";
+        }
+        else
+        {
+            os << "(" << color.g << ", " << color.a << ")";
+        }
         return os;
     }
 
     template<rl::color_channel C>
     constexpr std::ostream& operator<<(std::ostream& os, const rl::color_rgb<C>& color)
     {
-        os << "(" << color.r << ", " << color.g << ", " << color.b << ")";
+        if constexpr (std::is_same<C, unsigned char>::value || std::is_same<C, wchar_t>::value)
+        {
+            os << "(" << static_cast<unsigned int>(color.r) << ", " << static_cast<unsigned int>(color.g) << ", " << static_cast<unsigned int>(color.b) << ")";
+        }
+        else
+        {
+            os << "(" << color.r << ", " << color.g << ", " << color.b << ")";
+        }
         return os;
     }
 
     template<rl::color_channel C>
     constexpr std::ostream& operator<<(std::ostream& os, const rl::color_rgba<C>& color)
     {
-        os << "(" << color.r << ", " << color.g << ", " << color.b << ", " << color.a << ")";
+        if constexpr (std::is_same<C, unsigned char>::value || std::is_same<C, wchar_t>::value)
+        {
+            os << "(" << static_cast<unsigned int>(color.r) << ", " << static_cast<unsigned int>(color.g) << ", " << static_cast<unsigned int>(color.b) << ", " << static_cast<unsigned int>(color.a) << ")";
+        }
+        else
+        {
+            os << "(" << color.r << ", " << color.g << ", " << color.b << ", " << color.a << ")";
+        }
         return os;
     }
 }    // namespace rl
