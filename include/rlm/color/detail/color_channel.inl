@@ -105,7 +105,7 @@ constexpr C rl::color_channel_max_value() noexcept
     {
         return static_cast<C>(1);
     }
-    else //if constexpr (std::is_unsigned<C>::value)
+    else if constexpr (std::is_unsigned<C>::value)
     {
         return std::numeric_limits<C>::max();
     }
