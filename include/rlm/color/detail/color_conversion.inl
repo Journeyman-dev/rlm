@@ -64,9 +64,9 @@ constexpr rl::color_g<Ca> rl::to_color_g(rl::color_rgb<Cb> color) noexcept
         rl::color_g<Ca>(
             rl::color_channel_cast<Ca, Cb>(
                 rl::rgb_to_grayscale_libpng<Cb>(
-                    color.r,
-                    color.g,
-                    color.b
+                    rl::color_channel_clamp(color.r),
+                    rl::color_channel_clamp(color.g),
+                    rl::color_channel_clamp(color.b)
                 )
             )
         );
@@ -79,9 +79,9 @@ constexpr rl::color_g<Ca> rl::to_color_g(rl::color_rgba<Cb> color) noexcept
         rl::color_g<Ca>(
             rl::color_channel_cast<Ca, Cb>(
                 rl::rgb_to_grayscale_libpng<Cb>(
-                    color.r,
-                    color.g,
-                    color.b
+                    rl::color_channel_clamp(color.r),
+                    rl::color_channel_clamp(color.g),
+                    rl::color_channel_clamp(color.b)
                 )
             )
         );
@@ -120,9 +120,9 @@ constexpr rl::color_ga<Ca> rl::to_color_ga(rl::color_rgb<Cb> color) noexcept
         rl::color_ga<Ca>(
             rl::color_channel_cast<Ca, Cb>(
                 rl::rgb_to_grayscale_libpng<Cb>(
-                    color.r,
-                    color.g,
-                    color.b
+                    rl::color_channel_clamp(color.r),
+                    rl::color_channel_clamp(color.g),
+                    rl::color_channel_clamp(color.b)
                 )
             ),
             rl::color_channel_max_value<Ca>()
