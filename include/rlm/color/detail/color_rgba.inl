@@ -26,8 +26,8 @@
 
 template<rl::color_channel C>
 constexpr rl::color_rgba<C>::color_rgba(C r, C g, C b, C a) noexcept
-    : r(g)
-    , g(a)
+    : r(r)
+    , g(g)
     , b(b)
     , a(a)
 {
