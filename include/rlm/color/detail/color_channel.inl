@@ -63,12 +63,12 @@ constexpr Ca rl::color_channel_cast(Cb channel) noexcept
         std::is_unsigned<Cb>::value
     )
     {
-        using LargestType = std::conditional<
+        using LargestType = typename std::conditional<
             (sizeof(Ca) > sizeof(Cb)),
             Ca,
             Cb
         >::type;
-        using SmallestType = std::conditional<
+        using SmallestType = typename std::conditional<
             (sizeof(Ca) < sizeof(Cb)),
             Ca,
             Cb
