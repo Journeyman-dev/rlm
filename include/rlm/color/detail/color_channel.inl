@@ -35,18 +35,11 @@ constexpr Ca rl::color_channel_cast(Cb channel) noexcept
     )
     {
         return
+            rl::color_channel_max_value<Ca>() /
             static_cast<Ca>(
-                rl::clamp<Cb>(
-                    channel *
-                    static_cast<Ca>(
-                        rl::color_channel_max_value<Cb>()
-                    ),
-                    static_cast<Cb>(0),
-                    static_cast<Cb>(
-                        rl::color_channel_max_value<Cb>()
-                    )
-                )
-            );
+                rl::color_channel_max_value<Cb>() 
+            ) *
+            static_cast<Ca>(channel);
     }
     else if constexpr (
         std::is_unsigned<Ca>::value &&
@@ -54,9 +47,12 @@ constexpr Ca rl::color_channel_cast(Cb channel) noexcept
     )
     {
         return
-            static_cast<Ca>(1) /
-            static_cast<Ca>(rl::color_channel_max_value<Cb>()) *
-            static_cast<Ca>(channel);
+            static_cast<Ca>(
+                rl::color_channel_clamp<Cb>(channel) *
+                static_cast<Ca>(
+                    rl::color_channel_max_value<Ca>()
+                )
+            );
     }
     else if constexpr (
         std::is_unsigned<Ca>::value &&
