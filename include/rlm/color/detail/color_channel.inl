@@ -68,10 +68,15 @@ constexpr Ca rl::color_channel_cast(Cb channel) noexcept
             Ca,
             Cb
         >::type;
+        using SmallestType = std::conditional<
+            (sizeof(Ca) < sizeof(Cb)),
+            Ca,
+            Cb
+        >::type;
         return
             static_cast<Ca>(
-                static_cast<LargestType>(std::numeric_limits<Ca>::max()) /
-                static_cast<LargestType>(std::numeric_limits<Cb>::max()) *
+                static_cast<LargestType>(std::numeric_limits<LargestType>::max()) /
+                static_cast<LargestType>(std::numeric_limits<SmallestType>::max()) *
                 static_cast<LargestType>(channel)
             );
     }
