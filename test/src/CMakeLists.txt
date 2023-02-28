@@ -56,6 +56,7 @@ target_sources(RlmTest
         "cellular_translation_tests.cpp"
         "cellular_walk_tests.cpp"
         "color_color_channel_tests.cpp"
+        "color_color_g_tests.cpp"
         "color_grayscale_conversion_tests.cpp"
         "clamp_tests.cpp"
         "gcf_tests.cpp"
