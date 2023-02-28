@@ -24,6 +24,7 @@
 
 #include <rlm/color/concepts.hpp>
 #include <rlm/color/color_channel.hpp>
+#include <cstdint>
 #include <type_traits>
 
 template<rl::color_channel C>
@@ -41,12 +42,19 @@ constexpr C rl::rgb_to_grayscale_libpng(C r, C g, C b) noexcept
     }
     else // if constexpr (std::is_unsigned<C>::value)
     {
+        static_assert(
+            !std::is_same<C, std::uintmax_t>::value,
+            "color channel type unconvertable to grayscale"
+        );
         return 
-            static_cast<C>(0.21268) *
-            r +
-            static_cast<C>(0.7151) *
-            g +
-            static_cast<C>(0.07217) *
-            b;
+            (
+                static_cast<std::uintmax_t>(6969) *
+                static_cast<std::uintmax_t>(r) +
+                static_cast<std::uintmax_t>(23434) *
+                static_cast<std::uintmax_t>(g) +
+                static_cast<std::uintmax_t>(2365) *
+                static_cast<std::uintmax_t>(b)
+            ) /
+            static_cast<std::uintmax_t>(32768);
     }
 }
