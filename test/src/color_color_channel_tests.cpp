@@ -48,13 +48,13 @@ SCENARIO("A color is casted to another channel type")
     }
     GIVEN("An uint8_t channel")
     {
-        const std::uint8_t channel = 255;
+        const std::uint8_t channel = 127;
         WHEN("The channel is casted to a float")
         {
             const auto casted_channel = rl::color_channel_cast<float, std::uint8_t>(channel);
             THEN("The return value is correct")
             {
-                CHECK(casted_channel == 1.0f);
+                CHECK( (casted_channel> 0.49 && casted_channel < 0.51));
             }
         }
         WHEN("The channel is casted to a uin16_t")
@@ -62,19 +62,19 @@ SCENARIO("A color is casted to another channel type")
             const auto casted_channel = rl::color_channel_cast<std::uint16_t, std::uint8_t>(channel);
             THEN("The return value is correct")
             {
-                CHECK(casted_channel == 65535);
+                CHECK(casted_channel == 32639);
             }
         }
     }
     GIVEN("A uint16_t channel")
     {
-        const std::uint16_t channel = 65535;
+        const std::uint16_t channel = 32767;
         WHEN("The channel is casted to a float")
         {
             const auto casted_channel = rl::color_channel_cast<float, std::uint16_t>(channel);
             THEN("The return value is correct")
             {
-                CHECK(casted_channel == 1.0f);
+                CHECK( (casted_channel> 0.49 && casted_channel < 0.51));
             }
         }
         WHEN("The channel is casted to a uint8_t")
