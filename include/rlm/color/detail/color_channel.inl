@@ -29,7 +29,11 @@
 template<rl::color_channel Ca, rl::color_channel Cb>
 constexpr Ca rl::color_channel_cast(Cb channel) noexcept
 {
-   if constexpr (
+    if constexpr (std::is_same<Ca, Cb>::value)
+    {
+        return rl::color_channel_clamp<Cb>(channel);
+    }
+    else if constexpr (
         std::is_floating_point<Ca>::value &&
         std::is_unsigned<Cb>::value
     )
