@@ -22,6 +22,7 @@
 
 #include <catch2/catch_all.hpp>
 #include <rlm/color/color_rgb.hpp>
+#include <rlm/color/ostream.hpp>
 #include <cstdint>
 
 SCENARIO("A color_rgb is constructed")

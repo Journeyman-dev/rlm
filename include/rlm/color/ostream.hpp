@@ -20,51 +20,33 @@
     CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 */
 
-#include <catch2/catch_all.hpp>
-#include <rlm/color/color_g.hpp>
-#include <rlm/color/ostream.hpp>
-#include <cstdint>
+#pragma once
 
-SCENARIO("A color_g is constructed")
-{
-    GIVEN("A color_g constructed with its default constructor")
-    {
-        rl::color_g<std::uint8_t> color;
-        THEN("All properties are correct")
-        {
-            CHECK(color.g == 0);
-        }
-    }
-    GIVEN("A color_g constructed with its overloaded constructor")
-    {
-        rl::color_g<std::uint8_t> color(1);
-        THEN("All properties are correct")
-        {
-            CHECK(color.g == 1);
-        }
-    }
-}
+#include <ostream>
+#include <rlm/color/concepts.hpp>
 
-SCENARIO("Two color_g are compared")
+namespace rl
 {
-    GIVEN("A color_g")
-    {
-        const rl::color_g<std::uint8_t> color_a(24);
-        GIVEN("Another color_g that is equal")
-        {
-            const rl::color_g<std::uint8_t> color_b(24);
-            THEN("The color_g are equal")
-            {
-                CHECK(color_a == color_b);
-            }
-        }
-        GIVEN("Another color_g that is not equal")
-        {
-            const rl::color_g<std::uint8_t> color_b(55);
-            THEN("The color_g are not equal")
-            {
-                CHECK(color_a != color_b);
-            }
-        }
-    }
-}
+    template<rl::color_channel C>
+    struct color_g;
+    template<rl::color_channel C>
+    struct color_ga;
+    template<rl::color_channel C>
+    struct color_rgb;
+    template<rl::color_channel C>
+    struct color_rgba;
+
+    template<rl::color_channel C>
+    constexpr std::ostream& operator<<(std::ostream& os, const rl::color_g<C>& color);
+
+    template<rl::color_channel C>
+    constexpr std::ostream& operator<<(std::ostream& os, const rl::color_ga<C>& color);
+
+    template<rl::color_channel C>
+    constexpr std::ostream& operator<<(std::ostream& os, const rl::color_rgb<C>& color);
+
+    template<rl::color_channel C>
+    constexpr std::ostream& operator<<(std::ostream& os, const rl::color_rgba<C>& color);
+}    // namespace rl
+
+#include <rlm/color/detail/ostream.inl>

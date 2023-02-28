@@ -20,53 +20,42 @@
     CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 */
 
-#include <catch2/catch_all.hpp>
+#pragma once
+
+#include <ostream>
+#include <rlm/color/concepts.hpp>
+#include <rlm/color/color_g.hpp>
 #include <rlm/color/color_ga.hpp>
-#include <rlm/color/ostream.hpp>
-#include <cstdint>
+#include <rlm/color/color_rgb.hpp>
+#include <rlm/color/color_rgba.hpp>
 
-SCENARIO("A color_ga is constructed")
+namespace rl
 {
-    GIVEN("A color_ga constructed with its default constructor")
+    template<rl::color_channel C>
+    constexpr std::ostream& operator<<(std::ostream& os, const rl::color_g<C>& color)
     {
-        rl::color_ga<std::uint8_t> color;
-        THEN("All properties are correct")
-        {
-            CHECK(color.g == 0);
-            CHECK(color.a == 0);
-        }
+        os << "(" << color.g << ")";
+        return os;
     }
-    GIVEN("A color_ga constructed with its overloaded constructor")
-    {
-        rl::color_ga<std::uint8_t> color(1, 2);
-        THEN("All properties are correct")
-        {
-            CHECK(color.g == 1);
-            CHECK(color.a == 2);
-        }
-    }
-}
 
-SCENARIO("Two color_ga are compared")
-{
-    GIVEN("A color_ga")
+    template<rl::color_channel C>
+    constexpr std::ostream& operator<<(std::ostream& os, const rl::color_ga<C>& color)
     {
-        const rl::color_ga<std::uint8_t> color_a(24, 44);
-        GIVEN("Another color_ga that is equal")
-        {
-            const rl::color_ga<std::uint8_t> color_b(24, 44);
-            THEN("The color_ga are equal")
-            {
-                CHECK(color_a == color_b);
-            }
-        }
-        GIVEN("Another color_ga that is not equal")
-        {
-            const rl::color_ga<std::uint8_t> color_b(55, 128);
-            THEN("The color_ga are not equal")
-            {
-                CHECK(color_a != color_b);
-            }
-        }
+        os << "(" << color.g << ", " << color.a << ")";
+        return os;
     }
-}
+
+    template<rl::color_channel C>
+    constexpr std::ostream& operator<<(std::ostream& os, const rl::color_rgb<C>& color)
+    {
+        os << "(" << color.r << ", " << color.g << ", " << color.b << ")";
+        return os;
+    }
+
+    template<rl::color_channel C>
+    constexpr std::ostream& operator<<(std::ostream& os, const rl::color_rgba<C>& color)
+    {
+        os << "(" << color.r << ", " << color.g << ", " << color.b << ", " << color.a << ")";
+        return os;
+    }
+}    // namespace rl
