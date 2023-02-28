@@ -82,9 +82,13 @@ constexpr Ca rl::color_channel_cast(Cb channel) noexcept
                     static_cast<LargestType>(channel)
                 );
         }
-        else
+        else if constexpr (std::is_same<Cb, LargestType>::value)
         {
-
+            return
+                static_cast<Ca>(
+                    static_cast<LargestType>(channel) /
+                    static_cast<LargestType>(std::numeric_limits<SmallestType>::max())
+                );
         }
     }
     else if constexpr (
