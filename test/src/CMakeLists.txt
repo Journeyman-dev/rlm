@@ -59,6 +59,7 @@ target_sources(RlmTest
         "color_color_g_tests.cpp"
         "color_color_ga_tests.cpp"
         "color_color_rgb_tests.cpp"
+        "color_color_rgba_tests.cpp"
         "color_grayscale_conversion_tests.cpp"
         "clamp_tests.cpp"
         "gcf_tests.cpp"
