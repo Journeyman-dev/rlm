@@ -66,6 +66,26 @@ SCENARIO("A color is casted to another channel type")
             }
         }
     }
+    GIVEN("A uint16_t channel")
+    {
+        const std::uint16_t channel = 65535;
+        WHEN("The channel is casted to a float")
+        {
+            const auto casted_channel = rl::color_channel_cast<float, std::uint16_t>(channel);
+            THEN("The return value is correct")
+            {
+                CHECK(casted_channel == 1.0f);
+            }
+        }
+        WHEN("The channel is casted to a uint8_t")
+        {
+            const auto casted_channel = rl::color_channel_cast<std::uint8_t, std::uint16_t>(channel);
+            THEN("The return value is correct")
+            {
+                CHECK(casted_channel == 255);
+            }
+        }
+    }
 }
 
 SCENARIO("The max value of a color channel is gotten")
