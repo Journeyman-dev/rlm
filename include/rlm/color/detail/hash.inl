@@ -26,6 +26,7 @@
 #include <rlm/color/color_g.hpp>
 #include <rlm/color/color_ga.hpp>
 #include <rlm/hash_combine.hpp>
+#include <functional>
 #include <cstddef>
 
 namespace std
