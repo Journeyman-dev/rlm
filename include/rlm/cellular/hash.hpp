@@ -36,37 +36,37 @@ namespace std
     template <rl::signed_integral I>
     struct hash<rl::cell_vector2<I>> 
     {
-        constexpr auto operator()(const rl::cell_vector2<I> &point) const -> size_t;
+        constexpr std::size_t operator()(const rl::cell_vector2<I> &point) const;
     };
 
     template <rl::signed_integral I>
     struct hash<rl::cell_segment2<I>> 
     {
-        constexpr auto operator()(const rl::cell_segment2<I> &segment) const -> size_t;
+        constexpr std::size_t operator()(const rl::cell_segment2<I> &segment) const;
     };
 
     template <rl::signed_integral I>
     struct hash<rl::cell_box2<I>> 
     {
-        constexpr auto operator()(const rl::cell_box2<I> &box) const -> size_t;
+        constexpr std::size_t operator()(const rl::cell_box2<I> &box) const;
     };
 
     template <rl::signed_integral I, rl::floating_point F>
     struct hash<rl::cell_circle2<I, F>> 
     {
-        constexpr auto operator()(const rl::cell_circle2<I, F> &circle) const -> size_t;
+        constexpr std::size_t operator()(const rl::cell_circle2<I, F> &circle) const;
     };
 
     template <rl::signed_integral I>
     struct hash<rl::pack_box<I>> 
     {
-        constexpr auto operator()(const rl::pack_box<I> &box) const -> size_t;
+        constexpr std::size_t operator()(const rl::pack_box<I> &box) const;
     };
 
     template <rl::signed_integral I>
     struct hash<rl::pack_space<I>> 
     {
-        constexpr auto operator()(const rl::pack_space<I> &space) const -> size_t;
+        constexpr std::size_t operator()(const rl::pack_space<I> &space) const;
     };
 }
 
