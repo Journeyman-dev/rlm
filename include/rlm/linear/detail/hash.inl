@@ -22,51 +22,56 @@
 
 #pragma once
 
-#include <rlm/color/concepts.hpp>
-#include <rlm/color/color_g.hpp>
-#include <rlm/color/color_ga.hpp>
+#include <rlm/concepts.hpp>
+#include <rlm/linear/box2.hpp>
+#include <rlm/linear/vector2.hpp>
+#include <rlm/linear/vector3.hpp>
+#include <rlm/linear/vector4.hpp>
 #include <rlm/hash_combine.hpp>
-#include <functional>
 #include <cstddef>
+#include <functional>
 
 namespace std
 {
-    template <rl::color_channel C>
-    constexpr std::size_t hash<rl::color_g<C>>::operator()(const rl::color_g<C> &color) const
+    template<rl::floating_point F>
+    constexpr std::size_t hash<rl::box2<F>>::operator()(const rl::box2<F> &box) const
     {
-        return std::hash<C>{}(color.g);
-    }
-
-    template <rl::color_channel C>
-    constexpr std::size_t hash<rl::color_ga<C>>::operator()(const rl::color_g<C> &color) const
-    {
-        return 
+        return
             rl::hash_combine(
-                std::hash<C>{}(color.g),
-                std::hash<C>{}(color.a)
+                std::hash<F>{}(box.x),
+                std::hash<F>{}(box.y),
+                std::hash<F>{}(box.width),
+                std::hash<F>{}(box.height)
             );
     }
 
-    template <rl::color_channel C>
-    constexpr std::size_t hash<rl::color_rgb<C>>::operator()(const rl::color_rgb<C> &color) const
+    constexpr std::size_t hash<rl::vector2<F>>::operator()(const rl::vector2<F> &vector) const
     {
-        return 
+        return
             rl::hash_combine(
-                std::hash<C>{}(color.r),
-                std::hash<C>{}(color.g),
-                std::hash<C>{}(color.b)
+                std::hash<F>{}(vector.x),
+                std::hash<F>{}(vector.y)
             );
     }
 
-    template <rl::color_channel C>
-    constexpr std::size_t hash<rl::color_rgba<C>>::operator()(const rl::color_rgba<C> &color) const
+    constexpr std::size_t hash<rl::vector3<F>>::operator()(const rl::vector3<F> &vector) const
     {
-        return 
+        return
             rl::hash_combine(
-                std::hash<C>{}(color.r),
-                std::hash<C>{}(color.g),
-                std::hash<C>{}(color.b),
-                std::hash<C>{}(color.a)
+                std::hash<F>{}(vector.x),
+                std::hash<F>{}(vector.y),
+                std::hash<F>{}(vector.z)
+            );
+    }
+
+    constexpr std::size_t hash<rl::vector4<F>>::operator()(const rl::vector4<F> &vector) const
+    {
+        return
+            rl::hash_combine(
+                std::hash<F>{}(vector.x),
+                std::hash<F>{}(vector.y),
+                std::hash<F>{}(vector.z),
+                std::hash<F>{}(vector.w)
             );
     }
 }
