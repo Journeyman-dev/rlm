@@ -36,7 +36,7 @@
 namespace std
 {
     template <rl::signed_integral I>
-    constexpr std::size_t std::hash<rl::cell_vector2<I>>::operator()(const rl::cell_vector2<I> &point) const
+    constexpr std::size_t hash<rl::cell_vector2<I>>::operator()(const rl::cell_vector2<I> &point) const
     {
         return
             rl::hash_combine(
@@ -46,7 +46,7 @@ namespace std
     }
 
     template <rl::signed_integral I>
-    constexpr std::size_t std::hash<rl::cell_segment2<I>>::operator()(const rl::cell_segment2<I> &segment) const
+    constexpr std::size_t hash<rl::cell_segment2<I>>::operator()(const rl::cell_segment2<I> &segment) const
     {
         return 
             rl::hash_combine(
@@ -58,7 +58,7 @@ namespace std
     }
 
     template <rl::signed_integral I>
-    constexpr std::size_t std::hash<rl::cell_box2<I>>::operator()(const rl::cell_box2<I> &box) const
+    constexpr std::size_t hash<rl::cell_box2<I>>::operator()(const rl::cell_box2<I> &box) const
     {
         return 
             rl::hash_combine(
@@ -70,7 +70,7 @@ namespace std
     }
 
     template <rl::signed_integral I, rl::floating_point F>
-    constexpr std::size_t std::hash<rl::cell_circle2<I, F>>::operator()(const rl::cell_circle2<I, F> &circle) const
+    constexpr std::size_t hash<rl::cell_circle2<I, F>>::operator()(const rl::cell_circle2<I, F> &circle) const
     {
         return 
             rl::hash_combine(
@@ -81,7 +81,7 @@ namespace std
     }
 
     template <rl::signed_integral I>
-    constexpr std::size_t std::hash<rl::pack_box<I>>::operator()(const rl::pack_box<I> &box) const
+    constexpr std::size_t hash<rl::pack_box<I>>::operator()(const rl::pack_box<I> &box) const
     {
         return 
             rl::hash_combine(
@@ -92,7 +92,7 @@ namespace std
     }
 
     template <rl::signed_integral I>
-    constexpr std::size_t std::hash<rl::pack_space<I>>::operator()(const rl::pack_space<I> &space) const
+    constexpr std::size_t hash<rl::pack_space<I>>::operator()(const rl::pack_space<I> &space) const
     {
         return 
             rl::hash_combine(
