@@ -53,7 +53,7 @@ namespace std
                 std::hash<I>{}(segment.start_x),
                 std::hash<I>{}(segment.start_y),
                 std::hash<I>{}(segment.end_x),
-                std::hash<I>{}(segment.end_y),
+                std::hash<I>{}(segment.end_y)
             );
     }
 
@@ -74,9 +74,9 @@ namespace std
     {
         return 
             rl::hash_combine(
-                std::hash<C>{}(circle.x),
-                std::hash<C>{}(circle.y),
-                std::hash<C>{}(circle.radius)
+                std::hash<I>{}(circle.x),
+                std::hash<I>{}(circle.y),
+                std::hash<F>{}(circle.radius)
             );
     }
 

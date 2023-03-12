@@ -29,7 +29,7 @@ constexpr H rl::hash_combine(H hash_a, H hash_b) noexcept
 
 template<rl::unsigned_integral H, rl::unsigned_integral... Hs>
     requires std::conjunction_v<std::is_same<H, Hs>...>
-constexpr H hash_combine(const H hash_a, const H hash_b, const Hs... hash_n) noexcept
+constexpr H rl::hash_combine(const H hash_a, const H hash_b, const Hs... hash_n) noexcept
 {
     return
         rl::hash_combine(

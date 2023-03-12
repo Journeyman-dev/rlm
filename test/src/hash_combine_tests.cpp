@@ -20,26 +20,25 @@
     CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 */
 
-#pragma once
+#include <catch2/catch_all.hpp>
+#include <rlm/hash_combine.hpp>
+#include <functional>
 
-#include <rlm/concepts.hpp>
-#include <rlm/cellular/cell_box2.hpp>
-
-namespace rl
+SCENARIO("Multiple hashes are combined")
 {
-    template<rl::signed_integral I = int>
-    struct pack_box
+    GIVEN("Two hashes of two int values")
     {
-        unsigned int identifier = 0;
-        I page = 0;
-        rl::cell_box2<I> box = rl::cell_box2<I>();
+        const auto hash_a = std::hash<int>{}(1234);
+        const auto hash_b = std::hash<int>{}(5678);
+        WHEN("The hashes are combined")
+        {
+            const auto combined_hash = rl::hash_combine(hash_a, hash_b);
+            THEN("The combined has does not match either of the two original hashes")
+            {
+                CHECK(combined_hash != hash_a);
+                CHECK(combined_hash != hash_b);
+            }
+        }
+    }
+}
 
-        constexpr pack_box() noexcept = default;
-        constexpr pack_box(unsigned int identifier, I width, I height) noexcept;
-
-        constexpr bool operator==(const rl::pack_box<I>& that) const noexcept;
-        constexpr bool operator!=(const rl::pack_box<I>& that) const noexcept;
-    };
-}    // namespace rl
-
-#include <rlm/cellular/detail/pack_box.inl>
