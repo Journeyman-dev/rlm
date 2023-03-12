@@ -37,8 +37,8 @@ namespace rl
         constexpr pack_box() noexcept = default;
         constexpr pack_box(unsigned int identifier, I width, I height) noexcept;
 
-        constexpr bool operator==(const rl::pack_box<I>& that) noexcept;
-        constexpr bool operator!=(const rl::pack_box<I>& that) noexcept;
+        constexpr bool operator==(const rl::pack_box<I>& that) const noexcept;
+        constexpr bool operator!=(const rl::pack_box<I>& that) const noexcept;
     };
 }    // namespace rl
 

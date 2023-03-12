@@ -36,8 +36,8 @@ namespace rl
         constexpr pack_space() noexcept = default;
         constexpr pack_space(I x, I y, I width, I height, I page) noexcept;
 
-        constexpr bool operator==(const rl::pack_space<I>& that) noexcept;
-        constexpr bool operator!=(const rl::pack_space<I>& that) noexcept;
+        constexpr bool operator==(const rl::pack_space<I>& that) const noexcept;
+        constexpr bool operator!=(const rl::pack_space<I>& that) const noexcept;
     };
 }    // namespace rl
 

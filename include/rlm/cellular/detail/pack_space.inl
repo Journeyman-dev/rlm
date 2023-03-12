@@ -32,7 +32,7 @@ constexpr rl::pack_space<I>::pack_space(I x, I y, I width, I height, I page) noe
 }
 
 template<rl::signed_integral I>
-constexpr bool rl::pack_space<I>::operator==(const rl::pack_space<I>& that) noexcept
+constexpr bool rl::pack_space<I>::operator==(const rl::pack_space<I>& that) const noexcept
 {
     return
         this->page == that.page &&
@@ -40,7 +40,7 @@ constexpr bool rl::pack_space<I>::operator==(const rl::pack_space<I>& that) noex
 }
 
 template<rl::signed_integral I>
-constexpr bool rl::pack_space<I>::operator!=(const rl::pack_space<I>& that) noexcept
+constexpr bool rl::pack_space<I>::operator!=(const rl::pack_space<I>& that) const noexcept
 {
     return
         this->page != that.page &&
