@@ -45,3 +45,29 @@ SCENARIO("A pack_space is constructed")
         }
     }
 }
+
+SCENARIO("Two pack_space are compared")
+{
+    GIVEN("A pack_space")
+    {
+        const rl::pack_space<int> box_a(1, 2, 3, 4, 5);
+        GIVEN("A pack_space that is the same")
+        {
+            const rl::pack_space<int> box_b(1, 2, 3, 4, 5);
+            THEN("The pack_space are equal")
+            {
+                CHECK(box_a == box_b);
+                CHECK_FALSE(box_a != box_b);
+            }
+        }
+        GIVEN("A pack_space that is different")
+        {
+            const rl::pack_space<int> box_b(3, 4, 5, 6, 7);
+            THEN("The pack_space are not equal")
+            {
+                CHECK_FALSE(box_a == box_b);
+                CHECK(box_a != box_b);
+            }
+        }
+    }
+}
