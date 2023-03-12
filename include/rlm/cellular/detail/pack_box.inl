@@ -44,7 +44,7 @@ template<rl::signed_integral I>
 constexpr bool rl::pack_box<I>::operator!=(const rl::pack_box<I>& that) const noexcept
 {
     return
-        this->identifier != that.identifier &&
-        this->page != that.page &&
+        this->identifier != that.identifier ||
+        this->page != that.page ||
         this->box != that.box;
 }
