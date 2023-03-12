@@ -64,6 +64,7 @@ target_sources(RlmTest
         "color_grayscale_conversion_tests.cpp"
         "clamp_tests.cpp"
         "gcf_tests.cpp"
+        "hash_combine_tests.cpp"
         "lerp_tests.cpp"
         "linear_degenerate_shapes_tests.cpp"
         "linear_box2_tests.cpp"
