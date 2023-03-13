@@ -26,7 +26,7 @@
 
 namespace rl
 {
-    template<rl::floating_point F>
+    template<rl::floating_point F = float>
     struct stpq
     {
         F s = 0.0f;

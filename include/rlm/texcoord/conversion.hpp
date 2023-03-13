@@ -31,7 +31,7 @@ namespace rl
     template<rl::signed_integral I>
     struct pack_box;
 
-    template<rl::floating_point F, rl::signed_integral I>
+    template<rl::floating_point F = float, rl::signed_integral I = int>
     constexpr rl::stpqp<F> to_stpqp(const rl::pack_box<I>& box, I width, I height) noexcept;
 }
 

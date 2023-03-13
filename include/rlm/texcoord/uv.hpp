@@ -26,7 +26,7 @@
 
 namespace rl
 {
-    template<rl::floating_point F>
+    template<rl::floating_point F = float>
     struct uv
     {
         F u = 0.0f;
