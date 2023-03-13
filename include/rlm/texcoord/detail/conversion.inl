@@ -34,12 +34,13 @@ constexpr rl::stpqp<F> rl::to_stpqp(rl::pack_box<I>& box, I width, I height) noe
     return
         rl::stpqp<F>(
             static_cast<F>(width) /
-            static_cast<F>(rl::left_x(box.box),
+            static_cast<F>(rl::left_x(box.box)),
             static_cast<F>(width) /
-            static_cast<F>(rl::right_x(box.box),   
+            static_cast<F>(rl::right_x(box.box)),   
             static_cast<F>(height) /
-            static_cast<F>(rl::top_y(box.box),        
+            static_cast<F>(rl::top_y(box.box)),        
             static_cast<F>(height) /
-            static_cast<F>(rl::bottom_y(box.box)
+            static_cast<F>(rl::bottom_y(box.box)),
+            static_cast<F>(box.page)
         );
 }
