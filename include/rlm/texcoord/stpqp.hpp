@@ -38,8 +38,8 @@ namespace rl
         constexpr stpqp() noexcept = default;
         constexpr stpqp(F s, F t, F p, F q, F page) noexcept;
 
-        constexpr bool operator==(const rl::stpqp<F>& that) noexcept;
-        constexpr bool operator!=(const rl::stpqp<F>& that) noexcept;
+        constexpr bool operator==(const rl::stpqp<F>& that) const noexcept;
+        constexpr bool operator!=(const rl::stpqp<F>& that) const noexcept;
     };
 }
 

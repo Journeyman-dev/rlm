@@ -35,8 +35,8 @@ namespace rl
         constexpr uv() noexcept = default;
         constexpr uv(F u, F v) noexcept;
 
-        constexpr bool operator==(const rl::uv<F>& that) noexcept;
-        constexpr bool operator!=(const rl::uv<F>& that) noexcept;
+        constexpr bool operator==(const rl::uv<F>& that) const  noexcept;
+        constexpr bool operator!=(const rl::uv<F>& that) const noexcept;
     };
 }
 

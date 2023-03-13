@@ -37,8 +37,8 @@ namespace rl
         constexpr stpq() noexcept = default;
         constexpr stpq(F s, F t, F p, F q) noexcept;
 
-        constexpr bool operator==(const rl::stpq<F>& that) noexcept;
-        constexpr bool operator!=(const rl::stpq<F>& that) noexcept;
+        constexpr bool operator==(const rl::stpq<F>& that) const noexcept;
+        constexpr bool operator!=(const rl::stpq<F>& that) const noexcept;
     };
 }
 
