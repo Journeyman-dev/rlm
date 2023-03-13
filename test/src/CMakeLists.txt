@@ -75,4 +75,5 @@ target_sources(RlmTest
         "min_tests.cpp"
         "mirror_tests.cpp"
         "repeat_tests.cpp"
+        "texcoord_conversion_tests.cpp"
 )
