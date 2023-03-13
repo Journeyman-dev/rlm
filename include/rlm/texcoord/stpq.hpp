@@ -34,11 +34,11 @@ namespace rl
         F p = 0.0f;
         F q = 0.0f;
 
-        constexpr stpqp() noexcept = default;
-        constexpr stpqp(F s, F t, F p, F q) noexcept;
+        constexpr stpq() noexcept = default;
+        constexpr stpq(F s, F t, F p, F q) noexcept;
 
-        constexpr bool operator==(const rl::stpqp& that) noexcept;
-        constexpr bool operator!=(const rl::stpqp& that) noexcept;
+        constexpr bool operator==(const rl::stpq<F>& that) noexcept;
+        constexpr bool operator!=(const rl::stpq<F>& that) noexcept;
     };
 }
 

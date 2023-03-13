@@ -34,7 +34,7 @@ constexpr rl::stpq<F>::stpq(F s, F t, F p, F q) noexcept
 }
 
 template<rl::floating_point F>
-constexpr bool rl::stpq<F>::operator==(const rl::stpq& that) noexcept
+constexpr bool rl::stpq<F>::operator==(const rl::stpq<F>& that) noexcept
 {
     return
         this->s == that.s &&
@@ -44,7 +44,7 @@ constexpr bool rl::stpq<F>::operator==(const rl::stpq& that) noexcept
 }
 
 template<rl::floating_point F>
-constexpr bool rl::stpq<F>::operator!=(const rl::stpq& that) noexcept
+constexpr bool rl::stpq<F>::operator!=(const rl::stpq<F>& that) noexcept
 {
     return
         this->s != that.s ||

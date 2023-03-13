@@ -32,7 +32,7 @@ constexpr rl::uv<F>::uv(F u, F v) noexcept
 }
 
 template<rl::floating_point F>
-constexpr bool rl::uv<F>::operator==(const rl::uv& that) noexcept
+constexpr bool rl::uv<F>::operator==(const rl::uv<F>& that) noexcept
 {
     return
         this->u == that.u &&
@@ -40,7 +40,7 @@ constexpr bool rl::uv<F>::operator==(const rl::uv& that) noexcept
 }
 
 template<rl::floating_point F>
-constexpr bool rl::uv<F>::operator!=(const rl::uv& that) noexcept
+constexpr bool rl::uv<F>::operator!=(const rl::uv<F>& that) noexcept
 {
     return
         this->u != that.u ||
