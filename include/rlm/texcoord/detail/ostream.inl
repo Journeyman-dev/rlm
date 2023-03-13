@@ -47,7 +47,7 @@ namespace rl
     template<rl::floating_point F>
     constexpr std::ostream& operator<<(std::ostream& os, const rl::stpqp<F>& stpqp)
     {
-        os << "(" << stpqp.s << ", " << stpqp.t << ", " << stpqp.p << ", " << stpqp.q << ", " << stppq.page << ")";
+        os << "(" << stpqp.s << ", " << stpqp.t << ", " << stpqp.p << ", " << stpqp.q << ", " << stpqp.page << ")";
         return os;
     }
 }
