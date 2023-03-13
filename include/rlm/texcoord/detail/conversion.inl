@@ -29,7 +29,7 @@
 #include <rlm/cellular/shape_edges.hpp>
 
 template<rl::floating_point F, rl::signed_integral I>
-constexpr rl::stpqp<F> rl::to_stpqp(rl::pack_box<I>& box, I width, I height) noexcept
+constexpr rl::stpqp<F> rl::to_stpqp(const rl::pack_box<I>& box, I width, I height) noexcept
 {
     return
         rl::stpqp<F>(

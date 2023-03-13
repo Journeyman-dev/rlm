@@ -32,7 +32,7 @@ namespace rl
     struct pack_box;
 
     template<rl::floating_point F, rl::signed_integral I>
-    constexpr rl::stpqp<F> rl::to_stpqp(rl::pack_box<I>& box, I width, I height) noexcept;
+    constexpr rl::stpqp<F> to_stpqp(const rl::pack_box<I>& box, I width, I height) noexcept;
 }
 
 #include <rlm/texcoord/detail/conversion.inl>
