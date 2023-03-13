@@ -28,9 +28,12 @@ SCENARIO("A pack_box is converted to a stpqp")
 {
     GIVEN("A pack_box and bin dimensions")
     {
-        rl::pack_box<int> box(1, 2, 3);
-        box.box.x = 4;
-        box.box.y = 5;
+        rl::pack_box<int> box;
+        box.box.x = 0;
+        box.box.y = 64;
+        box.box.width = 251;
+        box.box.height = 65;
+        box.page = 2;
         int width = 500;
         int height = 128;
         WHEN("The pack_box is converted to an stpqp")
@@ -38,7 +41,7 @@ SCENARIO("A pack_box is converted to a stpqp")
             const auto stpqp = rl::to_stpqp<float, int>(box, width, height);
             THEN("The stpqp is correct")
             {
-                CHECK(stpqp == rl::stpqp<float>());
+                CHECK(stpqp == rl::stpqp<float>(0, 0.5f, 0.5f, 1.0f, 2.0f));
             }
         }
     }
